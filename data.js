@@ -19,9 +19,9 @@ window.REVIEW_DATA={
       }
     },
     "fullResponseSource": "revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v12/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v12.tex",
-    "fullResponseSha256": "bf03656821ff2883217f7822b9d2bbbca262e185f475e5d1d9643f839375d0c3",
+    "fullResponseSha256": "7c477655ed95e0e1fe1f0f6225f9fba0995231a7b6405d9bdee08fa2deb34b30",
     "responsePages": 16,
-    "responsePdfSha256": "aa707c1fc300681289c9259cba7bfc0047b05f14fd36ac325d9238bb87243786",
+    "responsePdfSha256": "66acb4f57b5b9a061b34b5724df9bb39a4406bb26ade1313c37e3a3daba11ddb",
     "responseRevision": "v12"
   },
   "comments": [
@@ -83,8 +83,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "<strong>[36]</strong> J. Han et al., \"Unleashing the Potential of All Test Samples: Mean-Shift Guided Test-Time Adaptation,\" IEEE TCSVT, 2026.",
-          "text": "[36] J. Han et al., \"Unleashing the Potential of All Test Samples: Mean-Shift Guided Test-Time Adaptation,\" IEEE TCSVT, 2026."
+          "html": "<strong>[36]</strong> J. Han et al., \"Unleashing the Potential of All Test Samples: Mean-Shift Guided Test-Time Adaptation,\" IEEE TCSVT, vol. 36, no. 8, pp. 11323–11335, 2026.",
+          "text": "[36] J. Han et al., \"Unleashing the Potential of All Test Samples: Mean-Shift Guided Test-Time Adaptation,\" IEEE TCSVT, vol. 36, no. 8, pp. 11323–11335, 2026."
         },
         {
           "kind": "paragraph",
@@ -132,7 +132,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Sections I–II, pp. 1–3; Section III-B, p. 3, Eqs. (2)–(3); Section IV-C, Table III and the mechanism-level analyses, pp. 8–12."
         }
       ],
-      "responseWordCount": 719,
+      "responseWordCount": 725,
       "responseSourceSections": [
         "E1",
         "E2"
@@ -271,7 +271,7 @@ window.REVIEW_DATA={
       "title": "Statistical evidence",
       "comment": "Additionally, statistical significance should be reported for the cross-domain results, where some improvements are marginal.",
       "response": [
-        "Figure 11 now reports mean ⟪\\pm⟫ standard deviation over five matched runs and paired significance tests against the strongest aggregate baseline in each transfer setting. On ImageNet-C, DCF achieves ⟪30.30 \\pm 0.39⟫ pp versus ⟪27.95 \\pm 0.05⟫ pp for AEA, with ⟪t(4) = 14.30⟫ and ⟪p = 1.39 \\times 10^{-4}⟫. On DomainNet-126, DCF achieves 61.40% versus 60.13% for DeYO, with ⟪t(4) = 12.01⟫ and ⟪p = 2.75 \\times 10^{-4}⟫. These paired tests establish statistically significant aggregate differences across matched runs; individual transfer cells are reported with their run-to-run variability."
+        "Figure 11 now reports mean ⟪\\pm⟫ standard deviation over five matched runs, and the accompanying \"Cross-Domain Transfer\" paragraph reports paired significance tests against the strongest aggregate baseline in each transfer setting. On ImageNet-C, DCF achieves a mean gain over No Adapt of ⟪30.30 \\pm 0.39⟫ pp versus ⟪27.95 \\pm 0.05⟫ pp for AEA, with ⟪t(4) = 14.30⟫ and ⟪p = 1.39 \\times 10^{-4}⟫. On DomainNet-126, DCF achieves 61.40% mean accuracy versus 60.13% for DeYO, with ⟪t(4) = 12.01⟫ and ⟪p = 2.75 \\times 10^{-4}⟫. These paired tests establish statistically significant aggregate differences across matched runs; individual transfer cells are reported with their run-to-run variability."
       ],
       "changes": [
         "transfer",
@@ -281,8 +281,8 @@ window.REVIEW_DATA={
       "fullResponse": [
         {
           "kind": "paragraph",
-          "html": "Figure 11 now reports mean <span data-response-math=\"\\pm\" data-display=\"false\">\\pm</span> standard deviation over five matched runs and paired significance tests against the strongest aggregate baseline in each transfer setting. On ImageNet-C, DCF achieves <span data-response-math=\"30.30 \\pm 0.39\" data-display=\"false\">30.30 \\pm 0.39</span> pp versus <span data-response-math=\"27.95 \\pm 0.05\" data-display=\"false\">27.95 \\pm 0.05</span> pp for AEA, with <span data-response-math=\"t(4) = 14.30\" data-display=\"false\">t(4) = 14.30</span> and <span data-response-math=\"p = 1.39 \\times 10^{-4}\" data-display=\"false\">p = 1.39 \\times 10^{-4}</span>. On DomainNet-126, DCF achieves 61.40% versus 60.13% for DeYO, with <span data-response-math=\"t(4) = 12.01\" data-display=\"false\">t(4) = 12.01</span> and <span data-response-math=\"p = 2.75 \\times 10^{-4}\" data-display=\"false\">p = 2.75 \\times 10^{-4}</span>. These paired tests establish statistically significant aggregate differences across matched runs; individual transfer cells are reported with their run-to-run variability.",
-          "text": "Figure 11 now reports mean ⟪\\pm⟫ standard deviation over five matched runs and paired significance tests against the strongest aggregate baseline in each transfer setting. On ImageNet-C, DCF achieves ⟪30.30 \\pm 0.39⟫ pp versus ⟪27.95 \\pm 0.05⟫ pp for AEA, with ⟪t(4) = 14.30⟫ and ⟪p = 1.39 \\times 10^{-4}⟫. On DomainNet-126, DCF achieves 61.40% versus 60.13% for DeYO, with ⟪t(4) = 12.01⟫ and ⟪p = 2.75 \\times 10^{-4}⟫. These paired tests establish statistically significant aggregate differences across matched runs; individual transfer cells are reported with their run-to-run variability."
+          "html": "Figure 11 now reports mean <span data-response-math=\"\\pm\" data-display=\"false\">\\pm</span> standard deviation over five matched runs, and the accompanying \"Cross-Domain Transfer\" paragraph reports paired significance tests against the strongest aggregate baseline in each transfer setting. On ImageNet-C, DCF achieves a mean gain over No Adapt of <span data-response-math=\"30.30 \\pm 0.39\" data-display=\"false\">30.30 \\pm 0.39</span> pp versus <span data-response-math=\"27.95 \\pm 0.05\" data-display=\"false\">27.95 \\pm 0.05</span> pp for AEA, with <span data-response-math=\"t(4) = 14.30\" data-display=\"false\">t(4) = 14.30</span> and <span data-response-math=\"p = 1.39 \\times 10^{-4}\" data-display=\"false\">p = 1.39 \\times 10^{-4}</span>. On DomainNet-126, DCF achieves 61.40% mean accuracy versus 60.13% for DeYO, with <span data-response-math=\"t(4) = 12.01\" data-display=\"false\">t(4) = 12.01</span> and <span data-response-math=\"p = 2.75 \\times 10^{-4}\" data-display=\"false\">p = 2.75 \\times 10^{-4}</span>. These paired tests establish statistically significant aggregate differences across matched runs; individual transfer cells are reported with their run-to-run variability.",
+          "text": "Figure 11 now reports mean ⟪\\pm⟫ standard deviation over five matched runs, and the accompanying \"Cross-Domain Transfer\" paragraph reports paired significance tests against the strongest aggregate baseline in each transfer setting. On ImageNet-C, DCF achieves a mean gain over No Adapt of ⟪30.30 \\pm 0.39⟫ pp versus ⟪27.95 \\pm 0.05⟫ pp for AEA, with ⟪t(4) = 14.30⟫ and ⟪p = 1.39 \\times 10^{-4}⟫. On DomainNet-126, DCF achieves 61.40% mean accuracy versus 60.13% for DeYO, with ⟪t(4) = 12.01⟫ and ⟪p = 2.75 \\times 10^{-4}⟫. These paired tests establish statistically significant aggregate differences across matched runs; individual transfer cells are reported with their run-to-run variability."
         },
         {
           "kind": "location",
@@ -290,7 +290,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section IV-C, \"Cross-Domain Transfer,\" and Fig. 11, p. 11. See Response R1.6."
         }
       ],
-      "responseWordCount": 105,
+      "responseWordCount": 120,
       "responseSourceSections": [
         "AE5"
       ]
@@ -548,8 +548,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "caption",
-          "html": "Additional evidence from revised Tables V–VI",
-          "text": "Additional evidence from revised Tables V–VI"
+          "html": "Additional evidence from revised Tables V–VI and the controlled-shortcut analysis",
+          "text": "Additional evidence from revised Tables V–VI and the controlled-shortcut analysis"
         },
         {
           "kind": "table",
@@ -638,7 +638,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section III-C, p. 4, Eqs. (4)–(7); Section IV-C, \"Analysis of Probe-Supported Sample Routing,\" pp. 7–9; Tables IV–VI, pp. 8–9; Fig. 12(c), p. 12."
         }
       ],
-      "responseWordCount": 692,
+      "responseWordCount": 696,
       "responseSourceSections": [
         "R1.1"
       ]
@@ -1201,13 +1201,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "DCF-Lite reduces cost by removing the source/candidate model copies and per-sample gradient computation, retaining gradients only through the clean adaptation branch, and using a detached Fourier probe for PSR routing and transport assignment. It further reduces the Sinkhorn iteration count to <span data-response-math=\"N_{\\mathrm{sk}}=1\" data-display=\"false\">N_{\\mathrm{sk}}=1</span>. These approximations target the principal memory and computation costs of the full adaptation loop.",
-          "text": "DCF-Lite reduces cost by removing the source/candidate model copies and per-sample gradient computation, retaining gradients only through the clean adaptation branch, and using a detached Fourier probe for PSR routing and transport assignment. It further reduces the Sinkhorn iteration count to ⟪N_{\\mathrm{sk}}=1⟫. These approximations target the principal memory and computation costs of the full adaptation loop."
-        },
-        {
-          "kind": "paragraph",
-          "html": "The Lite implementation uses four approximations to achieve these reductions: (1) replacing resident <code>src_model</code>, <code>hidden_model</code>, and <code>ema_model</code> replicas with a static source-parameter buffer <span data-response-math=\"\\theta_0\" data-display=\"false\">\\theta_0</span>, while storing reset snapshots on the CPU; (2) computing online curvature proxies <span data-response-math=\"\\mathrm{FIM}_t\" data-display=\"false\">\\mathrm{FIM}_t</span> and layer-wise gates <span data-response-math=\"\\mu_t^l\" data-display=\"false\">\\mu_t^l</span> from the single model’s clean-branch backward pass, then applying closed-form proximal interpolation in place; (3) detaching the Fourier probe during routing (<code>detach_probe=True</code>) to avoid auxiliary computation graphs; and (4) truncating Sinkhorn to <span data-response-math=\"N_{\\mathrm{sk}}=1\" data-display=\"false\">N_{\\mathrm{sk}}=1</span>. Retention is executed in place on the single online model.",
-          "text": "The Lite implementation uses four approximations to achieve these reductions: (1) replacing resident src_model, hidden_model, and ema_model replicas with a static source-parameter buffer ⟪\\theta_0⟫, while storing reset snapshots on the CPU; (2) computing online curvature proxies ⟪\\mathrm{FIM}_t⟫ and layer-wise gates ⟪\\mu_t^l⟫ from the single model’s clean-branch backward pass, then applying closed-form proximal interpolation in place; (3) detaching the Fourier probe during routing (detach_probe=True) to avoid auxiliary computation graphs; and (4) truncating Sinkhorn to ⟪N_{\\mathrm{sk}}=1⟫. Retention is executed in place on the single online model."
+          "html": "The revised manuscript describes four cost-saving choices for DCF-Lite: removing the source/candidate model copies and per-sample gradient computation, retaining gradients only through the clean adaptation branch, using a detached Fourier probe for PSR routing and transport assignment, and reducing the Sinkhorn iteration count to <span data-response-math=\"N_{\\mathrm{sk}}=1\" data-display=\"false\">N_{\\mathrm{sk}}=1</span>. These approximations target the principal memory and computation costs of the full adaptation loop, and Table XI quantifies their combined accuracy–resource trade-off.",
+          "text": "The revised manuscript describes four cost-saving choices for DCF-Lite: removing the source/candidate model copies and per-sample gradient computation, retaining gradients only through the clean adaptation branch, using a detached Fourier probe for PSR routing and transport assignment, and reducing the Sinkhorn iteration count to ⟪N_{\\mathrm{sk}}=1⟫. These approximations target the principal memory and computation costs of the full adaptation loop, and Table XI quantifies their combined accuracy–resource trade-off."
         },
         {
           "kind": "paragraph",
@@ -1225,7 +1220,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section IV-C, \"Computational Overhead,\" pp. 11–12; Table XI, p. 12; Table IX, p. 10; Fig. 12(d), p. 12. Table XI supersedes the runtime-only comparison cited as Fig. 12 in the original review."
         }
       ],
-      "responseWordCount": 471,
+      "responseWordCount": 398,
       "responseSourceSections": [
         "R1.3"
       ]
@@ -1393,13 +1388,13 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "The group comparison favors layer-block control by 0.56 pp. Expected Fisher and the Hutchinson-based approximation reach 43.57% and 43.70%, compared with 43.48% for the default gradient-square proxy, at an additional 1.9 and 6.8 ms/image. The comparison evaluates the alternative estimators under the same online pseudo-label supervision and supports the default gradient-square proxy for its accuracy–cost balance.",
-          "text": "The group comparison favors layer-block control by 0.56 pp. Expected Fisher and the Hutchinson-based approximation reach 43.57% and 43.70%, compared with 43.48% for the default gradient-square proxy, at an additional 1.9 and 6.8 ms/image. The comparison evaluates the alternative estimators under the same online pseudo-label supervision and supports the default gradient-square proxy for its accuracy–cost balance."
+          "html": "The group comparison favors layer-block control by 0.56 pp. Expected Fisher and the Hutchinson-based approximation reach 43.57% and 43.70%, compared with 43.48% for the default gradient-square proxy, at an additional 1.9 and 6.8 ms/image. This comparison of curvature-aware proxy estimators within CLR supports the default gradient-square proxy for its accuracy–cost balance.",
+          "text": "The group comparison favors layer-block control by 0.56 pp. Expected Fisher and the Hutchinson-based approximation reach 43.57% and 43.70%, compared with 43.48% for the default gradient-square proxy, at an additional 1.9 and 6.8 ms/image. This comparison of curvature-aware proxy estimators within CLR supports the default gradient-square proxy for its accuracy–cost balance."
         },
         {
           "kind": "paragraph",
-          "html": "Section III-E further clarifies that the candidate and source proxies are computed on the same current unlabeled batch at their respective parameter states, with squared per-sample gradients averaged within each layer group. Together, this clarification and the Expected Fisher and Hutchinson comparisons show how CLR behaves with different curvature estimators.",
-          "text": "Section III-E further clarifies that the candidate and source proxies are computed on the same current unlabeled batch at their respective parameter states, with squared per-sample gradients averaged within each layer group. Together, this clarification and the Expected Fisher and Hutchinson comparisons show how CLR behaves with different curvature estimators."
+          "html": "Section III-E further clarifies that the candidate and source proxies are computed on the same current unlabeled batch at their respective parameter states. For each layer group, Eq. (19) averages the element-wise squared per-sample gradients over the batch, producing a diagonal proxy vector; Eq. (20) then normalizes the squared source–candidate proxy mismatch by the group’s parameter dimension. Together, this clarification and the Expected Fisher and Hutchinson comparisons show how CLR behaves with different curvature estimators.",
+          "text": "Section III-E further clarifies that the candidate and source proxies are computed on the same current unlabeled batch at their respective parameter states. For each layer group, Eq. (19) averages the element-wise squared per-sample gradients over the batch, producing a diagonal proxy vector; Eq. (20) then normalizes the squared source–candidate proxy mismatch by the group’s parameter dimension. Together, this clarification and the Expected Fisher and Hutchinson comparisons show how CLR behaves with different curvature estimators."
         },
         {
           "kind": "location",
@@ -1407,7 +1402,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section III-E, pp. 5–6, Eqs. (17)–(20); Section IV-A, \"Models and Implementation Details,\" p. 6; Section IV-C, \"Analysis of Curvature-aware Layer Retention,\" Fig. 9 and Table IX, p. 10."
         }
       ],
-      "responseWordCount": 406,
+      "responseWordCount": 426,
       "responseSourceSections": [
         "R1.4"
       ]
@@ -1546,30 +1541,8 @@ window.REVIEW_DATA={
             ],
             [
               {
-                "html": "ImageNet-C",
-                "text": "ImageNet-C"
-              },
-              {
-                "html": "",
-                "text": ""
-              },
-              {
-                "html": "",
-                "text": ""
-              },
-              {
-                "html": "",
-                "text": ""
-              },
-              {
-                "html": "",
-                "text": ""
-              }
-            ],
-            [
-              {
-                "html": "gain over No Adapt",
-                "text": "gain over No Adapt"
+                "html": "ImageNet-C gain over No Adapt",
+                "text": "ImageNet-C gain over No Adapt"
               },
               {
                 "html": "<span data-response-math=\"30.30 \\pm 0.39\" data-display=\"false\">30.30 \\pm 0.39</span> pp",
@@ -1590,52 +1563,16 @@ window.REVIEW_DATA={
             ],
             [
               {
-                "html": "DomainNet-126",
-                "text": "DomainNet-126"
-              },
-              {
-                "html": "",
-                "text": ""
-              },
-              {
-                "html": "",
-                "text": ""
-              },
-              {
-                "html": "",
-                "text": ""
-              },
-              {
-                "html": "",
-                "text": ""
-              }
-            ],
-            [
-              {
-                "html": "mean accuracy",
-                "text": "mean accuracy"
+                "html": "DomainNet-126 mean accuracy",
+                "text": "DomainNet-126 mean accuracy"
               },
               {
                 "html": "61.40%",
                 "text": "61.40%"
               },
               {
-                "html": "DeYO",
-                "text": "DeYO"
-              },
-              {
-                "html": "",
-                "text": ""
-              },
-              {
-                "html": "",
-                "text": ""
-              }
-            ],
-            [
-              {
-                "html": "60.13%",
-                "text": "60.13%"
+                "html": "DeYO 60.13%",
+                "text": "DeYO 60.13%"
               },
               {
                 "html": "+1.27 pp",
@@ -1644,14 +1581,6 @@ window.REVIEW_DATA={
               {
                 "html": "<span data-response-math=\"t(4) = 12.01\" data-display=\"false\">t(4) = 12.01</span>; <span data-response-math=\"p = 2.75 \\times 10^{-4}\" data-display=\"false\">p = 2.75 \\times 10^{-4}</span>",
                 "text": "⟪t(4) = 12.01⟫; ⟪p = 2.75 \\times 10^{-4}⟫"
-              },
-              {
-                "html": "",
-                "text": ""
-              },
-              {
-                "html": "",
-                "text": ""
               }
             ]
           ]

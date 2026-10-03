@@ -16,6 +16,9 @@ const source = read(responsePath).replace(/\r\n/g, '\n');
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 function prepare(fragment) {
+  // A minipage's internal line breaks must stay inside its table cell.
+  fragment = fragment.replace(/\\begin\{minipage\}\[[bt]\]\{\\linewidth\}\\raggedright\s*([\s\S]*?)\\end\{minipage\}/g,
+    (_, contents) => contents.replace(/\\\\/g, ' '));
   // A makecell line break belongs inside one cell, not to the table row structure.
   fragment = fragment.replace(/\\makecell\{/g, (_, offset) => '__MAKECELL__{');
   let index;

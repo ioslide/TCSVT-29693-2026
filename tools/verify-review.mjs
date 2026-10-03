@@ -79,6 +79,10 @@ for (const comment of data.comments) {
   const text = [...comment.response, ...comment.fullResponse.map(b => b.text || '')].join(' ');
   assert(!/we do not claim|does not guarantee|do not establish|rather than|not only|without implying/i.test(text), `Defensive author text: ${comment.id}`);
 }
+const transferTable = data.comments.find(c => c.id === 'r1-6').fullResponse.find(b => b.kind === 'table');
+assert.equal(transferTable.rows.length, 3, 'Transfer summary must have one header and two complete data rows');
+assert(transferTable.rows[1][0].text.includes('ImageNet-C') && transferTable.rows[1][1].text.includes('30.30'), 'ImageNet-C transfer cells are misaligned');
+assert(transferTable.rows[2][0].text.includes('DomainNet-126') && transferTable.rows[2][1].text.includes('61.40') && transferTable.rows[2][2].text.includes('60.13'), 'DomainNet transfer cells are misaligned');
 const theory = data.changes.find(c => c.id === 'probe-theory');
 assert(theory.after.includes('(-g_x^\\top\\delta)_+^2'));
 assert(theory.after.includes('bounded above'));
