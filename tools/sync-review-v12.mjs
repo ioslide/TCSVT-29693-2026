@@ -112,7 +112,7 @@ function blocks(fragment) {
       const html = inline(block.c), text = inline(block.c, false);
       const kind = text.startsWith('Changes in the manuscript:') ? 'location'
         : /^"/.test(text) ? 'excerpt'
-        : /^Evidence from|^Selected measurements|^Additional evidence|^Definitions added|^Implementation settings|^Reproduced from/.test(text) ? 'caption' : 'paragraph';
+        : /^Evidence from|^Selected measurements|^Measurements from|^Additional evidence|^Definitions added|^Implementation settings|^Reproduced from/.test(text) ? 'caption' : 'paragraph';
       result.push({ kind, html, text });
     } else {
       throw new Error('Unsupported response block: ' + block.t);
@@ -295,7 +295,7 @@ transferFigure.after = transferCaption;
 changes.get('domainnet').summary = 'DomainNet-126 reports five-run accuracy gains over No Adapt for 12 transfer pairs and an average column. DCF exceeds DeYO on all pairs and achieves the highest mean gain on 10 of 12 pairs.';
 data.comments.find(c => c.id === 'r1-1').response = ['The positive-part PCS expansion, controlled shortcut interventions, matched-coverage diagnostics, and frequency/amplitude sensitivity jointly explain and validate the routing criterion.'];
 data.comments.find(c => c.id === 'r1-3').response = [
-  'Table XI reports FLOPs, peak memory, latency, and accuracy on the A100 benchmark. DCF-Lite reduces FLOPs by 61.8% and peak memory by 61.3%, retaining 42.06% accuracy versus 43.48% for full DCF.',
+  'Table XI reports FLOPs, peak memory, latency, and accuracy on the A100 benchmark. DCF-Lite reduces FLOPs by 61.8% and peak memory by 58.6%, retaining 42.06% accuracy versus 43.48% for full DCF.',
   'Latency-derived throughput estimates and the measured resource profile support device-specific deployment assessment.',
 ];
 data.comments.find(c => c.id === 'r1-6').response = [

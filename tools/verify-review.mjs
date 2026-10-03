@@ -83,6 +83,13 @@ const transferTable = data.comments.find(c => c.id === 'r1-6').fullResponse.find
 assert.equal(transferTable.rows.length, 3, 'Transfer summary must have one header and two complete data rows');
 assert(transferTable.rows[1][0].text.includes('ImageNet-C') && transferTable.rows[1][1].text.includes('30.30'), 'ImageNet-C transfer cells are misaligned');
 assert(transferTable.rows[2][0].text.includes('DomainNet-126') && transferTable.rows[2][1].text.includes('61.40') && transferTable.rows[2][2].text.includes('60.13'), 'DomainNet transfer cells are misaligned');
+const resourceTable = data.comments.find(c => c.id === 'r1-3').fullResponse.find(b => b.kind === 'table');
+assert.equal(resourceTable.rows.length, 15, 'Table XI must include all 14 methods');
+const liteRow = resourceTable.rows.find(row => row[0].text === 'DCF-Lite');
+assert.deepEqual(Array.from(liteRow, cell => cell.text), ['DCF-Lite', '9.4', '6,080', '3.19', '42.06']);
+const probeFigures = data.comments.find(c => c.id === 'r1-1').fullResponse.filter(b => b.kind === 'image');
+assert(probeFigures.some(b => b.evidenceId === 'probe-sensitivity'), 'Missing Fig. 12(c) in the complete probe response');
+assert(probeFigures.some(b => b.evidenceId === 'sinkhorn'), 'Missing Fig. 12(d) in the complete probe response');
 const theory = data.changes.find(c => c.id === 'probe-theory');
 assert(theory.after.includes('(-g_x^\\top\\delta)_+^2'));
 assert(theory.after.includes('bounded above'));

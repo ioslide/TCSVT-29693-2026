@@ -14,14 +14,14 @@ window.REVIEW_DATA={
         "tex": "1108279736019bcae2bd95c497c8d7f1830f8f65e2eeb3d607f431ad0f90efad"
       },
       "revised": {
-        "pdf": "e8218d5ab00df9a19ac2b96f96831e7081008a6fa0a26dbd678e4800599a46a9",
-        "tex": "dd31225c4b68547001a9f1cc1e7ac91d1ae88a9dc39af0cc934d71209f5819d5"
+        "pdf": "b7778846e6e6274e30525e00c9219f039cdada74e56fa43764ec2a549dcb84f6",
+        "tex": "4ce68717776b698f36cf2c381888357639f7a160ee60954381b736c361252d9e"
       }
     },
     "fullResponseSource": "revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v12/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v12.tex",
-    "fullResponseSha256": "dcd53574bfe6899f9af61d4fe05f301261d3960880b2f459894a26059da71e7f",
-    "responsePages": 16,
-    "responsePdfSha256": "5e0f6dddaaa0b72d80a0a331ac286a421af7000f644edc2d7c0e2f38d990a53a",
+    "fullResponseSha256": "87d024be9617a1373fc91cc647dee9b035c43a03dbe312c68d0313a120bbd980",
+    "responsePages": 17,
+    "responsePdfSha256": "831294f3adf62464e94965095735281362fcc8a41521137c30d41c272d4a1cf9",
     "responseRevision": "v12"
   },
   "comments": [
@@ -209,7 +209,7 @@ window.REVIEW_DATA={
       "title": "Computational overhead",
       "comment": "Computational overhead, including FLOPs and memory, should be reported in detail alongside a discussion of possible approximations for practical deployment.",
       "response": [
-        "Table XI now provides a complete resource comparison for DCF and representative baselines, including FLOPs, peak GPU memory, per-image latency, and accuracy under the same A100 evaluation setting. Full DCF achieves 43.48% long-horizon average accuracy with 24.6 GFLOPs, 14,690 MB peak memory, and 5.20 ms/image. DCF-Lite reduces the cost to 9.4 GFLOPs and 5,680 MB with 3.59 ms/image while retaining 42.06% accuracy, corresponding to reductions of 61.8% in FLOPs and 61.3% in peak memory for only a 1.42 pp accuracy decrease. Figure 12(d) and Table IX further quantify low-iteration Sinkhorn and curvature-proxy approximations, making the accuracy–efficiency trade-off explicit."
+        "Table XI now provides a complete resource comparison for DCF and representative baselines, including FLOPs, peak GPU memory, per-image latency, and accuracy under the same A100 evaluation setting. Full DCF achieves 43.48% long-horizon average accuracy with 24.6 GFLOPs, 14,690 MB peak memory, and 5.20 ms/image. DCF-Lite reduces the cost to 9.4 GFLOPs and 6,080 MB with 3.19 ms/image while retaining 42.06% accuracy, corresponding to reductions of 61.8% in FLOPs and 58.6% in peak memory for only a 1.42 pp accuracy decrease. Figure 12(d) and Table IX further quantify low-iteration Sinkhorn and curvature-proxy approximations, making the accuracy–efficiency trade-off explicit."
       ],
       "changes": [
         "efficiency",
@@ -219,8 +219,8 @@ window.REVIEW_DATA={
       "fullResponse": [
         {
           "kind": "paragraph",
-          "html": "Table XI now provides a complete resource comparison for DCF and representative baselines, including FLOPs, peak GPU memory, per-image latency, and accuracy under the same A100 evaluation setting. Full DCF achieves 43.48% long-horizon average accuracy with 24.6 GFLOPs, 14,690 MB peak memory, and 5.20 ms/image. DCF-Lite reduces the cost to 9.4 GFLOPs and 5,680 MB with 3.59 ms/image while retaining 42.06% accuracy, corresponding to reductions of 61.8% in FLOPs and 61.3% in peak memory for only a 1.42 pp accuracy decrease. Figure 12(d) and Table IX further quantify low-iteration Sinkhorn and curvature-proxy approximations, making the accuracy–efficiency trade-off explicit.",
-          "text": "Table XI now provides a complete resource comparison for DCF and representative baselines, including FLOPs, peak GPU memory, per-image latency, and accuracy under the same A100 evaluation setting. Full DCF achieves 43.48% long-horizon average accuracy with 24.6 GFLOPs, 14,690 MB peak memory, and 5.20 ms/image. DCF-Lite reduces the cost to 9.4 GFLOPs and 5,680 MB with 3.59 ms/image while retaining 42.06% accuracy, corresponding to reductions of 61.8% in FLOPs and 61.3% in peak memory for only a 1.42 pp accuracy decrease. Figure 12(d) and Table IX further quantify low-iteration Sinkhorn and curvature-proxy approximations, making the accuracy–efficiency trade-off explicit."
+          "html": "Table XI now provides a complete resource comparison for DCF and representative baselines, including FLOPs, peak GPU memory, per-image latency, and accuracy under the same A100 evaluation setting. Full DCF achieves 43.48% long-horizon average accuracy with 24.6 GFLOPs, 14,690 MB peak memory, and 5.20 ms/image. DCF-Lite reduces the cost to 9.4 GFLOPs and 6,080 MB with 3.19 ms/image while retaining 42.06% accuracy, corresponding to reductions of 61.8% in FLOPs and 58.6% in peak memory for only a 1.42 pp accuracy decrease. Figure 12(d) and Table IX further quantify low-iteration Sinkhorn and curvature-proxy approximations, making the accuracy–efficiency trade-off explicit.",
+          "text": "Table XI now provides a complete resource comparison for DCF and representative baselines, including FLOPs, peak GPU memory, per-image latency, and accuracy under the same A100 evaluation setting. Full DCF achieves 43.48% long-horizon average accuracy with 24.6 GFLOPs, 14,690 MB peak memory, and 5.20 ms/image. DCF-Lite reduces the cost to 9.4 GFLOPs and 6,080 MB with 3.19 ms/image while retaining 42.06% accuracy, corresponding to reductions of 61.8% in FLOPs and 58.6% in peak memory for only a 1.42 pp accuracy decrease. Figure 12(d) and Table IX further quantify low-iteration Sinkhorn and curvature-proxy approximations, making the accuracy–efficiency trade-off explicit."
         },
         {
           "kind": "location",
@@ -309,7 +309,9 @@ window.REVIEW_DATA={
         "rgr-alternatives",
         "routing-ratio",
         "curvature-proxies",
-        "efficiency"
+        "efficiency",
+        "probe-sensitivity",
+        "sinkhorn"
       ],
       "metrics": [],
       "fullResponse": [
@@ -346,7 +348,8 @@ window.REVIEW_DATA={
         "probe-definition",
         "pcs-definition",
         "probe-sensitivity",
-        "purity-protocol"
+        "purity-protocol",
+        "sinkhorn"
       ],
       "metrics": [
         [
@@ -619,8 +622,22 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "Figure 12(c) jointly varies the nominal frequency sampling range and perturbation strength <span data-response-math=\"\\lambda\" data-display=\"false\">\\lambda</span>. Section III-C specifies independent per-channel frequency and direction sampling, RMS-normalized Fourier bases, and exponential amplitude sampling with rate <span data-response-math=\"1/\\lambda\" data-display=\"false\">1/\\lambda</span>; the default is <span data-response-math=\"\\lambda = 0.2\" data-display=\"false\">\\lambda = 0.2</span> with nominal frequencies sampled from [1, 224] cycles/image. Performance remains stable across a broad neighborhood of this configuration, supporting the reported setting as a practical default with coarse parameter selection.",
-          "text": "Figure 12(c) jointly varies the nominal frequency sampling range and perturbation strength ⟪\\lambda⟫. Section III-C specifies independent per-channel frequency and direction sampling, RMS-normalized Fourier bases, and exponential amplitude sampling with rate ⟪1/\\lambda⟫; the default is ⟪\\lambda = 0.2⟫ with nominal frequencies sampled from [1, 224] cycles/image. Performance remains stable across a broad neighborhood of this configuration, supporting the reported setting as a practical default with coarse parameter selection."
+          "html": "Figure 12(c) jointly varies the nominal frequency sampling range and perturbation strength <span data-response-math=\"\\lambda\" data-display=\"false\">\\lambda</span>. Section III-C specifies independent per-channel frequency and direction sampling, RMS-normalized Fourier bases, and exponential amplitude sampling with rate <span data-response-math=\"1/\\lambda\" data-display=\"false\">1/\\lambda</span>; the default is <span data-response-math=\"\\lambda = 0.2\" data-display=\"false\">\\lambda = 0.2</span> with nominal frequencies sampled from [1, 224] cycles/image. Performance remains stable across a broad neighborhood of this configuration, supporting the reported setting as a practical default with parameter selection.",
+          "text": "Figure 12(c) jointly varies the nominal frequency sampling range and perturbation strength ⟪\\lambda⟫. Section III-C specifies independent per-channel frequency and direction sampling, RMS-normalized Fourier bases, and exponential amplitude sampling with rate ⟪1/\\lambda⟫; the default is ⟪\\lambda = 0.2⟫ with nominal frequencies sampled from [1, 224] cycles/image. Performance remains stable across a broad neighborhood of this configuration, supporting the reported setting as a practical default with parameter selection."
+        },
+        {
+          "kind": "image",
+          "src": "assets/response/frequency-sensitivity.png",
+          "alt": "Fig. 12(c). Frequency range and perturbation strength.",
+          "caption": "Fig. 12(c). Frequency range and perturbation strength.",
+          "evidenceId": "probe-sensitivity"
+        },
+        {
+          "kind": "image",
+          "src": "assets/response/sinkhorn-sensitivity.png",
+          "alt": "Fig. 12(d). Sinkhorn iterations and entropic regularization.",
+          "caption": "Fig. 12(d). Sinkhorn iterations and entropic regularization.",
+          "evidenceId": "sinkhorn"
         },
         {
           "kind": "paragraph",
@@ -638,7 +655,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section III-C, p. 4, Eqs. (4)–(7); Section IV-C, \"Analysis of Probe-Supported Sample Routing,\" pp. 7–9; Tables IV–VI, pp. 8–9; Fig. 12(c), p. 12."
         }
       ],
-      "responseWordCount": 696,
+      "responseWordCount": 695,
       "responseSourceSections": [
         "R1.1"
       ]
@@ -989,7 +1006,7 @@ window.REVIEW_DATA={
         ],
         [
           "DCF-Lite",
-          "3.59 ms/image"
+          "3.19 ms/image"
         ]
       ],
       "fullResponse": [
@@ -1005,8 +1022,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "caption",
-          "html": "<strong>Selected measurements from revised Table XI</strong>",
-          "text": "Selected measurements from revised Table XI"
+          "html": "<strong>Measurements from revised Table XI</strong>",
+          "text": "Measurements from revised Table XI"
         },
         {
           "kind": "table",
@@ -1101,24 +1118,24 @@ window.REVIEW_DATA={
             ],
             [
               {
-                "html": "DeYO",
-                "text": "DeYO"
+                "html": "CoTTA",
+                "text": "CoTTA"
               },
               {
-                "html": "10.0",
-                "text": "10.0"
+                "html": "24.6",
+                "text": "24.6"
               },
               {
-                "html": "5,895",
-                "text": "5,895"
+                "html": "13,892",
+                "text": "13,892"
               },
               {
-                "html": "2.10",
-                "text": "2.10"
+                "html": "2.80",
+                "text": "2.80"
               },
               {
-                "html": "24.18",
-                "text": "24.18"
+                "html": "34.54",
+                "text": "34.54"
               }
             ],
             [
@@ -1141,6 +1158,160 @@ window.REVIEW_DATA={
               {
                 "html": "38.90",
                 "text": "38.90"
+              }
+            ],
+            [
+              {
+                "html": "DeYO",
+                "text": "DeYO"
+              },
+              {
+                "html": "10.0",
+                "text": "10.0"
+              },
+              {
+                "html": "5,895",
+                "text": "5,895"
+              },
+              {
+                "html": "2.10",
+                "text": "2.10"
+              },
+              {
+                "html": "24.18",
+                "text": "24.18"
+              }
+            ],
+            [
+              {
+                "html": "AEA",
+                "text": "AEA"
+              },
+              {
+                "html": "8.3",
+                "text": "8.3"
+              },
+              {
+                "html": "6,936",
+                "text": "6,936"
+              },
+              {
+                "html": "1.60",
+                "text": "1.60"
+              },
+              {
+                "html": "7.60",
+                "text": "7.60"
+              }
+            ],
+            [
+              {
+                "html": "PTTA",
+                "text": "PTTA"
+              },
+              {
+                "html": "16.4",
+                "text": "16.4"
+              },
+              {
+                "html": "11,872",
+                "text": "11,872"
+              },
+              {
+                "html": "4.10",
+                "text": "4.10"
+              },
+              {
+                "html": "22.63",
+                "text": "22.63"
+              }
+            ],
+            [
+              {
+                "html": "RoTTA",
+                "text": "RoTTA"
+              },
+              {
+                "html": "28.9",
+                "text": "28.9"
+              },
+              {
+                "html": "12,952",
+                "text": "12,952"
+              },
+              {
+                "html": "18.70",
+                "text": "18.70"
+              },
+              {
+                "html": "16.39",
+                "text": "16.39"
+              }
+            ],
+            [
+              {
+                "html": "LAW",
+                "text": "LAW"
+              },
+              {
+                "html": "16.4",
+                "text": "16.4"
+              },
+              {
+                "html": "13,364",
+                "text": "13,364"
+              },
+              {
+                "html": "6.90",
+                "text": "6.90"
+              },
+              {
+                "html": "26.54",
+                "text": "26.54"
+              }
+            ],
+            [
+              {
+                "html": "TRIBE",
+                "text": "TRIBE"
+              },
+              {
+                "html": "65.6",
+                "text": "65.6"
+              },
+              {
+                "html": "18,405",
+                "text": "18,405"
+              },
+              {
+                "html": "15.60",
+                "text": "15.60"
+              },
+              {
+                "html": "25.07",
+                "text": "25.07"
+              }
+            ],
+            [
+              {
+                "html": "SPA",
+                "text": "SPA"
+              },
+              {
+                "html": "49.1",
+                "text": "49.1"
+              },
+              {
+                "html": "9,635",
+                "text": "9,635"
+              },
+              {
+                "html": "10.30",
+                "text": "10.30"
+              },
+              {
+                "html": "12.50",
+                "text": "12.50"
               }
             ],
             [
@@ -1175,12 +1346,12 @@ window.REVIEW_DATA={
                 "text": "9.4"
               },
               {
-                "html": "<strong>5,680</strong>",
-                "text": "5,680"
+                "html": "<strong>6,080</strong>",
+                "text": "6,080"
               },
               {
-                "html": "<strong>3.59</strong>",
-                "text": "3.59"
+                "html": "<strong>3.19</strong>",
+                "text": "3.19"
               },
               {
                 "html": "<strong>42.06</strong>",
@@ -1191,8 +1362,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "Relative to BN Adapt, full DCF improves the reported accuracy by 13.65 pp while incurring additional computation. For throughput context, the reciprocal of the reported per-image latency gives approximate rates of 2,000 images/s for BN Adapt, 192 images/s for full DCF, and 279 images/s for DCF-Lite. These are latency-derived throughput estimates for the A100 benchmark in Table XI.",
-          "text": "Relative to BN Adapt, full DCF improves the reported accuracy by 13.65 pp while incurring additional computation. For throughput context, the reciprocal of the reported per-image latency gives approximate rates of 2,000 images/s for BN Adapt, 192 images/s for full DCF, and 279 images/s for DCF-Lite. These are latency-derived throughput estimates for the A100 benchmark in Table XI."
+          "html": "Relative to BN Adapt, full DCF improves the reported accuracy by 13.65 pp while incurring additional computation. For throughput context, the reciprocal of the reported per-image latency gives approximate rates of 2,000 images/s for BN Adapt, 192 images/s for full DCF, and 313 images/s for DCF-Lite. These are latency-derived throughput estimates for the A100 benchmark in Table XI.",
+          "text": "Relative to BN Adapt, full DCF improves the reported accuracy by 13.65 pp while incurring additional computation. For throughput context, the reciprocal of the reported per-image latency gives approximate rates of 2,000 images/s for BN Adapt, 192 images/s for full DCF, and 313 images/s for DCF-Lite. These are latency-derived throughput estimates for the A100 benchmark in Table XI."
         },
         {
           "kind": "heading",
@@ -1206,8 +1377,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "On the same A100 setup, Lite reduces FLOPs from 24.6 G to 9.4 G, peak memory from 14,690 MB to 5,680 MB, and latency from 5.20 to 3.59 ms/image, achieving 42.06% accuracy—1.42 pp below full DCF and 3.16 pp above SAR. Figure 12(d) supports low Sinkhorn iteration counts across the tested regularization range. Table IX shows only 0.09/0.22 pp gains from Expected Fisher/Hutchinson proxies at an additional 1.9/6.8 ms/image, favoring the default proxy’s accuracy–cost trade-off.",
-          "text": "On the same A100 setup, Lite reduces FLOPs from 24.6 G to 9.4 G, peak memory from 14,690 MB to 5,680 MB, and latency from 5.20 to 3.59 ms/image, achieving 42.06% accuracy—1.42 pp below full DCF and 3.16 pp above SAR. Figure 12(d) supports low Sinkhorn iteration counts across the tested regularization range. Table IX shows only 0.09/0.22 pp gains from Expected Fisher/Hutchinson proxies at an additional 1.9/6.8 ms/image, favoring the default proxy’s accuracy–cost trade-off."
+          "html": "On the same A100 setup, Lite reduces FLOPs from 24.6 G to 9.4 G, peak memory from 14,690 MB to 6,080 MB, and latency from 5.20 to 3.19 ms/image, achieving 42.06% accuracy—1.42 pp below full DCF and 3.16 pp above SAR. Figure 12(d) supports low Sinkhorn iteration counts across the tested regularization range. Table IX shows only 0.09/0.22 pp gains from Expected Fisher/Hutchinson proxies at an additional 1.9/6.8 ms/image, favoring the default proxy’s accuracy–cost trade-off.",
+          "text": "On the same A100 setup, Lite reduces FLOPs from 24.6 G to 9.4 G, peak memory from 14,690 MB to 6,080 MB, and latency from 5.20 to 3.19 ms/image, achieving 42.06% accuracy—1.42 pp below full DCF and 3.16 pp above SAR. Figure 12(d) supports low Sinkhorn iteration counts across the tested regularization range. Table IX shows only 0.09/0.22 pp gains from Expected Fisher/Hutchinson proxies at an additional 1.9/6.8 ms/image, favoring the default proxy’s accuracy–cost trade-off."
         },
         {
           "kind": "paragraph",
@@ -1220,7 +1391,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section IV-C, \"Computational Overhead,\" pp. 11–12; Table XI, p. 12; Table IX, p. 10; Fig. 12(d), p. 12. Table XI supersedes the runtime-only comparison cited as Fig. 12 in the original review."
         }
       ],
-      "responseWordCount": 398,
+      "responseWordCount": 432,
       "responseSourceSections": [
         "R1.3"
       ]
@@ -2589,7 +2760,8 @@ window.REVIEW_DATA={
       "figure": "f12",
       "comments": [
         "ae1",
-        "r1-1"
+        "r1-1",
+        "sae"
       ]
     },
     {
@@ -3764,11 +3936,11 @@ window.REVIEW_DATA={
           41.993,
           26.01
         ],
-        "aspect": 1.246124031007752
+        "aspect": 1.2485436893203883
       },
       "summary": "The accuracy–runtime plot is replaced by a resource table reporting FLOPs, peak memory, latency, accuracy, and a DCF-Lite variant.",
       "before": "10 20 30 40\nAvg. Accuracy (%)\n0.000\n0.006\n0.012\n0.018\nTime (s)\nTent CoTTA\nRoTTA\nDeYO SAR\nAEA\nTRIBE\nSPA\nPTTA\nLAW Ours Fig. 12. Accuracy-runtime trade-off. Per-image GPU runtime vs. average\naccuracy on ImageNet-C (long-horizon T-CS). Better methods appear in the\nlower-right quadrant. Runtimes are averaged over 100 runs (single A100 GPU).",
-      "after": "TABLE XI: Computational overhead and lightweight variant.\nComparison of FLOPs, peak memory, per-image runtime, and\naverage accuracy on ImageNet-C (long-horizon T-CS, ResNet50) measured on an NVIDIA A100.\nMethod FLOPs (G) Peak mem (MB) ms/img Avg. Acc.\nNo Adapt 4.1 1834 0.5 7.19\nBN Adapt 4.1 1944 0.5 29.83\nTent 8.2 5685 1.4 15.79\nCoTTA 24.6 13892 2.8 34.54\nSAR 16.4 6936 3.0 38.90\nDeYO 10.0 5895 2.1 24.18\nAEA 8.3 6936 1.6 7.60\nPTTA 16.4 11872 4.1 22.63\nRoTTA 28.9 12952 18.7 16.39\nLAW 16.4 13364 6.9 26.54\nTRIBE 65.6 18405 15.6 25.07\nSPA 49.1 9635 10.3 12.50\nDCF (full) 24.6 14690 5.2 43.48\nDCF-Lite 9.4 5680 3.59 42.06",
+      "after": "TABLE XI: Computational overhead and lightweight variant.\nComparison of FLOPs, peak memory, per-image runtime, and\naverage accuracy on ImageNet-C (long-horizon T-CS, ResNet50) measured on an NVIDIA A100.\nMethod FLOPs (G) Peak mem (MB) ms/img Avg. Acc.\nNo Adapt 4.1 1834 0.5 7.19\nBN Adapt 4.1 1944 0.5 29.83\nTent 8.2 5685 1.4 15.79\nCoTTA 24.6 13892 2.8 34.54\nSAR 16.4 6936 3.0 38.90\nDeYO 10.0 5895 2.1 24.18\nAEA 8.3 6936 1.6 7.60\nPTTA 16.4 11872 4.1 22.63\nRoTTA 28.9 12952 18.7 16.39\nLAW 16.4 13364 6.9 26.54\nTRIBE 65.6 18405 15.6 25.07\nSPA 49.1 9635 10.3 12.50\nDCF (full) 24.6 14690 5.2 43.48\nDCF-Lite 9.4 6080 3.19 42.06",
       "diff": {
         "original": [
           {
@@ -3795,7 +3967,7 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "T-CS, ResNet50) measured on an NVIDIA A100.\nMethod FLOPs (G) Peak mem (MB) ms/img Avg. Acc.\nNo Adapt 4.1 1834 0.5 7.19\nBN Adapt 4.1 1944 0.5 29.83\nTent 8.2 5685 1.4 15.79\nCoTTA 24.6 13892 2.8 34.54\nSAR 16.4 6936 3.0 38.90\nDeYO 10.0 5895 2.1 24.18\nAEA 8.3 6936 1.6 7.60\nPTTA 16.4 11872 4.1 22.63\nRoTTA 28.9 12952 18.7 16.39\nLAW 16.4 13364 6.9 26.54\nTRIBE 65.6 18405 15.6 25.07\nSPA 49.1 9635 10.3 12.50\nDCF (full) 24.6 14690 5.2 43.48\nDCF-Lite 9.4 5680 3.59 42.06"
+            "text": "T-CS, ResNet50) measured on an NVIDIA A100.\nMethod FLOPs (G) Peak mem (MB) ms/img Avg. Acc.\nNo Adapt 4.1 1834 0.5 7.19\nBN Adapt 4.1 1944 0.5 29.83\nTent 8.2 5685 1.4 15.79\nCoTTA 24.6 13892 2.8 34.54\nSAR 16.4 6936 3.0 38.90\nDeYO 10.0 5895 2.1 24.18\nAEA 8.3 6936 1.6 7.60\nPTTA 16.4 11872 4.1 22.63\nRoTTA 28.9 12952 18.7 16.39\nLAW 16.4 13364 6.9 26.54\nTRIBE 65.6 18405 15.6 25.07\nSPA 49.1 9635 10.3 12.50\nDCF (full) 24.6 14690 5.2 43.48\nDCF-Lite 9.4 6080 3.19 42.06"
           }
         ]
       },
@@ -4491,7 +4663,9 @@ window.REVIEW_DATA={
       "comments": [
         "ae3",
         "r1-3",
-        "r2-3"
+        "r2-3",
+        "r1-1",
+        "sae"
       ]
     },
     {
@@ -7476,7 +7650,7 @@ window.REVIEW_DATA={
           41.993,
           26.01
         ],
-        "aspect": 1.246124031007752
+        "aspect": 1.2485436893203883
       },
       "status": "removed",
       "summary": "The revision replaces the scatter plot with explicit FLOPs, memory, runtime, accuracy, and DCF-Lite measurements.",
@@ -15030,7 +15204,7 @@ window.REVIEW_DATA={
       "originalPage": 10,
       "revisedPage": 7,
       "before": "Effect of Components. To isolate the contribution of each module in DCF, we conduct a comprehensive ablation study as shown in Table IV. The unconstrained self-training baseline suffers from catastrophic error accumulation, dropping to 0.49% in the Long-horizon T-CS scenario (Avg. 31.53%). Introducing the trusted-evidence action (PSR) filters shortcut-driven predictions, improving the overall average to 37.25%, while the geometry-repair action (RGR) further boosts performance (Avg. 40.55%) by reusing routed-away samples to mitigate representation bias. However, sample-side control alone still degrades over extended streams, reaching only 26.25% at Round 15. Crucially, CLR restricts harmful parameter drift, preventing late-stage collapse (maintaining 43.84%) and achieving the highest overall average of 46.27%. Leave-one-out results show drops without PSR (41.43%) or RGR (45.36%), confirming that sample-level evidence routing and layer-level parameter stabilization are complementary and indispensable for robust adaptation. Effect of Design Choices in Stress Probe and Router. As shown in Fig. 5, we further ablate the stress probe and routing rule in DCF. For the probe design, the Fourier-based operator achieves the best accuracy of 43.49%, outperforming pixel shuffle, low-pass filtering, and patch shuffle. This suggests that effective stress testing should not simply destroy image content, but should impose structured perturbations that preserve semantic layout while exposing shortcut-sensitive predictions. For the router design, our coupled entropy+PCS rule also obtains the highest accuracy of 43.49%, surpassing PCS-only routing as well as ETAGE-, SAR-, and DeYO-style variants [21, 14, 40]. The results indicate that PCS alone cannot exclude uncertain samples, while entropy- or gradient-based criteria alone may still retain confident but stress-inert predictions. The qualitative comparisons in Fig. 6 further support this conclusion: the Fourier probe better preserves global object structure, and DCF produces more semantically focused response maps than Tent. Overall, these results validate that the Fourier stress probe and coupled entropy+PCS router provide safer adaptation evidence for stable test-time adaptation. Pseudo-Label Purity and PCS-Entropy Space. To explain how our coupled routing mitigates confirmation bias, we evaluate pseudo-label purity on selected reliable samples. As shown in Table V, unconstrained self-training (Tent) attains only 42.7% purity, while entropy-only and PCS-only filtering provide modest improvements (44.0% and 47.1%). Combining both signals increases purity to 49.9%, indicating that PCS effectively removes confident but incorrect shortcut predictions missed by entropy. The PCS-Entropy distribution in Fig. 7 further supports this finding: for DCF, reliable samples (low entropy, high PCS) are cleaner and better separated from spurious predictions across adaptation stages, whereas low-entropy, low-PCS regions contain many confident errors. In contrast, Tent lacks such structural constraints, causing representation degradation and weaker clean/noisy separation. These results validate our motivation (O1): confidence alone is insufficient for reliability, and the Fourier stress probe provides a critical geometric filter for stable adaptation. Layer-wise drift trajectories. Fig. 8 provides complementary evidence for the parameter-side control view by tracking the layer-wise drift proxy ⟪\\varepsilon^{\\mathrm{par}}_{t,\\mathrm{block}} \\propto \\tfrac{1}{2}\\|\\theta_{t,\\mathrm{block}}-\\theta_{0,\\mathrm{block}}\\|^2_{I_{0,\\mathrm{block}}}⟫ over time. DCF exhibits a pulse-and-recover pattern: drift spikes at shift onsets are quickly suppressed by the stabilizer, whereas Tent shows cumulative growth, especially in deeper blocks. Static vs. Temporally-Correlated Streams. To highlight the specific challenge of temporal correlation, we compare adaptation performance under independently sampled (Static) and temporally-correlated (Long-horizon T-CS) test streams on ImageNet-C. As illustrated in Fig. 9, many baselines that perform reasonably well under static conditions (e.g., Tent, DeYO, and AEA) suffer severe performance degradation or catastrophic collapse under T-CS, exposing their vulnerability to error accumulation. In contrast, our DCF not only achieves the highest accuracy in both settings but also maintains robust stability when transitioning to temporally correlated shifts. This confirms that our sample- and layer-aware control effectively prevents the compounding errors induced by non-stationary continuous streams. Cross-Domain Transfer. Since TTA relies on self-training, it may over-specialize to narrow target distributions and thus degrade generalization to unseen domains. To assess cross-domain transfer, we adapt each method on one ImageNet-C corruption and evaluate it on the remaining 14 corruptions. As shown in Fig. 10, DCF consistently achieves the largest average accuracy gains across all source domains, indicating that its control mechanisms help preserve more generalizable representations. Notably, methods like RoTTA show large gains when adapted to certain source domains but suffer significant drops when evaluated on others, suggesting overfitting to specific shifts. In contrast, DCF maintains positive gains across all source domains, demonstrating its ability to adapt stably while retaining transferable features that generalize well across diverse unseen shifts. Generalizability across Architectures. To evaluate the generalizability of DCF across different model architectures, we test it on a range of backbones including ResNet-18 (RN-18), WideResNet-50 (WRN-50), ResNeXt-50 (RNX-50), ResNet-101 (RN-101), and ViT-B/16. As shown in Table VI, DCF consistently outperforms all baselines across these architectures under the T-CS scenario on ImageNet-C. Notably, the performance gap is particularly pronounced for larger models like ResNet-101 and ViT-B/16, where many baselines struggle to maintain stability. This suggests that our method’s control mechanisms effectively mitigate error accumulation even as model capacity increases, supporting its broad applicability in real-world deployment settings with diverse architectures. Hyperparameter Sensitivity. We analyze the joint landscapes of key control hyperparameters in Fig. 11. For sample routing, moderate thresholds ⟪(\\upsilon_{\\mathrm{PCS}}, \\upsilon_{\\mathrm{Ent}})⟫ best balance trusted-evidence purity and self-supervision volume. For parameter retention, performance is relatively stable to the weighting sharpness ⟪\\tau⟫ but sensitive to the fixed retention factor ⟪\\mu⟫: small ⟪\\mu⟫ limits plasticity, whereas ⟪\\mu \\to 1.0⟫ amplifies error accumulation. Notably, our dynamic layer-wise stabilizer (CLR) surpasses the best static-⟪\\mu⟫ baseline, reaching a peak average accuracy of 43.49%. This confirms the benefit of depth-aware, heterogeneous parameter control and supports our motivation (O3). Furthermore, DCF achieves a strong accuracy-runtime trade-off (Fig. 12): processing an image in 0.005s (A100 GPU), it rivals DeYO and SAR in speed while outpacing RoTTA, TRIBE, and SPA.",
-      "after": "Effect of Components. To isolate each module’s contribution in DCF, we conduct an ablation study (Table III). The unconstrained baseline (Tent) suffers severe error accumulation, falling to 0.49% at Round 15 (Avg. 31.53%). Adding PSR improves average accuracy to 37.25% by restricting direct consistency learning to confident, probe-supported samples, and RGR further increases it to 40.55% by reusing routed-away samples for geometry repair. Yet sample-side control alone still degrades over long streams, reaching only 26.25% at Round 15. In contrast, CLR suppresses harmful layer-wise drift, maintaining 43.84% at Round 15 and achieving the best overall average of 46.27% across all scenarios. Leave-one-out results (41.43% without PSR; 45.36% without RGR) further confirm that the sample- and layer-level controls are complementary. Analysis of Probe-Supported Sample Routing (PSR). A central premise of DCF is that low predictive entropy does not guarantee reliable adaptation evidence, since confident predictions under continuous shifts may rely on brittle shortcut cues. We evaluate PSR using three complementary analyses: controlled shortcut diagnostics, probe and routing comparisons, and selected-sample purity and separation. (i) Controlled Shortcut Diagnostics: We construct a controlled ⟪224\\times224⟫ synthetic benchmark combining circle/square shapes with four sinusoidal textures as explicit shortcuts to diagnose probe sensitivity. As reported in Table IV, across nominal frequency bands, the Fourier probe preserves shape decisions (⟪\\geq 99.4\\%⟫ agreement) while separating shape from texture far more effectively than energy-matched pixel noise (⟪>3.4\\times⟫ PCS ratio vs. ⟪1.14\\times⟫). Across preserved, randomized, or reversed correlations, paired counterfactuals show that high-PCS samples exhibit lower shortcut dependence among confidence-matched candidates. Specifically, PCS discriminates task-relevant from shortcut-driven predictions with 0.81 AUROC (vs. 0.71 for pixel noise) and reduces trusted-set shortcut contamination from 24.6% to 11.8% at matched coverage. Additionally, on binary Colored-MNIST [49] with reversed shortcuts, DCF achieves 88.91% accuracy, outperforming baselines (see Table V). Together, these results support the joint use of predictive entropy and PCS for routing, showing that joint confidence- and stress-responsiveness routing better isolates reliable adaptation evidence from shortcut-driven predictions. (ii) Stress Probe and Router Design Choices: We next examine these choices on ImageNet-C (Fig. 5). The Fourier-based stress probe achieves the highest accuracy, outperforming pixel shuffling, patch shuffling, and low-pass filtering. As shown in Fig. 6, naive spatial perturbations disrupt global object layout, whereas the Fourier probe injects structured frequency-direction stress without rearranging image coordinates. Its routing value is reflected in both downstream accuracy and selected-sample quality. The coupled Entropy+PCS rule reaches 43.49%, outperforming PCS-only routing and the evaluated SAR-, DeYO-, and ETAGE-style filters [9, 35, 16]. These results highlight complementary roles for confidence and stress responsiveness: entropy suppresses ambiguous predictions, whereas PCS further distinguishes confident candidates according to their structured response. Their combination therefore yields more reliable routing under the evaluated shifts. (iii) Pseudo-Label Purity and Feature Space Separation: Finally, we evaluate whether the gain in selected-sample quality persists independently of selection quantity on ImageNet-C. As shown in Table VI, using the same frozen model state and matched trusted-set coverage, Entropy+PCS achieves the highest pseudo-label purity of 49.9%, compared with 44.0% for entropy-only routing and 47.1% for PCS-only routing. The diagnostic PCS–Entropy space in Fig. 7 provides a consistent view: Area 3 collects confident but stress-inert candidates, whereas Area 1 contains low-entropy, probe-responsive samples and remains relatively more reliable throughout adaptation. Together with the controlled shortcut diagnostics above, these results show that entropy and PCS provide complementary routing signals and improve selected-sample reliability at matched coverage, rather than merely changing the number of selected samples. Analysis of Routed-away Geometry Repair (RGR). Beyond filtering unreliable samples via PSR, we investigate whether the routed-away subset ⟪\\mathcal{U}_t⟫ should be discarded or reused for geometry repair. To assess the role of OT in RGR, we compare it with two alternatives: moment matching, which aligns feature statistics with prototypes, and prototype contrastive alignment, which pulls features toward nearest prototypes. As shown in Table VII, both alternatives perform worse than simply discarding ⟪\\mathcal{U}_t⟫ under long-horizon adaptation (41.51% and 42.33% vs. 42.88%), whereas OT-based repair improves accuracy to 42.91% with a uniform prior and 43.84% with the dynamic prior. This highlights the importance of transport-based alignment and adaptive marginal estimation. We further examine sensitivity to the routed-away proportion by varying the fixed ratio from 10% to 90% (Table VIII). Performance remains stable when 10–50% of samples are routed away, with accuracy ranging from 42.98% to 43.49% and limited centroid drift. Accuracy declines only when routed-away samples dominate the batch, reaching 22.12% at 90%, where trusted supervision becomes insufficient. Overall, these results delineate a broad stable regime, highlighting the complementarity between trusted consistency adaptation and routed-away geometry repair. Analysis of Curvature-aware Layer Retention (CLR). Tracking layer-wise parameter drift in Fig. 8 shows that DCF follows a \"pulse-and-recover\" pattern rather than persistent drift accumulation. As shown in Fig. 9, the last ResNet block (layer4) retains the largest gate, ⟪\\mu_t^l\\approx0.98⟫, while initial_bn and layer1 vary within ⟪0.93⟫–⟪0.96⟫, and layer2 remains near ⟪0.95⟫–⟪0.96⟫. Layer3 is similar but can fall to about ⟪0.92⟫ under strong mismatch. Responses are corruption dependent: Motion most strongly suppresses initial_bn, Glass affects layer1, and Frost most strongly reduces layer3, whereas layer4 stays near ⟪0.98⟫. Temporally, suppression around domain indices ⟪30⟫–⟪45⟫ recovers toward ⟪0.95⟫–⟪0.96⟫ in later domains, indicating that CLR applies transient source anchoring rather than progressively freezing layers. Ablations in Table IX support layer-block control and compare the default gradient-square proxy with expected Fisher and a Hutchinson-based diagonal second-order approximation [50], which yield small gains at additional computational cost. Static vs. Temporally Correlated Streams. To examine performance across streaming protocols, we compare adaptation under independently sampled (Static) and temporally correlated long-horizon (Long-horizon T-CS) test streams on ImageNet-C. As shown in Fig. 10, several baselines that perform reasonably well in the Static setting, including Tent, DeYO, and AEA, degrade sharply or collapse under Long-horizon T-CS, indicating strong susceptibility to accumulated adaptation errors. In contrast, DCF achieves the highest accuracy in both settings and remains stable under temporally correlated shifts. These results demonstrate that its sample- and layer-aware control effectively mitigates error accumulation in non-stationary continuous streams. Generalizability across Architectures. To assess architectural generalizability, we evaluate DCF with ResNet-18 (RN-18), WideResNet-50 (WRN-50), ResNeXt-50 (RNX-50), ResNet-101 (RN-101), and ViT-B/16. As shown in Table X, DCF consistently achieves the best performance across all evaluated backbones. Its effectiveness extends from lightweight ResNet-18 to deeper ResNet-101 and across distinct architectural families including WideResNet, ResNeXt, and Vision Transformer, with particularly pronounced gains on ResNet-101 and ViT-B/16, where several baselines struggle to maintain stability. These results demonstrate robust generalizability across model scales and architectures. Cross-Domain Transfer. Online TTA may over-specialize a model to the adaptation stream, thereby reducing its ability to generalize to unseen domains. We therefore evaluate post-adaptation transfer by adapting to a source shift and directly testing on unseen targets without further updates, using synthetic corruptions on ImageNet-C and artistic domains on DomainNet-126. On ImageNet-C (Fig. 11a), DCF achieves the largest average gain over No Adapt, ⟪30.30 \\pm 0.39⟫ points, exceeding AEA (⟪27.95 \\pm 0.05⟫) by ⟪2.35⟫ points. This advantage is statistically significant across five matched runs (paired ⟪t⟫-test, ⟪t(4)=14.30⟫, ⟪p=1.39 \\times 10^{-4}⟫), whereas RoTTA exhibits negative transfer on several corruptions. On DomainNet-126 (Fig. 11b), DCF also outperforms DeYO on all Adaptation⟪\\to⟫Evaluation pairs, achieving ⟪61.40\\%⟫ mean accuracy compared with ⟪60.13\\%⟫ (⟪+1.27⟫ points), with a significant advantage across five matched runs (paired ⟪t⟫-test, ⟪t(4)=12.01⟫, ⟪p=2.75 \\times 10^{-4}⟫). Together, these results indicate that decoupled control preserves representations that remain transferable beyond the adaptation domain. Hyperparameter Sensitivity. As shown in Fig. 12, DCF is generally insensitive to its key hyperparameters. In Fig. 12a, the proposed dynamic CLR consistently outperforms all static retention settings across different ⟪\\tau⟫ and ⟪\\mu⟫, highlighting the benefit of layer-wise adaptive retention. Fig. 12b shows a broad high-accuracy region for ⟪(\\upsilon_{\\mathrm{PCS}},\\upsilon_{\\mathrm{Ent}})⟫. For a new dataset, a practical rule is to start from ⟪\\upsilon_{\\mathrm{PCS}}=0.2⟫ and ⟪\\upsilon_{\\mathrm{Ent}}=0.6\\ln K⟫ and perform only coarse adjustment if necessary, rather than dataset-specific fine tuning. Likewise, performance varies only mildly across ⟪\\lambda⟫ and the frequency range in Fig. 12c. Finally, Fig. 12d shows stable accuracy across ⟪\\varepsilon_{\\mathrm{OT}}⟫ and ⟪N_{\\mathrm{sk}}⟫, suggesting that reliable OT alignment can be achieved with only a few Sinkhorn iterations. Overall, DCF requires little hyperparameter tuning for stable performance. Computational Overhead. As benchmarked on an NVIDIA A100 (Table XI), the full DCF achieves ⟪43.48\\%⟫ average accuracy with 24.6 GFLOPs, 14,690 MB peak memory, and 5.2 ms/image latency. DCF-Lite reduces computational cost by removing the source/candidate model copies and per-sample gradient computation, retaining gradients only through the clean adaptation branch, and using a detached Fourier probe for PSR routing and transport assignment. With ⟪N_{\\mathrm{sk}}=1⟫, Lite requires only 9.4 GFLOPs and 5,680 MB peak memory, corresponding to reductions of ⟪61.8\\%⟫ and ⟪61.3\\%⟫, respectively, relative to the full model, while reducing latency to 3.59 ms/image. It achieves ⟪42.06\\%⟫ accuracy, only ⟪1.42⟫ points below full DCF and ⟪3.16⟫ points above SAR (⟪38.90\\%⟫), providing a favorable accuracy–efficiency trade-off.",
+      "after": "Effect of Components. To isolate each module’s contribution in DCF, we conduct an ablation study (Table III). The unconstrained baseline (Tent) suffers severe error accumulation, falling to 0.49% at Round 15 (Avg. 31.53%). Adding PSR improves average accuracy to 37.25% by restricting direct consistency learning to confident, probe-supported samples, and RGR further increases it to 40.55% by reusing routed-away samples for geometry repair. Yet sample-side control alone still degrades over long streams, reaching only 26.25% at Round 15. In contrast, CLR suppresses harmful layer-wise drift, maintaining 43.84% at Round 15 and achieving the best overall average of 46.27% across all scenarios. Leave-one-out results (41.43% without PSR; 45.36% without RGR) further confirm that the sample- and layer-level controls are complementary. Analysis of Probe-Supported Sample Routing (PSR). A central premise of DCF is that low predictive entropy does not guarantee reliable adaptation evidence, since confident predictions under continuous shifts may rely on brittle shortcut cues. We evaluate PSR using three complementary analyses: controlled shortcut diagnostics, probe and routing comparisons, and selected-sample purity and separation. (i) Controlled Shortcut Diagnostics: We construct a controlled ⟪224\\times224⟫ synthetic benchmark combining circle/square shapes with four sinusoidal textures as explicit shortcuts to diagnose probe sensitivity. As reported in Table IV, across nominal frequency bands, the Fourier probe preserves shape decisions (⟪\\geq 99.4\\%⟫ agreement) while separating shape from texture far more effectively than energy-matched pixel noise (⟪>3.4\\times⟫ PCS ratio vs. ⟪1.14\\times⟫). Across preserved, randomized, or reversed correlations, paired counterfactuals show that high-PCS samples exhibit lower shortcut dependence among confidence-matched candidates. Specifically, PCS discriminates task-relevant from shortcut-driven predictions with 0.81 AUROC (vs. 0.71 for pixel noise) and reduces trusted-set shortcut contamination from 24.6% to 11.8% at matched coverage. Additionally, on binary Colored-MNIST [49] with reversed shortcuts, DCF achieves 88.91% accuracy, outperforming baselines (see Table V). Together, these results support the joint use of predictive entropy and PCS for routing, showing that joint confidence- and stress-responsiveness routing better isolates reliable adaptation evidence from shortcut-driven predictions. (ii) Stress Probe and Router Design Choices: We next examine these choices on ImageNet-C (Fig. 5). The Fourier-based stress probe achieves the highest accuracy, outperforming pixel shuffling, patch shuffling, and low-pass filtering. As shown in Fig. 6, naive spatial perturbations disrupt global object layout, whereas the Fourier probe injects structured frequency-direction stress without rearranging image coordinates. Its routing value is reflected in both downstream accuracy and selected-sample quality. The coupled Entropy+PCS rule reaches 43.49%, outperforming PCS-only routing and the evaluated SAR-, DeYO-, and ETAGE-style filters [9, 35, 16]. These results highlight complementary roles for confidence and stress responsiveness: entropy suppresses ambiguous predictions, whereas PCS further distinguishes confident candidates according to their structured response. Their combination therefore yields more reliable routing under the evaluated shifts. (iii) Pseudo-Label Purity and Feature Space Separation: Finally, we evaluate whether the gain in selected-sample quality persists independently of selection quantity on ImageNet-C. As shown in Table VI, using the same frozen model state and matched trusted-set coverage, Entropy+PCS achieves the highest pseudo-label purity of 49.9%, compared with 44.0% for entropy-only routing and 47.1% for PCS-only routing. The diagnostic PCS–Entropy space in Fig. 7 provides a consistent view: Area 3 collects confident but stress-inert candidates, whereas Area 1 contains low-entropy, probe-responsive samples and remains relatively more reliable throughout adaptation. Together with the controlled shortcut diagnostics above, these results show that entropy and PCS provide complementary routing signals and improve selected-sample reliability at matched coverage, rather than merely changing the number of selected samples. Analysis of Routed-away Geometry Repair (RGR). Beyond filtering unreliable samples via PSR, we investigate whether the routed-away subset ⟪\\mathcal{U}_t⟫ should be discarded or reused for geometry repair. To assess the role of OT in RGR, we compare it with two alternatives: moment matching, which aligns feature statistics with prototypes, and prototype contrastive alignment, which pulls features toward nearest prototypes. As shown in Table VII, both alternatives perform worse than simply discarding ⟪\\mathcal{U}_t⟫ under long-horizon adaptation (41.51% and 42.33% vs. 42.88%), whereas OT-based repair improves accuracy to 42.91% with a uniform prior and 43.84% with the dynamic prior. This highlights the importance of transport-based alignment and adaptive marginal estimation. We further examine sensitivity to the routed-away proportion by varying the fixed ratio from 10% to 90% (Table VIII). Performance remains stable when 10–50% of samples are routed away, with accuracy ranging from 42.98% to 43.49% and limited centroid drift. Accuracy declines only when routed-away samples dominate the batch, reaching 22.12% at 90%, where trusted supervision becomes insufficient. Overall, these results delineate a broad stable regime, highlighting the complementarity between trusted consistency adaptation and routed-away geometry repair. Analysis of Curvature-aware Layer Retention (CLR). Tracking layer-wise parameter drift in Fig. 8 shows that DCF follows a \"pulse-and-recover\" pattern rather than persistent drift accumulation. As shown in Fig. 9, the last ResNet block (layer4) retains the largest gate, ⟪\\mu_t^l\\approx0.98⟫, while initial_bn and layer1 vary within ⟪0.93⟫–⟪0.96⟫, and layer2 remains near ⟪0.95⟫–⟪0.96⟫. Layer3 is similar but can fall to about ⟪0.92⟫ under strong mismatch. Responses are corruption dependent: Motion most strongly suppresses initial_bn, Glass affects layer1, and Frost most strongly reduces layer3, whereas layer4 stays near ⟪0.98⟫. Temporally, suppression around domain indices ⟪30⟫–⟪45⟫ recovers toward ⟪0.95⟫–⟪0.96⟫ in later domains, indicating that CLR applies transient source anchoring rather than progressively freezing layers. Ablations in Table IX support layer-block control and compare the default gradient-square proxy with expected Fisher and a Hutchinson-based diagonal second-order approximation [50], which yield small gains at additional computational cost. Static vs. Temporally Correlated Streams. To examine performance across streaming protocols, we compare adaptation under independently sampled (Static) and temporally correlated long-horizon (Long-horizon T-CS) test streams on ImageNet-C. As shown in Fig. 10, several baselines that perform reasonably well in the Static setting, including Tent, DeYO, and AEA, degrade sharply or collapse under Long-horizon T-CS, indicating strong susceptibility to accumulated adaptation errors. In contrast, DCF achieves the highest accuracy in both settings and remains stable under temporally correlated shifts. These results demonstrate that its sample- and layer-aware control effectively mitigates error accumulation in non-stationary continuous streams. Generalizability across Architectures. To assess architectural generalizability, we evaluate DCF with ResNet-18 (RN-18), WideResNet-50 (WRN-50), ResNeXt-50 (RNX-50), ResNet-101 (RN-101), and ViT-B/16. As shown in Table X, DCF consistently achieves the best performance across all evaluated backbones. Its effectiveness extends from lightweight ResNet-18 to deeper ResNet-101 and across distinct architectural families including WideResNet, ResNeXt, and Vision Transformer, with particularly pronounced gains on ResNet-101 and ViT-B/16, where several baselines struggle to maintain stability. These results demonstrate robust generalizability across model scales and architectures. Cross-Domain Transfer. Online TTA may over-specialize a model to the adaptation stream, thereby reducing its ability to generalize to unseen domains. We therefore evaluate post-adaptation transfer by adapting to a source shift and directly testing on unseen targets without further updates, using synthetic corruptions on ImageNet-C and artistic domains on DomainNet-126. On ImageNet-C (Fig. 11a), DCF achieves the largest average gain over No Adapt, ⟪30.30 \\pm 0.39⟫ points, exceeding AEA (⟪27.95 \\pm 0.05⟫) by ⟪2.35⟫ points. This advantage is statistically significant across five matched runs (paired ⟪t⟫-test, ⟪t(4)=14.30⟫, ⟪p=1.39 \\times 10^{-4}⟫), whereas RoTTA exhibits negative transfer on several corruptions. On DomainNet-126 (Fig. 11b), DCF also outperforms DeYO on all Adaptation⟪\\to⟫Evaluation pairs, achieving ⟪61.40\\%⟫ mean accuracy compared with ⟪60.13\\%⟫ (⟪+1.27⟫ points), with a significant advantage across five matched runs (paired ⟪t⟫-test, ⟪t(4)=12.01⟫, ⟪p=2.75 \\times 10^{-4}⟫). Together, these results indicate that decoupled control preserves representations that remain transferable beyond the adaptation domain. Hyperparameter Sensitivity. As shown in Fig. 12, DCF is generally insensitive to its key hyperparameters. In Fig. 12a, the proposed dynamic CLR consistently outperforms all static retention settings across different ⟪\\tau⟫ and ⟪\\mu⟫, highlighting the benefit of layer-wise adaptive retention. Fig. 12b shows a broad high-accuracy region for ⟪(\\upsilon_{\\mathrm{PCS}},\\upsilon_{\\mathrm{Ent}})⟫. For a new dataset, a practical rule is to start from ⟪\\upsilon_{\\mathrm{PCS}}=0.2⟫ and ⟪\\upsilon_{\\mathrm{Ent}}=0.6\\ln K⟫ and perform only coarse adjustment if necessary, rather than dataset-specific fine tuning. Likewise, performance varies only mildly across ⟪\\lambda⟫ and the frequency range in Fig. 12c. Finally, Fig. 12d shows stable accuracy across ⟪\\varepsilon_{\\mathrm{OT}}⟫ and ⟪N_{\\mathrm{sk}}⟫, suggesting that reliable OT alignment can be achieved with only a few Sinkhorn iterations. Overall, DCF requires little hyperparameter tuning for stable performance. Computational Overhead. As benchmarked on an NVIDIA A100 (Table XI), the full DCF achieves ⟪43.48\\%⟫ average accuracy with 24.6 GFLOPs, 14,690 MB peak memory, and 5.2 ms/image latency. DCF-Lite reduces computational cost by removing the source/candidate model copies and per-sample gradient computation, retaining gradients only through the clean adaptation branch, and using a detached Fourier probe for PSR routing and transport assignment. With ⟪N_{\\mathrm{sk}}=1⟫, Lite requires only 9.4 GFLOPs and 6,080 MB peak memory, corresponding to reductions of ⟪61.8\\%⟫ and ⟪58.6\\%⟫, respectively, relative to the full model, while reducing latency to 3.19 ms/image. It achieves ⟪42.06\\%⟫ accuracy, only ⟪1.42⟫ points below full DCF and ⟪3.16⟫ points above SAR (⟪38.90\\%⟫), providing a favorable accuracy–efficiency trade-off.",
       "diff": {
         "original": [
           {
@@ -16521,7 +16695,7 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "transport assignment. With ⟪N_{\\mathrm{sk}}=1⟫, Lite requires only 9.4 GFLOPs and 5,680 MB peak memory, corresponding to reductions of ⟪61.8\\%⟫ and ⟪61.3\\%⟫, respectively, relative to the full model, while reducing latency to 3.59 ms/image. It achieves ⟪42.06\\%⟫ accuracy, only ⟪1.42⟫ points below full DCF and ⟪3.16⟫ points above "
+            "text": "transport assignment. With ⟪N_{\\mathrm{sk}}=1⟫, Lite requires only 9.4 GFLOPs and 6,080 MB peak memory, corresponding to reductions of ⟪61.8\\%⟫ and ⟪58.6\\%⟫, respectively, relative to the full model, while reducing latency to 3.19 ms/image. It achieves ⟪42.06\\%⟫ accuracy, only ⟪1.42⟫ points below full DCF and ⟪3.16⟫ points above "
           },
           {
             "kind": "same",
