@@ -15,6 +15,7 @@ vm.runInNewContext(read('website/data.js').toString(), context);
 const data = context.window.REVIEW_DATA;
 const katex = createRequire(import.meta.url)('../assets/vendor/katex/katex.min.js');
 assert.equal(data.comments.length, 17);
+assert.deepEqual(Array.from(data.comments.find(c=>c.id==='eic').responseSourceSections), ['EIC'], 'The editorial request must be one merged response');
 assert.equal(data.overview.filter(b => /^[1-3]\. /.test(b.text)).length, 3, 'Overview must preserve all three opening-letter revision groups');
 assert(data.overview.some(b => b.text.startsWith('Dear Dr.')), 'Missing opening salutation');
 assert(data.overview.some(b => b.text.includes('Corresponding authors, on behalf of all authors')), 'Missing complete closing signature');

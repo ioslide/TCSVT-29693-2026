@@ -14,7 +14,7 @@ try{
  const replies=new Map(parsed.comments.map(c=>[c.id,c]));
  const context={window:{}};vm.runInNewContext(fs.readFileSync(path.join(site,'data.js'),'utf8'),context);const data=context.window.REVIEW_DATA;
  data.overview=parsed.overview;
- for(const comment of data.comments){const reply=replies.get(comment.id);if(!reply)throw new Error('Missing response '+comment.id);comment.fullResponse=reply.fullResponse;comment.responseWordCount=reply.responseWordCount;comment.response=reply.fullResponse.filter(b=>b.kind==='paragraph').slice(0,2).map(b=>b.text);comment.responseSourceSections=comment.id==='eic'?['E1','E2']:[comment.id==='sae'?'SAE':comment.label];}
+ for(const comment of data.comments){const reply=replies.get(comment.id);if(!reply)throw new Error('Missing response '+comment.id);comment.fullResponse=reply.fullResponse;comment.responseWordCount=reply.responseWordCount;comment.response=reply.fullResponse.filter(b=>b.kind==='paragraph').slice(0,2).map(b=>b.text);comment.responseSourceSections=comment.id==='eic'?['EIC']:[comment.id==='sae'?'SAE':comment.label];}
  const probeReply=data.comments.find(c=>c.id==='r1-1').fullResponse;
  const frequencyIndex=probeReply.findIndex(b=>b.kind==='heading'&&b.text==='Frequency range and perturbation strength');
  if(frequencyIndex<0)throw new Error('Missing frequency sensitivity response');

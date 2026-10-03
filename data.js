@@ -14,14 +14,14 @@ window.REVIEW_DATA={
         "tex": "1108279736019bcae2bd95c497c8d7f1830f8f65e2eeb3d607f431ad0f90efad"
       },
       "revised": {
-        "pdf": "b7778846e6e6274e30525e00c9219f039cdada74e56fa43764ec2a549dcb84f6",
-        "tex": "4ce68717776b698f36cf2c381888357639f7a160ee60954381b736c361252d9e"
+        "pdf": "a628f13fde2f0679fa8401fbc58bdc528dcd20805c3ee258c54504531e1bf114",
+        "tex": "2afb49392248edf02da4bfcb68d2d566f5fac25b579c4c3c4f759f7fb8b6aed3"
       }
     },
     "fullResponseSource": "revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v12/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v12.tex",
-    "fullResponseSha256": "87d024be9617a1373fc91cc647dee9b035c43a03dbe312c68d0313a120bbd980",
+    "fullResponseSha256": "e90969c4c99c20769eb34b258547fbccecb4a7614bfe7314fb2cf3b6bc64e24f",
     "responsePages": 17,
-    "responsePdfSha256": "831294f3adf62464e94965095735281362fcc8a41521137c30d41c272d4a1cf9",
+    "responsePdfSha256": "30ec6b0b56e6f30770372cc8ebdfb035511e4047215110e17cf7e35949cca80a",
     "responseRevision": "v12"
   },
   "comments": [
@@ -32,8 +32,8 @@ window.REVIEW_DATA={
       "title": "Related work and novelty",
       "comment": "What are the 3–5 papers published in IEEE TCSVT which are most closely related to your manuscript, and what is distinctive or new about your current manuscript relative to these papers?",
       "response": [
-        "Section II now discusses the following four closely related TCSVT studies. For each study, we explain how its adaptation mechanism relates to DCF and where DCF differs.",
-        "[31] J. Liu, J. Xie, F. Zhou, and S. He, \"Question Type-Aware Debiasing for Test-Time Visual Question Answering Model Adaptation,\" IEEE TCSVT, vol. 34, no. 11, pp. 10805–10816, 2024."
+        "DCF’s central contribution is a decoupled control architecture for the error-amplifying sample–layer feedback process in temporally correlated recognition streams. An unreliable target update changes the model’s future predictions and sample selection, while its effects accumulate unevenly across network depth. DCF controls both sides of this feedback process in one online loop: PSR determines which evidence drives direct adaptation, RGR extracts target-geometry constraints from routed-away evidence, and CLR determines where the resulting candidate update persists. This formulation makes sample selection, adaptation supervision, and update retention three explicit, coordinated decisions.",
+        "Section II discusses four closely related TCSVT studies whose tasks and adaptation mechanisms differ substantially from this control architecture. We explain these distinctions below and then identify the evidence for DCF’s contribution."
       ],
       "changes": [
         "tcsvt-literature",
@@ -42,14 +42,14 @@ window.REVIEW_DATA={
       "metrics": [],
       "fullResponse": [
         {
-          "kind": "heading",
-          "html": "Closely related TCSVT papers",
-          "text": "Closely related TCSVT papers"
+          "kind": "paragraph",
+          "html": "<strong>DCF’s central contribution is a decoupled control architecture for the error-amplifying sample–layer feedback process in temporally correlated recognition streams.</strong> An unreliable target update changes the model’s future predictions and sample selection, while its effects accumulate unevenly across network depth. DCF controls both sides of this feedback process in one online loop: PSR determines which evidence drives direct adaptation, RGR extracts target-geometry constraints from routed-away evidence, and CLR determines where the resulting candidate update persists. This formulation makes sample selection, adaptation supervision, and update retention three explicit, coordinated decisions.",
+          "text": "DCF’s central contribution is a decoupled control architecture for the error-amplifying sample–layer feedback process in temporally correlated recognition streams. An unreliable target update changes the model’s future predictions and sample selection, while its effects accumulate unevenly across network depth. DCF controls both sides of this feedback process in one online loop: PSR determines which evidence drives direct adaptation, RGR extracts target-geometry constraints from routed-away evidence, and CLR determines where the resulting candidate update persists. This formulation makes sample selection, adaptation supervision, and update retention three explicit, coordinated decisions."
         },
         {
           "kind": "paragraph",
-          "html": "Section II now discusses the following four closely related TCSVT studies. For each study, we explain how its adaptation mechanism relates to DCF and where DCF differs.",
-          "text": "Section II now discusses the following four closely related TCSVT studies. For each study, we explain how its adaptation mechanism relates to DCF and where DCF differs."
+          "html": "Section II discusses four closely related TCSVT studies whose tasks and adaptation mechanisms differ substantially from this control architecture. We explain these distinctions below and then identify the evidence for DCF’s contribution.",
+          "text": "Section II discusses four closely related TCSVT studies whose tasks and adaptation mechanisms differ substantially from this control architecture. We explain these distinctions below and then identify the evidence for DCF’s contribution."
         },
         {
           "kind": "paragraph",
@@ -58,8 +58,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "<strong>QED</strong> addresses unreliable test-time supervision in VQA by using question-type-aware entropy and negative perturbations to identify biased samples. Both QED and DCF address the reliability of samples used for adaptation. DCF extends reliability control across the full adaptation loop: it combines confidence with a structured Fourier stress response to route target evidence, reuses routed-away samples through soft optimal-transport geometry repair, and selectively retains the resulting model update across layer groups.",
-          "text": "QED addresses unreliable test-time supervision in VQA by using question-type-aware entropy and negative perturbations to identify biased samples. Both QED and DCF address the reliability of samples used for adaptation. DCF extends reliability control across the full adaptation loop: it combines confidence with a structured Fourier stress response to route target evidence, reuses routed-away samples through soft optimal-transport geometry repair, and selectively retains the resulting model update across layer groups."
+          "html": "<strong>QED: question-conditioned debiasing in visual question answering.</strong> QED uses question-type-aware entropy and negative samples to detect predictions supported by language priors under changing question–answer distributions. Its selection criterion is tied to VQA question types and answer spaces. DCF addresses temporally correlated visual-recognition streams: a structured Fourier stress response and predictive entropy route target evidence into distinct supervision roles, and curvature-aware retention controls the persistence of the induced update across layer groups. The distinction is therefore both the prediction task and the object of control: QED filters question-dependent bias, while DCF governs the coupled evolution of adaptation evidence and model parameters.",
+          "text": "QED: question-conditioned debiasing in visual question answering. QED uses question-type-aware entropy and negative samples to detect predictions supported by language priors under changing question–answer distributions. Its selection criterion is tied to VQA question types and answer spaces. DCF addresses temporally correlated visual-recognition streams: a structured Fourier stress response and predictive entropy route target evidence into distinct supervision roles, and curvature-aware retention controls the persistence of the induced update across layer groups. The distinction is therefore both the prediction task and the object of control: QED filters question-dependent bias, while DCF governs the coupled evolution of adaptation evidence and model parameters."
         },
         {
           "kind": "paragraph",
@@ -68,8 +68,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "<strong>MetaBN</strong> improves adverse-weather video restoration through source-stage meta-learning of normalization behavior and test-time self-supervised updates. MetaBN focuses on rapid task-specific adaptation through meta-trained BN parameters. DCF starts from an ordinary pre-trained recognition model and directly controls the reliability and persistence of online target-driven updates in temporally correlated streams. The source model provides the reference for curvature-aware retention throughout online adaptation.",
-          "text": "MetaBN improves adverse-weather video restoration through source-stage meta-learning of normalization behavior and test-time self-supervised updates. MetaBN focuses on rapid task-specific adaptation through meta-trained BN parameters. DCF starts from an ordinary pre-trained recognition model and directly controls the reliability and persistence of online target-driven updates in temporally correlated streams. The source model provides the reference for curvature-aware retention throughout online adaptation."
+          "html": "<strong>MetaBN: meta-trained normalization for video restoration.</strong> MetaBN uses source-stage meta-learning of normalization affine parameters and a self-supervised test-time update strategy to adapt adverse-weather restoration models. Its adaptation capability is built into the restoration training procedure. DCF starts from an ordinary pre-trained recognition model and operates directly on the incoming unlabeled stream. Its source model supplies the parameter and curvature reference for retaining candidate updates; PSR and RGR regulate the target evidence that produces those updates. DCF’s contribution is online evidence and update control across the adaptation loop.",
+          "text": "MetaBN: meta-trained normalization for video restoration. MetaBN uses source-stage meta-learning of normalization affine parameters and a self-supervised test-time update strategy to adapt adverse-weather restoration models. Its adaptation capability is built into the restoration training procedure. DCF starts from an ordinary pre-trained recognition model and operates directly on the incoming unlabeled stream. Its source model supplies the parameter and curvature reference for retaining candidate updates; PSR and RGR regulate the target evidence that produces those updates. DCF’s contribution is online evidence and update control across the adaptation loop."
         },
         {
           "kind": "paragraph",
@@ -78,8 +78,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "<strong>CMDA</strong> jointly adapts the model and the test data, using diffusion-based data adaptation to move target samples toward the source distribution while updating the model. DCF adapts directly to the incoming target stream through three coordinated decisions: sample routing determines which evidence may drive consistency learning, routed-away samples preserve target geometry through OT, and CLR decides layer by layer how much of the candidate update is retained.",
-          "text": "CMDA jointly adapts the model and the test data, using diffusion-based data adaptation to move target samples toward the source distribution while updating the model. DCF adapts directly to the incoming target stream through three coordinated decisions: sample routing determines which evidence may drive consistency learning, routed-away samples preserve target geometry through OT, and CLR decides layer by layer how much of the candidate update is retained."
+          "html": "<strong>CMDA: collaboration between generative data adaptation and model adaptation.</strong> CMDA couples model predictions with reverse diffusion: predictions guide synthetic target generation, and the generated samples refine the model, with an aggregation network combining predictions. DCF controls adaptation on observed target evidence. It assigns trusted samples to consistency supervision and routed-away samples to soft optimal-transport geometry constraints, then passes the combined sample-side update through closed-form, curvature-aware retention. CMDA’s bidirectional model–generator collaboration and DCF’s sample–layer control solve adaptation through different mechanisms.",
+          "text": "CMDA: collaboration between generative data adaptation and model adaptation. CMDA couples model predictions with reverse diffusion: predictions guide synthetic target generation, and the generated samples refine the model, with an aggregation network combining predictions. DCF controls adaptation on observed target evidence. It assigns trusted samples to consistency supervision and routed-away samples to soft optimal-transport geometry constraints, then passes the combined sample-side update through closed-form, curvature-aware retention. CMDA’s bidirectional model–generator collaboration and DCF’s sample–layer control solve adaptation through different mechanisms."
         },
         {
           "kind": "paragraph",
@@ -88,33 +88,18 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "<strong>MS-TTA</strong> is especially relevant to our treatment of samples that are not suitable for direct confident supervision. It refines all CLIP test features using training-free mean shift and a cache, thereby extracting value from low-confidence samples. DCF assigns different adaptation roles to the two subsets: trusted samples provide direct consistency supervision, whereas routed-away samples contribute only through soft class-geometry repair. This separation prevents weak evidence from entering the label-like objective while still exploiting its distributional structure; CLR then controls whether the resulting update should persist in each layer group.",
-          "text": "MS-TTA is especially relevant to our treatment of samples that are not suitable for direct confident supervision. It refines all CLIP test features using training-free mean shift and a cache, thereby extracting value from low-confidence samples. DCF assigns different adaptation roles to the two subsets: trusted samples provide direct consistency supervision, whereas routed-away samples contribute only through soft class-geometry repair. This separation prevents weak evidence from entering the label-like objective while still exploiting its distributional structure; CLR then controls whether the resulting update should persist in each layer group."
+          "html": "<strong>MS-TTA: training-free feature refinement for CLIP.</strong> MS-TTA applies mean shift to test embeddings and uses a feature cache to improve inference. Its adaptation operates through embedding refinement and cached logits. DCF performs online parameter adaptation with two distinct sample-side objectives and a separate retention stage. Trusted evidence drives consistency learning; routed-away evidence constrains class geometry through OT; layer-wise source compatibility controls the accepted parameter update. Reusing test features through mean shift and controlling their contribution to persistent model updates are fundamentally different adaptation designs.",
+          "text": "MS-TTA: training-free feature refinement for CLIP. MS-TTA applies mean shift to test embeddings and uses a feature cache to improve inference. Its adaptation operates through embedding refinement and cached logits. DCF performs online parameter adaptation with two distinct sample-side objectives and a separate retention stage. Trusted evidence drives consistency learning; routed-away evidence constrains class geometry through OT; layer-wise source compatibility controls the accepted parameter update. Reusing test features through mean shift and controlling their contribution to persistent model updates are fundamentally different adaptation designs."
         },
         {
           "kind": "paragraph",
-          "html": "These studies address complementary aspects of reliable, efficient, and stable test-time adaptation. DCF advances this line of work by coupling three control decisions that are otherwise handled separately: <em>which target evidence is admitted to direct adaptation, how non-admitted evidence is still exploited, and where in the network the resulting update is allowed to persist</em>. This coordinated route–adapt–retain control directly targets the error-amplifying feedback loop that emerges in temporally correlated streams.",
-          "text": "These studies address complementary aspects of reliable, efficient, and stable test-time adaptation. DCF advances this line of work by coupling three control decisions that are otherwise handled separately: which target evidence is admitted to direct adaptation, how non-admitted evidence is still exploited, and where in the network the resulting update is allowed to persist. This coordinated route–adapt–retain control directly targets the error-amplifying feedback loop that emerges in temporally correlated streams."
-        },
-        {
-          "kind": "location",
-          "html": "<strong>Changes in the manuscript:</strong> Section II, \"Related Work,\" p. 3; references [29], [30], [31], and [36].",
-          "text": "Changes in the manuscript: Section II, \"Related Work,\" p. 3; references [29], [30], [31], and [36]."
-        },
-        {
-          "kind": "heading",
-          "html": "Distinctive contribution",
-          "text": "Distinctive contribution"
+          "html": "<strong>What DCF contributes.</strong> DCF makes the interaction between heterogeneous target evidence and layer-dependent update persistence the central problem of online adaptation. Its three stages introduce distinct controls: <strong>PSR</strong> tests confident predictions through structured Fourier stress and routes samples by joint confidence and responsiveness; <strong>RGR</strong> converts routed-away samples into soft class-geometry constraints, preserving their structural value while separating them from direct consistency supervision; <strong>CLR</strong> treats the resulting sample-side update as a candidate and retains it through a closed-form, source–candidate curvature-weighted barycenter for each layer group. Together, these stages control which evidence enters adaptation, how it shapes the update, and where that update accumulates.",
+          "text": "What DCF contributes. DCF makes the interaction between heterogeneous target evidence and layer-dependent update persistence the central problem of online adaptation. Its three stages introduce distinct controls: PSR tests confident predictions through structured Fourier stress and routes samples by joint confidence and responsiveness; RGR converts routed-away samples into soft class-geometry constraints, preserving their structural value while separating them from direct consistency supervision; CLR treats the resulting sample-side update as a candidate and retains it through a closed-form, source–candidate curvature-weighted barycenter for each layer group. Together, these stages control which evidence enters adaptation, how it shapes the update, and where that update accumulates."
         },
         {
           "kind": "paragraph",
-          "html": "The central novelty of DCF is a unified route–adapt–retain control architecture for the coupled sample–layer dynamics of online TTA. The TCSVT studies above emphasize sample reliability, normalization behavior, data adaptation, or feature refinement. DCF links three decisions in one online loop: PSR selects evidence for direct consistency supervision; RGR reuses routed-away samples as target-geometry constraints; and CLR treats the sample-side update as a candidate whose persistence is determined separately for different layer groups. By linking these decisions, DCF controls reliability and stability throughout the online adaptation loop.",
-          "text": "The central novelty of DCF is a unified route–adapt–retain control architecture for the coupled sample–layer dynamics of online TTA. The TCSVT studies above emphasize sample reliability, normalization behavior, data adaptation, or feature refinement. DCF links three decisions in one online loop: PSR selects evidence for direct consistency supervision; RGR reuses routed-away samples as target-geometry constraints; and CLR treats the sample-side update as a candidate whose persistence is determined separately for different layer groups. By linking these decisions, DCF controls reliability and stability throughout the online adaptation loop."
-        },
-        {
-          "kind": "paragraph",
-          "html": "This coupling is important under temporally correlated streams because an erroneous target update can simultaneously distort the evidence used by later samples and accumulate unevenly across network depth. DCF directly controls both sides of this feedback process. The component and mechanism-level ablations in Section IV-C isolate the gains from routing, geometry repair, and layer-wise retention, while the long-horizon experiments show that their coordination prevents the late-stage collapse observed in multiple advanced TTA baselines.",
-          "text": "This coupling is important under temporally correlated streams because an erroneous target update can simultaneously distort the evidence used by later samples and accumulate unevenly across network depth. DCF directly controls both sides of this feedback process. The component and mechanism-level ablations in Section IV-C isolate the gains from routing, geometry repair, and layer-wise retention, while the long-horizon experiments show that their coordination prevents the late-stage collapse observed in multiple advanced TTA baselines."
+          "html": "<strong>Evidence for the coordinated design.</strong> Table III isolates the contributions of PSR, RGR, and CLR. Tables IV–VI validate probe responsiveness and selected-sample reliability; Tables VII–VIII test geometry-repair alternatives and failure regimes; Fig. 9 and Table IX expose layer-wise retention behavior and proxy trade-offs. Table II demonstrates sustained robustness over the 225-domain stream, and Fig. 11 reports post-adaptation transfer to unseen domains. These results establish the practical contribution of controlling the coupled sample–layer feedback process throughout long-horizon adaptation.",
+          "text": "Evidence for the coordinated design. Table III isolates the contributions of PSR, RGR, and CLR. Tables IV–VI validate probe responsiveness and selected-sample reliability; Tables VII–VIII test geometry-repair alternatives and failure regimes; Fig. 9 and Table IX expose layer-wise retention behavior and proxy trade-offs. Table II demonstrates sustained robustness over the 225-domain stream, and Fig. 11 reports post-adaptation transfer to unseen domains. These results establish the practical contribution of controlling the coupled sample–layer feedback process throughout long-horizon adaptation."
         },
         {
           "kind": "paragraph",
@@ -123,19 +108,18 @@ window.REVIEW_DATA={
         },
         {
           "kind": "excerpt",
-          "html": "\"DCF instead models their interaction as a coupled sample–layer feedback process, jointly determining which samples drive adaptation, how routed-away samples preserve target structure, and which layers retain the resulting updates.\"",
-          "text": "\"DCF instead models their interaction as a coupled sample–layer feedback process, jointly determining which samples drive adaptation, how routed-away samples preserve target structure, and which layers retain the resulting updates.\""
+          "html": "\"DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, and where candidate updates persist.\"",
+          "text": "\"DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, and where candidate updates persist.\""
         },
         {
           "kind": "location",
-          "html": "<strong>Changes in the manuscript:</strong> Sections I–II, pp. 1–3; Section III-B, p. 3, Eqs. (2)–(3); Section IV-C, Table III and the mechanism-level analyses, pp. 8–12.",
-          "text": "Changes in the manuscript: Sections I–II, pp. 1–3; Section III-B, p. 3, Eqs. (2)–(3); Section IV-C, Table III and the mechanism-level analyses, pp. 8–12."
+          "html": "<strong>Changes in the manuscript:</strong> Sections I–II, pp. 1–3; Section III-B, p. 3, Eqs. (2)–(3); Table II, p. 8; Section IV-C, pp. 7–12, Tables III–IX, Figs. 9 and 11; references [29], [30], [31], and [36], p. 13.",
+          "text": "Changes in the manuscript: Sections I–II, pp. 1–3; Section III-B, p. 3, Eqs. (2)–(3); Table II, p. 8; Section IV-C, pp. 7–12, Tables III–IX, Figs. 9 and 11; references [29], [30], [31], and [36], p. 13."
         }
       ],
-      "responseWordCount": 725,
+      "responseWordCount": 819,
       "responseSourceSections": [
-        "E1",
-        "E2"
+        "EIC"
       ]
     },
     {
@@ -2213,8 +2197,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "excerpt",
-          "html": "\"Unlike these approaches, DCF treats sample-side updates strictly as candidates and selectively retains them across depth according to layer-wise source mismatch.\"",
-          "text": "\"Unlike these approaches, DCF treats sample-side updates strictly as candidates and selectively retains them across depth according to layer-wise source mismatch.\""
+          "html": "\"DCF evaluates candidate-update persistence separately for each layer group using current source–candidate curvature mismatch.\"",
+          "text": "\"DCF evaluates candidate-update persistence separately for each layer group using current source–candidate curvature mismatch.\""
         },
         {
           "kind": "location",
@@ -2222,7 +2206,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section II, \"Test-Time adaptation\" and \"Reliability- and Stability-aware TTA,\" p. 3; references [28] and [38], p. 13."
         }
       ],
-      "responseWordCount": 162,
+      "responseWordCount": 155,
       "responseSourceSections": [
         "R2.4"
       ]
@@ -4724,11 +4708,11 @@ window.REVIEW_DATA={
             23.611
           ]
         ],
-        "aspect": 0.289426523297491
+        "aspect": 0.28936742934051146
       },
-      "summary": "The revision positions DCF against QED, MetaBN, CMDA, and MS-TTA, explaining differences in sample roles and update retention.",
+      "summary": "DCF coordinates evidence routing, target-geometry constraints, and layer-wise update retention. The comparison distinguishes this control architecture from QED, MetaBN, CMDA, and MS-TTA by task and adaptation mechanism.",
       "before": "II. Related work\nWe relate DCF to existing adaptation methods without and with target data, and further discuss sample reliability estimation, target-geometry preservation, and parameter stabilization for online test-time adaptation. Adaptation without Target Data. Mitigating distribution shifts has been widely studied at training time, including domain generalization (DG) [22], robust representation learning [23], and data augmentation strategies [24]. These methods aim to improve out-of-distribution robustness by learning source models that generalize to unseen test environments. However, deployment shifts are difficult to enumerate in advance, and training-time strategies usually require additional source-side objectives, augmentations, or training costs. In contrast, test-time adaptation updates the model directly from unlabeled target samples during deployment, making it attractive for source-free robustness under evolving test streams. Adaptation with Target Data. Methods that exploit target data include offline unsupervised domain adaptation and online test-time adaptation. ⟪\\bullet⟫ Unsupervised domain adaptation (UDA). Conventional UDA assumes access to labeled source data and unlabeled target data during adaptation, and reduces domain discrepancy through feature or moment alignment [25, 26, 27, 28], adversarial learning [29, 30], pseudo-label/self-training strategies [31, 32, 33], or optimal transport [4]. Source-free UDA further removes source data during adaptation and often relies on information maximization [5], pseudo-label refinement [34], or classifier-discrepancy/self-training objectives [35, 32]. Although effective when the target domain is available in advance, these methods usually adapt offline over the whole target set and often require multiple training epochs. Therefore, they are less suitable for online test streams, where samples arrive sequentially and the target distribution may evolve over time. ⟪\\bullet⟫ Test-time adaptation (TTA). TTA adapts a pre-trained model during inference using only unlabeled test samples. Some methods modify source training by introducing auxiliary objectives, as in test-time training [10]. Fully test-time adaptation does not alter source training and can be directly applied to a pre-trained model. Representative methods update batch-normalization statistics [36], minimize prediction entropy [9, 13], enforce consistency regularization [17], or use memory and teacher models for online adaptation [17, 18]. Recent studies further show that online TTA can be unstable under realistic streams, especially with temporal correlation, small batches, mixed domains, or imbalanced label distributions. NOTE [37] highlights the effect of temporal correlation, while continual and practical TTA methods improve robustness through teacher models, memory banks, reset strategies, normalization correction, or prior correction [17, 18, 20, 15, 16, 38, 39]. These methods significantly improve online robustness, but most of them still stabilize adaptation through relatively homogeneous sample filtering or global update control. In this paper, we mainly focus on fully test-time adaptation and study its long-horizon instability from a coupled sample–layer perspective. Reliability- and Stability-aware TTA. A central challenge in online TTA is to decide which unlabeled samples should drive adaptation and how the induced parameter updates should be stabilized over time. Existing methods often address the sample side by estimating reliability from confidence or entropy, assuming that low-entropy predictions provide trustworthy pseudo-label supervision. For example, EATA [13] and SAR [14] filter redundant or unreliable samples through entropy-based criteria, DeYO [40] introduces shape-aware sample selection beyond entropy, and ETAGE [21] further incorporates gradient-norm information to detect unstable samples. However, confidence does not necessarily imply reliability under temporally correlated shifts: a confident prediction may still be supported by shortcut-sensitive cues, and repeatedly adapting to such samples can reinforce confirmation bias. Another line of work stabilizes TTA from the parameter side. CoTTA [17] uses stochastic restoration to mitigate catastrophic drift, RoTTA [18] combines robust memory sampling with teacher-student updates, and LAW [41] studies learning-rate-based mechanisms for sustained adaptation. These methods reduce long-term drift, but their stabilization rules are usually global or nearly uniform across the network, overlooking that different layers may respond to distribution shifts in substantially different ways [42]. Overall, existing TTA methods mainly stabilize online adaptation through sample filtering or global update control. In contrast, DCF attributes long-horizon instability to coupled sample–layer feedback, and decouples sample routing, routed-away geometry repair, and layer-wise update retention.",
-      "after": "We relate DCF to existing adaptation methods without and with target data, and further discuss sample reliability, target-geometry preservation, and parameter stabilization for TTA. Adaptation without Target Data. Mitigating distribution shifts has been widely studied at training time, including domain generalization (DG) [17] and robust representation learning [18]. Beyond visual tasks, uncertainty-aware modeling has also been explored to handle evolving environmental variations in non-stationary sensor streams [19, 20, 21]. Nonetheless, such source-side designs cannot exhaustively anticipate unpredictable test shifts. In contrast, TTA directly exploits unlabeled samples observed during deployment, enabling online adaptation to evolving distributions. Adaptation with Target Data. Target-data methods span offline unsupervised domain adaptation and online TTA. ⟪\\bullet⟫ Unsupervised domain adaptation (UDA). Conventional UDA accesses labeled source and unlabeled target data to reduce cross-domain discrepancies via moment alignment [22], adversarial learning [23], pseudo-label refinement [24], or optimal transport [3]. Source-free variants recover source structure or progressively refine target representations [25]. Recent studies such as VDM-DA [4], SFOCDA [5], and TAMAN [26] further explore virtual source construction, open compound adaptation, and video-oriented alignment. However, these methods assume offline or repeatedly accessible target data, whereas TTA must adapt and predict online as test samples arrive. ⟪\\bullet⟫ Test-Time adaptation (TTA). TTA adapts a pre-trained model during inference using only unlabeled test samples. Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28]. Test-time training [7] introduces auxiliary source-stage objectives. Recent studies extend TTA to diverse visual settings: MetaBN [29] leverages meta-trained normalization for adverse-weather video restoration, whereas CMDA [30] pairs model adaptation with diffusion-based data adaptation. In contrast, DCF requires neither meta-training nor generative translation, focusing on controlling self-training error accumulation in correlated streams. Other approaches explore sample bias [31], normalization or prior correction, and continual dynamics [32, 9, 15, 10, 11, 33, 34]. Despite these advances, self-training remains vulnerable to temporally correlated and label-imbalanced streams, where local adaptation errors can accumulate across successive updates. Reliability- and Stability-aware TTA. A central challenge in online TTA is governing how test samples drive adaptation and how the resulting updates are maintained. At the sample level, EATA [8] and SAR [9] filter redundant or unreliable samples via entropy criteria, while DeYO [35] and ETAGE [16] incorporate shape- or gradient-sensitive cues. Among closely related studies, QED [31] identifies biased instances via question-type entropy and negative perturbations, while MS-TTA [36] performs training-free mean-shift refinement over test features. CMDA [30] further couples model adaptation with diffusion-based data adaptation. In contrast, DCF assigns heterogeneous roles to target samples: trusted instances provide consistency supervision, whereas routed-away instances are retained for soft optimal-transport geometry repair. At the parameter level, MetaBN [29] reshapes updates via meta-training, while CoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize adaptation through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or constrained update spaces. Unlike these approaches, DCF treats sample-side updates strictly as candidates and selectively retains them across depth according to layer-wise source mismatch. Overall, existing TTA methods largely treat sample-side adaptation and parameter-side stabilization independently. DCF instead models their interaction as a coupled sample–layer feedback process, jointly determining which samples drive adaptation, how routed-away samples preserve target structure, and which layers retain the resulting updates.",
+      "after": "We relate DCF to existing adaptation methods without and with target data, and further discuss sample reliability, target-geometry preservation, and parameter stabilization for TTA. Adaptation without Target Data. Mitigating distribution shifts has been widely studied at training time, including domain generalization (DG) [17] and robust representation learning [18]. Beyond visual tasks, uncertainty-aware modeling has also been explored to handle evolving environmental variations in non-stationary sensor streams [19, 20, 21]. Nonetheless, such source-side designs cannot exhaustively anticipate unpredictable test shifts. In contrast, TTA directly exploits unlabeled samples observed during deployment, enabling online adaptation to evolving distributions. Adaptation with Target Data. Target-data methods span offline unsupervised domain adaptation and online TTA. ⟪\\bullet⟫ Unsupervised domain adaptation (UDA). Conventional UDA accesses labeled source and unlabeled target data to reduce cross-domain discrepancies via moment alignment [22], adversarial learning [23], pseudo-label refinement [24], or optimal transport [3]. Source-free variants recover source structure or progressively refine target representations [25]. Recent studies such as VDM-DA [4], SFOCDA [5], and TAMAN [26] further explore virtual source construction, open compound adaptation, and video-oriented alignment. However, these methods assume offline or repeatedly accessible target data, whereas TTA must adapt and predict online as test samples arrive. ⟪\\bullet⟫ Test-Time adaptation (TTA). TTA adapts a pre-trained model during inference using only unlabeled test samples. Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28]. Test-time training [7] introduces auxiliary source-stage objectives. Recent studies extend TTA to diverse visual settings: MetaBN [29] leverages meta-trained normalization for adverse-weather video restoration, whereas CMDA [30] pairs model adaptation with diffusion-based data adaptation. In contrast, DCF requires neither meta-training nor generative translation, focusing on controlling self-training error accumulation in correlated streams. Other approaches explore sample bias [31], normalization or prior correction, and continual dynamics [32, 9, 15, 10, 11, 33, 34]. Despite these advances, self-training remains vulnerable to temporally correlated and label-imbalanced streams, where local adaptation errors can accumulate across successive updates. Reliability- and Stability-aware TTA. Online TTA must govern how samples drive adaptation and how updates persist. EATA [8] and SAR [9] use entropy filtering, while DeYO [35] and ETAGE [16] incorporate shape- or gradient-sensitive cues. The four closely related TCSVT studies use distinct adaptation mechanisms: QED [31] performs question-conditioned VQA debiasing; MetaBN [29] meta-trains normalization for adverse-weather video restoration; CMDA [30] couples model updates with diffusion-based data adaptation; and MS-TTA [36] refines CLIP embeddings through training-free mean shift and a feature cache. DCF instead controls the coupled evolution of target evidence and model parameters in temporally correlated recognition streams. PSR routes evidence by entropy and Fourier stress responsiveness; RGR converts routed-away samples into soft OT geometry constraints; CLR determines where the resulting candidate update persists. CoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF evaluates candidate-update persistence separately for each layer group using current source–candidate curvature mismatch. DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, and where candidate updates persist. This route–adapt–retain design interrupts the error-amplifying feedback that causes long-horizon collapse.",
       "diff": {
         "original": [
           {
@@ -5073,11 +5057,19 @@ window.REVIEW_DATA={
           },
           {
             "kind": "same",
-            "text": "Reliability- and Stability-aware TTA. A central challenge in online TTA is "
+            "text": "Reliability- and Stability-aware TTA. "
           },
           {
             "kind": "del",
-            "text": "to decide which unlabeled "
+            "text": "A central challenge in online "
+          },
+          {
+            "kind": "same",
+            "text": "TTA "
+          },
+          {
+            "kind": "del",
+            "text": "is to decide which unlabeled "
           },
           {
             "kind": "same",
@@ -5089,11 +5081,11 @@ window.REVIEW_DATA={
           },
           {
             "kind": "same",
-            "text": "drive adaptation and how the "
+            "text": "drive adaptation and how "
           },
           {
             "kind": "del",
-            "text": "induced parameter "
+            "text": "the induced parameter "
           },
           {
             "kind": "same",
@@ -5101,15 +5093,7 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "should be stabilized over time. Existing methods often address "
-          },
-          {
-            "kind": "same",
-            "text": "the sample "
-          },
-          {
-            "kind": "del",
-            "text": "side by estimating reliability from confidence or entropy, assuming that low-entropy predictions provide trustworthy pseudo-label supervision. For example, "
+            "text": "should be stabilized over time. Existing methods often address the sample side by estimating reliability from confidence or entropy, assuming that low-entropy predictions provide trustworthy pseudo-label supervision. For example, "
           },
           {
             "kind": "same",
@@ -5125,19 +5109,7 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "[14] "
-          },
-          {
-            "kind": "same",
-            "text": "filter redundant or unreliable samples "
-          },
-          {
-            "kind": "del",
-            "text": "through entropy-based "
-          },
-          {
-            "kind": "same",
-            "text": "criteria, "
+            "text": "[14] filter redundant or unreliable samples through entropy-based criteria, "
           },
           {
             "kind": "same",
@@ -5153,31 +5125,47 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "[21] "
+            "text": "[21] further incorporates gradient-norm information to detect unstable samples. However, confidence does not necessarily imply reliability under "
           },
           {
             "kind": "same",
-            "text": "further "
+            "text": "temporally correlated "
           },
           {
             "kind": "del",
-            "text": "incorporates gradient-norm information "
+            "text": "shifts: a confident prediction may still be supported "
           },
           {
             "kind": "same",
-            "text": "to "
+            "text": "by "
           },
           {
             "kind": "del",
-            "text": "detect unstable samples. However, confidence does not necessarily imply reliability under temporally correlated shifts: a confident prediction may still be supported by shortcut-sensitive cues, and repeatedly adapting to such samples can reinforce confirmation bias. Another line of work stabilizes TTA from "
+            "text": "shortcut-sensitive cues, "
           },
           {
             "kind": "same",
-            "text": "the parameter "
+            "text": "and "
           },
           {
             "kind": "del",
-            "text": "side. "
+            "text": "repeatedly adapting to such "
+          },
+          {
+            "kind": "same",
+            "text": "samples "
+          },
+          {
+            "kind": "del",
+            "text": "can reinforce confirmation bias. Another line of work stabilizes TTA from "
+          },
+          {
+            "kind": "same",
+            "text": "the "
+          },
+          {
+            "kind": "del",
+            "text": "parameter side. "
           },
           {
             "kind": "same",
@@ -5185,39 +5173,39 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "[17] uses stochastic restoration "
+            "text": "[17] uses stochastic restoration to mitigate catastrophic drift, "
           },
           {
             "kind": "same",
-            "text": "to "
+            "text": "RoTTA "
           },
           {
             "kind": "del",
-            "text": "mitigate catastrophic drift, RoTTA [18] combines robust memory sampling with teacher-student updates, and LAW [41] studies learning-rate-based mechanisms for sustained adaptation. These methods reduce long-term drift, but their stabilization rules are usually global or nearly uniform across the network, overlooking that different layers may respond to distribution shifts in substantially different ways [42]. "
+            "text": "[18] combines robust memory sampling with teacher-student updates, "
           },
           {
             "kind": "same",
-            "text": "Overall, existing TTA methods "
+            "text": "and "
           },
           {
             "kind": "del",
-            "text": "mainly stabilize online "
+            "text": "LAW [41] studies learning-rate-based mechanisms "
           },
           {
             "kind": "same",
-            "text": "adaptation "
+            "text": "for "
           },
           {
             "kind": "del",
-            "text": "through sample filtering or global update control. In contrast, "
+            "text": "sustained adaptation. These methods reduce long-term drift, but their stabilization rules are usually global or nearly uniform across the network, overlooking that different layers may respond to distribution shifts in substantially different ways [42]. Overall, existing TTA methods mainly stabilize "
           },
           {
             "kind": "same",
-            "text": "DCF "
+            "text": "online adaptation "
           },
           {
             "kind": "del",
-            "text": "attributes long-horizon instability to "
+            "text": "through sample filtering or global update control. In contrast, DCF attributes long-horizon instability to "
           },
           {
             "kind": "same",
@@ -5563,11 +5551,19 @@ window.REVIEW_DATA={
           },
           {
             "kind": "same",
-            "text": "Reliability- and Stability-aware TTA. A central challenge in online TTA is "
+            "text": "Reliability- and Stability-aware TTA. "
           },
           {
             "kind": "add",
-            "text": "governing how test "
+            "text": "Online "
+          },
+          {
+            "kind": "same",
+            "text": "TTA "
+          },
+          {
+            "kind": "add",
+            "text": "must govern how "
           },
           {
             "kind": "same",
@@ -5575,11 +5571,7 @@ window.REVIEW_DATA={
           },
           {
             "kind": "same",
-            "text": "drive adaptation and how the "
-          },
-          {
-            "kind": "add",
-            "text": "resulting "
+            "text": "drive adaptation and how "
           },
           {
             "kind": "same",
@@ -5587,15 +5579,7 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "are maintained. At "
-          },
-          {
-            "kind": "same",
-            "text": "the sample "
-          },
-          {
-            "kind": "add",
-            "text": "level, "
+            "text": "persist. "
           },
           {
             "kind": "same",
@@ -5611,23 +5595,7 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "[9] "
-          },
-          {
-            "kind": "same",
-            "text": "filter redundant or unreliable samples "
-          },
-          {
-            "kind": "add",
-            "text": "via entropy "
-          },
-          {
-            "kind": "same",
-            "text": "criteria, "
-          },
-          {
-            "kind": "add",
-            "text": "while "
+            "text": "[9] use entropy filtering, while "
           },
           {
             "kind": "same",
@@ -5643,79 +5611,23 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "[16] incorporate shape- or gradient-sensitive cues. Among closely related studies, QED [31] identifies biased instances via question-type entropy and negative perturbations, while MS-TTA [36] performs training-free mean-shift refinement over test features. CMDA [30] "
+            "text": "[16] incorporate shape- or gradient-sensitive cues. The four closely related TCSVT studies use distinct adaptation mechanisms: QED [31] performs question-conditioned VQA debiasing; MetaBN [29] meta-trains normalization for adverse-weather video restoration; CMDA [30] couples model updates with diffusion-based data adaptation; and MS-TTA [36] refines CLIP embeddings through training-free mean shift and a feature cache. DCF instead controls the coupled evolution of target evidence and model parameters in "
           },
           {
             "kind": "same",
-            "text": "further "
+            "text": "temporally correlated "
           },
           {
             "kind": "add",
-            "text": "couples model adaptation with diffusion-based data adaptation. In contrast, DCF assigns heterogeneous roles "
+            "text": "recognition streams. PSR routes evidence "
           },
           {
             "kind": "same",
-            "text": "to "
+            "text": "by "
           },
           {
             "kind": "add",
-            "text": "target samples: trusted instances provide consistency supervision, whereas routed-away instances are retained for soft optimal-transport geometry repair. At "
-          },
-          {
-            "kind": "same",
-            "text": "the parameter "
-          },
-          {
-            "kind": "add",
-            "text": "level, MetaBN [29] reshapes updates via meta-training, while "
-          },
-          {
-            "kind": "same",
-            "text": "CoTTA "
-          },
-          {
-            "kind": "add",
-            "text": "[12], RoTTA [13], LAW [37], and GOLD [38] stabilize adaptation through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or constrained update spaces. Unlike these approaches, DCF treats sample-side updates strictly as candidates and selectively retains them across depth according "
-          },
-          {
-            "kind": "same",
-            "text": "to "
-          },
-          {
-            "kind": "add",
-            "text": "layer-wise source mismatch. "
-          },
-          {
-            "kind": "same",
-            "text": "Overall, existing TTA methods "
-          },
-          {
-            "kind": "add",
-            "text": "largely treat sample-side "
-          },
-          {
-            "kind": "same",
-            "text": "adaptation "
-          },
-          {
-            "kind": "add",
-            "text": "and parameter-side stabilization independently. "
-          },
-          {
-            "kind": "same",
-            "text": "DCF "
-          },
-          {
-            "kind": "add",
-            "text": "instead models their interaction as a "
-          },
-          {
-            "kind": "same",
-            "text": "coupled sample–layer "
-          },
-          {
-            "kind": "add",
-            "text": "feedback process, jointly determining which samples drive adaptation, how routed-away samples preserve target structure, "
+            "text": "entropy "
           },
           {
             "kind": "same",
@@ -5723,7 +5635,79 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "which layers retain the resulting updates."
+            "text": "Fourier stress responsiveness; RGR converts routed-away "
+          },
+          {
+            "kind": "same",
+            "text": "samples "
+          },
+          {
+            "kind": "add",
+            "text": "into soft OT geometry constraints; CLR determines where "
+          },
+          {
+            "kind": "same",
+            "text": "the "
+          },
+          {
+            "kind": "add",
+            "text": "resulting candidate update persists. "
+          },
+          {
+            "kind": "same",
+            "text": "CoTTA "
+          },
+          {
+            "kind": "add",
+            "text": "[12], "
+          },
+          {
+            "kind": "same",
+            "text": "RoTTA "
+          },
+          {
+            "kind": "add",
+            "text": "[13], LAW [37], "
+          },
+          {
+            "kind": "same",
+            "text": "and "
+          },
+          {
+            "kind": "add",
+            "text": "GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF evaluates candidate-update persistence separately "
+          },
+          {
+            "kind": "same",
+            "text": "for "
+          },
+          {
+            "kind": "add",
+            "text": "each layer group using current source–candidate curvature mismatch. DCF formulates "
+          },
+          {
+            "kind": "same",
+            "text": "online adaptation "
+          },
+          {
+            "kind": "add",
+            "text": "as a "
+          },
+          {
+            "kind": "same",
+            "text": "coupled sample–layer "
+          },
+          {
+            "kind": "add",
+            "text": "feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, "
+          },
+          {
+            "kind": "same",
+            "text": "and "
+          },
+          {
+            "kind": "add",
+            "text": "where candidate updates persist. This route–adapt–retain design interrupts the error-amplifying feedback that causes long-horizon collapse."
           }
         ]
       },
@@ -5770,7 +5754,7 @@ window.REVIEW_DATA={
             1.51
           ]
         ],
-        "aspect": 5.4655172413793105
+        "aspect": 5.552631578947368
       },
       "summary": "All three suggested structural-health-monitoring studies are cited as broader context for uncertainty under environmental change.",
       "before": "",
@@ -5831,65 +5815,53 @@ window.REVIEW_DATA={
             1.51
           ],
           [
-            87.369,
-            8.533,
-            4.793,
-            1.51
-          ],
-          [
-            50.813,
-            10.043,
-            41.648,
-            1.51
-          ],
-          [
-            50.813,
+            83.344,
             11.552,
-            41.349,
-            1.51
+            9.043,
+            1.511
           ],
           [
             50.813,
             13.062,
-            41.574,
+            41.349,
             1.51
           ],
           [
             50.813,
             14.571,
-            41.381,
-            1.51
+            41.349,
+            1.511
           ],
           [
             50.813,
             16.081,
-            41.349,
+            41.4,
             1.51
           ],
           [
             50.813,
             17.59,
-            41.349,
-            1.51
+            41.381,
+            1.511
           ],
           [
             50.813,
             19.1,
-            40.675,
+            39.256,
             1.51
           ]
         ],
-        "aspect": 1.2658730158730158
+        "aspect": 1.561576354679803
       },
       "summary": "The 2026 continual-TTA survey and GOLD are added. The discussion distinguishes classifier-aligned subspace adaptation from candidate–source layer retention.",
       "before": "",
-      "after": "Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28].\n\nAt the parameter level, MetaBN [29] reshapes updates via meta-training, while CoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize adaptation through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or constrained update spaces. Unlike these approaches, DCF treats sample-side updates strictly as candidates and selectively retains them across depth according to layer-wise source mismatch.",
+      "after": "Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28].\n\nCoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF evaluates candidate-update persistence separately for each layer group using current source–candidate curvature mismatch.",
       "diff": {
         "original": [],
         "revised": [
           {
             "kind": "add",
-            "text": "Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28].\n\nAt the parameter level, MetaBN [29] reshapes updates via meta-training, while CoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize adaptation through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or constrained update spaces. Unlike these approaches, DCF treats sample-side updates strictly as candidates and selectively retains them across depth according to layer-wise source mismatch."
+            "text": "Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28].\n\nCoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF evaluates candidate-update persistence separately for each layer group using current source–candidate curvature mismatch."
           }
         ]
       },
@@ -9104,7 +9076,7 @@ window.REVIEW_DATA={
       "originalPage": 3,
       "revisedPage": 3,
       "before": "We relate DCF to existing adaptation methods without and with target data, and further discuss sample reliability estimation, target-geometry preservation, and parameter stabilization for online test-time adaptation. Adaptation without Target Data. Mitigating distribution shifts has been widely studied at training time, including domain generalization (DG) [22], robust representation learning [23], and data augmentation strategies [24]. These methods aim to improve out-of-distribution robustness by learning source models that generalize to unseen test environments. However, deployment shifts are difficult to enumerate in advance, and training-time strategies usually require additional source-side objectives, augmentations, or training costs. In contrast, test-time adaptation updates the model directly from unlabeled target samples during deployment, making it attractive for source-free robustness under evolving test streams. Adaptation with Target Data. Methods that exploit target data include offline unsupervised domain adaptation and online test-time adaptation. ⟪\\bullet⟫ Unsupervised domain adaptation (UDA). Conventional UDA assumes access to labeled source data and unlabeled target data during adaptation, and reduces domain discrepancy through feature or moment alignment [25, 26, 27, 28], adversarial learning [29, 30], pseudo-label/self-training strategies [31, 32, 33], or optimal transport [4]. Source-free UDA further removes source data during adaptation and often relies on information maximization [5], pseudo-label refinement [34], or classifier-discrepancy/self-training objectives [35, 32]. Although effective when the target domain is available in advance, these methods usually adapt offline over the whole target set and often require multiple training epochs. Therefore, they are less suitable for online test streams, where samples arrive sequentially and the target distribution may evolve over time. ⟪\\bullet⟫ Test-time adaptation (TTA). TTA adapts a pre-trained model during inference using only unlabeled test samples. Some methods modify source training by introducing auxiliary objectives, as in test-time training [10]. Fully test-time adaptation does not alter source training and can be directly applied to a pre-trained model. Representative methods update batch-normalization statistics [36], minimize prediction entropy [9, 13], enforce consistency regularization [17], or use memory and teacher models for online adaptation [17, 18]. Recent studies further show that online TTA can be unstable under realistic streams, especially with temporal correlation, small batches, mixed domains, or imbalanced label distributions. NOTE [37] highlights the effect of temporal correlation, while continual and practical TTA methods improve robustness through teacher models, memory banks, reset strategies, normalization correction, or prior correction [17, 18, 20, 15, 16, 38, 39]. These methods significantly improve online robustness, but most of them still stabilize adaptation through relatively homogeneous sample filtering or global update control. In this paper, we mainly focus on fully test-time adaptation and study its long-horizon instability from a coupled sample–layer perspective. Reliability- and Stability-aware TTA. A central challenge in online TTA is to decide which unlabeled samples should drive adaptation and how the induced parameter updates should be stabilized over time. Existing methods often address the sample side by estimating reliability from confidence or entropy, assuming that low-entropy predictions provide trustworthy pseudo-label supervision. For example, EATA [13] and SAR [14] filter redundant or unreliable samples through entropy-based criteria, DeYO [40] introduces shape-aware sample selection beyond entropy, and ETAGE [21] further incorporates gradient-norm information to detect unstable samples. However, confidence does not necessarily imply reliability under temporally correlated shifts: a confident prediction may still be supported by shortcut-sensitive cues, and repeatedly adapting to such samples can reinforce confirmation bias. Another line of work stabilizes TTA from the parameter side. CoTTA [17] uses stochastic restoration to mitigate catastrophic drift, RoTTA [18] combines robust memory sampling with teacher-student updates, and LAW [41] studies learning-rate-based mechanisms for sustained adaptation. These methods reduce long-term drift, but their stabilization rules are usually global or nearly uniform across the network, overlooking that different layers may respond to distribution shifts in substantially different ways [42]. Overall, existing TTA methods mainly stabilize online adaptation through sample filtering or global update control. In contrast, DCF attributes long-horizon instability to coupled sample–layer feedback, and decouples sample routing, routed-away geometry repair, and layer-wise update retention.",
-      "after": "We relate DCF to existing adaptation methods without and with target data, and further discuss sample reliability, target-geometry preservation, and parameter stabilization for TTA. Adaptation without Target Data. Mitigating distribution shifts has been widely studied at training time, including domain generalization (DG) [17] and robust representation learning [18]. Beyond visual tasks, uncertainty-aware modeling has also been explored to handle evolving environmental variations in non-stationary sensor streams [19, 20, 21]. Nonetheless, such source-side designs cannot exhaustively anticipate unpredictable test shifts. In contrast, TTA directly exploits unlabeled samples observed during deployment, enabling online adaptation to evolving distributions. Adaptation with Target Data. Target-data methods span offline unsupervised domain adaptation and online TTA. ⟪\\bullet⟫ Unsupervised domain adaptation (UDA). Conventional UDA accesses labeled source and unlabeled target data to reduce cross-domain discrepancies via moment alignment [22], adversarial learning [23], pseudo-label refinement [24], or optimal transport [3]. Source-free variants recover source structure or progressively refine target representations [25]. Recent studies such as VDM-DA [4], SFOCDA [5], and TAMAN [26] further explore virtual source construction, open compound adaptation, and video-oriented alignment. However, these methods assume offline or repeatedly accessible target data, whereas TTA must adapt and predict online as test samples arrive. ⟪\\bullet⟫ Test-Time adaptation (TTA). TTA adapts a pre-trained model during inference using only unlabeled test samples. Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28]. Test-time training [7] introduces auxiliary source-stage objectives. Recent studies extend TTA to diverse visual settings: MetaBN [29] leverages meta-trained normalization for adverse-weather video restoration, whereas CMDA [30] pairs model adaptation with diffusion-based data adaptation. In contrast, DCF requires neither meta-training nor generative translation, focusing on controlling self-training error accumulation in correlated streams. Other approaches explore sample bias [31], normalization or prior correction, and continual dynamics [32, 9, 15, 10, 11, 33, 34]. Despite these advances, self-training remains vulnerable to temporally correlated and label-imbalanced streams, where local adaptation errors can accumulate across successive updates. Reliability- and Stability-aware TTA. A central challenge in online TTA is governing how test samples drive adaptation and how the resulting updates are maintained. At the sample level, EATA [8] and SAR [9] filter redundant or unreliable samples via entropy criteria, while DeYO [35] and ETAGE [16] incorporate shape- or gradient-sensitive cues. Among closely related studies, QED [31] identifies biased instances via question-type entropy and negative perturbations, while MS-TTA [36] performs training-free mean-shift refinement over test features. CMDA [30] further couples model adaptation with diffusion-based data adaptation. In contrast, DCF assigns heterogeneous roles to target samples: trusted instances provide consistency supervision, whereas routed-away instances are retained for soft optimal-transport geometry repair. At the parameter level, MetaBN [29] reshapes updates via meta-training, while CoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize adaptation through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or constrained update spaces. Unlike these approaches, DCF treats sample-side updates strictly as candidates and selectively retains them across depth according to layer-wise source mismatch. Overall, existing TTA methods largely treat sample-side adaptation and parameter-side stabilization independently. DCF instead models their interaction as a coupled sample–layer feedback process, jointly determining which samples drive adaptation, how routed-away samples preserve target structure, and which layers retain the resulting updates.",
+      "after": "We relate DCF to existing adaptation methods without and with target data, and further discuss sample reliability, target-geometry preservation, and parameter stabilization for TTA. Adaptation without Target Data. Mitigating distribution shifts has been widely studied at training time, including domain generalization (DG) [17] and robust representation learning [18]. Beyond visual tasks, uncertainty-aware modeling has also been explored to handle evolving environmental variations in non-stationary sensor streams [19, 20, 21]. Nonetheless, such source-side designs cannot exhaustively anticipate unpredictable test shifts. In contrast, TTA directly exploits unlabeled samples observed during deployment, enabling online adaptation to evolving distributions. Adaptation with Target Data. Target-data methods span offline unsupervised domain adaptation and online TTA. ⟪\\bullet⟫ Unsupervised domain adaptation (UDA). Conventional UDA accesses labeled source and unlabeled target data to reduce cross-domain discrepancies via moment alignment [22], adversarial learning [23], pseudo-label refinement [24], or optimal transport [3]. Source-free variants recover source structure or progressively refine target representations [25]. Recent studies such as VDM-DA [4], SFOCDA [5], and TAMAN [26] further explore virtual source construction, open compound adaptation, and video-oriented alignment. However, these methods assume offline or repeatedly accessible target data, whereas TTA must adapt and predict online as test samples arrive. ⟪\\bullet⟫ Test-Time adaptation (TTA). TTA adapts a pre-trained model during inference using only unlabeled test samples. Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28]. Test-time training [7] introduces auxiliary source-stage objectives. Recent studies extend TTA to diverse visual settings: MetaBN [29] leverages meta-trained normalization for adverse-weather video restoration, whereas CMDA [30] pairs model adaptation with diffusion-based data adaptation. In contrast, DCF requires neither meta-training nor generative translation, focusing on controlling self-training error accumulation in correlated streams. Other approaches explore sample bias [31], normalization or prior correction, and continual dynamics [32, 9, 15, 10, 11, 33, 34]. Despite these advances, self-training remains vulnerable to temporally correlated and label-imbalanced streams, where local adaptation errors can accumulate across successive updates. Reliability- and Stability-aware TTA. Online TTA must govern how samples drive adaptation and how updates persist. EATA [8] and SAR [9] use entropy filtering, while DeYO [35] and ETAGE [16] incorporate shape- or gradient-sensitive cues. The four closely related TCSVT studies use distinct adaptation mechanisms: QED [31] performs question-conditioned VQA debiasing; MetaBN [29] meta-trains normalization for adverse-weather video restoration; CMDA [30] couples model updates with diffusion-based data adaptation; and MS-TTA [36] refines CLIP embeddings through training-free mean shift and a feature cache. DCF instead controls the coupled evolution of target evidence and model parameters in temporally correlated recognition streams. PSR routes evidence by entropy and Fourier stress responsiveness; RGR converts routed-away samples into soft OT geometry constraints; CLR determines where the resulting candidate update persists. CoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF evaluates candidate-update persistence separately for each layer group using current source–candidate curvature mismatch. DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, and where candidate updates persist. This route–adapt–retain design interrupts the error-amplifying feedback that causes long-horizon collapse.",
       "diff": {
         "original": [
           {
@@ -9445,11 +9417,19 @@ window.REVIEW_DATA={
           },
           {
             "kind": "same",
-            "text": "Reliability- and Stability-aware TTA. A central challenge in online TTA is "
+            "text": "Reliability- and Stability-aware TTA. "
           },
           {
             "kind": "del",
-            "text": "to decide which unlabeled "
+            "text": "A central challenge in online "
+          },
+          {
+            "kind": "same",
+            "text": "TTA "
+          },
+          {
+            "kind": "del",
+            "text": "is to decide which unlabeled "
           },
           {
             "kind": "same",
@@ -9461,11 +9441,11 @@ window.REVIEW_DATA={
           },
           {
             "kind": "same",
-            "text": "drive adaptation and how the "
+            "text": "drive adaptation and how "
           },
           {
             "kind": "del",
-            "text": "induced parameter "
+            "text": "the induced parameter "
           },
           {
             "kind": "same",
@@ -9473,15 +9453,7 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "should be stabilized over time. Existing methods often address "
-          },
-          {
-            "kind": "same",
-            "text": "the sample "
-          },
-          {
-            "kind": "del",
-            "text": "side by estimating reliability from confidence or entropy, assuming that low-entropy predictions provide trustworthy pseudo-label supervision. For example, "
+            "text": "should be stabilized over time. Existing methods often address the sample side by estimating reliability from confidence or entropy, assuming that low-entropy predictions provide trustworthy pseudo-label supervision. For example, "
           },
           {
             "kind": "same",
@@ -9497,19 +9469,7 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "[14] "
-          },
-          {
-            "kind": "same",
-            "text": "filter redundant or unreliable samples "
-          },
-          {
-            "kind": "del",
-            "text": "through entropy-based "
-          },
-          {
-            "kind": "same",
-            "text": "criteria, "
+            "text": "[14] filter redundant or unreliable samples through entropy-based criteria, "
           },
           {
             "kind": "same",
@@ -9525,31 +9485,47 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "[21] "
+            "text": "[21] further incorporates gradient-norm information to detect unstable samples. However, confidence does not necessarily imply reliability under "
           },
           {
             "kind": "same",
-            "text": "further "
+            "text": "temporally correlated "
           },
           {
             "kind": "del",
-            "text": "incorporates gradient-norm information "
+            "text": "shifts: a confident prediction may still be supported "
           },
           {
             "kind": "same",
-            "text": "to "
+            "text": "by "
           },
           {
             "kind": "del",
-            "text": "detect unstable samples. However, confidence does not necessarily imply reliability under temporally correlated shifts: a confident prediction may still be supported by shortcut-sensitive cues, and repeatedly adapting to such samples can reinforce confirmation bias. Another line of work stabilizes TTA from "
+            "text": "shortcut-sensitive cues, "
           },
           {
             "kind": "same",
-            "text": "the parameter "
+            "text": "and "
           },
           {
             "kind": "del",
-            "text": "side. "
+            "text": "repeatedly adapting to such "
+          },
+          {
+            "kind": "same",
+            "text": "samples "
+          },
+          {
+            "kind": "del",
+            "text": "can reinforce confirmation bias. Another line of work stabilizes TTA from "
+          },
+          {
+            "kind": "same",
+            "text": "the "
+          },
+          {
+            "kind": "del",
+            "text": "parameter side. "
           },
           {
             "kind": "same",
@@ -9557,39 +9533,39 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "[17] uses stochastic restoration "
+            "text": "[17] uses stochastic restoration to mitigate catastrophic drift, "
           },
           {
             "kind": "same",
-            "text": "to "
+            "text": "RoTTA "
           },
           {
             "kind": "del",
-            "text": "mitigate catastrophic drift, RoTTA [18] combines robust memory sampling with teacher-student updates, and LAW [41] studies learning-rate-based mechanisms for sustained adaptation. These methods reduce long-term drift, but their stabilization rules are usually global or nearly uniform across the network, overlooking that different layers may respond to distribution shifts in substantially different ways [42]. "
+            "text": "[18] combines robust memory sampling with teacher-student updates, "
           },
           {
             "kind": "same",
-            "text": "Overall, existing TTA methods "
+            "text": "and "
           },
           {
             "kind": "del",
-            "text": "mainly stabilize online "
+            "text": "LAW [41] studies learning-rate-based mechanisms "
           },
           {
             "kind": "same",
-            "text": "adaptation "
+            "text": "for "
           },
           {
             "kind": "del",
-            "text": "through sample filtering or global update control. In contrast, "
+            "text": "sustained adaptation. These methods reduce long-term drift, but their stabilization rules are usually global or nearly uniform across the network, overlooking that different layers may respond to distribution shifts in substantially different ways [42]. Overall, existing TTA methods mainly stabilize "
           },
           {
             "kind": "same",
-            "text": "DCF "
+            "text": "online adaptation "
           },
           {
             "kind": "del",
-            "text": "attributes long-horizon instability to "
+            "text": "through sample filtering or global update control. In contrast, DCF attributes long-horizon instability to "
           },
           {
             "kind": "same",
@@ -9935,11 +9911,19 @@ window.REVIEW_DATA={
           },
           {
             "kind": "same",
-            "text": "Reliability- and Stability-aware TTA. A central challenge in online TTA is "
+            "text": "Reliability- and Stability-aware TTA. "
           },
           {
             "kind": "add",
-            "text": "governing how test "
+            "text": "Online "
+          },
+          {
+            "kind": "same",
+            "text": "TTA "
+          },
+          {
+            "kind": "add",
+            "text": "must govern how "
           },
           {
             "kind": "same",
@@ -9947,11 +9931,7 @@ window.REVIEW_DATA={
           },
           {
             "kind": "same",
-            "text": "drive adaptation and how the "
-          },
-          {
-            "kind": "add",
-            "text": "resulting "
+            "text": "drive adaptation and how "
           },
           {
             "kind": "same",
@@ -9959,15 +9939,7 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "are maintained. At "
-          },
-          {
-            "kind": "same",
-            "text": "the sample "
-          },
-          {
-            "kind": "add",
-            "text": "level, "
+            "text": "persist. "
           },
           {
             "kind": "same",
@@ -9983,23 +9955,7 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "[9] "
-          },
-          {
-            "kind": "same",
-            "text": "filter redundant or unreliable samples "
-          },
-          {
-            "kind": "add",
-            "text": "via entropy "
-          },
-          {
-            "kind": "same",
-            "text": "criteria, "
-          },
-          {
-            "kind": "add",
-            "text": "while "
+            "text": "[9] use entropy filtering, while "
           },
           {
             "kind": "same",
@@ -10015,79 +9971,23 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "[16] incorporate shape- or gradient-sensitive cues. Among closely related studies, QED [31] identifies biased instances via question-type entropy and negative perturbations, while MS-TTA [36] performs training-free mean-shift refinement over test features. CMDA [30] "
+            "text": "[16] incorporate shape- or gradient-sensitive cues. The four closely related TCSVT studies use distinct adaptation mechanisms: QED [31] performs question-conditioned VQA debiasing; MetaBN [29] meta-trains normalization for adverse-weather video restoration; CMDA [30] couples model updates with diffusion-based data adaptation; and MS-TTA [36] refines CLIP embeddings through training-free mean shift and a feature cache. DCF instead controls the coupled evolution of target evidence and model parameters in "
           },
           {
             "kind": "same",
-            "text": "further "
+            "text": "temporally correlated "
           },
           {
             "kind": "add",
-            "text": "couples model adaptation with diffusion-based data adaptation. In contrast, DCF assigns heterogeneous roles "
+            "text": "recognition streams. PSR routes evidence "
           },
           {
             "kind": "same",
-            "text": "to "
+            "text": "by "
           },
           {
             "kind": "add",
-            "text": "target samples: trusted instances provide consistency supervision, whereas routed-away instances are retained for soft optimal-transport geometry repair. At "
-          },
-          {
-            "kind": "same",
-            "text": "the parameter "
-          },
-          {
-            "kind": "add",
-            "text": "level, MetaBN [29] reshapes updates via meta-training, while "
-          },
-          {
-            "kind": "same",
-            "text": "CoTTA "
-          },
-          {
-            "kind": "add",
-            "text": "[12], RoTTA [13], LAW [37], and GOLD [38] stabilize adaptation through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or constrained update spaces. Unlike these approaches, DCF treats sample-side updates strictly as candidates and selectively retains them across depth according "
-          },
-          {
-            "kind": "same",
-            "text": "to "
-          },
-          {
-            "kind": "add",
-            "text": "layer-wise source mismatch. "
-          },
-          {
-            "kind": "same",
-            "text": "Overall, existing TTA methods "
-          },
-          {
-            "kind": "add",
-            "text": "largely treat sample-side "
-          },
-          {
-            "kind": "same",
-            "text": "adaptation "
-          },
-          {
-            "kind": "add",
-            "text": "and parameter-side stabilization independently. "
-          },
-          {
-            "kind": "same",
-            "text": "DCF "
-          },
-          {
-            "kind": "add",
-            "text": "instead models their interaction as a "
-          },
-          {
-            "kind": "same",
-            "text": "coupled sample–layer "
-          },
-          {
-            "kind": "add",
-            "text": "feedback process, jointly determining which samples drive adaptation, how routed-away samples preserve target structure, "
+            "text": "entropy "
           },
           {
             "kind": "same",
@@ -10095,7 +9995,79 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "which layers retain the resulting updates."
+            "text": "Fourier stress responsiveness; RGR converts routed-away "
+          },
+          {
+            "kind": "same",
+            "text": "samples "
+          },
+          {
+            "kind": "add",
+            "text": "into soft OT geometry constraints; CLR determines where "
+          },
+          {
+            "kind": "same",
+            "text": "the "
+          },
+          {
+            "kind": "add",
+            "text": "resulting candidate update persists. "
+          },
+          {
+            "kind": "same",
+            "text": "CoTTA "
+          },
+          {
+            "kind": "add",
+            "text": "[12], "
+          },
+          {
+            "kind": "same",
+            "text": "RoTTA "
+          },
+          {
+            "kind": "add",
+            "text": "[13], LAW [37], "
+          },
+          {
+            "kind": "same",
+            "text": "and "
+          },
+          {
+            "kind": "add",
+            "text": "GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF evaluates candidate-update persistence separately "
+          },
+          {
+            "kind": "same",
+            "text": "for "
+          },
+          {
+            "kind": "add",
+            "text": "each layer group using current source–candidate curvature mismatch. DCF formulates "
+          },
+          {
+            "kind": "same",
+            "text": "online adaptation "
+          },
+          {
+            "kind": "add",
+            "text": "as a "
+          },
+          {
+            "kind": "same",
+            "text": "coupled sample–layer "
+          },
+          {
+            "kind": "add",
+            "text": "feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, "
+          },
+          {
+            "kind": "same",
+            "text": "and "
+          },
+          {
+            "kind": "add",
+            "text": "where candidate updates persist. This route–adapt–retain design interrupts the error-amplifying feedback that causes long-horizon collapse."
           }
         ]
       }

@@ -129,14 +129,13 @@ for (let i = 0; i < headings.length; i++) {
   const marker = '\\responselabel{Response}';
   const start = fragment.indexOf(marker);
   if (start < 0) continue;
-  const id = /^(E[12]|AE[1-5]|R[12]\.[1-6])\b/.exec(title)?.[1] ?? (title === 'Response to the Senior Area Editor' ? 'SAE' : null);
+  const id = /^(EIC|E[12]|AE[1-5]|R[12]\.[1-6])\b/.exec(title)?.[1] ?? (title === 'Response to the Senior Area Editor' ? 'SAE' : null);
   if (id) parts.set(id, blocks(fragment.slice(start + marker.length)));
 }
 for (const comment of data.comments) {
   const key = comment.id === 'sae' ? 'SAE' : comment.label;
   const reply = comment.id === 'eic'
-    ? [{ kind: 'heading', html: 'Closely related TCSVT papers', text: 'Closely related TCSVT papers' }, ...parts.get('E1'),
-      { kind: 'heading', html: 'Distinctive contribution', text: 'Distinctive contribution' }, ...parts.get('E2')]
+    ? parts.get('EIC')
     : parts.get(key);
   if (!reply?.length) throw new Error('Missing response: ' + key);
   comment.fullResponse = reply;
@@ -214,6 +213,14 @@ function narrativeText(fragment, referenceMap, citationMap) {
     if (b.t !== 'Para' && b.t !== 'Plain' && b.t !== 'Header') throw new Error('Unsupported manuscript block: ' + b.t);
     return inline(b.t === 'Header' ? b.c[2] : b.c, false);
   }).join(' ').replace(/\s+/g, ' ').trim();
+}
+if(process.env.REVIEW_RELATED_WORK_OUTPUT){
+ const start=manuscript.indexOf('\\section{Related Work}');
+ const end=manuscript.indexOf('\\section{Methodology}',start);
+ const fragment=manuscript.slice(start,end);
+ const paragraphs=fragment.split(/\n\s*\n/).filter(p=>!p.trim().startsWith('%')).map(p=>narrativeText(p,refs,cites)).filter(Boolean);
+ fs.writeFileSync(process.env.REVIEW_RELATED_WORK_OUTPUT,JSON.stringify({text:narrativeText(fragment,refs,cites),paragraphs},null,2));
+ process.exit(0);
 }
 const narrativeCuts = [
   ['Abstract', '\\begin{abstract}', '\\end{abstract}'],
