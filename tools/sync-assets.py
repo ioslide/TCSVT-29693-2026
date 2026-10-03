@@ -11,7 +11,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[2]
 SITE = ROOT / "website"
 path = SITE / "data.js"
-data = json.loads(path.read_text().split("=", 1)[1].rsplit(";", 1)[0])
+data = json.loads(path.read_text(encoding="utf-8").split("=", 1)[1].rsplit(";", 1)[0])
 
 
 def image(page, box=None):
@@ -70,5 +70,5 @@ data["meta"]["responsePages"] = len(fitz.open(response_pdf))
 data["meta"]["responsePdfSha256"] = hashlib.sha256(response_pdf.read_bytes()).hexdigest()
 shutil.copyfile(response_pdf, SITE / "assets/pdf/response.pdf")
 shutil.copyfile(response_source.parent / "assets/retention_gate_heatmap.png", SITE / "assets/response/retention-gates.png")
-path.write_text("window.REVIEW_DATA=" + json.dumps(data, ensure_ascii=False, indent=2) + ";\n")
+path.write_text("window.REVIEW_DATA=" + json.dumps(data, ensure_ascii=False, indent=2) + ";\n", encoding="utf-8")
 print("Synchronized both source PDFs, all page previews, mapped crops, and figure data.")

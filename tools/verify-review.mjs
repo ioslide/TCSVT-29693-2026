@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
@@ -23,8 +24,29 @@ assert.equal(data.changes.length, 26);
 assert.equal(data.figures.length, 13);
 assert.equal(data.sections.length, 12);
 assert.equal(data.meta.fullResponseSha256, sha(data.meta.fullResponseSource));
-assert.equal(data.meta.responseRevision, 'v12');
-assert(data.meta.fullResponseSource.includes('revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v12/'));
+assert.equal(data.meta.responseRevision, 'v13');
+assert(data.meta.fullResponseSource.includes('revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v13/'));
+// Verify the actual published reply blocks, not only the declared source hash.
+const replyTemporary = fs.mkdtempSync(path.join(os.tmpdir(), 'dcf-reply-check-'));
+const replyOutput = path.join(replyTemporary, 'source-replies.json');
+try {
+  const parsed = spawnSync(process.execPath, [path.join(root, 'website/tools/sync-review-v12.mjs')], {
+    env: { ...process.env, REVIEW_RESPONSES_ONLY: '1', REVIEW_RESPONSE_OUTPUT: replyOutput },
+    encoding: 'utf8',
+  });
+  assert.equal(parsed.status, 0, 'Response source parsing failed: ' + parsed.stderr);
+  const sourceReplies = JSON.parse(fs.readFileSync(replyOutput, 'utf8'));
+  const plain = value => JSON.parse(JSON.stringify(value));
+  assert.deepEqual(plain(data.overview), sourceReplies.overview, 'Opening letter differs from the response source');
+  for (const comment of data.comments) {
+    const sourceReply = sourceReplies.comments.find(c => c.id === comment.id);
+    const published = comment.fullResponse.filter(b => !['probe-sensitivity', 'sinkhorn'].includes(b.evidenceId));
+    assert.deepEqual(plain(published), sourceReply.fullResponse, 'Published response differs from source: ' + comment.id);
+  }
+} finally {
+  if (fs.existsSync(replyOutput)) fs.unlinkSync(replyOutput);
+  fs.rmdirSync(replyTemporary);
+}
 assert.equal(data.meta.responsePdfSha256, sha('website/assets/pdf/response.pdf'));
 for (const [version, directory] of [['original', 'latex_old_version'], ['revised', 'latex']]) {
   if(data.meta.hashes[version].pdf !== sha(directory + '/main.pdf')) {
@@ -91,6 +113,11 @@ const resourceTable = data.comments.find(c => c.id === 'r1-3').fullResponse.find
 assert.equal(resourceTable.rows.length, 15, 'Table XI must include all 14 methods');
 const liteRow = resourceTable.rows.find(row => row[0].text === 'DCF-Lite');
 assert.deepEqual(Array.from(liteRow, cell => cell.text), ['DCF-Lite', '9.4', '6,080', '3.19', '42.06']);
+const liteReply = data.comments.find(c => c.id === 'r1-3').fullResponse.map(b => b.text || '').join(' ');
+const retentionReply = data.comments.find(c => c.id === 'r1-4').fullResponse.map(b => b.text || '').join(' ');
+assert(liteReply.includes('tensor snapshot') && liteReply.includes('before the first optimizer update') && liteReply.includes('reused'), 'Missing Lite anchor or fixed-reference lifecycle');
+assert(retentionReply.includes('For full DCF') && retentionReply.includes('DCF-Lite uses the fixed reference'), 'Full and Lite proxy evaluation must be distinguished');
+assert(!/Q_\{\\mathrm\{ref\}\}|Q_t/.test(liteReply + retentionReply), 'Lite explanation must use prose without new proxy symbols');
 const probeFigures = data.comments.find(c => c.id === 'r1-1').fullResponse.filter(b => b.kind === 'image');
 assert(probeFigures.some(b => b.evidenceId === 'probe-sensitivity'), 'Missing Fig. 12(c) in the complete probe response');
 assert(probeFigures.some(b => b.evidenceId === 'sinkhorn'), 'Missing Fig. 12(d) in the complete probe response');
@@ -100,4 +127,4 @@ assert(theory.after.includes('bounded above'));
 const routing = data.sections.find(s => s.title === 'Sample routing');
 assert(routing.after.includes('positive-part operation'));
 assert(!routing.after.includes('\\left| p_'));
-console.log(`Verified 17 responses, 26 mappings, 13 figures, 12 complete narrative sections, all assets and source hashes, and ${mathCount} mathematical expressions.`);
+console.log(`Verified all 17 replies and the opening letter against v13, 26 mappings, 13 figures, 12 narrative sections, Lite reference lifecycle, all assets and source hashes, and ${mathCount} mathematical expressions.`);

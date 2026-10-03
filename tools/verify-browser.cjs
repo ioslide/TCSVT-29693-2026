@@ -11,6 +11,8 @@ const { chromium } = require('playwright');
   page.on('response', r => { if (r.status() >= 400) failedRequests.push(`${r.status()} ${r.url()}`); });
   await page.addInitScript(() => localStorage.setItem('dcf-reading-guide-v1', 'done'));
   const base = process.env.REVIEW_URL || 'http://127.0.0.1:4173/';
+  const screenshots = process.env.REVIEW_SCREENSHOTS || path.join(__dirname, '../../latex/tmp/website-v13-browser');
+  fs.mkdirSync(screenshots, { recursive: true });
   await page.goto(base, { waitUntil: 'networkidle' });
   const data = await page.evaluate(() => window.REVIEW_DATA);
   async function route(hash) {
@@ -37,10 +39,10 @@ const { chromium } = require('playwright');
       await layout(`${size.width}/${comment.id}`);
     }
     await route('#review/r1-1');
-    await page.screenshot({ path: `/tmp/dcf-review-${size.width}.png` });
+    await page.screenshot({ path: path.join(screenshots, `dcf-review-${size.width}.png`) });
     await route('#review/r1-6');
-    await page.locator('.response-subheading').filter({ hasText: 'Five run variability' }).scrollIntoViewIfNeeded();
-    await page.screenshot({ path: `/tmp/dcf-transfer-response-${size.width}.png` });
+    await page.locator('.response-subheading').filter({ hasText: 'Variability across five runs' }).scrollIntoViewIfNeeded();
+    await page.screenshot({ path: path.join(screenshots, `dcf-transfer-response-${size.width}.png`) });
     await route('#gallery');
     for (const figure of data.figures) {
       await page.locator(`[data-figure="${figure.id}"]`).first().click();
@@ -76,7 +78,7 @@ const { chromium } = require('playwright');
       return nonwhite;
     });
     assert(pixels > 1000, `${id}: blank PDF canvas`);
-    await page.screenshot({ path: `/tmp/dcf-pdf-${id}.png` });
+    await page.screenshot({ path: path.join(screenshots, `dcf-pdf-${id}.png`) });
     await layout(`desktop/pdf-${id}`);
   }
   assert.deepEqual(errors, []);

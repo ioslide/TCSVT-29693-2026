@@ -6,7 +6,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const responsePath = 'revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v12/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v12.tex';
+const responsePath = 'revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v13/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v13.tex';
 const read = p => fs.readFileSync(path.join(root, p), 'utf8');
 const hash = p => createHash('sha256').update(fs.readFileSync(path.join(root, p))).digest('hex');
 const context = { window: {} };
@@ -68,8 +68,8 @@ function inline(items, html = true) {
         ? `<span data-response-math="${esc(c[1])}" data-display="${c[0].t === 'DisplayMath'}">${esc(c[1])}</span>`
         : '\u27ea' + (c[0].t === 'DisplayMath' ? '\\displaystyle ' : '') + c[1] + '\u27eb';
       case 'Code': return html ? `<code>${esc(c[1])}</code>` : c[1];
-      case 'Strong': case 'Emph': case 'Superscript': {
-        const tag = { Strong: 'strong', Emph: 'em', Superscript: 'sup' }[item.t];
+      case 'Strong': case 'Emph': case 'Superscript': case 'Underline': {
+        const tag = { Strong: 'strong', Emph: 'em', Superscript: 'sup', Underline: 'u' }[item.t];
         return html ? `<${tag}>${inline(c)}</${tag}>` : inline(c, false);
       }
       case 'Span': case 'Link': return inline(c[1], html);
@@ -317,7 +317,7 @@ data.comments.find(c => c.id === 'r1-6').response = [
 data.figures.find(f => f.id === 'f5').changes = ['probe-definition', 'pcs-definition'];
 data.figures.find(f => f.id === 'f6').changes = ['probe-definition', 'shape-texture'];
 data.figures.find(f => f.id === 'f7').summary = 'The retained diagnostic plots visualize the four routing regions explicitly defined in revised Section III-C.';
-data.meta.snapshot = '3 October 2026';
+data.meta.snapshot = '4 October 2026';
 data.meta.fullResponseSource = responsePath;
 data.meta.fullResponseSha256 = hash(responsePath);
 for (const [version, dir] of [['original', 'latex_old_version'], ['revised', 'latex']]) {
@@ -340,7 +340,7 @@ for item in items:
    if i<j:d['original'].append({'kind':'del','text':''.join(a[i:j])})
    if k<l:d['revised'].append({'kind':'add','text':''.join(b[k:l])})
  out.append(d)
-json.dump(out,sys.stdout,ensure_ascii=False)`], { input: JSON.stringify(diffs), encoding: 'utf8', maxBuffer: 10_000_000 });
+json.dump(out,sys.stdout,ensure_ascii=False)`], { input: JSON.stringify(diffs), env: { ...process.env, PYTHONUTF8: '1' }, encoding: 'utf8', maxBuffer: 10_000_000 });
 if (comparison.status !== 0) throw new Error(comparison.stderr);
 JSON.parse(comparison.stdout).forEach((diff, i) => { diffs[i].diff = diff; });
 fs.writeFileSync(path.join(root, 'website/data.js'), 'window.REVIEW_DATA=' + JSON.stringify(data, null, 2) + ';\n');
