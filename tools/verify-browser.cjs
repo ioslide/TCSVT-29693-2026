@@ -11,7 +11,7 @@ const { chromium } = require('playwright');
   page.on('response', r => { if (r.status() >= 400) failedRequests.push(`${r.status()} ${r.url()}`); });
   await page.addInitScript(() => localStorage.setItem('dcf-reading-guide-v1', 'done'));
   const base = process.env.REVIEW_URL || 'http://127.0.0.1:4173/';
-  const screenshots = process.env.REVIEW_SCREENSHOTS || path.join(__dirname, '../../latex/tmp/website-v13-browser');
+  const screenshots = process.env.REVIEW_SCREENSHOTS || path.join(__dirname, '../.deployment/browser-qa');
   fs.mkdirSync(screenshots, { recursive: true });
   await page.goto(base, { waitUntil: 'networkidle' });
   const data = await page.evaluate(() => window.REVIEW_DATA);
@@ -31,6 +31,25 @@ const { chromium } = require('playwright');
     assert.equal(state.rawMath, 0, label);
     assert.deepEqual(state.brokenImages, [], label);
   }
+  async function inspectDialog(item, label) {
+    await page.waitForSelector('#dialog[open]');
+    await page.locator('#dialog .compare-image').evaluateAll(images => images.forEach(img => { img.loading = 'eager'; }));
+    await page.waitForFunction(() => [...document.querySelectorAll('#dialog .compare-image')].every(img => img.complete && img.naturalWidth > 0));
+    const images = await page.locator('#dialog .compare-image').evaluateAll(images => images.map(img => ({src: img.src, alt: img.alt})));
+    for (const version of ['original', 'revised']) {
+      if (!item[version]) continue;
+      const image = images.find(img => new URL(img.src).pathname.endsWith('/' + item[version].image));
+      assert(image, `${label}: missing ${version} source crop`);
+      assert.equal(new URL(image.src).searchParams.get('v'), data.meta.hashes[version].pdf.slice(0, 12), `${label}: stale crop URL`);
+      assert(image.alt.includes('page ' + item[version].page), `${label}: stale page label`);
+    }
+    await layout(label + '/images');
+    if (item.before || item.after) {
+      await page.locator('#dialog [data-mode="text"]').click();
+      await layout(label + '/text');
+    }
+    await page.locator('#dialog [data-action="close-dialog"]').click();
+  }
   for (const size of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }]) {
     await page.setViewportSize(size);
     for (const comment of data.comments) {
@@ -46,27 +65,39 @@ const { chromium } = require('playwright');
     await route('#gallery');
     for (const figure of data.figures) {
       await page.locator(`[data-figure="${figure.id}"]`).first().click();
-      await page.waitForSelector('#dialog[open]');
-      if (figure.before || figure.after) {
-        await page.locator('#dialog [data-mode="text"]').click();
-        await layout(`${size.width}/${figure.id}/caption`);
-      }
-      await page.locator('#dialog [data-action="close-dialog"]').click();
+      await inspectDialog(figure, `${size.width}/gallery/${figure.id}`);
     }
     await route('#additions');
     await layout(`${size.width}/additions`);
+    for (const item of data.changes.filter(c => c.status === 'added')) {
+      await page.locator(`[data-inspect="${item.id}"]`).first().click();
+      await inspectDialog(item, `${size.width}/addition/${item.id}`);
+    }
     await route('#map');
+    await page.locator('[data-map-mode="mapped"]').click();
+    for (const item of data.changes) {
+      await page.locator(`[data-inspect="${item.id}"]`).first().click();
+      await inspectDialog(item, `${size.width}/map/${item.id}`);
+    }
     await page.locator('[data-map-mode="narrative"]').click();
     for (let i = 0; i < data.sections.length; i++) {
       await page.locator(`[data-text-section="${i}"] summary`).click();
       await layout(`${size.width}/section-${i}`);
     }
     await page.locator('#pdf-menu').click();
-    assert(await page.locator('#dialog a[href="assets/pdf/response.pdf"]').count() > 0);
+    assert(await page.locator('#dialog a[href^="assets/pdf/response.pdf?v="]').count() > 0);
     await page.locator('#dialog [data-action="close-dialog"]').click();
   }
   await page.setViewportSize({ width: 1440, height: 1000 });
-  for (const id of ['probe-theory', 'pcs-definition', 'domainnet', 'transfer']) {
+  // Check every mapped overlay, its coordinates and the dialog reached by a page tag.
+  for (const item of data.changes.filter(c => c.revised.box)) {
+    await route('#pdf/' + item.id);
+    const boxes = await page.locator(`[data-pdf-scroll="revised"] .pdf-page-item[data-page="${item.revised.page}"] .pdf-region[data-inspect="${item.id}"]`).evaluateAll(regions => regions.map(el => [el.style.left, el.style.top, el.style.width, el.style.height].map(parseFloat)));
+    assert.deepEqual(boxes, item.revised.boxes || [item.revised.box], item.id + ': incorrect highlight geometry');
+    await page.locator(`[data-pdf-scroll="revised"] .pdf-page-item[data-page="${item.revised.page}"] .pdf-page-tag[data-inspect="${item.id}"]`).click();
+    await inspectDialog(item, 'pdf-highlight/' + item.id);
+  }
+  for (const id of ['probe-theory', 'pcs-definition', 'domainnet', 'transfer', 'efficiency', 'probe-sensitivity', 'threshold-guidance']) {
     await route('#pdf/' + id);
     await page.waitForFunction(() => document.querySelector('[data-pdf-scroll="revised"] canvas:not([hidden])')?.width > 0, null, { timeout: 30_000 });
     const pixels = await page.evaluate(() => {
@@ -83,6 +114,6 @@ const { chromium } = require('playwright');
   }
   assert.deepEqual(errors, []);
   assert.deepEqual(failedRequests, []);
-  console.log('Verified all reviewer/editor replies, 13 figure dialogs, 12 narrative diffs, downloads, desktop/mobile layout, and four nonblank native PDF views.');
+  console.log('Verified 17 replies, every figure/addition/change-map dialog on desktop and mobile, all mapped PDF highlights and their dialogs, 12 narrative diffs, versioned assets/downloads, and seven nonblank native PDF views.');
   await browser.close();
 })().catch(error => { console.error(error); process.exit(1); });

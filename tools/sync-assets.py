@@ -1,17 +1,23 @@
 """Render source PDFs and evidence crops with PyMuPDF and Pillow."""
 import hashlib
+import argparse
 import io
 import json
 from pathlib import Path
 import shutil
 
-import fitz
+import pymupdf as fitz
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
 SITE = ROOT / "website"
 path = SITE / "data.js"
 data = json.loads(path.read_text(encoding="utf-8").split("=", 1)[1].rsplit(";", 1)[0])
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--version", action="append", choices=["original", "revised"],
+                    help="Refresh only the selected manuscript; omit to refresh both and the response assets.")
+args = parser.parse_args()
+versions = set(args.version or ["original", "revised"])
 
 
 def image(page, box=None):
@@ -24,20 +30,13 @@ def image(page, box=None):
     return Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
 
 
-# These passages changed on p. 4; the remaining mapped passages retain their layout.
+# Coordinates are measured against the PDF and stored in data.js. Preserve them
+# when rendering; a renderer must not reset reviewed boxes to an older layout.
 changes = {c["id"]: c for c in data["changes"]}
-changes["pcs-definition"]["revised"]["box"] = [7.516, 64.773, 42.157, 16.162]
-changes["probe-theory"]["revised"]["boxes"] = [[7.516, 80.808, 42.157, 13.889], [50.49, 32.576, 42.4, 13.7]]
-changes["probe-theory"]["revised"]["box"] = changes["probe-theory"]["revised"]["boxes"][0]
-changes["regions"]["revised"]["box"] = [50.49, 63.8, 42.4, 9.9]
-changes["domainnet"]["revised"]["box"] = [50.49, 37.5, 42.4, 18.7]
-changes["transfer"]["revised"]["box"] = [50.49, 17.4, 42.4, 50.3]
-changes["threshold-guidance"]["revised"]["box"] = [50.49, 68.6, 42.4, 21.5]
-for figure in data["figures"]:
-    if "transfer" in figure.get("changes", []):
-        figure["revised"]["box"] = changes["transfer"]["revised"]["box"]
 
 for version, directory in [("original", "latex_old_version"), ("revised", "latex")]:
+    if version not in versions:
+        continue
     source = ROOT / directory / "main.pdf"
     doc = fitz.open(source)
     data["meta"]["pages"][version] = len(doc)
@@ -64,11 +63,12 @@ for version, directory in [("original", "latex_old_version"), ("revised", "latex
 probe = fitz.open(ROOT / "latex/domainnet_heatmap_with_gain.pdf")
 changes["domainnet"]["after"] = probe[0].get_text()
 changes["domainnet"]["diff"] = {"original": [], "revised": [{"kind": "add", "text": changes["domainnet"]["after"]}]}
-response_source = ROOT / data["meta"]["fullResponseSource"]
-response_pdf = response_source.with_suffix(".pdf")
-data["meta"]["responsePages"] = len(fitz.open(response_pdf))
-data["meta"]["responsePdfSha256"] = hashlib.sha256(response_pdf.read_bytes()).hexdigest()
-shutil.copyfile(response_pdf, SITE / "assets/pdf/response.pdf")
-shutil.copyfile(response_source.parent / "assets/retention_gate_heatmap.png", SITE / "assets/response/retention-gates.png")
+if args.version is None:
+    response_source = ROOT / data["meta"]["fullResponseSource"]
+    response_pdf = response_source.with_suffix(".pdf")
+    data["meta"]["responsePages"] = len(fitz.open(response_pdf))
+    data["meta"]["responsePdfSha256"] = hashlib.sha256(response_pdf.read_bytes()).hexdigest()
+    shutil.copyfile(response_pdf, SITE / "assets/pdf/response.pdf")
+    shutil.copyfile(response_source.parent / "assets/retention_gate_heatmap.png", SITE / "assets/response/retention-gates.png")
 path.write_text("window.REVIEW_DATA=" + json.dumps(data, ensure_ascii=False, indent=2) + ";\n", encoding="utf-8")
-print("Synchronized both source PDFs, all page previews, mapped crops, and figure data.")
+print("Synchronized " + ", ".join(sorted(versions)) + " PDF(s), page previews, mapped crops, and figure data.")

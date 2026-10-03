@@ -12,6 +12,11 @@ const hash = p => createHash('sha256').update(fs.readFileSync(path.join(root, p)
 const context = { window: {} };
 vm.runInNewContext(read('website/data.js'), context);
 const data = context.window.REVIEW_DATA;
+const manuscriptOnly = process.env.REVIEW_MANUSCRIPT_ONLY === '1';
+const savedResponse = manuscriptOnly ? JSON.parse(JSON.stringify({
+  comments: data.comments, overview: data.overview,
+  source: data.meta.fullResponseSource, hash: data.meta.fullResponseSha256,
+})) : null;
 const source = read(responsePath).replace(/\r\n/g, '\n');
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
@@ -321,7 +326,7 @@ data.meta.snapshot = '4 October 2026';
 data.meta.fullResponseSource = responsePath;
 data.meta.fullResponseSha256 = hash(responsePath);
 for (const [version, dir] of [['original', 'latex_old_version'], ['revised', 'latex']]) {
-  data.meta.hashes[version] = { pdf: hash(dir + '/main.pdf'), tex: hash(dir + '/main.tex') };
+  data.meta.hashes[version] = { pdf: hash('website/assets/pdf/' + version + '.pdf'), tex: hash(dir + '/main.tex') };
 }
 
 // Regenerate token-level diffs through Python's standard sequence matcher.
@@ -343,6 +348,14 @@ for item in items:
 json.dump(out,sys.stdout,ensure_ascii=False)`], { input: JSON.stringify(diffs), env: { ...process.env, PYTHONUTF8: '1' }, encoding: 'utf8', maxBuffer: 10_000_000 });
 if (comparison.status !== 0) throw new Error(comparison.stderr);
 JSON.parse(comparison.stdout).forEach((diff, i) => { diffs[i].diff = diff; });
+if (savedResponse) {
+  data.comments = savedResponse.comments;
+  data.overview = savedResponse.overview;
+  data.meta.fullResponseSource = savedResponse.source;
+  data.meta.fullResponseSha256 = savedResponse.hash;
+}
 fs.writeFileSync(path.join(root, 'website/data.js'), 'window.REVIEW_DATA=' + JSON.stringify(data, null, 2) + ';\n');
-console.log(`Synchronized ${data.comments.length} responses, PCS evidence, captions, narrative diffs, and source hashes.`);
+console.log(manuscriptOnly
+  ? 'Synchronized manuscript evidence, captions, narrative diffs and source hashes; response content preserved.'
+  : `Synchronized ${data.comments.length} responses, PCS evidence, captions, narrative diffs, and source hashes.`);
 

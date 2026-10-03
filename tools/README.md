@@ -15,4 +15,8 @@ node tools/verify-review.mjs
 
 `sync-assets.py` 仅在论文 PDF、分页或摘录范围改变时使用，需要 PyMuPDF、Pillow，并须重新核对证据框。它会重建论文页面及裁剪图；不应仅为更新作者回复而运行。
 
+只更新修改后论文时，使用 `python tools/sync-assets.py --version revised`，保留原稿和回复 PDF。渲染器沿用 `data.js` 中已核对的框选坐标，不再覆盖成历史坐标。排版更新后，须检查各映射的页码和范围，并同步论文摘录与叙述差异。
+
+同步论文摘录时可设置 `REVIEW_MANUSCRIPT_ONLY=1` 后运行 `node tools/sync-review-v12.mjs`，保留回复正文、开场信及回复来源信息，且不复制回复 PDF。
+
 网页可直接打开 `website/index.html`。Native PDFs 可通过本地静态服务读取完整 PDF；文件协议下保留页面图片和源 PDF 链接作为备用。

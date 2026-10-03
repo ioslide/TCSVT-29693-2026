@@ -12,7 +12,7 @@
   }
   async function documentFor(version){
     if(!documents.has(version))documents.set(version,loadLibrary().then(api=>api.getDocument({
-      url:new URL(`assets/pdf/${version}.pdf`,document.baseURI).href,
+      url:new URL(window.reviewAssetUrl?.(`assets/pdf/${version}.pdf`)||`assets/pdf/${version}.pdf`,document.baseURI).href,
       cMapUrl:new URL('assets/vendor/pdfjs/cmaps/',document.baseURI).href,
       standardFontDataUrl:new URL('assets/vendor/pdfjs/standard_fonts/',document.baseURI).href,
       wasmUrl:new URL('assets/vendor/pdfjs/wasm/',document.baseURI).href,
