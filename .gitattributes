@@ -5,6 +5,10 @@
 *.css text eol=lf
 *.yml text eol=lf
 *.md text eol=lf
+*.ps1 text eol=crlf
+CNAME text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
 *.pdf binary
 *.png binary
 *.webp binary

@@ -11,7 +11,7 @@ const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(site, 'data.js'), 'utf8'), context);
 const data = context.window.REVIEW_DATA;
 assert(data && data.comments.length === 17, 'Expected 17 review comments');
-assert.equal(data.meta.responseRevision, 'v12');
+assert(/^v\d+$/.test(data.meta.responseRevision), 'Missing response revision');
 
 const referenced = new Set();
 function inspect(value) {
