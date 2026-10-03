@@ -19,9 +19,9 @@ window.REVIEW_DATA={
       }
     },
     "fullResponseSource": "revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v12/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v12.tex",
-    "fullResponseSha256": "e90969c4c99c20769eb34b258547fbccecb4a7614bfe7314fb2cf3b6bc64e24f",
+    "fullResponseSha256": "e2d6c8cf87866b4c86d7e37152bd1a5e01cbc9f04e4de1df5ea99fc3d2df762c",
     "responsePages": 17,
-    "responsePdfSha256": "30ec6b0b56e6f30770372cc8ebdfb035511e4047215110e17cf7e35949cca80a",
+    "responsePdfSha256": "feaf39c63e605cda37c1ddb88819fc5ff58ec3424b902a666a6339be983db092",
     "responseRevision": "v12"
   },
   "comments": [
