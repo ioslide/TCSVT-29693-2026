@@ -144,7 +144,12 @@ for (const comment of data.comments) {
 }
 
 if (process.env.REVIEW_RESPONSES_ONLY === '1') {
-  fs.writeFileSync(process.env.REVIEW_RESPONSE_OUTPUT, JSON.stringify({parts:[...parts], comments:data.comments}, null, 2));
+  const start=source.indexOf('Dear Dr.~Shan Liu');
+  const end=source.indexOf('\\clearpage',start);
+  if(start<0||end<0)throw new Error('Missing response-letter opening page');
+  const opening=source.slice(start,end).replace(/\\vspace\{[^}]*\}/g,'').replace(/\\reviewwebsite/g,'https://tcsvt-29693-2026.xhy.im');
+  const overview=blocks(opening);
+  fs.writeFileSync(process.env.REVIEW_RESPONSE_OUTPUT, JSON.stringify({parts:[...parts], comments:data.comments,overview}, null, 2));
   process.exit(0);
 }
 

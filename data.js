@@ -16865,5 +16865,52 @@ window.REVIEW_DATA={
         ]
       }
     }
+  ],
+  "overview": [
+    {
+      "kind": "paragraph",
+      "html": "Dear Dr. Shan Liu (Editor-in-Chief), Associate Editor, Senior Area Editor, and Reviewers,",
+      "text": "Dear Dr. Shan Liu (Editor-in-Chief), Associate Editor, Senior Area Editor, and Reviewers,"
+    },
+    {
+      "kind": "paragraph",
+      "html": "Thank you for your careful evaluation and constructive suggestions. We appreciate the reviewers’ recognition of the motivation, technical design, and long-horizon evidence of the Decoupled Control Framework (DCF). Your comments helped us strengthen the analytical interpretation, experimental validation, computational cost assessment, and reproducibility of DCF.",
+      "text": "Thank you for your careful evaluation and constructive suggestions. We appreciate the reviewers’ recognition of the motivation, technical design, and long-horizon evidence of the Decoupled Control Framework (DCF). Your comments helped us strengthen the analytical interpretation, experimental validation, computational cost assessment, and reproducibility of DCF."
+    },
+    {
+      "kind": "paragraph",
+      "html": "We summarize the main revisions in three groups below, then respond to each comment and identify the corresponding manuscript changes.",
+      "text": "We summarize the main revisions in three groups below, then respond to each comment and identify the corresponding manuscript changes."
+    },
+    {
+      "kind": "paragraph",
+      "html": "<strong>1. Probe interpretation and layer behavior.</strong> We strengthened the local directional-sensitivity interpretation of PCS and added controlled shape–texture and Colored-MNIST shortcut experiments, matched-coverage routing diagnostics, and frequency/strength sensitivity analysis. These experiments connect probe responsiveness to reliable routing under the evaluated conditions. We also added retention-gate heatmaps over time and corruption types, together with control-granularity and Expected Fisher/Hutchinson-based proxy comparisons.",
+      "text": "1. Probe interpretation and layer behavior. We strengthened the local directional-sensitivity interpretation of PCS and added controlled shape–texture and Colored-MNIST shortcut experiments, matched-coverage routing diagnostics, and frequency/strength sensitivity analysis. These experiments connect probe responsiveness to reliable routing under the evaluated conditions. We also added retention-gate heatmaps over time and corruption types, together with control-granularity and Expected Fisher/Hutchinson-based proxy comparisons."
+    },
+    {
+      "kind": "paragraph",
+      "html": "<strong>2. Geometry repair and computational cost.</strong> We compared RGR with moment matching, prototype contrastive alignment, and uniform-prior OT, and characterized failure regimes through 10%–90% routing-ratio tests. We report FLOPs, peak memory, and latency alongside lightweight baselines. On the measured A100 setup, DCF-Lite reduces FLOPs by 61.8% and peak memory by 58.6%, achieving 42.06% accuracy versus 43.48% for full DCF. These results quantify an accuracy–resource trade-off; feasibility on a specific edge device requires device-level evaluation.",
+      "text": "2. Geometry repair and computational cost. We compared RGR with moment matching, prototype contrastive alignment, and uniform-prior OT, and characterized failure regimes through 10%–90% routing-ratio tests. We report FLOPs, peak memory, and latency alongside lightweight baselines. On the measured A100 setup, DCF-Lite reduces FLOPs by 61.8% and peak memory by 58.6%, achieving 42.06% accuracy versus 43.48% for full DCF. These results quantify an accuracy–resource trade-off; feasibility on a specific edge device requires device-level evaluation."
+    },
+    {
+      "kind": "paragraph",
+      "html": "<strong>3. Statistical evidence, positioning, and reproducibility.</strong> Five matched runs and paired tests support significant aggregate cross-domain transfer improvements on ImageNet-C (<span data-response-math=\"p=1.39\\times10^{-4}\" data-display=\"false\">p=1.39\\times10^{-4}</span>) and DomainNet-126 (<span data-response-math=\"p=2.75\\times10^{-4}\" data-display=\"false\">p=2.75\\times10^{-4}</span>). We clarify the trainable parameters, CLR grouping, routing regions, threshold guidance, and OT settings. We also discuss four closely related TCSVT studies ([29], [30], [31], [36]), the suggested sensor-stream literature ([19]–[21]), and recent continual-TTA work ([28], [38]).",
+      "text": "3. Statistical evidence, positioning, and reproducibility. Five matched runs and paired tests support significant aggregate cross-domain transfer improvements on ImageNet-C (⟪p=1.39\\times10^{-4}⟫) and DomainNet-126 (⟪p=2.75\\times10^{-4}⟫). We clarify the trainable parameters, CLR grouping, routing regions, threshold guidance, and OT settings. We also discuss four closely related TCSVT studies ([29], [30], [31], [36]), the suggested sensor-stream literature ([19]–[21]), and recent continual-TTA work ([28], [38])."
+    },
+    {
+      "kind": "paragraph",
+      "html": "Below, we respond to each editorial request and every numbered reviewer comment. Original comments appear in shaded boxes, responses follow directly, and selected manuscript additions appear in blue boxes with specific locations. Accuracy differences are expressed in percentage points (pp).",
+      "text": "Below, we respond to each editorial request and every numbered reviewer comment. Original comments appear in shaded boxes, responses follow directly, and selected manuscript additions appear in blue boxes with specific locations. Accuracy differences are expressed in percentage points (pp)."
+    },
+    {
+      "kind": "paragraph",
+      "html": "<strong>Online revision review:</strong> <code>tcsvt-29693-2026.xhy.im</code>. Each response includes direct links to its online reply and the corresponding PDF comparison, with additional figures, tables, and mapped manuscript evidence.",
+      "text": "Online revision review: tcsvt-29693-2026.xhy.im. Each response includes direct links to its online reply and the corresponding PDF comparison, with additional figures, tables, and mapped manuscript evidence."
+    },
+    {
+      "kind": "paragraph",
+      "html": "Sincerely,<br>Zhengpeng Zhao and Yuanyuan Pu<br><em>Corresponding authors, on behalf of all authors</em>",
+      "text": "Sincerely,\nZhengpeng Zhao and Yuanyuan Pu\nCorresponding authors, on behalf of all authors"
+    }
   ]
 };
