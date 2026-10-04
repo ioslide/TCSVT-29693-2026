@@ -110,6 +110,9 @@
 .response-table th:first-child{min-width:90px;overflow-wrap:normal;word-break:normal;}
 .review-layout{display:grid;grid-template-columns:minmax(0,1fr) 235px;gap:24px;width:100%;max-width:none;}
 .review-evidence-browser{overflow:visible;scroll-margin-top:145px;}
+.review-evidence-browser{overflow-anchor:none;}
+html{scrollbar-gutter:stable;}
+#evidence-nav-anchor{height:0;}
 .evidence-browser-heading p{color:var(--muted);font-size:.875rem;line-height:1.6;margin-top:5px;}
 .evidence-nav{display:flex;align-items:end;gap:18px;padding:16px 20px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:121px;z-index:10;}
 .evidence-nav>label{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0;color:var(--muted);font-size:.8125rem;}
