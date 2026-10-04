@@ -19,7 +19,8 @@ const { chromium } = require('playwright');
   for(const comment of comments){
    await page.evaluate(id=>{location.hash='#review/'+id},comment.id);
    await page.waitForFunction(title=>document.querySelector('.view-header h1')?.textContent===title,comment.title);
-   assert.equal(await page.locator('.review-layout .rail').count(),0);
+   assert.equal(await page.locator('.review-section-nav').count(),1);
+   assert.equal(await page.locator('.review-evidence-directory').getAttribute('open'),null,'Evidence directory must start collapsed');
    assert.equal(await page.locator('.review-evidence-section').count(),1);
    assert.deepEqual(await page.locator('#review-evidence-select option').evaluateAll(options=>options.map(option=>option.value)),comment.changes);
    if(comment.changes.length>1){
@@ -34,6 +35,15 @@ const { chromium } = require('playwright');
   }
   await page.goto(base+'#review/r1-3',{waitUntil:'networkidle'});
   const ids=await page.evaluate(()=>window.REVIEW_DATA.comments.find(c=>c.id==='r1-3').changes);
+  await page.locator('[data-review-section="response"]').click();
+  await page.waitForFunction(()=>document.querySelector('[data-review-section="response"]').getAttribute('aria-current')==='location');
+  await page.locator('.review-evidence-directory summary').click();
+  assert(await page.locator('.review-evidence-directory').evaluate(el=>el.open));
+  await page.locator('.review-evidence-link[data-change="'+ids.at(-1)+'"]').click();
+  assert.equal(await page.locator('#review-evidence-select').inputValue(),ids.at(-1));
+  await page.waitForFunction(()=>document.getElementById('evidence').getBoundingClientRect().top<innerHeight-150);
+  assert.equal(await page.locator('.review-evidence-link.selected').getAttribute('data-change'),ids.at(-1));
+  await page.goto(base+'#review/r1-3',{waitUntil:'networkidle'});
   assert(await page.locator('[data-evidence-step="-1"]').isDisabled());
   await page.locator('[data-action="jump-evidence"]').click();
   await page.locator('#review-evidence-stage [data-mode="text"]').click();
@@ -46,18 +56,18 @@ const { chromium } = require('playwright');
   assert(await page.locator('[data-evidence-step="1"]').isDisabled());
   // Sticky controls must remain available within a long evidence passage.
   await page.selectOption('#review-evidence-select',ids[0]);
-  await page.locator('#review-evidence-stage [data-mode="split"]').click();
-  await page.waitForFunction(()=>[...document.querySelectorAll('#review-evidence-stage .compare-image')].every(img=>img.complete&&img.naturalWidth));
+  await page.locator('#review-evidence-stage [data-mode="text"]').click();
   await page.evaluate(()=>window.scrollBy(0,220));
   const nav=await page.locator('.evidence-nav').boundingBox();
   assert(nav.y>=105&&nav.y<150,'Evidence controls should stick below the page header');
+  await page.locator('#review-evidence-stage [data-mode="split"]').click();
   await page.evaluate(()=>document.getElementById('evidence').scrollIntoView({block:'start',behavior:'instant'}));
   await page.screenshot({path:path.join(output,`evidence-browser-${width}.png`)});
   await page.goto(base+'#review/r1-3/'+ids[1],{waitUntil:'networkidle'});
   assert.equal(await page.locator('#review-evidence-select').inputValue(),ids[1]);
   assert.equal(await page.locator('.review-evidence-section').count(),1);
-  await page.waitForFunction(()=>document.getElementById('evidence').getBoundingClientRect().top<160);
+  await page.waitForFunction(()=>document.getElementById('evidence').getBoundingClientRect().top<innerHeight-150);
  }
  assert.deepEqual(errors,[]);await browser.close();
- console.log('Verified the compact evidence browser for all 17 replies, no right rail, all selections and PDF links, Previous/Next boundaries, remembered modes, sticky controls, mobile layout and deep links.');
+ console.log('Verified the compact evidence browser for all 17 replies, collapsed page navigation, all selections and PDF links, Previous/Next boundaries, remembered modes, sticky controls, mobile layout and deep links.');
 })().catch(error=>{console.error(error);process.exit(1)});
