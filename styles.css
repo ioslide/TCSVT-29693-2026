@@ -108,3 +108,12 @@
 .response-steps{padding-left:24px;margin:8px 0 16px;line-height:1.7;}
 .response-steps li+li{margin-top:10px;}
 .response-table th:first-child{min-width:90px;overflow-wrap:normal;word-break:normal;}
+.review-evidence-intro{margin:30px 0 18px;}
+.review-evidence-intro h2{font-size:1.15rem;margin-bottom:6px;}
+.review-evidence-intro p{color:var(--muted);font-size:.875rem;line-height:1.6;}
+.review-evidence-section,#evidence{scroll-margin-top:145px;}
+.review-evidence-section:focus{outline:none;}
+.review-evidence-section:focus-visible{outline:2px solid var(--blue);outline-offset:3px;}
+.rail-change{text-decoration:none;}
+.rail-help{margin:-4px 0 10px;}
+@media(max-width:800px){.review-evidence-section,#evidence{scroll-margin-top:130px;}}
