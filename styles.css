@@ -41,11 +41,11 @@
 .response-copy>p{max-width:none;}
 .pdf-annotation-legend{display:flex;align-items:start;gap:9px;margin:0 0 14px;color:var(--muted);font-size:.8125rem;line-height:1.55;}
 .annotation-swatch{display:block;flex-shrink:0;width:16px;height:16px;margin-top:2px;border:2px solid #248861;background:#5acc920b;border-radius:3px;}
-.pdf-page-number{height:80px;display:flex;flex-direction:column;justify-content:center;align-items:stretch;gap:7px;padding:8px 0;color:#465570;}
+.pdf-page-number{height:auto;min-height:62px;display:flex;flex-direction:column;justify-content:center;align-items:stretch;gap:7px;padding:8px 0;color:#465570;}
 .pdf-page-number>div:first-child{display:flex;gap:8px;justify-content:space-between;align-items:center;}
 .pdf-page-count{color:var(--muted);font-size:.75rem;}
-.pdf-page-tags{display:flex;gap:6px;overflow-x:auto;padding:3px 2px 5px;min-height:30px;}
-.pdf-page-tag{white-space:nowrap;flex-shrink:0;border:1px solid #b4c4dc;background:#fff;border-radius:4px;font-size:.75rem;color:#214b85;padding:3px 7px;line-height:1.4;}
+.pdf-page-tags{display:flex;flex-wrap:wrap;gap:6px;overflow:visible;padding:3px 2px 5px;min-height:0;}
+.pdf-page-tag{white-space:normal;flex:0 1 auto;min-width:0;max-width:100%;overflow-wrap:anywhere;text-align:left;border:1px solid #b4c4dc;background:#fff;border-radius:4px;font-size:.75rem;color:#214b85;padding:3px 7px;line-height:1.4;}
 .pdf-page-tag span{font-weight:400;color:#465570;}
 .pdf-page-tag:hover{background:#e9f1ff;border-color:#5783c6;}
 .pdf-highlight.annotated{border-color:#ba8432;background:#e9a44208;border-width:1.5px;pointer-events:none;box-shadow:none;}
@@ -57,7 +57,7 @@
 .pdf-region-marker:hover{background:#173858;}
 .pdf-region-marker:focus-visible{z-index:10;}
 .page-scroll:not(.pdf-live)>.pdf-page-item{padding:0 12px 12px;}
-@media(max-width:800px){.pdf-annotation-legend{font-size:.8125rem;}.pdf-page-number{height:80px;}.pdf-page-count{max-width:65%;text-align:right;}}
+@media(max-width:800px){.pdf-annotation-legend{font-size:.8125rem;}.pdf-page-number{height:auto;min-height:62px;}.pdf-page-count{max-width:65%;text-align:right;}}
 
 .pdf-loading{position:absolute;right:0;}
 .page-scroll{max-height:clamp(360px,62dvh,760px);min-height:360px;}

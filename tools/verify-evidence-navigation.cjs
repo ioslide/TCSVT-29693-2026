@@ -22,6 +22,7 @@ const { chromium } = require('playwright');
    assert.equal(await page.locator('.review-section-nav').count(),1);
    assert.equal(await page.locator('.review-evidence-directory').getAttribute('open'),null,'Evidence directory must start collapsed');
    assert.equal(await page.locator('.review-evidence-section').count(),1);
+   assert.equal(await page.locator('#review-pdf-link').getAttribute('href'),'#pdf/free/'+comment.id);
    assert.deepEqual(await page.locator('#review-evidence-select option').evaluateAll(options=>options.map(option=>option.value)),comment.changes);
    if(comment.changes.length>1){
     for(const [index,id] of comment.changes.entries()){
