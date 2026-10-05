@@ -18,14 +18,15 @@ const katex = createRequire(import.meta.url)('../assets/vendor/katex/katex.min.j
 assert.equal(data.comments.length, 17);
 assert.deepEqual(Array.from(data.comments.find(c=>c.id==='eic').responseSourceSections), ['EIC'], 'The editorial request must be one merged response');
 assert.equal(data.overview.filter(b => /^[1-3]\. /.test(b.text)).length, 3, 'Overview must preserve all three opening-letter revision groups');
-assert(data.overview.some(b => b.text.startsWith('Dear Dr.')), 'Missing opening salutation');
-assert(data.overview.some(b => b.text.includes('Corresponding authors, on behalf of all authors')), 'Missing complete closing signature');
+assert(data.overview.some(b => b.text.startsWith('Dear Editor-in-Chief,')), 'Missing opening salutation');
+assert(data.overview.some(b => b.text.includes('Corresponding author, on behalf of all authors')), 'Missing complete closing signature');
 assert.equal(data.changes.length, 26);
 assert.equal(data.figures.length, 13);
 assert.equal(data.sections.length, 12);
 assert.equal(data.meta.fullResponseSha256, sha(data.meta.fullResponseSource));
-assert.equal(data.meta.responseRevision, 'v13');
-assert(data.meta.fullResponseSource.includes('revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v13/'));
+assert.equal(data.meta.responseRevision, 'v14');
+assert(data.meta.fullResponseSource.includes('revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14/'));
+assert.equal(data.meta.revisedManuscriptSource,'latex_revise/main.tex');
 // Verify the actual published reply blocks, not only the declared source hash.
 const replyTemporary = fs.mkdtempSync(path.join(os.tmpdir(), 'dcf-reply-check-'));
 const replyOutput = path.join(replyTemporary, 'source-replies.json');
@@ -40,15 +41,16 @@ try {
   assert.deepEqual(plain(data.overview), sourceReplies.overview, 'Opening letter differs from the response source');
   for (const comment of data.comments) {
     const sourceReply = sourceReplies.comments.find(c => c.id === comment.id);
-    const published = comment.fullResponse.filter(b => !['probe-sensitivity', 'sinkhorn'].includes(b.evidenceId));
-    assert.deepEqual(plain(published), sourceReply.fullResponse, 'Published response differs from source: ' + comment.id);
+    assert.equal(comment.title,sourceReply.title,'Comment title differs from v14: '+comment.id);
+    assert.equal(comment.comment,sourceReply.comment,'Reviewer quotation differs from v14: '+comment.id);
+    assert.deepEqual(plain(comment.fullResponse), sourceReply.fullResponse, 'Published response differs from source: ' + comment.id);
   }
 } finally {
   if (fs.existsSync(replyOutput)) fs.unlinkSync(replyOutput);
   fs.rmdirSync(replyTemporary);
 }
 assert.equal(data.meta.responsePdfSha256, sha('website/assets/pdf/response.pdf'));
-for (const [version, directory] of [['original', 'latex_old_version'], ['revised', 'latex']]) {
+for (const [version, directory] of [['original', 'latex_old_version'], ['revised', 'latex_revise']]) {
   if(data.meta.hashes[version].pdf !== sha(directory + '/main.pdf')) {
     // Recompilation may change PDF metadata without changing the displayed pages.
     const python=process.env.REVIEW_PYTHON || 'C:/Users/Administrator/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe';
@@ -102,7 +104,7 @@ for (const comment of data.comments) {
     assert(b.rows.every(row=>row.length===b.rows[0].length), 'Split table rows: '+comment.id);
     assert(b.rows.every(row=>row.some(cell=>cell.text.trim())), 'Blank reply table row: '+comment.id);
   }
-  const text = [...comment.response, ...comment.fullResponse.map(b => b.text || '')].join(' ');
+  const text = [...comment.response, ...comment.fullResponse.flatMap(b => b.items?b.items.flat().map(c=>c.text):b.text || '')].join(' ');
   assert(!/we do not claim|does not guarantee|do not establish|rather than|not only|without implying/i.test(text), `Defensive author text: ${comment.id}`);
 }
 const transferTable = data.comments.find(c => c.id === 'r1-6').fullResponse.find(b => b.kind === 'table');
@@ -119,12 +121,13 @@ assert(liteReply.includes('tensor snapshot') && liteReply.includes('before the f
 assert(retentionReply.includes('For full DCF') && retentionReply.includes('DCF-Lite uses the fixed reference'), 'Full and Lite proxy evaluation must be distinguished');
 assert(!/Q_\{\\mathrm\{ref\}\}|Q_t/.test(liteReply + retentionReply), 'Lite explanation must use prose without new proxy symbols');
 const probeFigures = data.comments.find(c => c.id === 'r1-1').fullResponse.filter(b => b.kind === 'image');
-assert(probeFigures.some(b => b.evidenceId === 'probe-sensitivity'), 'Missing Fig. 12(c) in the complete probe response');
-assert(probeFigures.some(b => b.evidenceId === 'sinkhorn'), 'Missing Fig. 12(d) in the complete probe response');
+const costFigures = data.comments.find(c => c.id === 'r1-3').fullResponse.filter(b => b.kind === 'image');
+assert(probeFigures.some(b => b.evidenceId === 'probe-sensitivity'), 'Missing v14 Fig. 12(c) in the complete probe response');
+assert(costFigures.some(b => b.evidenceId === 'sinkhorn'), 'Missing v14 Fig. 12(d) in the complete cost response');
 const theory = data.changes.find(c => c.id === 'probe-theory');
 assert(theory.after.includes('(-g_x^\\top\\delta)_+^2'));
 assert(theory.after.includes('bounded above'));
 const routing = data.sections.find(s => s.title === 'Sample routing');
 assert(routing.after.includes('positive-part operation'));
 assert(!routing.after.includes('\\left| p_'));
-console.log(`Verified all 17 replies and the opening letter against v13, 26 mappings, 13 figures, 12 narrative sections, Lite reference lifecycle, all assets and source hashes, and ${mathCount} mathematical expressions.`);
+console.log(`Verified all 17 replies, titles, reviewer quotations and the opening letter against v14, 26 mappings, 13 figures, 12 narrative sections, Lite reference lifecycle, all assets and source hashes, and ${mathCount} mathematical expressions.`);

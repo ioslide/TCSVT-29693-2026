@@ -1,12 +1,11 @@
-"""Render source PDFs and evidence crops with PyMuPDF and Pillow."""
+"""Render read-only source PDFs and evidence crops with PDFium and Pillow."""
 import hashlib
 import argparse
-import io
 import json
 from pathlib import Path
 import shutil
 
-import pymupdf as fitz
+import pypdfium2 as pdfium
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -21,24 +20,23 @@ versions = set(args.version or ["original", "revised"])
 
 
 def image(page, box=None):
-    clip = None
+    rendered = page.render(scale=2.5).to_pil().convert("RGB")
     if box:
         x, y, w, h = box
-        clip = fitz.Rect(x / 100 * page.rect.width, y / 100 * page.rect.height,
-                         (x + w) / 100 * page.rect.width, (y + h) / 100 * page.rect.height)
-    pix = page.get_pixmap(matrix=fitz.Matrix(2.5, 2.5), clip=clip, alpha=False)
-    return Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
+        rendered = rendered.crop((round(x / 100 * rendered.width), round(y / 100 * rendered.height),
+                                  round((x+w) / 100 * rendered.width), round((y+h) / 100 * rendered.height)))
+    return rendered
 
 
 # Coordinates are measured against the PDF and stored in data.js. Preserve them
 # when rendering; a renderer must not reset reviewed boxes to an older layout.
 changes = {c["id"]: c for c in data["changes"]}
 
-for version, directory in [("original", "latex_old_version"), ("revised", "latex")]:
+for version, directory in [("original", "latex_old_version"), ("revised", "latex_revise")]:
     if version not in versions:
         continue
     source = ROOT / directory / "main.pdf"
-    doc = fitz.open(source)
+    doc = pdfium.PdfDocument(source)
     data["meta"]["pages"][version] = len(doc)
     data["meta"]["hashes"][version]["pdf"] = hashlib.sha256(source.read_bytes()).hexdigest()
     shutil.copyfile(source, SITE / "assets" / "pdf" / f"{version}.pdf")
@@ -59,16 +57,17 @@ for version, directory in [("original", "latex_old_version"), ("revised", "latex
         crop.save(SITE / ref["image"], quality=92)
         ref["aspect"] = crop.width / crop.height
 
-# Figure 11(b) includes signed values and a method-average column in the current source.
-probe = fitz.open(ROOT / "latex/domainnet_heatmap_with_gain.pdf")
-changes["domainnet"]["after"] = probe[0].get_text()
-changes["domainnet"]["diff"] = {"original": [], "revised": [{"kind": "add", "text": changes["domainnet"]["after"]}]}
+# Text diffs are synchronized from LaTeX, not from PDF glyph extraction.
 if args.version is None:
     response_source = ROOT / data["meta"]["fullResponseSource"]
     response_pdf = response_source.with_suffix(".pdf")
-    data["meta"]["responsePages"] = len(fitz.open(response_pdf))
+    data["meta"]["responsePages"] = len(pdfium.PdfDocument(response_pdf))
     data["meta"]["responsePdfSha256"] = hashlib.sha256(response_pdf.read_bytes()).hexdigest()
     shutil.copyfile(response_pdf, SITE / "assets/pdf/response.pdf")
     shutil.copyfile(response_source.parent / "assets/retention_gate_heatmap.png", SITE / "assets/response/retention-gates.png")
+    for filename in ["ab_margin_3d_lambda_u2.pdf", "ab_margin_3d_N_sk_varepsilon.pdf",
+                     "imagenet_c_cross_heatmap_with_gain.pdf", "domainnet_heatmap_with_gain.pdf"]:
+        panel = pdfium.PdfDocument(response_source.parent / "assets" / filename)
+        image(panel[0]).save(SITE / "assets/response" / filename.replace(".pdf", ".png"))
 path.write_text("window.REVIEW_DATA=" + json.dumps(data, ensure_ascii=False, indent=2) + ";\n", encoding="utf-8")
 print("Synchronized " + ", ".join(sorted(versions)) + " PDF(s), page previews, mapped crops, and figure data.")

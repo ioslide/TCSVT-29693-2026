@@ -6,7 +6,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const responsePath = 'revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v13/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v13.tex';
+const responsePath = 'revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14.tex';
 const read = p => fs.readFileSync(path.join(root, p), 'utf8');
 const hash = p => createHash('sha256').update(fs.readFileSync(path.join(root, p))).digest('hex');
 const context = { window: {} };
@@ -20,7 +20,28 @@ const savedResponse = manuscriptOnly ? JSON.parse(JSON.stringify({
 const source = read(responsePath).replace(/\r\n/g, '\n');
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+// Website-only wording edits requested by the author. Keep claims, qualifications,
+// measurements and evidence intact; the read-only response source is never changed.
+function directResponse(fragment) {
+  const edits = [
+    ['Rather than treating unreliable target evidence and parameter drift as two independent failure sources, DCF addresses their interaction', 'DCF addresses the interaction between unreliable target evidence and parameter drift'],
+    ['The contribution is therefore not merely an additional filtering criterion, but an explicit routing decision over heterogeneous target evidence.', 'PSR makes an explicit routing decision over heterogeneous target evidence, extending sample selection into coordinated evidence control.'],
+    ['This suppresses error-amplifying drift in source-sensitive layers while preserving useful plasticity elsewhere, rather than applying a single global stabilization rule to the entire model.', 'This layer-dependent control suppresses error-amplifying drift in source-sensitive layers while preserving useful plasticity elsewhere.'],
+    ['\\textbf{Importantly, the distinction of DCF does not arise from any of these components in isolation.} It arises from coordinating', '\\textbf{The distinctive contribution of DCF is the coordinated control of the recurrent sample--layer feedback process.} DCF coordinates'],
+    ['within the same recurrent adaptation loop. In this sense, DCF moves beyond homogeneous adaptation control: it controls not only whether the model adapts, but', 'within the same recurrent adaptation loop. DCF moves beyond homogeneous adaptation control by jointly determining whether the model adapts,'],
+    ['as a coordinated sample--layer control framework rather than a collection of independent filtering, alignment, or regularization components.', 'as a coordinated sample--layer control framework that integrates evidence routing, geometry repair, and layer-dependent update persistence.'],
+    ['Its role in DCF does not require identifying every possible shortcut in isolation; it is sufficient that the structured response provides complementary evidence for deciding which confident predictions should drive adaptation.', 'Within DCF, the structured response supplies complementary evidence for deciding which confident predictions should drive adaptation, directly supporting shortcut-sensitive routing.'],
+    ['These results show that PCS is not merely a second threshold correlated with entropy: it captures', 'These results show that PCS captures'],
+    ['Statistical inference is intentionally conducted at this aggregate run level, which matches the reported cross-domain summary metric; the per-transfer cells are reported with mean $\\pm$ standard deviation to transparently characterize the distribution of gains rather than being overinterpreted as independently powered significance tests.', 'Statistical inference uses matched run-level aggregates, consistent with the reported cross-domain summary metric. The per-transfer cells report mean $\\pm$ standard deviation to characterize the distribution and variability of the gains.'],
+    ['This experiment therefore tests whether the representation-preservation behavior observed on ImageNet-C carries to a distinct dataset and a different family of domain shifts, rather than only to held-out corruptions within the same benchmark.', 'This experiment tests whether the representation-preservation behavior observed on ImageNet-C carries to a distinct dataset and a different family of domain shifts, extending the evaluation beyond held-out corruptions.'],
+  ];
+  for (const [before, after] of edits) fragment = fragment.replace(before, after);
+  return fragment;
+}
+
 function prepare(fragment) {
+  // Expand the author's caption macro without losing nested emphasis or equations.
+  fragment = fragment.replace(/\\manuscripttablecaption\{([^}]+)\}\{/g, '\\textit{\\textbf{Table~$1.} ');
   // A minipage's internal line breaks must stay inside its table cell.
   fragment = fragment.replace(/\\begin\{minipage\}\[[bt]\]\{\\linewidth\}\\raggedright\s*([\s\S]*?)\\end\{minipage\}/g,
     (_, contents) => contents.replace(/\\\\/g, ' '));
@@ -46,6 +67,7 @@ function prepare(fragment) {
     .replace(/\\begin\{minipage\}\[[bt]\]\{\\linewidth\}\\raggedright/g, '')
     .replace(/\\end\{minipage\}|\\strut|\\noalign\{\}/g, '')
     .replace(/\\(?:Needspace|label)\{[^}]*\}/g, '')
+    .replace(/\\(?:vspace|hspace)\*?\{[^}]*\}/g, '')
     .replace(/\\(?:clearpage|noindent|centering|tightlist)/g, '')
     .replace(/\\(?:changeslabel|revisionlabel)\{/g, '\\textbf{')
     .replace(/\\begin\{revisionquote\}|\\end\{revisionquote\}/g, '')
@@ -107,35 +129,53 @@ function blocks(fragment) {
         rows = [...block.c[3][1], ...block.c[4].flatMap(body => [...body[2], ...body[3]]), ...block.c[5][1]].map(decodeRow);
       } else throw new Error('Unsupported Pandoc table schema');
       result.push({ kind: 'table', rows });
+    } else if (block.t === 'OrderedList' || block.t === 'BulletList') {
+      const entries = block.t === 'OrderedList' ? block.c[1] : block.c;
+      result.push({kind:'list', ordered:block.t === 'OrderedList', items:entries.map(entry => entry.map(part => {
+        if (!['Para','Plain'].includes(part.t)) throw new Error('Unsupported list content: '+part.t);
+        return {kind:'paragraph',html:inline(part.c),text:inline(part.c,false)};
+      }))});
+    } else if (block.t === 'BlockQuote') {
+      for (const part of block.c) {
+        if (!['Para','Plain'].includes(part.t)) throw new Error('Unsupported quote content: '+part.t);
+        result.push({kind:'excerpt',html:inline(part.c),text:inline(part.c,false)});
+      }
     } else if (block.t === 'Para' || block.t === 'Plain') {
       const picture = block.c.find(x => x.t === 'Image');
       if (picture) {
         const basename = path.basename(picture.c[2][0]);
-        result.push({ kind: 'image', src: 'assets/response/' + (basename === 'retention_gate_heatmap.png' ? 'retention-gates.png' : basename), alt: 'Retention gates reproduced from revised Fig. 9' });
+        result.push({ kind: 'image', src: 'assets/response/' + (basename === 'retention_gate_heatmap.png' ? 'retention-gates.png' : basename.replace(/\.pdf$/i,'.png')), alt: basename.replace(/_/g,' ').replace(/\.(pdf|png)$/i,'') });
         continue;
       }
       const html = inline(block.c), text = inline(block.c, false);
       const kind = text.startsWith('Changes in the manuscript:') ? 'location'
         : /^"/.test(text) ? 'excerpt'
-        : /^Evidence from|^Selected measurements|^Measurements from|^Additional evidence|^Definitions added|^Implementation settings|^Reproduced from/.test(text) ? 'caption' : 'paragraph';
+        : /^Table [IVX]+\.|^Fig\.\s*\d|^Evidence from|^Selected measurements|^Measurements from|^Additional evidence|^Definitions added|^Implementation settings|^Reproduced from/.test(text) ? 'caption' : 'paragraph';
       result.push({ kind, html, text });
     } else {
-      throw new Error('Unsupported response block: ' + block.t);
+      throw new Error('Unsupported response block: ' + JSON.stringify(block));
     }
   }
   return result;
 }
 
-const headings = [...source.matchAll(/\\(?:subsection|section)\{([^}]+)\}(?:\\label\{[^}]+\})?/g)];
+const headings = [...source.matchAll(/\\(?:subsection|section)\{([^}]*)\}(?:\\label\{[^}]+\})?/g)];
 const parts = new Map();
+const sourceComments = new Map();
 for (let i = 0; i < headings.length; i++) {
   const title = headings[i][1];
   const fragment = source.slice(headings[i].index + headings[i][0].length, headings[i + 1]?.index ?? source.indexOf('\\end{document}'));
   const marker = '\\responselabel{Response}';
   const start = fragment.indexOf(marker);
   if (start < 0) continue;
-  const id = /^(EIC|E[12]|AE[1-5]|R[12]\.[1-6])\b/.exec(title)?.[1] ?? (title === 'Response to the Senior Area Editor' ? 'SAE' : null);
-  if (id) parts.set(id, blocks(fragment.slice(start + marker.length)));
+  const link = /\\reviewlinks\{([^}]+)\}\{([^}]+)\}/.exec(fragment);
+  const comment = /\\begin\{Comment\}\{([^}]+)\}([\s\S]*?)\\end\{Comment\}/.exec(fragment);
+  const id = link?.[2];
+  if (id && comment) {
+    parts.set(id, blocks(directResponse(fragment.slice(start + marker.length))));
+    const parsedComment = blocks(comment[2]);
+    sourceComments.set(link[1], {title:comment[1].replace(/^(?:AE\d|R\d\.\d):\s*/,''),comment:parsedComment.map(b=>b.text||'').join(' ')});
+  }
 }
 for (const comment of data.comments) {
   const key = comment.id === 'sae' ? 'SAE' : comment.label;
@@ -144,11 +184,26 @@ for (const comment of data.comments) {
     : parts.get(key);
   if (!reply?.length) throw new Error('Missing response: ' + key);
   comment.fullResponse = reply;
-  comment.responseWordCount = reply.flatMap(b => b.rows ? b.rows.flat().map(c => c.text) : b.text || '').join(' ').split(/\s+/).filter(Boolean).length;
+  Object.assign(comment, sourceComments.get(comment.id));
+  const imageEvidence = {
+    'ab_margin_3d_lambda_u2.png':'probe-sensitivity',
+    'ab_margin_3d_N_sk_varepsilon.png':'sinkhorn',
+    'retention-gates.png':'retention-heatmap',
+    'imagenet_c_cross_heatmap_with_gain.png':'transfer',
+    'domainnet_heatmap_with_gain.png':'domainnet',
+  };
+  for (let i=0;i<reply.length;i++) if(reply[i].kind==='image') {
+    reply[i].evidenceId=imageEvidence[path.basename(reply[i].src)];
+    if(reply[i+1]?.kind==='caption') {
+      reply[i].alt=reply[i+1].text;
+      reply[i+1].evidenceId=reply[i].evidenceId;
+    }
+  }
+  comment.responseWordCount = reply.flatMap(b => b.rows ? b.rows.flat().map(c => c.text) : b.items ? b.items.flat().map(c=>c.text) : b.text || '').join(' ').split(/\s+/).filter(Boolean).length;
 }
 
 if (process.env.REVIEW_RESPONSES_ONLY === '1') {
-  const start=source.indexOf('Dear Dr.~Shan Liu');
+  const start=source.indexOf('Dear Editor-in-Chief,');
   const end=source.indexOf('\\clearpage',start);
   if(start<0||end<0)throw new Error('Missing response-letter opening page');
   const opening=source.slice(start,end).replace(/\\vspace\{[^}]*\}/g,'').replace(/\\reviewwebsite/g,'https://tcsvt-29693-2026.xhy.im');
@@ -157,8 +212,8 @@ if (process.env.REVIEW_RESPONSES_ONLY === '1') {
   process.exit(0);
 }
 
-const manuscript = read('latex/main.tex');
-const aux = read('latex/main.aux');
+const manuscript = read('latex_revise/main.tex');
+const aux = read('latex_revise/main.aux');
 const refs = new Map([...aux.matchAll(/\\newlabel\{([^}]+)\}\{\{([^}]+)\}\{(\d+)\}/g)].map(m => [m[1], { number: m[2], page: Number(m[3]) }]));
 for (const m of aux.matchAll(/\\newlabel\{([^}]+)\}\{\{\\mbox\s*\{([^}]+)\}\}\{(\d+)\}/g)) refs.set(m[1], { number: m[2], page: Number(m[3]) });
 const cites = new Map([...aux.matchAll(/\\bibcite\{([^}]+)\}\{(?:\{)?(\d+)/g)].map(m => [m[1], m[2]]));
@@ -241,7 +296,7 @@ const narrativeCuts = [
   ['Ablations and analysis', '\\subsection{Ablations and Further Analysis}', '\\section{Conclusions}'],
   ['Conclusions', '\\section{Conclusions}', '\\bibliographystyle'],
 ];
-for (const [version, directory] of [['original', 'latex_old_version'], ['revised', 'latex']]) {
+for (const [version, directory] of [['original', 'latex_old_version'], ['revised', 'latex_revise']]) {
   const tex = read(directory + '/main.tex').replace(/(?<!\\)%[^\n]*/g, '');
   const auxText = read(directory + '/main.aux');
   const referenceMap = new Map([...auxText.matchAll(/\\newlabel\{([^}]+)\}\{\{(?:\\mbox\s*\{)?([^}]+)\}(?:\})?\{(\d+)\}/g)].map(m => [m[1], { number: m[2], page: Number(m[3]) }]));
@@ -269,13 +324,22 @@ for (const [id, startMarker, endMarker] of snippetCuts) {
   changes.get(id).after = narrativeText(manuscript.slice(start, end), refs, cites);
 }
 changes.get('tcsvt-literature').after = data.sections.find(s => s.title === 'Related work').after;
+const cleanManuscript=manuscript.replace(/(?<!\\)%[^\n]*/g,'');
+const uncertaintyStart=cleanManuscript.indexOf('Beyond visual tasks,');
+const uncertaintyEnd=cleanManuscript.indexOf('Nonetheless,',uncertaintyStart);
+changes.get('uncertainty-literature').after=narrativeText(cleanManuscript.slice(uncertaintyStart,uncertaintyEnd),refs,cites);
+const surveyStart=cleanManuscript.indexOf('Representative approaches update');
+const surveyEnd=cleanManuscript.indexOf('Test-time training',surveyStart);
+const goldStart=cleanManuscript.indexOf('CoTTA~\\cite{CoTTA}',cleanManuscript.indexOf('\\textbf{Reliability- and Stability-aware TTA.}'));
+const goldEnd=cleanManuscript.indexOf('\n\n',goldStart);
+changes.get('recent-literature').after=narrativeText(cleanManuscript.slice(surveyStart,surveyEnd),refs,cites)+'\n\n'+narrativeText(cleanManuscript.slice(goldStart,goldEnd),refs,cites);
 
 const figureLabels = {
   f1: 'fig:all_baselines_drop', f2: 'fig:motivation', f3: 'fig:overview', f4: 'fig:test_stream_type',
   f5: 'fig:ab_design_choices', f6: 'fig:qualitative_analysis', f7: 'fig:vis_pcs_entropy',
   f8: 'fig:drift_comparison', f9: 'fig:layerwise_mu', f10: 'fig:static_vs_t_cs', f12: 'fig:ab_hyperparameters',
 };
-for (const [version, directory] of [['original', 'latex_old_version'], ['revised', 'latex']]) {
+for (const [version, directory] of [['original', 'latex_old_version'], ['revised', 'latex_revise']]) {
   const tex = read(directory + '/main.tex').replace(/(?<!\\)%[^\n]*/g, '');
   const auxText = read(directory + '/main.aux');
   const referenceMap = new Map([...auxText.matchAll(/\\newlabel\{([^}]+)\}\{\{(?:\\mbox\s*\{)?([^}]+)\}(?:\})?\{(\d+)\}/g)].map(m => [m[1], { number: m[2], page: Number(m[3]) }]));
@@ -322,10 +386,13 @@ data.comments.find(c => c.id === 'r1-6').response = [
 data.figures.find(f => f.id === 'f5').changes = ['probe-definition', 'pcs-definition'];
 data.figures.find(f => f.id === 'f6').changes = ['probe-definition', 'shape-texture'];
 data.figures.find(f => f.id === 'f7').summary = 'The retained diagnostic plots visualize the four routing regions explicitly defined in revised Section III-C.';
-data.meta.snapshot = '4 October 2026';
+data.figures.find(f => f.id === 'f3').title='Route-adapt-retain overview';
+data.figures.find(f => f.id === 'f7').title='PCS-entropy diagnostic regions';
+data.meta.snapshot = '5 October 2026';
+data.meta.revisedManuscriptSource = 'latex_revise/main.tex';
 data.meta.fullResponseSource = responsePath;
 data.meta.fullResponseSha256 = hash(responsePath);
-for (const [version, dir] of [['original', 'latex_old_version'], ['revised', 'latex']]) {
+for (const [version, dir] of [['original', 'latex_old_version'], ['revised', 'latex_revise']]) {
   data.meta.hashes[version] = { pdf: hash('website/assets/pdf/' + version + '.pdf'), tex: hash(dir + '/main.tex') };
 }
 

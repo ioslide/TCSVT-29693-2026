@@ -3,7 +3,7 @@ window.REVIEW_DATA={
     "id": "TCSVT-29693-2026",
     "title": "Beyond Homogeneous Adaptation",
     "fullTitle": "Beyond Homogeneous Adaptation: Decoupled Control for Sample- and Layer-Aware Test-Time Robustness in Temporally Correlated Streams",
-    "snapshot": "4 October 2026",
+    "snapshot": "5 October 2026",
     "pages": {
       "original": 14,
       "revised": 14
@@ -14,26 +14,27 @@ window.REVIEW_DATA={
         "tex": "1108279736019bcae2bd95c497c8d7f1830f8f65e2eeb3d607f431ad0f90efad"
       },
       "revised": {
-        "pdf": "d2d6921754cd8d06c020cbed353574364559d955803699050afad4b62b17ff8b",
-        "tex": "90c4fd4342906345b9c3f0852e00e72b077e86e8507fcbe7f80474e187522f44"
+        "pdf": "c88db8740482ed99458ae60e350817657c9aad811f4bb6b81b4390fa6e819eb4",
+        "tex": "e249098ce3ec366b9fc1b4675369cf22ad09749373e6f0b6f7fd3a44f241e850"
       }
     },
-    "fullResponseSource": "revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v13/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v13.tex",
-    "fullResponseSha256": "b84f4c1a66c175b08f87f60aef3316f9b768a4c55c346bf782a4ff49530d3c49",
-    "responsePages": 19,
-    "responsePdfSha256": "2f599e1cb8986c68a0682d024927befbf99d04f1a5eccd0073b7236d263f0e4a",
-    "responseRevision": "v13"
+    "fullResponseSource": "revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14.tex",
+    "fullResponseSha256": "06132dfca8e81d99f8aa3fcfb8eedf0468499cf373790fd1b493835624ead76e",
+    "responsePages": 20,
+    "responsePdfSha256": "de5492c8a84b23cf3c07c3d8d200ba076e79e69685a522fedf4bc795b99e0582",
+    "responseRevision": "v14",
+    "revisedManuscriptSource": "latex_revise/main.tex"
   },
   "comments": [
     {
       "id": "eic",
       "group": "Editors",
       "label": "EIC",
-      "title": "Related work and novelty",
-      "comment": "What are the 3–5 papers published in IEEE TCSVT which are most closely related to your manuscript, and what is distinctive or new about your current manuscript relative to these papers?",
+      "title": "Related TCSVT studies and the distinctive contribution of DCF",
+      "comment": "Before your new submission, you have to answer two questions clearly in your revised manuscript and responses: a) what are the 3-5 papers published in the IEEE Transactions on Circuits and Systems for Video Technology, which are most closely related to your manuscript; b) what is distinctive / new about your current manuscript related to these previously published papers.",
       "response": [
-        "DCF’s central contribution is a decoupled control architecture for the error-amplifying sample–layer feedback process in temporally correlated recognition streams. An unreliable target update changes the model’s future predictions and sample selection, while its effects accumulate unevenly across network depth. DCF controls both sides of this feedback process in one online loop: PSR determines which evidence drives direct adaptation, RGR extracts target-geometry constraints from routed-away evidence, and CLR determines where the resulting candidate update persists. This formulation makes sample selection, adaptation supervision, and update retention three explicit, coordinated decisions.",
-        "Section II discusses four closely related TCSVT studies whose tasks and adaptation mechanisms differ substantially from this control architecture. We explain these distinctions below and then identify the evidence for DCF’s contribution."
+        "We sincerely appreciate the Editor-in-Chief’s constructive guidance. Following this guidance, we have explicitly identified the closely related IEEE TCSVT studies and clarified how DCF differs from and advances beyond these works in the revised manuscript. This comparison also helps position the contribution of DCF more clearly within the scope of IEEE TCSVT.",
+        "Below, we directly answer the two questions."
       ],
       "changes": [
         "tcsvt-literature",
@@ -43,81 +44,137 @@ window.REVIEW_DATA={
       "fullResponse": [
         {
           "kind": "paragraph",
-          "html": "<strong>DCF’s central contribution is a decoupled control architecture for the error-amplifying sample–layer feedback process in temporally correlated recognition streams.</strong> An unreliable target update changes the model’s future predictions and sample selection, while its effects accumulate unevenly across network depth. DCF controls both sides of this feedback process in one online loop: PSR determines which evidence drives direct adaptation, RGR extracts target-geometry constraints from routed-away evidence, and CLR determines where the resulting candidate update persists. This formulation makes sample selection, adaptation supervision, and update retention three explicit, coordinated decisions.",
-          "text": "DCF’s central contribution is a decoupled control architecture for the error-amplifying sample–layer feedback process in temporally correlated recognition streams. An unreliable target update changes the model’s future predictions and sample selection, while its effects accumulate unevenly across network depth. DCF controls both sides of this feedback process in one online loop: PSR determines which evidence drives direct adaptation, RGR extracts target-geometry constraints from routed-away evidence, and CLR determines where the resulting candidate update persists. This formulation makes sample selection, adaptation supervision, and update retention three explicit, coordinated decisions."
+          "html": "We sincerely appreciate the Editor-in-Chief’s constructive guidance. Following this guidance, we have explicitly identified the closely related IEEE TCSVT studies and clarified how DCF differs from and advances beyond these works in the revised manuscript. This comparison also helps position the contribution of DCF more clearly within the scope of IEEE TCSVT.",
+          "text": "We sincerely appreciate the Editor-in-Chief’s constructive guidance. Following this guidance, we have explicitly identified the closely related IEEE TCSVT studies and clarified how DCF differs from and advances beyond these works in the revised manuscript. This comparison also helps position the contribution of DCF more clearly within the scope of IEEE TCSVT."
         },
         {
           "kind": "paragraph",
-          "html": "Section II discusses four closely related TCSVT studies whose tasks and adaptation mechanisms differ substantially from this control architecture. We explain these distinctions below and then identify the evidence for DCF’s contribution.",
-          "text": "Section II discusses four closely related TCSVT studies whose tasks and adaptation mechanisms differ substantially from this control architecture. We explain these distinctions below and then identify the evidence for DCF’s contribution."
+          "html": "Below, we directly answer the two questions.",
+          "text": "Below, we directly answer the two questions."
         },
         {
           "kind": "paragraph",
-          "html": "<strong>[31]</strong> J. Liu, J. Xie, F. Zhou, and S. He, \"Question Type-Aware Debiasing for Test-Time Visual Question Answering Model Adaptation,\" IEEE TCSVT, vol. 34, no. 11, pp. 10805–10816, 2024.",
-          "text": "[31] J. Liu, J. Xie, F. Zhou, and S. He, \"Question Type-Aware Debiasing for Test-Time Visual Question Answering Model Adaptation,\" IEEE TCSVT, vol. 34, no. 11, pp. 10805–10816, 2024."
+          "html": "<strong>1. Response to Question a): Closely Related Papers Published in IEEE TCSVT</strong>",
+          "text": "1. Response to Question a): Closely Related Papers Published in IEEE TCSVT"
         },
         {
           "kind": "paragraph",
-          "html": "<strong>QED: question-conditioned debiasing in visual question answering.</strong> QED uses question-type-aware entropy and negative samples to detect predictions supported by language priors under changing question–answer distributions. Its selection criterion is tied to VQA question types and answer spaces. DCF addresses temporally correlated visual-recognition streams: a structured Fourier stress response and predictive entropy route target evidence into distinct supervision roles, and curvature-aware retention controls the persistence of the induced update across layer groups. The distinction is therefore both the prediction task and the object of control: QED filters question-dependent bias, while DCF governs the coupled evolution of adaptation evidence and model parameters.",
-          "text": "QED: question-conditioned debiasing in visual question answering. QED uses question-type-aware entropy and negative samples to detect predictions supported by language priors under changing question–answer distributions. Its selection criterion is tied to VQA question types and answer spaces. DCF addresses temporally correlated visual-recognition streams: a structured Fourier stress response and predictive entropy route target evidence into distinct supervision roles, and curvature-aware retention controls the persistence of the induced update across layer groups. The distinction is therefore both the prediction task and the object of control: QED filters question-dependent bias, while DCF governs the coupled evolution of adaptation evidence and model parameters."
+          "html": "In the revised Section II (\"Related Work\"), we have explicitly incorporated and analyzed four closely related studies recently published in IEEE TCSVT (spanning 2024 to 2026) that address test-time adaptation, target-evidence reliability, online model adaptation, or target-side representation refinement:",
+          "text": "In the revised Section II (\"Related Work\"), we have explicitly incorporated and analyzed four closely related studies recently published in IEEE TCSVT (spanning 2024 to 2026) that address test-time adaptation, target-evidence reliability, online model adaptation, or target-side representation refinement:"
+        },
+        {
+          "kind": "list",
+          "ordered": true,
+          "items": [
+            [
+              {
+                "kind": "paragraph",
+                "html": "<strong>QED</strong> (Liu <em>et al.</em>, IEEE TCSVT 2024) [31]: <em>Question Type-Aware Debiasing for Test-Time Visual Question Answering Model Adaptation.</em><br><strong>Focus &amp; Mechanism:</strong> QED addresses test-time bias in VQA by leveraging question-type-aware entropy and negative samples to identify predictions likely to be influenced by language priors. Its primary control determines whether a test instance should contribute to adaptation according to task-specific question–answer structure.",
+                "text": "QED (Liu et al., IEEE TCSVT 2024) [31]: Question Type-Aware Debiasing for Test-Time Visual Question Answering Model Adaptation.\nFocus & Mechanism: QED addresses test-time bias in VQA by leveraging question-type-aware entropy and negative samples to identify predictions likely to be influenced by language priors. Its primary control determines whether a test instance should contribute to adaptation according to task-specific question–answer structure."
+              }
+            ],
+            [
+              {
+                "kind": "paragraph",
+                "html": "<strong>MetaBN</strong> (Liu and Yang, IEEE TCSVT 2025) [29]: <em>Test-Time Adaptation for Real-World Video Adverse Weather Restoration With Meta Batch Normalization.</em><br><strong>Focus &amp; Mechanism:</strong> MetaBN develops adaptation capability through source-stage meta-learning of normalization affine parameters and applies self-supervised updates online for adverse-weather video restoration. Its adaptation mechanism is therefore closely tied to source-stage preparation of normalization behavior.",
+                "text": "MetaBN (Liu and Yang, IEEE TCSVT 2025) [29]: Test-Time Adaptation for Real-World Video Adverse Weather Restoration With Meta Batch Normalization.\nFocus & Mechanism: MetaBN develops adaptation capability through source-stage meta-learning of normalization affine parameters and applies self-supervised updates online for adverse-weather video restoration. Its adaptation mechanism is therefore closely tied to source-stage preparation of normalization behavior."
+              }
+            ],
+            [
+              {
+                "kind": "paragraph",
+                "html": "<strong>CMDA</strong> (Zhang <em>et al.</em>, IEEE TCSVT 2026) [30]: <em>Collaborative Model and Data Adaptation at Test Time.</em><br><strong>Focus &amp; Mechanism:</strong> CMDA couples predictive model adaptation with diffusion-based data refinement in a bidirectional loop: current predictions guide reverse-diffusion sample generation, and the generated samples subsequently refine the predictive model.",
+                "text": "CMDA (Zhang et al., IEEE TCSVT 2026) [30]: Collaborative Model and Data Adaptation at Test Time.\nFocus & Mechanism: CMDA couples predictive model adaptation with diffusion-based data refinement in a bidirectional loop: current predictions guide reverse-diffusion sample generation, and the generated samples subsequently refine the predictive model."
+              }
+            ],
+            [
+              {
+                "kind": "paragraph",
+                "html": "<strong>MS-TTA</strong> (Han <em>et al.</em>, IEEE TCSVT 2026) [36]: <em>Unleashing the Potential of All Test Samples: Mean-Shift Guided Test-Time Adaptation.</em><br><strong>Focus &amp; Mechanism:</strong> MS-TTA exploits information from test samples without conventional online parameter optimization by applying mean-shift refinement to CLIP embeddings and maintaining a feature cache during inference.",
+                "text": "MS-TTA (Han et al., IEEE TCSVT 2026) [36]: Unleashing the Potential of All Test Samples: Mean-Shift Guided Test-Time Adaptation.\nFocus & Mechanism: MS-TTA exploits information from test samples without conventional online parameter optimization by applying mean-shift refinement to CLIP embeddings and maintaining a feature cache during inference."
+              }
+            ]
+          ]
         },
         {
           "kind": "paragraph",
-          "html": "<strong>[29]</strong> J. Liu and Z. Yang, \"Test-Time Adaptation for Real-World Video Adverse Weather Restoration With Meta Batch Normalization,\" IEEE TCSVT, vol. 35, no. 6, pp. 5533–5544, 2025.",
-          "text": "[29] J. Liu and Z. Yang, \"Test-Time Adaptation for Real-World Video Adverse Weather Restoration With Meta Batch Normalization,\" IEEE TCSVT, vol. 35, no. 6, pp. 5533–5544, 2025."
+          "html": "<strong>2. Response to Question b): Distinctive Novelty and Advances of DCF</strong>",
+          "text": "2. Response to Question b): Distinctive Novelty and Advances of DCF"
         },
         {
           "kind": "paragraph",
-          "html": "<strong>MetaBN: meta-trained normalization for video restoration.</strong> MetaBN uses source-stage meta-learning of normalization affine parameters and a self-supervised test-time update strategy to adapt adverse-weather restoration models. Its adaptation capability is built into the restoration training procedure. DCF starts from an ordinary pre-trained recognition model and operates directly on the incoming unlabeled stream. Its source model supplies the parameter and curvature reference for retaining candidate updates; PSR and RGR regulate the target evidence that produces those updates. DCF’s contribution is online evidence and update control across the adaptation loop.",
-          "text": "MetaBN: meta-trained normalization for video restoration. MetaBN uses source-stage meta-learning of normalization affine parameters and a self-supervised test-time update strategy to adapt adverse-weather restoration models. Its adaptation capability is built into the restoration training procedure. DCF starts from an ordinary pre-trained recognition model and operates directly on the incoming unlabeled stream. Its source model supplies the parameter and curvature reference for retaining candidate updates; PSR and RGR regulate the target evidence that produces those updates. DCF’s contribution is online evidence and update control across the adaptation loop."
+          "html": "<strong>DCF’s distinctive contribution is to formulate long-horizon test-time adaptation under temporally correlated streams as a coupled sample–layer feedback control problem, and to operationalize this formulation through a decoupled route–adapt–retain architecture.</strong>",
+          "text": "DCF’s distinctive contribution is to formulate long-horizon test-time adaptation under temporally correlated streams as a coupled sample–layer feedback control problem, and to operationalize this formulation through a decoupled route–adapt–retain architecture."
         },
         {
           "kind": "paragraph",
-          "html": "<strong>[30]</strong> C. Zhang et al., \"Collaborative Model and Data Adaptation at Test Time,\" IEEE TCSVT, vol. 36, no. 6, pp. 8980–8994, 2026.",
-          "text": "[30] C. Zhang et al., \"Collaborative Model and Data Adaptation at Test Time,\" IEEE TCSVT, vol. 36, no. 6, pp. 8980–8994, 2026."
+          "html": "DCF addresses the interaction between unreliable target evidence and parameter drift as an error-amplifying feedback process: the current target evidence determines the adaptation update, the retained update reshapes subsequent predictions and sample selection, and its effect accumulates heterogeneously across network depth. This formulation motivates three coordinated control decisions within the same online loop: <em>which evidence should drive direct adaptation</em>, <em>how non-trusted evidence should still contribute to adaptation</em>, and <em>where the resulting candidate update should be allowed to persist</em>.",
+          "text": "DCF addresses the interaction between unreliable target evidence and parameter drift as an error-amplifying feedback process: the current target evidence determines the adaptation update, the retained update reshapes subsequent predictions and sample selection, and its effect accumulates heterogeneously across network depth. This formulation motivates three coordinated control decisions within the same online loop: which evidence should drive direct adaptation, how non-trusted evidence should still contribute to adaptation, and where the resulting candidate update should be allowed to persist."
         },
         {
           "kind": "paragraph",
-          "html": "<strong>CMDA: collaboration between generative data adaptation and model adaptation.</strong> CMDA couples model predictions with reverse diffusion: predictions guide synthetic target generation, and the generated samples refine the model, with an aggregation network combining predictions. DCF controls adaptation on observed target evidence. It assigns trusted samples to consistency supervision and routed-away samples to soft optimal-transport geometry constraints, then passes the combined sample-side update through closed-form, curvature-aware retention. CMDA’s bidirectional model–generator collaboration and DCF’s sample–layer control solve adaptation through different mechanisms.",
-          "text": "CMDA: collaboration between generative data adaptation and model adaptation. CMDA couples model predictions with reverse diffusion: predictions guide synthetic target generation, and the generated samples refine the model, with an aggregation network combining predictions. DCF controls adaptation on observed target evidence. It assigns trusted samples to consistency supervision and routed-away samples to soft optimal-transport geometry constraints, then passes the combined sample-side update through closed-form, curvature-aware retention. CMDA’s bidirectional model–generator collaboration and DCF’s sample–layer control solve adaptation through different mechanisms."
+          "html": "None of the four closely related TCSVT studies above jointly addresses these three decisions within one recurrent online adaptation process:",
+          "text": "None of the four closely related TCSVT studies above jointly addresses these three decisions within one recurrent online adaptation process:"
+        },
+        {
+          "kind": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "kind": "paragraph",
+                "html": "<strong>From Sample Selection to Heterogeneous Evidence Routing.</strong> QED regulates adaptation evidence according to VQA-specific question–answer structure, while MetaBN develops test-time adaptability through source-stage normalization meta-learning. DCF instead addresses temporally correlated recognition streams in which confidence alone may not provide sufficient evidence reliability. <strong>PSR</strong> jointly evaluates predictive entropy and responsiveness under structured Fourier stress, distinguishing confident, stress-responsive samples from confident but stress-inert candidates. PSR makes an explicit routing decision over heterogeneous target evidence, extending sample selection into coordinated evidence control.",
+                "text": "From Sample Selection to Heterogeneous Evidence Routing. QED regulates adaptation evidence according to VQA-specific question–answer structure, while MetaBN develops test-time adaptability through source-stage normalization meta-learning. DCF instead addresses temporally correlated recognition streams in which confidence alone may not provide sufficient evidence reliability. PSR jointly evaluates predictive entropy and responsiveness under structured Fourier stress, distinguishing confident, stress-responsive samples from confident but stress-inert candidates. PSR makes an explicit routing decision over heterogeneous target evidence, extending sample selection into coordinated evidence control."
+              }
+            ],
+            [
+              {
+                "kind": "paragraph",
+                "html": "<strong>From Discarding Non-Trusted Samples to Alternative Supervision.</strong> DCF further distinguishes between evidence that is unsuitable for direct pseudo-label supervision and evidence that is entirely uninformative for adaptation. <strong>RGR</strong> fundamentally changes the role of routed-away samples: instead of discarding them or forcing them into direct pseudo-label supervision, it converts them into soft class-geometry constraints through entropic optimal transport. This explicitly separates \"not trusted for direct supervision\" from \"not useful for adaptation.\" In contrast, CMDA establishes a model–generator refinement loop through diffusion-based data adaptation, whereas MS-TTA refines and caches test representations without conventional online parameter optimization.",
+                "text": "From Discarding Non-Trusted Samples to Alternative Supervision. DCF further distinguishes between evidence that is unsuitable for direct pseudo-label supervision and evidence that is entirely uninformative for adaptation. RGR fundamentally changes the role of routed-away samples: instead of discarding them or forcing them into direct pseudo-label supervision, it converts them into soft class-geometry constraints through entropic optimal transport. This explicitly separates \"not trusted for direct supervision\" from \"not useful for adaptation.\" In contrast, CMDA establishes a model–generator refinement loop through diffusion-based data adaptation, whereas MS-TTA refines and caches test representations without conventional online parameter optimization."
+              }
+            ],
+            [
+              {
+                "kind": "paragraph",
+                "html": "<strong>From Parameter Updating to Layer-Dependent Update Persistence.</strong> DCF also separates the generation of an adaptation update from the decision of whether that update should persist. <strong>CLR</strong> treats every sample-side optimization result only as a candidate update and selectively determines where that update is retained across network depth using current source–candidate curvature mismatch. This layer-dependent control suppresses error-amplifying drift in source-sensitive layers while preserving useful plasticity elsewhere.",
+                "text": "From Parameter Updating to Layer-Dependent Update Persistence. DCF also separates the generation of an adaptation update from the decision of whether that update should persist. CLR treats every sample-side optimization result only as a candidate update and selectively determines where that update is retained across network depth using current source–candidate curvature mismatch. This layer-dependent control suppresses error-amplifying drift in source-sensitive layers while preserving useful plasticity elsewhere."
+              }
+            ]
+          ]
         },
         {
           "kind": "paragraph",
-          "html": "<strong>[36]</strong> J. Han et al., \"Unleashing the Potential of All Test Samples: Mean-Shift Guided Test-Time Adaptation,\" IEEE TCSVT, vol. 36, no. 8, pp. 11323–11335, 2026.",
-          "text": "[36] J. Han et al., \"Unleashing the Potential of All Test Samples: Mean-Shift Guided Test-Time Adaptation,\" IEEE TCSVT, vol. 36, no. 8, pp. 11323–11335, 2026."
+          "html": "<strong>The distinctive contribution of DCF is the coordinated control of the recurrent sample–layer feedback process.</strong> DCF coordinates evidence routing, alternative use of non-trusted samples, and layer-dependent update persistence within the same recurrent adaptation loop. DCF moves beyond homogeneous adaptation control by jointly determining whether the model adapts, <em>what evidence drives adaptation</em>, <em>what role the remaining evidence plays</em>, and <em>where the resulting update is allowed to accumulate</em>. This coupled sample–layer control is the principal distinction of DCF from the closely related TCSVT studies above.",
+          "text": "The distinctive contribution of DCF is the coordinated control of the recurrent sample–layer feedback process. DCF coordinates evidence routing, alternative use of non-trusted samples, and layer-dependent update persistence within the same recurrent adaptation loop. DCF moves beyond homogeneous adaptation control by jointly determining whether the model adapts, what evidence drives adaptation, what role the remaining evidence plays, and where the resulting update is allowed to accumulate. This coupled sample–layer control is the principal distinction of DCF from the closely related TCSVT studies above."
         },
         {
           "kind": "paragraph",
-          "html": "<strong>MS-TTA: training-free feature refinement for CLIP.</strong> MS-TTA applies mean shift to test embeddings and uses a feature cache to improve inference. Its adaptation operates through embedding refinement and cached logits. DCF performs online parameter adaptation with two distinct sample-side objectives and a separate retention stage. Trusted evidence drives consistency learning; routed-away evidence constrains class geometry through OT; layer-wise source compatibility controls the accepted parameter update. Reusing test features through mean shift and controlling their contribution to persistent model updates are fundamentally different adaptation designs.",
-          "text": "MS-TTA: training-free feature refinement for CLIP. MS-TTA applies mean shift to test embeddings and uses a feature cache to improve inference. Its adaptation operates through embedding refinement and cached logits. DCF performs online parameter adaptation with two distinct sample-side objectives and a separate retention stage. Trusted evidence drives consistency learning; routed-away evidence constrains class geometry through OT; layer-wise source compatibility controls the accepted parameter update. Reusing test features through mean shift and controlling their contribution to persistent model updates are fundamentally different adaptation designs."
-        },
-        {
-          "kind": "paragraph",
-          "html": "<strong>What DCF contributes.</strong> DCF makes the interaction between heterogeneous target evidence and layer-dependent update persistence the central problem of online adaptation. Its three stages introduce distinct controls: <strong>PSR</strong> tests confident predictions through structured Fourier stress and routes samples by joint confidence and responsiveness; <strong>RGR</strong> converts routed-away samples into soft class-geometry constraints, preserving their structural value while separating them from direct consistency supervision; <strong>CLR</strong> treats the resulting sample-side update as a candidate and retains it through a closed-form, source–candidate curvature-weighted barycenter for each layer group. Together, these stages control which evidence enters adaptation, how it shapes the update, and where that update accumulates.",
-          "text": "What DCF contributes. DCF makes the interaction between heterogeneous target evidence and layer-dependent update persistence the central problem of online adaptation. Its three stages introduce distinct controls: PSR tests confident predictions through structured Fourier stress and routes samples by joint confidence and responsiveness; RGR converts routed-away samples into soft class-geometry constraints, preserving their structural value while separating them from direct consistency supervision; CLR treats the resulting sample-side update as a candidate and retains it through a closed-form, source–candidate curvature-weighted barycenter for each layer group. Together, these stages control which evidence enters adaptation, how it shapes the update, and where that update accumulates."
-        },
-        {
-          "kind": "paragraph",
-          "html": "<strong>Evidence for the coordinated design.</strong> Table III isolates the contributions of PSR, RGR, and CLR. Tables IV–VI validate probe responsiveness and selected-sample reliability; Tables VII–VIII test geometry-repair alternatives and failure regimes; Fig. 9 and Table IX expose layer-wise retention behavior and proxy trade-offs. Table II demonstrates sustained robustness over the 225-domain stream, and Fig. 11 reports post-adaptation transfer to unseen domains. These results establish the practical contribution of controlling the coupled sample–layer feedback process throughout long-horizon adaptation.",
-          "text": "Evidence for the coordinated design. Table III isolates the contributions of PSR, RGR, and CLR. Tables IV–VI validate probe responsiveness and selected-sample reliability; Tables VII–VIII test geometry-repair alternatives and failure regimes; Fig. 9 and Table IX expose layer-wise retention behavior and proxy trade-offs. Table II demonstrates sustained robustness over the 225-domain stream, and Fig. 11 reports post-adaptation transfer to unseen domains. These results establish the practical contribution of controlling the coupled sample–layer feedback process throughout long-horizon adaptation."
-        },
-        {
-          "kind": "paragraph",
-          "html": "<strong>Selected revised text</strong>",
-          "text": "Selected revised text"
-        },
-        {
-          "kind": "excerpt",
-          "html": "\"DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, and where candidate updates persist.\"",
-          "text": "\"DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, and where candidate updates persist.\""
+          "html": "<strong>Evidence for the Coordinated Design.</strong> The revised experiments evaluate these controls both individually and as a coupled system. Table III isolates the contributions of PSR, RGR, and CLR. Tables IV–VI analyze Fourier-probe responsiveness, shortcut sensitivity, and selected-sample reliability. Tables VII–VIII compare geometry-repair alternatives and characterize routing ratios from 10% to 90%. Fig. 9 and Table IX expose layer-wise retention behavior and compare alternative curvature proxies. Table II evaluates stability over the 225-domain long-horizon stream, while Fig. 11 examines post-adaptation transfer to unseen domains. Table XI further reports computational cost and the DCF-Lite approximation, which reduces FLOPs by 61.8% and peak memory by 58.6% relative to full DCF while retaining strong long-horizon accuracy. Taken together, these results support the central contribution of DCF as a coordinated sample–layer control framework that integrates evidence routing, geometry repair, and layer-dependent update persistence.",
+          "text": "Evidence for the Coordinated Design. The revised experiments evaluate these controls both individually and as a coupled system. Table III isolates the contributions of PSR, RGR, and CLR. Tables IV–VI analyze Fourier-probe responsiveness, shortcut sensitivity, and selected-sample reliability. Tables VII–VIII compare geometry-repair alternatives and characterize routing ratios from 10% to 90%. Fig. 9 and Table IX expose layer-wise retention behavior and compare alternative curvature proxies. Table II evaluates stability over the 225-domain long-horizon stream, while Fig. 11 examines post-adaptation transfer to unseen domains. Table XI further reports computational cost and the DCF-Lite approximation, which reduces FLOPs by 61.8% and peak memory by 58.6% relative to full DCF while retaining strong long-horizon accuracy. Taken together, these results support the central contribution of DCF as a coordinated sample–layer control framework that integrates evidence routing, geometry repair, and layer-dependent update persistence."
         },
         {
           "kind": "location",
-          "html": "<strong>Changes in the manuscript:</strong> Sections I–II, pp. 1–3; Section III-B, p. 3, Eqs. (2)–(3); Table II, p. 8; Section IV-C, pp. 7–12, Tables III–IX, Figs. 9 and 11; references [29], [30], [31], and [36], p. 13.",
-          "text": "Changes in the manuscript: Sections I–II, pp. 1–3; Section III-B, p. 3, Eqs. (2)–(3); Table II, p. 8; Section IV-C, pp. 7–12, Tables III–IX, Figs. 9 and 11; references [29], [30], [31], and [36], p. 13."
+          "html": "<strong>Changes in the manuscript:</strong> Section I (p. 2); Section II (p. 3); Section III-B (p. 3, Eqs. (2)–(3)); Section IV-C (pp. 7–12, Tables II–IX, XI; Figs. 9, 11, 12); References [29], [30], [31], [36] (p. 13).",
+          "text": "Changes in the manuscript: Section I (p. 2); Section II (p. 3); Section III-B (p. 3, Eqs. (2)–(3)); Section IV-C (pp. 7–12, Tables II–IX, XI; Figs. 9, 11, 12); References [29], [30], [31], [36] (p. 13)."
+        },
+        {
+          "kind": "paragraph",
+          "html": "<strong>Selected Revised Text in Section II (Page 3):</strong>",
+          "text": "Selected Revised Text in Section II (Page 3):"
+        },
+        {
+          "kind": "excerpt",
+          "html": "<em>\"Related studies further explore question-conditioned debiasing [31], meta-trained normalization for adverse-weather adaptation [29], diffusion-based collaborative model–data adaptation [30], and training-free mean-shift refinement of test representations [36]. In contrast, DCF controls the coupled evolution of target evidence and model parameters in temporally correlated recognition streams. PSR routes evidence by entropy and Fourier stress responsiveness; RGR converts routed-away samples into soft OT geometry constraints; and CLR determines where the resulting candidate update persists.\"</em>",
+          "text": "\"Related studies further explore question-conditioned debiasing [31], meta-trained normalization for adverse-weather adaptation [29], diffusion-based collaborative model–data adaptation [30], and training-free mean-shift refinement of test representations [36]. In contrast, DCF controls the coupled evolution of target evidence and model parameters in temporally correlated recognition streams. PSR routes evidence by entropy and Fourier stress responsiveness; RGR converts routed-away samples into soft OT geometry constraints; and CLR determines where the resulting candidate update persists.\""
+        },
+        {
+          "kind": "excerpt",
+          "html": "\"DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling <em>which evidence drives direct supervision</em>, <em>how routed-away samples constrain target geometry</em>, and <em>where candidate updates persist</em>. This route–adapt–retain design interrupts the error-amplifying feedback that causes long-horizon collapse.\"",
+          "text": "\"DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, and where candidate updates persist. This route–adapt–retain design interrupts the error-amplifying feedback that causes long-horizon collapse.\""
         }
       ],
-      "responseWordCount": 819,
+      "responseWordCount": 1074,
       "responseSourceSections": [
         "EIC"
       ]
@@ -126,10 +183,10 @@ window.REVIEW_DATA={
       "id": "ae1",
       "group": "Editors",
       "label": "AE1",
-      "title": "Probe justification",
+      "title": "Justification and sensitivity of the Fourier probe",
       "comment": "The Fourier-based stress probe lacks formal theoretical justification, and a sensitivity study on the choice of frequency range and perturbation strength is needed.",
       "response": [
-        "We now explain the Fourier probe using a local directional-sensitivity analysis and controlled experiments. PCS is the positive drop in the original predicted-class probability; Response R1.1 below makes this positive-part operation explicit in its local expansion. The analysis explains what PCS measures. Shape–texture interventions, paired shortcut counterfactuals, matched-coverage purity analysis, and Colored-MNIST then test how that response relates to routing reliability. Figure 12(c) further evaluates frequency range and perturbation strength around the default setting."
+        "We now ground the Fourier probe in a local directional-sensitivity analysis and test its shortcut sensitivity directly with controlled experiments. PCS is the positive drop in the original predicted-class probability, and the expansion in Response R1.1 explicitly retains this positive-part operation. The analysis identifies what PCS measures—one-sided sensitivity along the structured Fourier directions—while the shape–texture interventions, paired shortcut counterfactuals, matched-coverage ImageNet-C purity analysis, and Colored-MNIST jointly establish that probe responsiveness provides discriminative, shortcut-sensitive routing information beyond confidence alone. Figure 12(c) further shows that this behavior is not tied to a narrowly tuned frequency range or perturbation strength."
       ],
       "changes": [
         "probe-theory",
@@ -140,8 +197,8 @@ window.REVIEW_DATA={
       "fullResponse": [
         {
           "kind": "paragraph",
-          "html": "We now explain the Fourier probe using a local directional-sensitivity analysis and controlled experiments. PCS is the positive drop in the original predicted-class probability; Response R1.1 below makes this positive-part operation explicit in its local expansion. The analysis explains what PCS measures. Shape–texture interventions, paired shortcut counterfactuals, matched-coverage purity analysis, and Colored-MNIST then test how that response relates to routing reliability. Figure 12(c) further evaluates frequency range and perturbation strength around the default setting.",
-          "text": "We now explain the Fourier probe using a local directional-sensitivity analysis and controlled experiments. PCS is the positive drop in the original predicted-class probability; Response R1.1 below makes this positive-part operation explicit in its local expansion. The analysis explains what PCS measures. Shape–texture interventions, paired shortcut counterfactuals, matched-coverage purity analysis, and Colored-MNIST then test how that response relates to routing reliability. Figure 12(c) further evaluates frequency range and perturbation strength around the default setting."
+          "html": "We now ground the Fourier probe in a local directional-sensitivity analysis and test its shortcut sensitivity directly with controlled experiments. PCS is the positive drop in the original predicted-class probability, and the expansion in Response R1.1 explicitly retains this positive-part operation. The analysis identifies what PCS measures—one-sided sensitivity along the structured Fourier directions—while the shape–texture interventions, paired shortcut counterfactuals, matched-coverage ImageNet-C purity analysis, and Colored-MNIST jointly establish that probe responsiveness provides discriminative, shortcut-sensitive routing information beyond confidence alone. Figure 12(c) further shows that this behavior is not tied to a narrowly tuned frequency range or perturbation strength.",
+          "text": "We now ground the Fourier probe in a local directional-sensitivity analysis and test its shortcut sensitivity directly with controlled experiments. PCS is the positive drop in the original predicted-class probability, and the expansion in Response R1.1 explicitly retains this positive-part operation. The analysis identifies what PCS measures—one-sided sensitivity along the structured Fourier directions—while the shape–texture interventions, paired shortcut counterfactuals, matched-coverage ImageNet-C purity analysis, and Colored-MNIST jointly establish that probe responsiveness provides discriminative, shortcut-sensitive routing information beyond confidence alone. Figure 12(c) further shows that this behavior is not tied to a narrowly tuned frequency range or perturbation strength."
         },
         {
           "kind": "location",
@@ -149,7 +206,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section III-C, p. 4; Section IV-C, Tables IV–VI, pp. 8–9, and Fig. 12(c), p. 12. See Response R1.1."
         }
       ],
-      "responseWordCount": 96,
+      "responseWordCount": 119,
       "responseSourceSections": [
         "AE1"
       ]
@@ -158,7 +215,7 @@ window.REVIEW_DATA={
       "id": "ae2",
       "group": "Editors",
       "label": "AE2",
-      "title": "Geometry repair robustness",
+      "title": "Alternatives and failure cases for geometry repair",
       "comment": "The routed geometry repair module should be compared against simpler alternatives, and potential failure cases when the routed set is small or the prior estimate is noisy should be discussed.",
       "response": [
         "We added the requested alternatives and tested how RGR behaves as the proportion of routed-away samples changes. Table VII compares discarding routed-away samples, feature moment matching, prototype contrastive alignment, fixed-uniform-prior OT, and the proposed dynamic-prior OT while keeping the remaining DCF components unchanged. We further added a routing-ratio stress test from 10% to 90% routed-away samples and clarified the prior EMA, uniform interpolation, centroid momentum, and empty-set safeguards. These tests show stable performance when enough trusted samples remain, and a clear decline when routed-away samples dominate the batch."
@@ -190,7 +247,7 @@ window.REVIEW_DATA={
       "id": "ae3",
       "group": "Editors",
       "label": "AE3",
-      "title": "Computational overhead",
+      "title": "Computational cost and practical approximations",
       "comment": "Computational overhead, including FLOPs and memory, should be reported in detail alongside a discussion of possible approximations for practical deployment.",
       "response": [
         "Table XI now provides a complete resource comparison for DCF and representative baselines, including FLOPs, peak GPU memory, per-image latency, and accuracy under the same A100 evaluation setting. Full DCF achieves 43.48% long-horizon average accuracy with 24.6 GFLOPs, 14,690 MB peak memory, and 5.20 ms/image. DCF-Lite reduces the cost to 9.4 GFLOPs and 6,080 MB with 3.19 ms/image while retaining 42.06% accuracy, corresponding to reductions of 61.8% in FLOPs and 58.6% in peak memory for only a 1.42 pp accuracy decrease. Figure 12(d) and Table IX further quantify low-iteration Sinkhorn and curvature-proxy approximations, making the accuracy–efficiency trade-off explicit."
@@ -221,7 +278,7 @@ window.REVIEW_DATA={
       "id": "ae4",
       "group": "Editors",
       "label": "AE4",
-      "title": "Per-layer behavior",
+      "title": "Behavior of the layer retention gates",
       "comment": "The per-layer behaviour of the curvature-aware retention mechanism needs further analysis, for example through a heatmap of retention gates over time and corruption types.",
       "response": [
         "Figure 9 now shows the layer-wise retention gates throughout the 225-domain stream and across corruption types. The gates vary with both network depth and corruption type: layer4 remains highly permissive to candidate updates, while earlier and intermediate groups show stronger temporary source anchoring under specific corruptions. The temporal trajectories recover after transient suppression, demonstrating that CLR preserves adaptation capacity through dynamic retention. Table IX further compares control granularities and alternative curvature estimators."
@@ -252,7 +309,7 @@ window.REVIEW_DATA={
       "id": "ae5",
       "group": "Editors",
       "label": "AE5",
-      "title": "Statistical evidence",
+      "title": "Statistical evidence for cross-domain transfer",
       "comment": "Additionally, statistical significance should be reported for the cross-domain results, where some improvements are marginal.",
       "response": [
         "Figure 11 now reports mean ⟪\\pm⟫ standard deviation over five matched runs, and the accompanying \"Cross-Domain Transfer\" paragraph reports paired significance tests against the strongest aggregate baseline in each transfer setting. On ImageNet-C, DCF achieves a mean gain over No Adapt of ⟪30.30 \\pm 0.39⟫ pp versus ⟪27.95 \\pm 0.05⟫ pp for AEA, with ⟪t(4) = 14.30⟫ and ⟪p = 1.39 \\times 10^{-4}⟫. On DomainNet-126, DCF achieves 61.40% mean accuracy versus 60.13% for DeYO, with ⟪t(4) = 12.01⟫ and ⟪p = 2.75 \\times 10^{-4}⟫. These paired tests establish statistically significant aggregate differences across matched runs; individual transfer cells are reported with their run-to-run variability."
@@ -283,7 +340,7 @@ window.REVIEW_DATA={
       "id": "sae",
       "group": "Editors",
       "label": "SAE",
-      "title": "Expanded ablation study",
+      "title": "Relevance, completeness, and ablation depth",
       "comment": "The paper proposes the use of a decoupled control system for reducing bias in target evidence in test-time adaptation using online methods for temporally correlated image streams. The topic is relevant to TCSVT. The paper is complete with contributions, experiments, results, and a limited ablation study.",
       "response": [
         "Thank you for recognizing the relevance and completeness of the work. We expanded the ablation study in Section IV-C with controlled PSR diagnostics; RGR alternatives, prior ablation, and routing-ratio stress tests; CLR gate visualizations, granularity and proxy comparisons; cross-domain statistics; and DCF-Lite efficiency analysis. These additions establish the contribution of each control mechanism, reveal their interactions, and quantify the accuracy–efficiency trade-off."
@@ -319,10 +376,10 @@ window.REVIEW_DATA={
       "id": "r1-1",
       "group": "Reviewer 1",
       "label": "R1.1",
-      "title": "Fourier probe justification",
-      "comment": "The paper empirically shows that the Fourier perturbation exposes stress-inert predictions, but lacks a formal justification of why frequency-domain stress specifically targets shortcut cues (e.g., texture biases) rather than semantic features. A theoretical analysis—or at least a controlled synthetic experiment where shortcuts are known (e.g., color vs. shape)—would strengthen the claim. Currently, the probe design (random frequency and direction) appears heuristic; a sensitivity study on the choice of frequency range and perturbation strength λ would also help practitioners set these parameters without extensive tuning.",
+      "title": "Fourier probe justification and sensitivity",
+      "comment": "The paper empirically shows that the Fourier perturbation exposes stress-inert predictions, but lacks a formal justification of why frequency-domain stress specifically targets shortcut cues (e.g., texture biases) rather than semantic features. A theoretical analysis—or at least a controlled synthetic experiment where shortcuts are known (e.g., color vs. shape)—would strengthen the claim. Currently, the probe design (random frequency and direction) appears heuristic; a sensitivity study on the choice of frequency range and perturbation strength ⟪\\lambda⟫ would also help practitioners set these parameters without extensive tuning.",
       "response": [
-        "Thank you for this suggestion. We added a local sensitivity analysis, experiments with known shortcut factors, matched-coverage routing diagnostics, and a broader sensitivity study to explain and test the Fourier probe.",
+        "Thank you for this suggestion. We added a local sensitivity analysis, controlled experiments with known shortcut factors, matched-coverage routing diagnostics, and a broader sensitivity study. Together, these additions provide both an analytical interpretation of PCS and direct evidence that its stress responsiveness contributes reliable routing information beyond predictive confidence alone.",
         "Section III-C defines PCS as the positive drop in the probability assigned to the original predicted class under the stressed view. For a fixed input and original predicted class, let ⟪\\delta⟫ be the actual perturbation after clamping and ⟪g_x⟫ the input gradient of that class probability. To make the positive-part operation in Eq. (5) explicit, the local squared-response expansion is ⟪\\displaystyle \\mathbb{E}_q[s(x)^2]\n=\\mathbb{E}_q\\!\\left[\\bigl(-g_x^\\top\\delta\\bigr)_+^2\\right]\n+O\\!\\left(\\mathbb{E}_q\\lVert\\delta\\rVert_2^3\\right).⟫ Thus PCS measures one-sided probability sensitivity along the directions excited by the Fourier probe. Let ⟪Q_q(x)=\\mathbb{E}_q[\\delta\\delta^\\top]⟫ denote the perturbation second-moment matrix. The untruncated quadratic response is ⟪g_x^\\top Q_q(x)g_x⟫; for the positive-part PCS, the leading term retains the truncation and is bounded above by this quadratic response. The relation uses the actual post-clamp perturbation second moment and accommodates asymmetric perturbations."
       ],
       "changes": [
@@ -348,8 +405,8 @@ window.REVIEW_DATA={
       "fullResponse": [
         {
           "kind": "paragraph",
-          "html": "Thank you for this suggestion. We added a local sensitivity analysis, experiments with known shortcut factors, matched-coverage routing diagnostics, and a broader sensitivity study to explain and test the Fourier probe.",
-          "text": "Thank you for this suggestion. We added a local sensitivity analysis, experiments with known shortcut factors, matched-coverage routing diagnostics, and a broader sensitivity study to explain and test the Fourier probe."
+          "html": "Thank you for this suggestion. We added a local sensitivity analysis, controlled experiments with known shortcut factors, matched-coverage routing diagnostics, and a broader sensitivity study. Together, these additions provide both an analytical interpretation of PCS and direct evidence that its stress responsiveness contributes reliable routing information beyond predictive confidence alone.",
+          "text": "Thank you for this suggestion. We added a local sensitivity analysis, controlled experiments with known shortcut factors, matched-coverage routing diagnostics, and a broader sensitivity study. Together, these additions provide both an analytical interpretation of PCS and direct evidence that its stress responsiveness contributes reliable routing information beyond predictive confidence alone."
         },
         {
           "kind": "heading",
@@ -363,8 +420,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "Under a locally smooth predicted-class probability and sufficiently small perturbations, this expansion characterizes the directional sensitivity measured by PCS. The controlled interventions establish its connection to shortcut dependence: among confidence-matched candidates in the evaluated settings, task-relevant predictions exhibit stronger PCS responses and are preferentially retained by the joint entropy–PCS rule. Together, the analytical interpretation and controlled experiments explain why PCS complements confidence in selecting reliable adaptation evidence.",
-          "text": "Under a locally smooth predicted-class probability and sufficiently small perturbations, this expansion characterizes the directional sensitivity measured by PCS. The controlled interventions establish its connection to shortcut dependence: among confidence-matched candidates in the evaluated settings, task-relevant predictions exhibit stronger PCS responses and are preferentially retained by the joint entropy–PCS rule. Together, the analytical interpretation and controlled experiments explain why PCS complements confidence in selecting reliable adaptation evidence."
+          "html": "Under a locally smooth predicted-class probability and sufficiently small perturbations, this expansion characterizes the directional sensitivity measured by PCS. The controlled interventions establish the empirical bridge from directional sensitivity to shortcut-aware routing: in the shape–texture benchmark, PCS separates task-relevant from shortcut-driven predictions among confidence-matched candidates, while the matched-coverage ImageNet-C analysis shows that adding PCS improves trusted-set purity beyond entropy alone; Colored-MNIST further confirms the value of the resulting routing strategy under a distinct controlled shortcut. Together, these results establish PCS as a structured, shortcut-sensitive stress-response signal that materially strengthens routing beyond predictive confidence alone. Within DCF, the structured response supplies complementary evidence for deciding which confident predictions should drive adaptation, directly supporting shortcut-sensitive routing.",
+          "text": "Under a locally smooth predicted-class probability and sufficiently small perturbations, this expansion characterizes the directional sensitivity measured by PCS. The controlled interventions establish the empirical bridge from directional sensitivity to shortcut-aware routing: in the shape–texture benchmark, PCS separates task-relevant from shortcut-driven predictions among confidence-matched candidates, while the matched-coverage ImageNet-C analysis shows that adding PCS improves trusted-set purity beyond entropy alone; Colored-MNIST further confirms the value of the resulting routing strategy under a distinct controlled shortcut. Together, these results establish PCS as a structured, shortcut-sensitive stress-response signal that materially strengthens routing beyond predictive confidence alone. Within DCF, the structured response supplies complementary evidence for deciding which confident predictions should drive adaptation, directly supporting shortcut-sensitive routing."
         },
         {
           "kind": "heading",
@@ -377,9 +434,9 @@ window.REVIEW_DATA={
           "text": "We added a 224 ⟪\\times⟫ 224 synthetic benchmark in which circle/square shape is the task factor and four sinusoidal textures provide explicitly controlled shortcuts. Table IV reports both shape-decision agreement and separate shape/texture PCS responses, allowing us to measure differential probe sensitivity while verifying that the semantic shape decision is preserved."
         },
         {
-          "kind": "caption",
-          "html": "<strong>Evidence from revised Table IV</strong>",
-          "text": "Evidence from revised Table IV"
+          "kind": "paragraph",
+          "html": "<em><strong>Table IV.</strong> <strong>Factorized response diagnostics of the Fourier probe.</strong> Shape agreement measures consistency between original and stressed shape predictions, while PCS measures the response of the corresponding factor-specific readout. The shape/texture PCS ratio characterizes the probe’s differential sensitivity across visual factors. Lower, middle, and upper nominal bands correspond to <span data-response-math=\"[1,75)\" data-display=\"false\">[1,75)</span>, <span data-response-math=\"[75,150)\" data-display=\"false\">[75,150)</span>, and <span data-response-math=\"[150,224]\" data-display=\"false\">[150,224]</span> cycles/image, respectively.</em>",
+          "text": "Table IV. Factorized response diagnostics of the Fourier probe. Shape agreement measures consistency between original and stressed shape predictions, while PCS measures the response of the corresponding factor-specific readout. The shape/texture PCS ratio characterizes the probe’s differential sensitivity across visual factors. Lower, middle, and upper nominal bands correspond to ⟪[1,75)⟫, ⟪[75,150)⟫, and ⟪[150,224]⟫ cycles/image, respectively."
         },
         {
           "kind": "table",
@@ -525,8 +582,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "Across preserved, randomized, and reversed shortcut correlations, PCS achieves 0.81 AUROC for distinguishing task-relevant from shortcut-driven predictions, compared with 0.71 for energy-matched pixel noise. At matched trusted-set coverage, shortcut contamination decreases from 24.6% to 11.8%. On ImageNet-C, Table VI further compares filters at the same frozen model state and matched coverage: pseudo-label purity is 49.9% for entropy + PCS, versus 44.0% for entropy alone and 47.1% for PCS alone, showing that PCS adds discriminative information beyond confidence alone. Together, these controlled interventions and matched-coverage results establish the complementary value of PCS for selecting reliable adaptation evidence.",
-          "text": "Across preserved, randomized, and reversed shortcut correlations, PCS achieves 0.81 AUROC for distinguishing task-relevant from shortcut-driven predictions, compared with 0.71 for energy-matched pixel noise. At matched trusted-set coverage, shortcut contamination decreases from 24.6% to 11.8%. On ImageNet-C, Table VI further compares filters at the same frozen model state and matched coverage: pseudo-label purity is 49.9% for entropy + PCS, versus 44.0% for entropy alone and 47.1% for PCS alone, showing that PCS adds discriminative information beyond confidence alone. Together, these controlled interventions and matched-coverage results establish the complementary value of PCS for selecting reliable adaptation evidence."
+          "html": "Across preserved, randomized, and reversed shortcut correlations, PCS achieves 0.81 AUROC for distinguishing task-relevant from shortcut-driven predictions, compared with 0.71 for energy-matched pixel noise. At matched trusted-set coverage, shortcut contamination decreases from 24.6% to 11.8%. On ImageNet-C, Table VI further compares filters at the same frozen model state and matched coverage: pseudo-label purity is 49.9% for entropy + PCS, versus 44.0% for entropy alone and 47.1% for PCS alone. These results show that PCS captures shortcut-sensitive differences that remain informative after confidence matching and materially improves trusted-set quality at matched coverage. This is the specific sense in which the Fourier probe strengthens routing beyond confidence alone.",
+          "text": "Across preserved, randomized, and reversed shortcut correlations, PCS achieves 0.81 AUROC for distinguishing task-relevant from shortcut-driven predictions, compared with 0.71 for energy-matched pixel noise. At matched trusted-set coverage, shortcut contamination decreases from 24.6% to 11.8%. On ImageNet-C, Table VI further compares filters at the same frozen model state and matched coverage: pseudo-label purity is 49.9% for entropy + PCS, versus 44.0% for entropy alone and 47.1% for PCS alone. These results show that PCS captures shortcut-sensitive differences that remain informative after confidence matching and materially improves trusted-set quality at matched coverage. This is the specific sense in which the Fourier probe strengthens routing beyond confidence alone."
         },
         {
           "kind": "paragraph",
@@ -534,9 +591,9 @@ window.REVIEW_DATA={
           "text": "We also added binary Colored-MNIST as a distinct color-shortcut setting. Digit identity defines the semantic target; training labels contain 25% noise, while test labels are clean and color–label agreement is approximately 30%. DCF obtains 88.91% accuracy, compared with 62.37% for DeYO and 50.93% for the source model."
         },
         {
-          "kind": "caption",
-          "html": "Additional evidence from revised Tables V–VI and the controlled-shortcut analysis",
-          "text": "Additional evidence from revised Tables V–VI and the controlled-shortcut analysis"
+          "kind": "paragraph",
+          "html": "<strong>Summary of evidence from revised Tables V–VI and the controlled-shortcut analysis</strong>",
+          "text": "Summary of evidence from revised Tables V–VI and the controlled-shortcut analysis"
         },
         {
           "kind": "table",
@@ -611,27 +668,15 @@ window.REVIEW_DATA={
         },
         {
           "kind": "image",
-          "src": "assets/response/frequency-sensitivity.png",
-          "alt": "Fig. 12(c). Frequency range and perturbation strength.",
-          "caption": "Fig. 12(c). Frequency range and perturbation strength.",
+          "src": "assets/response/ab_margin_3d_lambda_u2.png",
+          "alt": "Fig. 12(c). Hyperparameter sensitivity. Sensitivity to perturbation strength ⟪\\lambda⟫ and nominal frequency sampling range ⟪f_c⟫ (cycles/image).",
           "evidenceId": "probe-sensitivity"
         },
         {
-          "kind": "image",
-          "src": "assets/response/sinkhorn-sensitivity.png",
-          "alt": "Fig. 12(d). Sinkhorn iterations and entropic regularization.",
-          "caption": "Fig. 12(d). Sinkhorn iterations and entropic regularization.",
-          "evidenceId": "sinkhorn"
-        },
-        {
-          "kind": "paragraph",
-          "html": "<strong>Selected revised text</strong>",
-          "text": "Selected revised text"
-        },
-        {
-          "kind": "excerpt",
-          "html": "\"Thus, this relation establishes PCS as a structured directional-sensitivity measure whose response depends jointly on the prediction gradient and the directions excited by the Fourier probe.\"",
-          "text": "\"Thus, this relation establishes PCS as a structured directional-sensitivity measure whose response depends jointly on the prediction gradient and the directions excited by the Fourier probe.\""
+          "kind": "caption",
+          "html": "<em><strong>Fig. 12(c). Hyperparameter sensitivity.</strong> Sensitivity to perturbation strength <span data-response-math=\"\\lambda\" data-display=\"false\">\\lambda</span> and nominal frequency sampling range <span data-response-math=\"f_c\" data-display=\"false\">f_c</span> (cycles/image).</em>",
+          "text": "Fig. 12(c). Hyperparameter sensitivity. Sensitivity to perturbation strength ⟪\\lambda⟫ and nominal frequency sampling range ⟪f_c⟫ (cycles/image).",
+          "evidenceId": "probe-sensitivity"
         },
         {
           "kind": "location",
@@ -639,7 +684,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section III-C, p. 4, Eqs. (4)–(7); Section IV-C, \"Analysis of Probe-Supported Sample Routing,\" pp. 7–9; Tables IV–VI, pp. 8–9; Fig. 12(c), p. 12."
         }
       ],
-      "responseWordCount": 690,
+      "responseWordCount": 804,
       "responseSourceSections": [
         "R1.1"
       ]
@@ -648,7 +693,7 @@ window.REVIEW_DATA={
       "id": "r1-2",
       "group": "Reviewer 1",
       "label": "R1.2",
-      "title": "Geometry repair and failure modes",
+      "title": "Geometry repair alternatives and failure modes",
       "comment": "RGR uses entropic OT with dynamic class priors to align routed-away features to source-initialized centroids. However, the paper does not compare this with simpler alternatives like feature moment matching or contrastive learning. Moreover, the centroid update (Eq. 19) uses only routed-away samples; if the routed set dominates, centroids may drift away from source semantics. The authors should discuss failure cases when the routed set is small or when the prior estimate is noisy (e.g., early adaptation stages). Adding an ablation with fixed uniform priors would isolate the benefit of dynamic priors.",
       "response": [
         "Thank you for suggesting these comparisons. We added them to separate the effects of OT-based geometry repair and the dynamic prior, and used a routing-ratio stress test to examine when RGR remains effective.",
@@ -687,9 +732,9 @@ window.REVIEW_DATA={
           "text": "Table VII keeps PSR and CLR fixed and changes only the treatment of the routed-away subset. It compares discarding those samples, feature moment matching, prototype contrastive alignment, OT with a fixed uniform prior, and OT with the proposed dynamic prior."
         },
         {
-          "kind": "caption",
-          "html": "<strong>Evidence from revised Table VII</strong>",
-          "text": "Evidence from revised Table VII"
+          "kind": "paragraph",
+          "html": "<em><strong>Table VII.</strong> <strong>Comparison of alternative treatments for routed-away samples</strong> on ImageNet-C. All variants share the same PSR and CLR.</em>",
+          "text": "Table VII. Comparison of alternative treatments for routed-away samples on ImageNet-C. All variants share the same PSR and CLR."
         },
         {
           "kind": "table",
@@ -835,9 +880,9 @@ window.REVIEW_DATA={
           "text": "The revised method also handles empty subsets explicitly. When the routed-away subset is empty, the geometry loss is zero and the centroids remain unchanged. When the trusted subset is empty, the entire adaptation step is skipped and the model, centroids, and prior state are retained. The routing-ratio stress test examines how performance changes as the balance between trusted supervision and routed-away geometry information shifts."
         },
         {
-          "kind": "caption",
-          "html": "<strong>Evidence from revised Table VIII</strong>",
-          "text": "Evidence from revised Table VIII"
+          "kind": "paragraph",
+          "html": "<em><strong>Table VIII.</strong> <strong>Routing-ratio stress test</strong> on ImageNet-C (T-CS). Controlled ratios are imposed per mini-batch using PSR-based ranking; <em>Native</em> uses the original routing. Acc. denotes average top-1 accuracy, and centroid drift denotes the mean <span data-response-math=\"\\ell_2\" data-display=\"false\">\\ell_2</span> prototype displacement from the initial online reference.</em>",
+          "text": "Table VIII. Routing-ratio stress test on ImageNet-C (T-CS). Controlled ratios are imposed per mini-batch using PSR-based ranking; Native uses the original routing. Acc. denotes average top-1 accuracy, and centroid drift denotes the mean ⟪\\ell_2⟫ prototype displacement from the initial online reference."
         },
         {
           "kind": "table",
@@ -948,22 +993,12 @@ window.REVIEW_DATA={
           "text": "The controlled 10%–50% routed-away regime yields 42.98%–43.49% accuracy. Performance decreases to 41.64% at 75% and to 22.12% at 90%, showing that a dominant routed-away subset leaves insufficient trusted evidence for consistency learning. Centroid drift is smaller at 90% than at 75% despite the sharper accuracy loss, identifying trusted-supervision scarcity as a distinct failure mechanism. Together, these results identify a broad stable routing regime and show why trusted consistency supervision and routed-away geometry repair must operate together."
         },
         {
-          "kind": "paragraph",
-          "html": "<strong>Selected revised text</strong>",
-          "text": "Selected revised text"
-        },
-        {
-          "kind": "excerpt",
-          "html": "\"The slow EMA mitigates early fluctuations, though persistent bias may affect the estimated prior. A tiny routed-away set limits target support, while an overly dominant one reduces trusted supervision.\"",
-          "text": "\"The slow EMA mitigates early fluctuations, though persistent bias may affect the estimated prior. A tiny routed-away set limits target support, while an overly dominant one reduces trusted supervision.\""
-        },
-        {
           "kind": "location",
           "html": "<strong>Changes in the manuscript:</strong> Section III-D, pp. 4–5, Eqs. (10)–(16); Algorithm 1, p. 6; Section IV-C, \"Analysis of Routed-away Geometry Repair,\" pp. 9–10; Tables VII–VIII, p. 10. The centroid update referred to as Eq. (19) in the original review is Eq. (16) in the revision.",
           "text": "Changes in the manuscript: Section III-D, pp. 4–5, Eqs. (10)–(16); Algorithm 1, p. 6; Section IV-C, \"Analysis of Routed-away Geometry Repair,\" pp. 9–10; Tables VII–VIII, p. 10. The centroid update referred to as Eq. (19) in the original review is Eq. (16) in the revision."
         }
       ],
-      "responseWordCount": 593,
+      "responseWordCount": 611,
       "responseSourceSections": [
         "R1.2"
       ]
@@ -972,7 +1007,7 @@ window.REVIEW_DATA={
       "id": "r1-3",
       "group": "Reviewer 1",
       "label": "R1.3",
-      "title": "Cost and lightweight deployment",
+      "title": "Computational overhead and lightweight deployment",
       "comment": "DCF involves Sinkhorn iterations for OT, curvature estimation per layer, and multiple forward passes for stressed views, leading to higher training memory and runtime (Fig. 12 shows ~0.005s/image on A100). For edge deployment, this may be prohibitive. The paper should report FLOPs or memory usage in detail and discuss possible approximations (e.g., reducing Sinkhorn iterations, using cheaper curvature proxies) without sacrificing stability. A comparison with lightweight baselines (e.g., BN Adapt) in terms of throughput would contextualize the trade-off.",
       "response": [
         "We agree that runtime alone is insufficient to assess deployment cost. We therefore replaced the original accuracy–runtime comparison with a full resource profile and introduced a measured lightweight configuration, DCF-Lite.",
@@ -1005,9 +1040,9 @@ window.REVIEW_DATA={
           "text": "All measurements use an NVIDIA A100, ResNet-50, and ImageNet-C under the long-horizon T-CS protocol, with batch size 64. The comparison includes BN Adapt and representative lightweight or stable baselines so that the accuracy–resource trade-off can be evaluated under a consistent setup."
         },
         {
-          "kind": "caption",
-          "html": "<strong>Measurements from revised Table XI</strong>",
-          "text": "Measurements from revised Table XI"
+          "kind": "paragraph",
+          "html": "<em><strong>Table XI.</strong> <strong>Computational overhead and lightweight variant.</strong> Comparison of FLOPs, peak memory, per-image runtime, and average accuracy on ImageNet-C (long-horizon T-CS, ResNet-50) measured on an NVIDIA A100.</em>",
+          "text": "Table XI. Computational overhead and lightweight variant. Comparison of FLOPs, peak memory, per-image runtime, and average accuracy on ImageNet-C (long-horizon T-CS, ResNet-50) measured on an NVIDIA A100."
         },
         {
           "kind": "table",
@@ -1346,8 +1381,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "Relative to BN Adapt, full DCF improves the reported accuracy by 13.65 pp while incurring additional computation. For throughput context, the reciprocal of the reported per-image latency gives approximate rates of 2,000 images/s for BN Adapt, 192 images/s for full DCF, and 313 images/s for DCF-Lite. These are latency-derived throughput estimates for the A100 benchmark in Table XI.",
-          "text": "Relative to BN Adapt, full DCF improves the reported accuracy by 13.65 pp while incurring additional computation. For throughput context, the reciprocal of the reported per-image latency gives approximate rates of 2,000 images/s for BN Adapt, 192 images/s for full DCF, and 313 images/s for DCF-Lite. These are latency-derived throughput estimates for the A100 benchmark in Table XI."
+          "html": "Relative to BN Adapt, full DCF improves the reported accuracy by 13.65 pp while incurring additional computation. For throughput context, the reciprocal of the reported per-image latency gives approximate rates of 2,000 images/s for BN Adapt, 192 images/s for full DCF, and 313 images/s for DCF-Lite.",
+          "text": "Relative to BN Adapt, full DCF improves the reported accuracy by 13.65 pp while incurring additional computation. For throughput context, the reciprocal of the reported per-image latency gives approximate rates of 2,000 images/s for BN Adapt, 192 images/s for full DCF, and 313 images/s for DCF-Lite."
         },
         {
           "kind": "heading",
@@ -1356,8 +1391,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "The revised manuscript describes four cost-saving choices for DCF-Lite: removing persistent source/candidate model copies and per-sample gradients, retaining gradients only through the clean adaptation branch, using a detached Fourier probe for PSR routing and transport assignment, and reducing <span data-response-math=\"N_{\\mathrm{sk}}\" data-display=\"false\">N_{\\mathrm{sk}}</span> to 1. Lite preserves the source parameter anchor as a tensor snapshot and caches a fixed curvature reference before the first optimizer update. This reference is the element-wise squared gradient of the first adaptation loss, capped element-wise at <span data-response-math=\"10^{-4}\" data-display=\"false\">10^{-4}</span>, and is reused in subsequent comparisons with the current curvature proxy for retention-gate computation. These approximations target the principal memory and computation costs of the full adaptation loop, and Table XI quantifies their combined accuracy–resource trade-off.",
-          "text": "The revised manuscript describes four cost-saving choices for DCF-Lite: removing persistent source/candidate model copies and per-sample gradients, retaining gradients only through the clean adaptation branch, using a detached Fourier probe for PSR routing and transport assignment, and reducing ⟪N_{\\mathrm{sk}}⟫ to 1. Lite preserves the source parameter anchor as a tensor snapshot and caches a fixed curvature reference before the first optimizer update. This reference is the element-wise squared gradient of the first adaptation loss, capped element-wise at ⟪10^{-4}⟫, and is reused in subsequent comparisons with the current curvature proxy for retention-gate computation. These approximations target the principal memory and computation costs of the full adaptation loop, and Table XI quantifies their combined accuracy–resource trade-off."
+          "html": "The revised manuscript describes four cost-saving choices for DCF-Lite: removing persistent source/candidate model copies and per-sample gradients, retaining gradients only through the clean adaptation branch, using a detached Fourier probe for PSR routing and transport assignment, and reducing <span data-response-math=\"N_{\\mathrm{sk}}\" data-display=\"false\">N_{\\mathrm{sk}}</span> to 1. Lite preserves the source parameter anchor as a tensor snapshot and caches a fixed curvature reference before the first optimizer update. This reference is the element-wise squared gradient of the first adaptation loss, capped element-wise at <span data-response-math=\"10^{-4}\" data-display=\"false\">10^{-4}</span>, and is reused in subsequent comparisons with the current curvature proxy for retention-gate computation.",
+          "text": "The revised manuscript describes four cost-saving choices for DCF-Lite: removing persistent source/candidate model copies and per-sample gradients, retaining gradients only through the clean adaptation branch, using a detached Fourier probe for PSR routing and transport assignment, and reducing ⟪N_{\\mathrm{sk}}⟫ to 1. Lite preserves the source parameter anchor as a tensor snapshot and caches a fixed curvature reference before the first optimizer update. This reference is the element-wise squared gradient of the first adaptation loss, capped element-wise at ⟪10^{-4}⟫, and is reused in subsequent comparisons with the current curvature proxy for retention-gate computation."
         },
         {
           "kind": "paragraph",
@@ -1365,9 +1400,21 @@ window.REVIEW_DATA={
           "text": "On the same A100 setup, Lite reduces FLOPs from 24.6 G to 9.4 G, peak memory from 14,690 MB to 6,080 MB, and latency from 5.20 to 3.19 ms/image, achieving 42.06% accuracy—1.42 pp below full DCF and 3.16 pp above SAR. Figure 12(d) supports low Sinkhorn iteration counts across the tested regularization range. Table IX shows only 0.09/0.22 pp gains from Expected Fisher/Hutchinson proxies at an additional 1.9/6.8 ms/image, favoring the default proxy’s accuracy–cost trade-off."
         },
         {
+          "kind": "image",
+          "src": "assets/response/ab_margin_3d_N_sk_varepsilon.png",
+          "alt": "Fig. 12(d). Hyperparameter sensitivity. Stability across Sinkhorn iterations ⟪N_{\\mathrm{sk}}⟫ and entropic regularization ⟪\\varepsilon_{\\mathrm{OT}}⟫, confirming reliable OT alignment with low iteration counts.",
+          "evidenceId": "sinkhorn"
+        },
+        {
+          "kind": "caption",
+          "html": "<em><strong>Fig. 12(d). Hyperparameter sensitivity.</strong> Stability across Sinkhorn iterations <span data-response-math=\"N_{\\mathrm{sk}}\" data-display=\"false\">N_{\\mathrm{sk}}</span> and entropic regularization <span data-response-math=\"\\varepsilon_{\\mathrm{OT}}\" data-display=\"false\">\\varepsilon_{\\mathrm{OT}}</span>, confirming reliable OT alignment with low iteration counts.</em>",
+          "text": "Fig. 12(d). Hyperparameter sensitivity. Stability across Sinkhorn iterations ⟪N_{\\mathrm{sk}}⟫ and entropic regularization ⟪\\varepsilon_{\\mathrm{OT}}⟫, confirming reliable OT alignment with low iteration counts.",
+          "evidenceId": "sinkhorn"
+        },
+        {
           "kind": "paragraph",
-          "html": "DCF-Lite retains the route–adapt–retain design while reducing FLOPs by 61.8%, peak memory by 58.6%, and per-image latency by 38.7%, with a 1.42 pp accuracy decrease on the same A100 setup. This provides a concrete lower-cost configuration for long-horizon adaptation.",
-          "text": "DCF-Lite retains the route–adapt–retain design while reducing FLOPs by 61.8%, peak memory by 58.6%, and per-image latency by 38.7%, with a 1.42 pp accuracy decrease on the same A100 setup. This provides a concrete lower-cost configuration for long-horizon adaptation."
+          "html": "These choices retain the route–adapt–retain design and reduce FLOPs by 61.8%, peak memory by 58.6%, and per-image latency by 38.7%. The resulting 42.06% accuracy, only 1.42 pp below full DCF, further shows that the long-horizon performance benefit of the route–adapt–retain principle is not tied to the full-cost implementation and can be largely preserved under substantially cheaper approximations.",
+          "text": "These choices retain the route–adapt–retain design and reduce FLOPs by 61.8%, peak memory by 58.6%, and per-image latency by 38.7%. The resulting 42.06% accuracy, only 1.42 pp below full DCF, further shows that the long-horizon performance benefit of the route–adapt–retain principle is not tied to the full-cost implementation and can be largely preserved under substantially cheaper approximations."
         },
         {
           "kind": "location",
@@ -1375,7 +1422,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section IV-C, \"Computational Overhead,\" pp. 11–12; Table XI, p. 12; Table IX, p. 10; Fig. 12(d), p. 12. Table XI supersedes the runtime-only comparison cited as Fig. 12 in the original review."
         }
       ],
-      "responseWordCount": 484,
+      "responseWordCount": 511,
       "responseSourceSections": [
         "R1.3"
       ]
@@ -1384,11 +1431,11 @@ window.REVIEW_DATA={
       "id": "r1-4",
       "group": "Reviewer 1",
       "label": "R1.4",
-      "title": "Layer gates and curvature proxies",
-      "comment": "CLR uses curvature mismatch to gate retention, but the paper does not analyze which layers (early vs. late) are typically retained or pulled back. Figure 8 shows drift trajectories but not per-layer retention gates μₜˡ. Providing a heatmap of μₜˡ over time and across corruption types would reveal whether the method consistently preserves low-level (e.g., first conv) or high-level (classifier) layers. Additionally, the curvature proxy is estimated from pseudo-label gradients, which themselves may be noisy; evaluating CLR with Fisher information or Hessian approximations would be insightful.",
+      "title": "Layer retention patterns and alternative proxies",
+      "comment": "CLR uses curvature mismatch to gate retention, but the paper does not analyze which layers (early vs. late) are typically retained or pulled back. Figure 8 shows drift trajectories but not per-layer retention gates ⟪\\mu_{t}^{l}⟫. Providing a heatmap of ⟪\\mu_{t}^{l}⟫ over time and across corruption types would reveal whether the method consistently preserves low-level (e.g., first conv) or high-level (classifier) layers. Additionally, the curvature proxy is estimated from pseudo-label gradients, which themselves may be noisy; evaluating CLR with Fisher information or Hessian approximations would be insightful.",
       "response": [
         "We added the requested gate visualization and comparisons with alternative curvature estimators. The revised analysis separates parameter drift, shown in Fig. 8, from the retention gate itself, shown directly in the new Fig. 9.",
-        "CLR acts on the trainable normalization affine parameters. For ResNet, these parameters are grouped into the stem normalization group (\"initial_bn\") and layer1–layer4; for ViT, grouping follows encoder blocks. These groups allow the gate patterns to be interpreted in terms of the corresponding architectural stages."
+        "CLR acts on the trainable normalization affine parameters. For ResNet, these parameters are grouped into the stem normalization group (\"initial_bn\") and layer1–layer4; for ViT, grouping follows encoder blocks."
       ],
       "changes": [
         "retention-heatmap",
@@ -1419,8 +1466,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "CLR acts on the trainable normalization affine parameters. For ResNet, these parameters are grouped into the stem normalization group (\"initial_bn\") and layer1–layer4; for ViT, grouping follows encoder blocks. These groups allow the gate patterns to be interpreted in terms of the corresponding architectural stages.",
-          "text": "CLR acts on the trainable normalization affine parameters. For ResNet, these parameters are grouped into the stem normalization group (\"initial_bn\") and layer1–layer4; for ViT, grouping follows encoder blocks. These groups allow the gate patterns to be interpreted in terms of the corresponding architectural stages."
+          "html": "CLR acts on the trainable normalization affine parameters. For ResNet, these parameters are grouped into the stem normalization group (\"initial_bn\") and layer1–layer4; for ViT, grouping follows encoder blocks.",
+          "text": "CLR acts on the trainable normalization affine parameters. For ResNet, these parameters are grouped into the stem normalization group (\"initial_bn\") and layer1–layer4; for ViT, grouping follows encoder blocks."
         },
         {
           "kind": "paragraph",
@@ -1430,12 +1477,14 @@ window.REVIEW_DATA={
         {
           "kind": "image",
           "src": "assets/response/retention-gates.png",
-          "alt": "Retention gates reproduced from revised Fig. 9"
+          "alt": "Fig. 9. Per-layer retention gates ⟪\\mu_t^l⟫ of CLR (ResNet-50). (a) Gates over the long-horizon stream (Domain index ⟪0\\!\\to\\!225⟫). (b) Gates per corruption type on T-CS.",
+          "evidenceId": "retention-heatmap"
         },
         {
           "kind": "caption",
-          "html": "<em>Reproduced from revised Fig. 9. Retention gates over domain index (top) and corruption type (bottom).</em>",
-          "text": "Reproduced from revised Fig. 9. Retention gates over domain index (top) and corruption type (bottom)."
+          "html": "<em><strong>Fig. 9.</strong> <strong>Per-layer retention gates <span data-response-math=\"\\mu_t^l\" data-display=\"false\">\\mu_t^l</span> of CLR (ResNet-50).</strong> (a) Gates over the long-horizon stream (Domain index <span data-response-math=\"0\\!\\to\\!225\" data-display=\"false\">0\\!\\to\\!225</span>). (b) Gates per corruption type on T-CS.</em>",
+          "text": "Fig. 9. Per-layer retention gates ⟪\\mu_t^l⟫ of CLR (ResNet-50). (a) Gates over the long-horizon stream (Domain index ⟪0\\!\\to\\!225⟫). (b) Gates per corruption type on T-CS.",
+          "evidenceId": "retention-heatmap"
         },
         {
           "kind": "paragraph",
@@ -1448,9 +1497,9 @@ window.REVIEW_DATA={
           "text": "Granularity and curvature proxy comparisons"
         },
         {
-          "kind": "caption",
-          "html": "<strong>Evidence from revised Table IX</strong>",
-          "text": "Evidence from revised Table IX"
+          "kind": "paragraph",
+          "html": "<em><strong>Table IX.</strong> <strong>Ablation of design choices in CLR on ImageNet-C (long-horizon T-CS).</strong> We compare different control granularities and curvature-aware proxy estimators.</em>",
+          "text": "Table IX. Ablation of design choices in CLR on ImageNet-C (long-horizon T-CS). We compare different control granularities and curvature-aware proxy estimators."
         },
         {
           "kind": "table",
@@ -1543,13 +1592,13 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "The group comparison favors layer-block control by 0.56 pp. Expected Fisher and the Hutchinson-based approximation reach 43.57% and 43.70%, compared with 43.48% for the default gradient-square proxy, at an additional 1.9 and 6.8 ms/image. This comparison of curvature-aware proxy estimators within CLR supports the default gradient-square proxy for its accuracy–cost balance.",
-          "text": "The group comparison favors layer-block control by 0.56 pp. Expected Fisher and the Hutchinson-based approximation reach 43.57% and 43.70%, compared with 43.48% for the default gradient-square proxy, at an additional 1.9 and 6.8 ms/image. This comparison of curvature-aware proxy estimators within CLR supports the default gradient-square proxy for its accuracy–cost balance."
+          "html": "The group comparison favors layer-block control by 0.56 pp. Expected Fisher and the Hutchinson-based approximation reach 43.57% and 43.70%, compared with 43.48% for the default gradient-square proxy, at an additional 1.9 and 6.8 ms/image. The small accuracy spread across substantially more expensive estimators indicates that CLR’s benefit is not dependent on a particular high-cost curvature approximation. The default gradient-square proxy therefore provides the strongest accuracy–cost balance among the evaluated choices, giving up only 0.09/0.22 pp relative to Expected Fisher/Hutchinson while avoiding their additional 1.9/6.8 ms per image.",
+          "text": "The group comparison favors layer-block control by 0.56 pp. Expected Fisher and the Hutchinson-based approximation reach 43.57% and 43.70%, compared with 43.48% for the default gradient-square proxy, at an additional 1.9 and 6.8 ms/image. The small accuracy spread across substantially more expensive estimators indicates that CLR’s benefit is not dependent on a particular high-cost curvature approximation. The default gradient-square proxy therefore provides the strongest accuracy–cost balance among the evaluated choices, giving up only 0.09/0.22 pp relative to Expected Fisher/Hutchinson while avoiding their additional 1.9/6.8 ms per image."
         },
         {
           "kind": "paragraph",
-          "html": "For full DCF, Section III-E clarifies that the candidate and source proxies are computed on the same current unlabeled batch at their respective parameter states. For each layer group, Eq. (19) averages the element-wise squared per-sample gradients over the batch, producing a diagonal proxy vector; Eq. (20) then normalizes the squared source–candidate proxy mismatch by the group’s parameter dimension. DCF-Lite uses the fixed reference cached before the first optimizer update, as described in Response R1.3, and compares it with the current curvature proxy to compute retention gates. Together with the Expected Fisher and Hutchinson comparisons, these settings characterize CLR under the full and lightweight configurations.",
-          "text": "For full DCF, Section III-E clarifies that the candidate and source proxies are computed on the same current unlabeled batch at their respective parameter states. For each layer group, Eq. (19) averages the element-wise squared per-sample gradients over the batch, producing a diagonal proxy vector; Eq. (20) then normalizes the squared source–candidate proxy mismatch by the group’s parameter dimension. DCF-Lite uses the fixed reference cached before the first optimizer update, as described in Response R1.3, and compares it with the current curvature proxy to compute retention gates. Together with the Expected Fisher and Hutchinson comparisons, these settings characterize CLR under the full and lightweight configurations."
+          "html": "For full DCF, Section III-E clarifies that the candidate and source proxies are computed on the same current unlabeled batch at their respective parameter states. For each layer group, Eq. (19) averages the element-wise squared per-sample gradients over the batch, producing a diagonal proxy vector; Eq. (20) then normalizes the squared source–candidate proxy mismatch by the group’s parameter dimension. DCF-Lite uses the fixed reference cached before the first optimizer update, as described in Response R1.3, and compares it with the current curvature proxy to compute retention gates.",
+          "text": "For full DCF, Section III-E clarifies that the candidate and source proxies are computed on the same current unlabeled batch at their respective parameter states. For each layer group, Eq. (19) averages the element-wise squared per-sample gradients over the batch, producing a diagonal proxy vector; Eq. (20) then normalizes the squared source–candidate proxy mismatch by the group’s parameter dimension. DCF-Lite uses the fixed reference cached before the first optimizer update, as described in Response R1.3, and compares it with the current curvature proxy to compute retention gates."
         },
         {
           "kind": "location",
@@ -1557,7 +1606,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section III-E, pp. 5–6, Eqs. (17)–(20); Section IV-A, \"Models and Implementation Details,\" p. 6; Section IV-C, \"Analysis of Curvature-aware Layer Retention,\" Fig. 9 and Table IX, p. 10."
         }
       ],
-      "responseWordCount": 456,
+      "responseWordCount": 484,
       "responseSourceSections": [
         "R1.4"
       ]
@@ -1566,7 +1615,7 @@ window.REVIEW_DATA={
       "id": "r1-5",
       "group": "Reviewer 1",
       "label": "R1.5",
-      "title": "Uncertainty-aware related work",
+      "title": "Additional literature on uncertainty-aware modeling",
       "comment": "The literature review part can be improved by including more recent publications on machine learning methods, which can refer to Uncertainty-aware, high-precision multi-step prediction of structural health monitoring sensor streams under extreme typhoon events: an enhanced Bayesian dynamic linear model leveraging the kernel regression basis function for severe environmental adaptation, Bayesian Network in Structural Health Monitoring: Theoretical Background and Applications Review, Towards high-accuracy data modelling, uncertainty quantification and correlation analysis for SHM measurements during typhoon events using an improved most likely heteroscedastic Gaussian process.",
       "response": [
         "Thank you for suggesting these studies. We have incorporated all three references into Section II as cross-disciplinary work on uncertainty-aware modeling under evolving environmental conditions. The added references are:",
@@ -1604,22 +1653,12 @@ window.REVIEW_DATA={
           "text": "These studies contribute Bayesian dynamic modeling, Bayesian-network reasoning, and heteroscedastic uncertainty quantification for non-stationary structural-health-monitoring streams. We added them to broaden the discussion of uncertainty under evolving environments. DCF addresses the corresponding online adaptation problem in visual recognition, where the model itself is updated from unlabeled, temporally correlated target observations; its contribution is the joint control of target evidence, routed-away geometry, and layer-wise update retention."
         },
         {
-          "kind": "paragraph",
-          "html": "<strong>Selected revised text</strong>",
-          "text": "Selected revised text"
-        },
-        {
-          "kind": "excerpt",
-          "html": "\"Beyond visual tasks, uncertainty-aware modeling has also been explored to handle evolving environmental variations in non-stationary sensor streams [19]–[21].\"",
-          "text": "\"Beyond visual tasks, uncertainty-aware modeling has also been explored to handle evolving environmental variations in non-stationary sensor streams [19]–[21].\""
-        },
-        {
           "kind": "location",
           "html": "<strong>Changes in the manuscript:</strong> Section II, \"Adaptation without Target Data,\" p. 3; references [19]–[21], p. 13.",
           "text": "Changes in the manuscript: Section II, \"Adaptation without Target Data,\" p. 3; references [19]–[21], p. 13."
         }
       ],
-      "responseWordCount": 243,
+      "responseWordCount": 221,
       "responseSourceSections": [
         "R1.5"
       ]
@@ -1628,11 +1667,11 @@ window.REVIEW_DATA={
       "id": "r1-6",
       "group": "Reviewer 1",
       "label": "R1.6",
-      "title": "Transfer significance and new dataset",
+      "title": "Variability, significance, and transfer beyond ImageNet",
       "comment": "In Figure 10, DCF shows positive gains across all source domains, but the paper does not report the variance or statistical significance. Some cells show marginal improvements (<1%), which may not be robust. The authors should include standard deviations over multiple runs and perform a significance test (e.g., paired t-test) against the best baseline. Furthermore, the cross-domain evaluation adapts on one corruption and tests on the remaining 14, but the test set still shares the same ImageNet classes; evaluating on a completely different dataset (e.g., CIFAR-10-C or a medical imaging shift) would better demonstrate generalizable representation preservation. Adding such an experiment or discussing the limitation would strengthen the paper’s claims.",
       "response": [
-        "We agree that the cross-domain results need run-to-run variability estimates and significance tests for the aggregate improvements. We have therefore added five-run variability, paired significance tests, and a second transfer benchmark on DomainNet-126.",
-        "The revised Fig. 11, replacing Fig. 10 in the original submission, reports mean ⟪\\pm⟫ standard deviation over five matched runs. On ImageNet-C, DCF achieves a mean gain over No Adapt of 30.30 ⟪\\pm⟫ 0.39 pp, compared with 27.95 ⟪\\pm⟫ 0.05 pp for AEA, the strongest aggregate baseline in this comparison."
+        "We agree that the cross-domain results should be supported by run-to-run variability and formal significance testing. We therefore added five matched runs, paired significance tests, and a second transfer benchmark on DomainNet-126. The resulting analysis shows that DCF’s aggregate transfer advantage is statistically significant on both ImageNet-C and DomainNet-126, while the per-transfer mean ⟪\\pm⟫ standard deviation values characterize how those gains are distributed across individual transfer settings.",
+        "The revised Fig. 11 replaces the original Fig. 10. Panel (a) updates the existing ImageNet-C analysis with five-run variability, while panel (b) adds the new DomainNet-126 benchmark. Both panels report mean ⟪\\pm⟫ standard deviation over five matched runs. On ImageNet-C, DCF achieves a mean gain over No Adapt of 30.30 ⟪\\pm⟫ 0.39 pp, compared with 27.95 ⟪\\pm⟫ 0.05 pp for AEA, the strongest aggregate baseline in this comparison."
       ],
       "changes": [
         "transfer",
@@ -1651,8 +1690,8 @@ window.REVIEW_DATA={
       "fullResponse": [
         {
           "kind": "paragraph",
-          "html": "We agree that the cross-domain results need run-to-run variability estimates and significance tests for the aggregate improvements. We have therefore added five-run variability, paired significance tests, and a second transfer benchmark on DomainNet-126.",
-          "text": "We agree that the cross-domain results need run-to-run variability estimates and significance tests for the aggregate improvements. We have therefore added five-run variability, paired significance tests, and a second transfer benchmark on DomainNet-126."
+          "html": "We agree that the cross-domain results should be supported by run-to-run variability and formal significance testing. We therefore added five matched runs, paired significance tests, and a second transfer benchmark on DomainNet-126. The resulting analysis shows that DCF’s aggregate transfer advantage is statistically significant on both ImageNet-C and DomainNet-126, while the per-transfer mean <span data-response-math=\"\\pm\" data-display=\"false\">\\pm</span> standard deviation values characterize how those gains are distributed across individual transfer settings.",
+          "text": "We agree that the cross-domain results should be supported by run-to-run variability and formal significance testing. We therefore added five matched runs, paired significance tests, and a second transfer benchmark on DomainNet-126. The resulting analysis shows that DCF’s aggregate transfer advantage is statistically significant on both ImageNet-C and DomainNet-126, while the per-transfer mean ⟪\\pm⟫ standard deviation values characterize how those gains are distributed across individual transfer settings."
         },
         {
           "kind": "heading",
@@ -1661,13 +1700,37 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "The revised Fig. 11, replacing Fig. 10 in the original submission, reports mean <span data-response-math=\"\\pm\" data-display=\"false\">\\pm</span> standard deviation over five matched runs. On ImageNet-C, DCF achieves a mean gain over No Adapt of 30.30 <span data-response-math=\"\\pm\" data-display=\"false\">\\pm</span> 0.39 pp, compared with 27.95 <span data-response-math=\"\\pm\" data-display=\"false\">\\pm</span> 0.05 pp for AEA, the strongest aggregate baseline in this comparison.",
-          "text": "The revised Fig. 11, replacing Fig. 10 in the original submission, reports mean ⟪\\pm⟫ standard deviation over five matched runs. On ImageNet-C, DCF achieves a mean gain over No Adapt of 30.30 ⟪\\pm⟫ 0.39 pp, compared with 27.95 ⟪\\pm⟫ 0.05 pp for AEA, the strongest aggregate baseline in this comparison."
+          "html": "The revised Fig. 11 replaces the original Fig. 10. Panel (a) updates the existing ImageNet-C analysis with five-run variability, while panel (b) adds the new DomainNet-126 benchmark. Both panels report mean <span data-response-math=\"\\pm\" data-display=\"false\">\\pm</span> standard deviation over five matched runs. On ImageNet-C, DCF achieves a mean gain over No Adapt of 30.30 <span data-response-math=\"\\pm\" data-display=\"false\">\\pm</span> 0.39 pp, compared with 27.95 <span data-response-math=\"\\pm\" data-display=\"false\">\\pm</span> 0.05 pp for AEA, the strongest aggregate baseline in this comparison.",
+          "text": "The revised Fig. 11 replaces the original Fig. 10. Panel (a) updates the existing ImageNet-C analysis with five-run variability, while panel (b) adds the new DomainNet-126 benchmark. Both panels report mean ⟪\\pm⟫ standard deviation over five matched runs. On ImageNet-C, DCF achieves a mean gain over No Adapt of 30.30 ⟪\\pm⟫ 0.39 pp, compared with 27.95 ⟪\\pm⟫ 0.05 pp for AEA, the strongest aggregate baseline in this comparison."
+        },
+        {
+          "kind": "image",
+          "src": "assets/response/imagenet_c_cross_heatmap_with_gain.png",
+          "alt": "Fig. 11(a). Cross-domain transfer. ImageNet-C accuracy gains (in percentage points) over No Adapt, averaged across all unseen corruption domains. Results are reported as mean ⟪\\pm⟫ standard deviation over five runs.",
+          "evidenceId": "transfer"
+        },
+        {
+          "kind": "caption",
+          "html": "<em><strong>Fig. 11(a). Cross-domain transfer.</strong> ImageNet-C accuracy gains (in percentage points) over <em>No Adapt</em>, averaged across all unseen corruption domains. Results are reported as mean <span data-response-math=\"\\pm\" data-display=\"false\">\\pm</span> standard deviation over five runs.</em>",
+          "text": "Fig. 11(a). Cross-domain transfer. ImageNet-C accuracy gains (in percentage points) over No Adapt, averaged across all unseen corruption domains. Results are reported as mean ⟪\\pm⟫ standard deviation over five runs.",
+          "evidenceId": "transfer"
+        },
+        {
+          "kind": "image",
+          "src": "assets/response/domainnet_heatmap_with_gain.png",
+          "alt": "Fig. 11(b). Cross-domain transfer. DomainNet-126 accuracy gains over No Adapt for each cross-domain transfer pair (⟪\\text{Adaptation} \\to \\text{Evaluation}⟫, where C: Clipart, P: Painting, R: Real, and S: Sketch). Results are reported as mean ⟪\\pm⟫ standard deviation over five runs.",
+          "evidenceId": "domainnet"
+        },
+        {
+          "kind": "caption",
+          "html": "<em><strong>Fig. 11(b). Cross-domain transfer.</strong> DomainNet-126 accuracy gains over <em>No Adapt</em> for each cross-domain transfer pair (<span data-response-math=\"\\text{Adaptation} \\to \\text{Evaluation}\" data-display=\"false\">\\text{Adaptation} \\to \\text{Evaluation}</span>, where C: Clipart, P: Painting, R: Real, and S: Sketch). Results are reported as mean <span data-response-math=\"\\pm\" data-display=\"false\">\\pm</span> standard deviation over five runs.</em>",
+          "text": "Fig. 11(b). Cross-domain transfer. DomainNet-126 accuracy gains over No Adapt for each cross-domain transfer pair (⟪\\text{Adaptation} \\to \\text{Evaluation}⟫, where C: Clipart, P: Painting, R: Real, and S: Sketch). Results are reported as mean ⟪\\pm⟫ standard deviation over five runs.",
+          "evidenceId": "domainnet"
         },
         {
           "kind": "paragraph",
-          "html": "<strong>Aggregate results reported in revised Section IV-C</strong>",
-          "text": "Aggregate results reported in revised Section IV-C"
+          "html": "<strong>Summary of cross-domain statistical results reported in revised Section IV-C</strong>",
+          "text": "Summary of cross-domain statistical results reported in revised Section IV-C"
         },
         {
           "kind": "table",
@@ -1742,23 +1805,18 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "Both tests use five matched runs. On ImageNet-C, the paired comparison gives <span data-response-math=\"t(4) = 14.30\" data-display=\"false\">t(4) = 14.30</span> and <span data-response-math=\"p = 1.39 \\times 10^{-4}\" data-display=\"false\">p = 1.39 \\times 10^{-4}</span>; on DomainNet-126, DCF achieves 61.40% mean accuracy versus 60.13% for DeYO, with <span data-response-math=\"t(4) = 12.01\" data-display=\"false\">t(4) = 12.01</span> and <span data-response-math=\"p = 2.75 \\times 10^{-4}\" data-display=\"false\">p = 2.75 \\times 10^{-4}</span>. The ImageNet-C row reports mean gain over No Adapt, while the DomainNet row reports mean accuracy. These metrics follow the definitions used for the respective benchmarks.",
-          "text": "Both tests use five matched runs. On ImageNet-C, the paired comparison gives ⟪t(4) = 14.30⟫ and ⟪p = 1.39 \\times 10^{-4}⟫; on DomainNet-126, DCF achieves 61.40% mean accuracy versus 60.13% for DeYO, with ⟪t(4) = 12.01⟫ and ⟪p = 2.75 \\times 10^{-4}⟫. The ImageNet-C row reports mean gain over No Adapt, while the DomainNet row reports mean accuracy. These metrics follow the definitions used for the respective benchmarks."
+          "html": "The paired tests establish statistically significant improvements in the matched run-level aggregates on both benchmarks. The ImageNet-C test compares mean gains over No Adapt, while the DomainNet-126 test compares mean accuracies. Statistical inference uses matched run-level aggregates, consistent with the reported cross-domain summary metric. The per-transfer cells report mean <span data-response-math=\"\\pm\" data-display=\"false\">\\pm</span> standard deviation to characterize the distribution and variability of the gains.",
+          "text": "The paired tests establish statistically significant improvements in the matched run-level aggregates on both benchmarks. The ImageNet-C test compares mean gains over No Adapt, while the DomainNet-126 test compares mean accuracies. Statistical inference uses matched run-level aggregates, consistent with the reported cross-domain summary metric. The per-transfer cells report mean ⟪\\pm⟫ standard deviation to characterize the distribution and variability of the gains."
         },
         {
-          "kind": "paragraph",
-          "html": "These paired tests support statistically significant aggregate improvements for DCF across matched runs. The two panels summarize different evaluation units, which is important when interpreting small gains:",
-          "text": "These paired tests support statistically significant aggregate improvements for DCF across matched runs. The two panels summarize different evaluation units, which is important when interpreting small gains:"
-        },
-        {
-          "kind": "paragraph",
+          "kind": "caption",
           "html": "<strong>Fig. 11(a): Domain-aggregated transfer on ImageNet-C.</strong> Each entry reports transfer gain after adaptation to one of the 15 corruption domains, averaged across the remaining 14 unseen corruptions without further updates. DCF exceeds the domain-wise strongest baseline in 13 of 15 domains, with advantages above 1.5 pp in 12 domains and a maximum of 3.64 pp. The small-gain or lower-performing cases are Fog (+0.58 pp over AEA), Frost (-0.24 pp versus SPA), and Impulse (-2.03 pp versus SPA). These domain-wise results describe the distribution of gains; statistical significance is evaluated by the five matched run-level aggregate comparisons reported above.",
           "text": "Fig. 11(a): Domain-aggregated transfer on ImageNet-C. Each entry reports transfer gain after adaptation to one of the 15 corruption domains, averaged across the remaining 14 unseen corruptions without further updates. DCF exceeds the domain-wise strongest baseline in 13 of 15 domains, with advantages above 1.5 pp in 12 domains and a maximum of 3.64 pp. The small-gain or lower-performing cases are Fog (+0.58 pp over AEA), Frost (-0.24 pp versus SPA), and Impulse (-2.03 pp versus SPA). These domain-wise results describe the distribution of gains; statistical significance is evaluated by the five matched run-level aggregate comparisons reported above."
         },
         {
-          "kind": "paragraph",
-          "html": "<strong>Fig. 11(b): Pairwise transfer on DomainNet-126.</strong> Each entry reports mean <span data-response-math=\"\\pm\" data-display=\"false\">\\pm</span> standard deviation over five runs for a specific <span data-response-math=\"\\mathrm{Adaptation}\\to\\mathrm{Evaluation}\" data-display=\"false\">\\mathrm{Adaptation}\\to\\mathrm{Evaluation}</span> pair. DCF exceeds DeYO in all 12 pairs and yields positive gains over No Adapt throughout this matrix (0.57–12.38 pp). It achieves the highest mean gain in 10 of 12 pairs; the exceptions are <span data-response-math=\"\\mathrm{P}\\to\\mathrm{R}\" data-display=\"false\">\\mathrm{P}\\to\\mathrm{R}</span> (0.57 versus RoTTA’s 0.67 pp) and <span data-response-math=\"\\mathrm{S}\\to\\mathrm{R}\" data-display=\"false\">\\mathrm{S}\\to\\mathrm{R}</span> (9.21 versus RoTTA’s 9.37 pp). This consistent positive transfer, together with the significant aggregate advantage over DeYO, supports representation preservation across the evaluated artistic domains.",
-          "text": "Fig. 11(b): Pairwise transfer on DomainNet-126. Each entry reports mean ⟪\\pm⟫ standard deviation over five runs for a specific ⟪\\mathrm{Adaptation}\\to\\mathrm{Evaluation}⟫ pair. DCF exceeds DeYO in all 12 pairs and yields positive gains over No Adapt throughout this matrix (0.57–12.38 pp). It achieves the highest mean gain in 10 of 12 pairs; the exceptions are ⟪\\mathrm{P}\\to\\mathrm{R}⟫ (0.57 versus RoTTA’s 0.67 pp) and ⟪\\mathrm{S}\\to\\mathrm{R}⟫ (9.21 versus RoTTA’s 9.37 pp). This consistent positive transfer, together with the significant aggregate advantage over DeYO, supports representation preservation across the evaluated artistic domains."
+          "kind": "caption",
+          "html": "<strong>Fig. 11(b): Pairwise transfer on DomainNet-126.</strong> Each entry reports mean <span data-response-math=\"\\pm\" data-display=\"false\">\\pm</span> standard deviation over five runs for a specific <span data-response-math=\"\\mathrm{Adaptation}\\to\\mathrm{Evaluation}\" data-display=\"false\">\\mathrm{Adaptation}\\to\\mathrm{Evaluation}</span> pair. DCF exceeds DeYO in all 12 pairs and yields positive gains over No Adapt throughout this matrix (0.57–12.38 pp). It achieves the highest mean gain in 10 of 12 pairs; the exceptions are <span data-response-math=\"\\mathrm{P}\\to\\mathrm{R}\" data-display=\"false\">\\mathrm{P}\\to\\mathrm{R}</span> (0.57 versus RoTTA’s 0.67 pp) and <span data-response-math=\"\\mathrm{S}\\to\\mathrm{R}\" data-display=\"false\">\\mathrm{S}\\to\\mathrm{R}</span> (9.21 versus RoTTA’s 9.37 pp). This consistent positive transfer, together with the significant aggregate advantage over DeYO, provides evidence that DCF preserves transferable representations beyond the ImageNet corruption setting and across the evaluated artistic-domain shifts.",
+          "text": "Fig. 11(b): Pairwise transfer on DomainNet-126. Each entry reports mean ⟪\\pm⟫ standard deviation over five runs for a specific ⟪\\mathrm{Adaptation}\\to\\mathrm{Evaluation}⟫ pair. DCF exceeds DeYO in all 12 pairs and yields positive gains over No Adapt throughout this matrix (0.57–12.38 pp). It achieves the highest mean gain in 10 of 12 pairs; the exceptions are ⟪\\mathrm{P}\\to\\mathrm{R}⟫ (0.57 versus RoTTA’s 0.67 pp) and ⟪\\mathrm{S}\\to\\mathrm{R}⟫ (9.21 versus RoTTA’s 9.37 pp). This consistent positive transfer, together with the significant aggregate advantage over DeYO, provides evidence that DCF preserves transferable representations beyond the ImageNet corruption setting and across the evaluated artistic-domain shifts."
         },
         {
           "kind": "heading",
@@ -1767,13 +1825,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "To extend the evaluation beyond ImageNet corruptions, we added DomainNet-126, a separate 126-class benchmark spanning Clipart, Painting, Real, and Sketch. Models adapt on one domain and are then evaluated on the remaining unseen domains without further updates. DCF attains 61.40% mean accuracy versus 60.13% for DeYO and improves over DeYO across all evaluated adaptation-to-evaluation pairs.",
-          "text": "To extend the evaluation beyond ImageNet corruptions, we added DomainNet-126, a separate 126-class benchmark spanning Clipart, Painting, Real, and Sketch. Models adapt on one domain and are then evaluated on the remaining unseen domains without further updates. DCF attains 61.40% mean accuracy versus 60.13% for DeYO and improves over DeYO across all evaluated adaptation-to-evaluation pairs."
-        },
-        {
-          "kind": "paragraph",
-          "html": "ImageNet-C and DomainNet-126 each use their own fixed label space and source classifier, with evaluation on unseen domains after adaptation. Together, they demonstrate representation preservation across synthetic corruptions and artistic domain shifts, supported by significant aggregate improvements on both benchmarks.",
-          "text": "ImageNet-C and DomainNet-126 each use their own fixed label space and source classifier, with evaluation on unseen domains after adaptation. Together, they demonstrate representation preservation across synthetic corruptions and artistic domain shifts, supported by significant aggregate improvements on both benchmarks."
+          "html": "To extend the evaluation beyond ImageNet corruptions, we added DomainNet-126, a separate 126-class benchmark spanning Clipart, Painting, Real, and Sketch. Models adapt on one domain and are then evaluated on the remaining unseen domains without further updates. Each benchmark uses its own fixed label space and source classifier. This experiment tests whether the representation-preservation behavior observed on ImageNet-C carries to a distinct dataset and a different family of domain shifts, extending the evaluation beyond held-out corruptions.",
+          "text": "To extend the evaluation beyond ImageNet corruptions, we added DomainNet-126, a separate 126-class benchmark spanning Clipart, Painting, Real, and Sketch. Models adapt on one domain and are then evaluated on the remaining unseen domains without further updates. Each benchmark uses its own fixed label space and source classifier. This experiment tests whether the representation-preservation behavior observed on ImageNet-C carries to a distinct dataset and a different family of domain shifts, extending the evaluation beyond held-out corruptions."
         },
         {
           "kind": "location",
@@ -1781,7 +1834,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section IV-A, \"Benchmarks,\" p. 6; Section IV-C, \"Cross-Domain Transfer,\" and Fig. 11(a)–(b), p. 11."
         }
       ],
-      "responseWordCount": 544,
+      "responseWordCount": 625,
       "responseSourceSections": [
         "R1.6"
       ]
@@ -1790,7 +1843,7 @@ window.REVIEW_DATA={
       "id": "r2-1",
       "group": "Reviewer 2",
       "label": "R2.1",
-      "title": "Trainable parameters and layer groups",
+      "title": "Trainable parameters and the meaning of a layer",
       "comment": "The implementation section states that the experiments follow the official Tent setup. For clarity and reproducibility, please explicitly specify which model parameters are optimized during TTA (e.g., all network parameters, only the affine parameters of normalization layers, or another subset). It would also be helpful to clarify how a layer is defined when applying Curvature-aware Layer Retention. For convolutional architectures, does this refer to an individual normalization layer, a residual block, or a larger network stage?",
       "response": [
         "We now specify which parameters are optimized and how they are grouped for CLR. Following Tent, SGD updates only the affine parameters of normalization layers, with learning rate ⟪2.5\\times10^{-4}⟫ and momentum 0.9; convolution kernels and classifier weights remain frozen during adaptation.",
@@ -1818,22 +1871,12 @@ window.REVIEW_DATA={
           "text": "We additionally compare this block-level grouping against per-normalization-layer control. Table IX reports 43.48% for layer-block control and 42.92% for per-normalization-layer control, supporting the block-level grouping used by default."
         },
         {
-          "kind": "paragraph",
-          "html": "<strong>Selected revised text</strong>",
-          "text": "Selected revised text"
-        },
-        {
-          "kind": "excerpt",
-          "html": "\"Following Tent [6], SGD optimizes only normalization affine parameters (learning rate <span data-response-math=\"2.5\\times10^{-4}\" data-display=\"false\">2.5\\times10^{-4}</span>, momentum 0.9). For CLR, block groups correspond to ResNet layer blocks (stem BN (initial_bn) and layer1–layer4) or ViT encoder blocks.\"",
-          "text": "\"Following Tent [6], SGD optimizes only normalization affine parameters (learning rate ⟪2.5\\times10^{-4}⟫, momentum 0.9). For CLR, block groups correspond to ResNet layer blocks (stem BN (initial_bn) and layer1–layer4) or ViT encoder blocks.\""
-        },
-        {
           "kind": "location",
           "html": "<strong>Changes in the manuscript:</strong> Section IV-A, \"Models and Implementation Details,\" p. 6; Section III-A, p. 3; Fig. 9 and Table IX, p. 10.",
           "text": "Changes in the manuscript: Section IV-A, \"Models and Implementation Details,\" p. 6; Section III-A, p. 3; Fig. 9 and Table IX, p. 10."
         }
       ],
-      "responseWordCount": 164,
+      "responseWordCount": 129,
       "responseSourceSections": [
         "R2.1"
       ]
@@ -1842,7 +1885,7 @@ window.REVIEW_DATA={
       "id": "r2-2",
       "group": "Reviewer 2",
       "label": "R2.2",
-      "title": "Definitions of all four regions",
+      "title": "Explicit definitions of the four routing regions",
       "comment": "The PCS–entropy visualization in Fig. 7 is a useful addition and provides good intuition for the routing mechanism. The caption already identifies Area 1 as the low-entropy/high-PCS trusted region, but the exact conditions defining all four regions are not stated explicitly. I suggest defining Areas 1–4 and their corresponding entropy/PCS threshold conditions directly in the figure caption or in the accompanying text. This would allow readers to interpret the visualization without repeatedly referring back to the routing equations.",
       "response": [
         "We have explicitly defined all four regions in the sample-routing text in Section III-C, immediately after Eqs. (6)–(7). Let E denote predictive entropy, s denote PCS, and ⟪\\upsilon_{\\mathrm{Ent}}⟫ and ⟪\\upsilon_{\\mathrm{PCS}}⟫ denote the two thresholds. The four regions are defined by the corresponding entropy/PCS inequalities shown below.",
@@ -1979,11 +2022,11 @@ window.REVIEW_DATA={
       "id": "r2-3",
       "group": "Reviewer 2",
       "label": "R2.3",
-      "title": "Threshold guidance and OT settings",
+      "title": "Practical threshold guidance and OT settings",
       "comment": "The sensitivity analysis suggests that DCF remains effective across a reasonable range of routing hyperparameters. It would be useful to provide brief practical guidance, or a simple rule of thumb, for selecting the entropy and PCS thresholds when applying DCF to a new dataset. In addition, for reproducibility, please consider reporting the remaining implementation details of the optimal transport procedure, such as the number of Sinkhorn iterations and other relevant solver settings.",
       "response": [
         "We now provide a starting rule for the routing thresholds and specify the OT solver settings. For a new K-class dataset, we recommend ⟪\\upsilon_{\\mathrm{PCS}} = 0.2⟫ and ⟪\\upsilon_{\\mathrm{Ent}} = 0.6\\ln K⟫ as the default starting point, followed by only coarse adjustment if necessary. The entropy threshold scales with the maximum classification entropy, ln K, while the PCS threshold controls the required probability response to the Fourier stress probe. For the default OT solver, the revised manuscript specifies Sinkhorn–Knopp with ⟪N_{\\mathrm{sk}} = 3⟫ iterations and entropic regularization ⟪\\varepsilon_{\\mathrm{OT}} = 0.5⟫; Figure 12(d) additionally evaluates lower iteration counts and alternative regularization values.",
-        "Figure 12(b) shows a broad high-accuracy region around this default setting, supporting its use as a practical initialization across datasets. The routing-ratio analysis in Table VIII further explains the trade-off between trusted-set selectivity and the amount of reliable supervision available to the online update."
+        "Figure 12(b) shows a broad high-accuracy region around this default setting, supporting it as a robust practical initialization. The routing-ratio analysis in Table VIII further explains the trade-off between trusted-set selectivity and the amount of reliable supervision available to the online update."
       ],
       "changes": [
         "implementation",
@@ -2000,8 +2043,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "Figure 12(b) shows a broad high-accuracy region around this default setting, supporting its use as a practical initialization across datasets. The routing-ratio analysis in Table VIII further explains the trade-off between trusted-set selectivity and the amount of reliable supervision available to the online update.",
-          "text": "Figure 12(b) shows a broad high-accuracy region around this default setting, supporting its use as a practical initialization across datasets. The routing-ratio analysis in Table VIII further explains the trade-off between trusted-set selectivity and the amount of reliable supervision available to the online update."
+          "html": "Figure 12(b) shows a broad high-accuracy region around this default setting, supporting it as a robust practical initialization. The routing-ratio analysis in Table VIII further explains the trade-off between trusted-set selectivity and the amount of reliable supervision available to the online update.",
+          "text": "Figure 12(b) shows a broad high-accuracy region around this default setting, supporting it as a robust practical initialization. The routing-ratio analysis in Table VIII further explains the trade-off between trusted-set selectivity and the amount of reliable supervision available to the online update."
         },
         {
           "kind": "caption",
@@ -2125,18 +2168,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "Section III-D further specifies the shared centroids, two-view transport plans, cross-view geometry objective, empty-subset safeguards, and negligible-class-mass handling. Figure 12(d) jointly studies Sinkhorn iterations and entropic regularization. Stable downstream accuracy across the tested configurations supports efficient finite-iteration OT for online geometry repair.",
-          "text": "Section III-D further specifies the shared centroids, two-view transport plans, cross-view geometry objective, empty-subset safeguards, and negligible-class-mass handling. Figure 12(d) jointly studies Sinkhorn iterations and entropic regularization. Stable downstream accuracy across the tested configurations supports efficient finite-iteration OT for online geometry repair."
-        },
-        {
-          "kind": "paragraph",
-          "html": "<strong>Selected revised text</strong>",
-          "text": "Selected revised text"
-        },
-        {
-          "kind": "excerpt",
-          "html": "\"Overall, DCF requires little hyperparameter tuning for stable performance.\"",
-          "text": "\"Overall, DCF requires little hyperparameter tuning for stable performance.\""
+          "html": "Section III-D further specifies the shared centroids, two-view transport plans, cross-view geometry objective, empty-subset safeguards, and negligible-class-mass handling. Figure 12(d) jointly studies Sinkhorn iterations and entropic regularization. Stable downstream accuracy across the tested configurations supports efficient finite-iteration OT for online geometry repair. See Response R1.3 (p. ) for Fig. 12(d).",
+          "text": "Section III-D further specifies the shared centroids, two-view transport plans, cross-view geometry objective, empty-subset safeguards, and negligible-class-mass handling. Figure 12(d) jointly studies Sinkhorn iterations and entropic regularization. Stable downstream accuracy across the tested configurations supports efficient finite-iteration OT for online geometry repair. See Response R1.3 (p. ) for Fig. 12(d)."
         },
         {
           "kind": "location",
@@ -2144,7 +2177,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section IV-A, \"Models and Implementation Details,\" p. 6; Section III-D, pp. 4–5, Eqs. (10)–(16); \"Hyperparameter Sensitivity,\" p. 11, and Fig. 12(b), (d), p. 12."
         }
       ],
-      "responseWordCount": 323,
+      "responseWordCount": 317,
       "responseSourceSections": [
         "R2.3"
       ]
@@ -2153,7 +2186,7 @@ window.REVIEW_DATA={
       "id": "r2-4",
       "group": "Reviewer 2",
       "label": "R2.4",
-      "title": "Recent continual TTA literature",
+      "title": "Recent work on continual adaptation",
       "comment": "Given the rapid development of continual and long-horizon TTA, the related-work discussion could potentially be strengthened by briefly acknowledging very recent studies on long-horizon stability, where relevant. For example:\n[1] The Golden Subspace: Where Efficiency Meets Generalization in Continual Test-Time Adaptation, CVPR 2026.\n[2] Continual Test-Time Adaptation in Computer Vision: Methods, Benchmarks, and Future Directions, TMLR 2026.",
       "response": [
         "Section II now cites both suggested 2026 studies and explains how their approaches relate to DCF.",
@@ -2191,22 +2224,12 @@ window.REVIEW_DATA={
           "text": "The survey provides context for teacher models, memory, reset strategies, and long-horizon stability. DCF specifically links heterogeneous target evidence to layer-wise update retention."
         },
         {
-          "kind": "paragraph",
-          "html": "<strong>Selected revised text</strong>",
-          "text": "Selected revised text"
-        },
-        {
-          "kind": "excerpt",
-          "html": "\"DCF evaluates candidate-update persistence separately for each layer group using current source–candidate curvature mismatch.\"",
-          "text": "\"DCF evaluates candidate-update persistence separately for each layer group using current source–candidate curvature mismatch.\""
-        },
-        {
           "kind": "location",
           "html": "<strong>Changes in the manuscript:</strong> Section II, \"Test-Time adaptation\" and \"Reliability- and Stability-aware TTA,\" p. 3; references [28] and [38], p. 13.",
           "text": "Changes in the manuscript: Section II, \"Test-Time adaptation\" and \"Reliability- and Stability-aware TTA,\" p. 3; references [28] and [38], p. 13."
         }
       ],
-      "responseWordCount": 155,
+      "responseWordCount": 138,
       "responseSourceSections": [
         "R2.4"
       ]
@@ -2603,33 +2626,33 @@ window.REVIEW_DATA={
           7.516,
           80.808,
           42.157,
-          13.889
+          14.141
         ],
         "boxes": [
           [
             7.516,
             80.808,
             42.157,
-            13.889
+            14.141
           ],
           [
             50.49,
-            32.576,
-            42.4,
-            13.7
+            32.513,
+            42.157,
+            15.341
           ]
         ],
-        "aspect": 1.1607142857142858
+        "aspect": 1.082214765100671
       },
       "summary": "The local PCS expansion retains the positive-part truncation. Its leading squared response is bounded above by the gradient quadratic form under the actual post-clamp perturbation second moment.",
       "before": "",
-      "after": "Theoretical interpretation. Motivated by frequency-dependent model sensitivity and texture bias [39, 40], we characterize PCS through a local probability expansion. For a fixed input ⟪x⟫, let ⟪\\delta=\\mathcal{A}^{s}(x)-x⟫, ⟪Q_q(x)=\\mathbb{E}_q[\\delta\\delta^\\top]⟫, and ⟪g_x=\\nabla_x p_{\\theta_t}(\\hat{y}_t(x)\\mid x)⟫, holding the original predicted class fixed. For a locally smooth probability function and sufficiently small perturbations, retaining the positive-part operation in Eq. (5) gives ⟪\\mathbb{E}_q[s_{\\theta_t}(x)^2]\n=\\mathbb{E}_q[(-g_x^\\top\\delta)_+^2]\n+O(\\mathbb{E}_q\\lVert\\delta\\rVert_2^3).⟫ The leading term is bounded above by ⟪g_x^\\top Q_q(x)g_x⟫, where ⟪Q_q(x)⟫ is the perturbation second-moment matrix; no zero-mean or symmetry assumption is imposed after clamping. Thus, this relation establishes PCS as a structured directional-sensitivity measure whose response depends jointly on the prediction gradient and the directions excited by the Fourier probe. The controlled shortcut interventions in Section IV-C provide the empirical bridge to routing: among confidence-matched candidates in the evaluated settings, task-relevant predictions exhibit stronger PCS responses and are preferentially retained by the joint entropy–PCS criterion.",
+      "after": "Theoretical interpretation. Motivated by frequency-dependent model sensitivity and texture bias [39, 40], we characterize PCS through a local probability expansion. For a fixed input ⟪x⟫, let ⟪\\delta=\\mathcal{A}^{s}(x)-x⟫, ⟪Q_q(x)=\\mathbb{E}_q[\\delta\\delta^\\top]⟫, and ⟪g_x=\\nabla_x p_{\\theta_t}(\\hat{y}_t(x)\\mid x)⟫, holding the original predicted class fixed. For a locally smooth probability function and sufficiently small perturbations, retaining the positive-part operation in Eq. (5) gives ⟪\\mathbb{E}_q[s_{\\theta_t}(x)^2]\n=\\mathbb{E}_q[(-g_x^\\top\\delta)_+^2]\n+O(\\mathbb{E}_q\\lVert\\delta\\rVert_2^3).⟫ The leading term is bounded above by ⟪g_x^\\top Q_q(x)g_x⟫, where ⟪Q_q(x)⟫ is the perturbation second-moment matrix; no zero-mean or symmetry assumption is imposed after clamping. Thus, this relation establishes PCS as a structured directional-sensitivity measure whose response depends jointly on the prediction gradient and the directions excited by the Fourier probe. The controlled shortcut interventions in Section IV-C establish the empirical bridge to routing: among confidence-matched candidates, PCS separates task-relevant from shortcut-driven predictions and improves trusted-set purity beyond entropy alone, supporting PCS as a shortcut-sensitive routing signal.",
       "diff": {
         "original": [],
         "revised": [
           {
             "kind": "add",
-            "text": "Theoretical interpretation. Motivated by frequency-dependent model sensitivity and texture bias [39, 40], we characterize PCS through a local probability expansion. For a fixed input ⟪x⟫, let ⟪\\delta=\\mathcal{A}^{s}(x)-x⟫, ⟪Q_q(x)=\\mathbb{E}_q[\\delta\\delta^\\top]⟫, and ⟪g_x=\\nabla_x p_{\\theta_t}(\\hat{y}_t(x)\\mid x)⟫, holding the original predicted class fixed. For a locally smooth probability function and sufficiently small perturbations, retaining the positive-part operation in Eq. (5) gives ⟪\\mathbb{E}_q[s_{\\theta_t}(x)^2]\n=\\mathbb{E}_q[(-g_x^\\top\\delta)_+^2]\n+O(\\mathbb{E}_q\\lVert\\delta\\rVert_2^3).⟫ The leading term is bounded above by ⟪g_x^\\top Q_q(x)g_x⟫, where ⟪Q_q(x)⟫ is the perturbation second-moment matrix; no zero-mean or symmetry assumption is imposed after clamping. Thus, this relation establishes PCS as a structured directional-sensitivity measure whose response depends jointly on the prediction gradient and the directions excited by the Fourier probe. The controlled shortcut interventions in Section IV-C provide the empirical bridge to routing: among confidence-matched candidates in the evaluated settings, task-relevant predictions exhibit stronger PCS responses and are preferentially retained by the joint entropy–PCS criterion."
+            "text": "Theoretical interpretation. Motivated by frequency-dependent model sensitivity and texture bias [39, 40], we characterize PCS through a local probability expansion. For a fixed input ⟪x⟫, let ⟪\\delta=\\mathcal{A}^{s}(x)-x⟫, ⟪Q_q(x)=\\mathbb{E}_q[\\delta\\delta^\\top]⟫, and ⟪g_x=\\nabla_x p_{\\theta_t}(\\hat{y}_t(x)\\mid x)⟫, holding the original predicted class fixed. For a locally smooth probability function and sufficiently small perturbations, retaining the positive-part operation in Eq. (5) gives ⟪\\mathbb{E}_q[s_{\\theta_t}(x)^2]\n=\\mathbb{E}_q[(-g_x^\\top\\delta)_+^2]\n+O(\\mathbb{E}_q\\lVert\\delta\\rVert_2^3).⟫ The leading term is bounded above by ⟪g_x^\\top Q_q(x)g_x⟫, where ⟪Q_q(x)⟫ is the perturbation second-moment matrix; no zero-mean or symmetry assumption is imposed after clamping. Thus, this relation establishes PCS as a structured directional-sensitivity measure whose response depends jointly on the prediction gradient and the directions excited by the Fourier probe. The controlled shortcut interventions in Section IV-C establish the empirical bridge to routing: among confidence-matched candidates, PCS separates task-relevant from shortcut-driven predictions and improves trusted-set purity beyond entropy alone, supporting PCS as a shortcut-sensitive routing signal."
           }
         ]
       },
@@ -4451,11 +4474,11 @@ window.REVIEW_DATA={
         "image": "assets/crops/regions-revised.webp",
         "box": [
           50.49,
-          63.8,
-          42.4,
-          9.9
+          65.215,
+          42.157,
+          9.659
         ],
-        "aspect": 3.299492385786802
+        "aspect": 3.359375
       },
       "summary": "The revised routing text gives the four inequality conditions and their boundary cases.",
       "before": "",
@@ -4692,27 +4715,27 @@ window.REVIEW_DATA={
           7.516,
           6.313,
           42.157,
-          88.384
+          88.51
         ],
         "boxes": [
           [
             7.516,
             6.313,
             42.157,
-            88.384
+            88.51
           ],
           [
             50.49,
             6.313,
-            41.993,
-            23.611
+            42.157,
+            22.096
           ]
         ],
-        "aspect": 0.289426523297491
+        "aspect": 0.2930486142662426
       },
       "summary": "DCF coordinates evidence routing, target-geometry constraints, and layer-wise update retention. The comparison distinguishes this control architecture from QED, MetaBN, CMDA, and MS-TTA by task and adaptation mechanism.",
       "before": "II. Related work\nWe relate DCF to existing adaptation methods without and with target data, and further discuss sample reliability estimation, target-geometry preservation, and parameter stabilization for online test-time adaptation. Adaptation without Target Data. Mitigating distribution shifts has been widely studied at training time, including domain generalization (DG) [22], robust representation learning [23], and data augmentation strategies [24]. These methods aim to improve out-of-distribution robustness by learning source models that generalize to unseen test environments. However, deployment shifts are difficult to enumerate in advance, and training-time strategies usually require additional source-side objectives, augmentations, or training costs. In contrast, test-time adaptation updates the model directly from unlabeled target samples during deployment, making it attractive for source-free robustness under evolving test streams. Adaptation with Target Data. Methods that exploit target data include offline unsupervised domain adaptation and online test-time adaptation. ⟪\\bullet⟫ Unsupervised domain adaptation (UDA). Conventional UDA assumes access to labeled source data and unlabeled target data during adaptation, and reduces domain discrepancy through feature or moment alignment [25, 26, 27, 28], adversarial learning [29, 30], pseudo-label/self-training strategies [31, 32, 33], or optimal transport [4]. Source-free UDA further removes source data during adaptation and often relies on information maximization [5], pseudo-label refinement [34], or classifier-discrepancy/self-training objectives [35, 32]. Although effective when the target domain is available in advance, these methods usually adapt offline over the whole target set and often require multiple training epochs. Therefore, they are less suitable for online test streams, where samples arrive sequentially and the target distribution may evolve over time. ⟪\\bullet⟫ Test-time adaptation (TTA). TTA adapts a pre-trained model during inference using only unlabeled test samples. Some methods modify source training by introducing auxiliary objectives, as in test-time training [10]. Fully test-time adaptation does not alter source training and can be directly applied to a pre-trained model. Representative methods update batch-normalization statistics [36], minimize prediction entropy [9, 13], enforce consistency regularization [17], or use memory and teacher models for online adaptation [17, 18]. Recent studies further show that online TTA can be unstable under realistic streams, especially with temporal correlation, small batches, mixed domains, or imbalanced label distributions. NOTE [37] highlights the effect of temporal correlation, while continual and practical TTA methods improve robustness through teacher models, memory banks, reset strategies, normalization correction, or prior correction [17, 18, 20, 15, 16, 38, 39]. These methods significantly improve online robustness, but most of them still stabilize adaptation through relatively homogeneous sample filtering or global update control. In this paper, we mainly focus on fully test-time adaptation and study its long-horizon instability from a coupled sample–layer perspective. Reliability- and Stability-aware TTA. A central challenge in online TTA is to decide which unlabeled samples should drive adaptation and how the induced parameter updates should be stabilized over time. Existing methods often address the sample side by estimating reliability from confidence or entropy, assuming that low-entropy predictions provide trustworthy pseudo-label supervision. For example, EATA [13] and SAR [14] filter redundant or unreliable samples through entropy-based criteria, DeYO [40] introduces shape-aware sample selection beyond entropy, and ETAGE [21] further incorporates gradient-norm information to detect unstable samples. However, confidence does not necessarily imply reliability under temporally correlated shifts: a confident prediction may still be supported by shortcut-sensitive cues, and repeatedly adapting to such samples can reinforce confirmation bias. Another line of work stabilizes TTA from the parameter side. CoTTA [17] uses stochastic restoration to mitigate catastrophic drift, RoTTA [18] combines robust memory sampling with teacher-student updates, and LAW [41] studies learning-rate-based mechanisms for sustained adaptation. These methods reduce long-term drift, but their stabilization rules are usually global or nearly uniform across the network, overlooking that different layers may respond to distribution shifts in substantially different ways [42]. Overall, existing TTA methods mainly stabilize online adaptation through sample filtering or global update control. In contrast, DCF attributes long-horizon instability to coupled sample–layer feedback, and decouples sample routing, routed-away geometry repair, and layer-wise update retention.",
-      "after": "We relate DCF to existing adaptation methods without and with target data, and further discuss sample reliability, target-geometry preservation, and parameter stabilization for TTA. Adaptation without Target Data. Mitigating distribution shifts has been widely studied at training time, including domain generalization (DG) [17] and robust representation learning [18]. Beyond visual tasks, uncertainty-aware modeling has also been explored to handle evolving environmental variations in non-stationary sensor streams [19, 20, 21]. Nonetheless, such source-side designs cannot exhaustively anticipate unpredictable test shifts. In contrast, TTA directly exploits unlabeled samples observed during deployment, enabling online adaptation to evolving distributions. Adaptation with Target Data. Target-data methods span offline unsupervised domain adaptation and online TTA. ⟪\\bullet⟫ Unsupervised domain adaptation (UDA). Conventional UDA accesses labeled source and unlabeled target data to reduce cross-domain discrepancies via moment alignment [22], adversarial learning [23], pseudo-label refinement [24], or optimal transport [3]. Source-free variants recover source structure or progressively refine target representations [25]. Recent studies such as VDM-DA [4], SFOCDA [5], and TAMAN [26] further explore virtual source construction, open compound adaptation, and video-oriented alignment. However, these methods assume offline or repeatedly accessible target data, whereas TTA must adapt and predict online as test samples arrive. ⟪\\bullet⟫ Test-Time adaptation (TTA). TTA adapts a pre-trained model during inference using only unlabeled test samples. Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28]. Test-time training [7] introduces auxiliary source-stage objectives. Recent studies extend TTA to diverse visual settings: MetaBN [29] leverages meta-trained normalization for adverse-weather video restoration, whereas CMDA [30] pairs model adaptation with diffusion-based data adaptation. In contrast, DCF requires neither meta-training nor generative translation, focusing on controlling self-training error accumulation in correlated streams. Other approaches explore sample bias [31], normalization or prior correction, and continual dynamics [32, 9, 15, 10, 11, 33, 34]. Despite these advances, self-training remains vulnerable to temporally correlated and label-imbalanced streams, where local adaptation errors can accumulate across successive updates. Reliability- and Stability-aware TTA. Online TTA must govern how samples drive adaptation and how updates persist. EATA [8] and SAR [9] use entropy filtering, while DeYO [35] and ETAGE [16] incorporate shape- or gradient-sensitive cues. The four closely related TCSVT studies use distinct adaptation mechanisms: QED [31] performs question-conditioned VQA debiasing; MetaBN [29] meta-trains normalization for adverse-weather video restoration; CMDA [30] couples model updates with diffusion-based data adaptation; and MS-TTA [36] refines CLIP embeddings through training-free mean shift and a feature cache. DCF instead controls the coupled evolution of target evidence and model parameters in temporally correlated recognition streams. PSR routes evidence by entropy and Fourier stress responsiveness; RGR converts routed-away samples into soft OT geometry constraints; CLR determines where the resulting candidate update persists. CoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF evaluates candidate-update persistence separately for each layer group using current source–candidate curvature mismatch. DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, and where candidate updates persist. This route–adapt–retain design interrupts the error-amplifying feedback that causes long-horizon collapse.",
+      "after": "We relate DCF to existing adaptation methods without and with target data, and further discuss sample reliability, target-geometry preservation, and parameter stabilization for TTA. Adaptation without Target Data. Mitigating distribution shifts has been widely studied at training time, including domain generalization (DG) [17] and robust representation learning [18]. Beyond visual tasks, uncertainty-aware modeling has also been explored to handle evolving environmental variations in non-stationary sensor streams [19, 20, 21]. Nonetheless, such source-side designs cannot exhaustively anticipate unpredictable test shifts. In contrast, TTA directly exploits unlabeled samples observed during deployment, enabling online adaptation to evolving distributions. Adaptation with Target Data. Target-data methods span offline unsupervised domain adaptation and online TTA. ⟪\\bullet⟫ Unsupervised domain adaptation (UDA). Conventional UDA accesses labeled source and unlabeled target data to reduce cross-domain discrepancies via moment alignment [22], adversarial learning [23], pseudo-label refinement [24], or optimal transport [3]. Source-free variants recover source structure or progressively refine target representations [25]. Recent studies such as VDM-DA [4], SFOCDA [5], and TAMAN [26] further explore virtual source construction, open compound adaptation, and video-oriented alignment. However, these methods assume offline or repeatedly accessible target data, whereas TTA must adapt and predict online as test samples arrive. ⟪\\bullet⟫ Test-Time adaptation (TTA). TTA adapts a pre-trained model during inference using only unlabeled test samples. Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28]. Test-time training [7] introduces auxiliary source-stage objectives. Recent studies extend TTA to diverse visual settings: MetaBN [29] leverages meta-trained normalization for adverse-weather video restoration, whereas CMDA [30] pairs model adaptation with diffusion-based data adaptation. In contrast, DCF requires neither meta-training nor generative translation, focusing on controlling self-training error accumulation in correlated streams. Other approaches explore sample bias [31], normalization or prior correction, and continual dynamics [32, 9, 15, 10, 11, 33, 34]. Despite these advances, self-training remains vulnerable to temporally correlated and label-imbalanced streams, where local adaptation errors can accumulate across successive updates. Reliability- and Stability-aware TTA. Online TTA must govern how samples drive adaptation and how the resulting updates persist. EATA [8] and SAR [9] use entropy-based filtering, while DeYO [35] and ETAGE [16] incorporate shape- or gradient-sensitive cues. Related studies further explore question-conditioned debiasing [31], meta-trained normalization for adverse-weather adaptation [29], diffusion-based collaborative model–data adaptation [30], and training-free mean-shift refinement of test representations [36]. In contrast, DCF controls the coupled evolution of target evidence and model parameters in temporally correlated recognition streams. PSR routes evidence by entropy and Fourier stress responsiveness; RGR converts routed-away samples into soft OT geometry constraints; and CLR determines where the resulting candidate update persists. CoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF instead coordinates evidence routing, alternative supervision, and layer-dependent update persistence within one online adaptation loop. DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, and where candidate updates persist. This route–adapt–retain design interrupts the error-amplifying feedback that causes long-horizon collapse.",
       "diff": {
         "original": [
           {
@@ -5081,11 +5104,11 @@ window.REVIEW_DATA={
           },
           {
             "kind": "same",
-            "text": "drive adaptation and how "
+            "text": "drive adaptation and how the "
           },
           {
             "kind": "del",
-            "text": "the induced parameter "
+            "text": "induced parameter "
           },
           {
             "kind": "same",
@@ -5109,7 +5132,15 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "[14] filter redundant or unreliable samples through entropy-based criteria, "
+            "text": "[14] filter redundant or unreliable samples through "
+          },
+          {
+            "kind": "same",
+            "text": "entropy-based "
+          },
+          {
+            "kind": "del",
+            "text": "criteria, "
           },
           {
             "kind": "same",
@@ -5125,23 +5156,15 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "[21] further incorporates gradient-norm information to detect unstable samples. However, confidence does not necessarily imply reliability under "
+            "text": "[21] "
           },
           {
             "kind": "same",
-            "text": "temporally correlated "
+            "text": "further "
           },
           {
             "kind": "del",
-            "text": "shifts: a confident prediction may still be supported "
-          },
-          {
-            "kind": "same",
-            "text": "by "
-          },
-          {
-            "kind": "del",
-            "text": "shortcut-sensitive cues, "
+            "text": "incorporates gradient-norm information to detect unstable samples. However, confidence does not necessarily imply reliability under temporally correlated shifts: a confident prediction may still be supported by shortcut-sensitive cues, "
           },
           {
             "kind": "same",
@@ -5149,63 +5172,23 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "repeatedly adapting to such "
+            "text": "repeatedly adapting to such samples can reinforce confirmation bias. Another line "
           },
           {
             "kind": "same",
-            "text": "samples "
+            "text": "of "
           },
           {
             "kind": "del",
-            "text": "can reinforce confirmation bias. Another line of work stabilizes TTA from "
+            "text": "work stabilizes TTA from the parameter side. CoTTA [17] uses stochastic restoration to mitigate catastrophic drift, RoTTA [18] combines robust memory sampling with teacher-student updates, and LAW [41] studies learning-rate-based mechanisms for sustained adaptation. These methods reduce long-term drift, but their stabilization rules are usually global or nearly uniform across the network, overlooking that different layers may respond to distribution shifts in substantially different ways [42]. Overall, existing TTA methods mainly stabilize online adaptation through sample filtering or global update control. "
           },
           {
             "kind": "same",
-            "text": "the "
+            "text": "In contrast, DCF "
           },
           {
             "kind": "del",
-            "text": "parameter side. "
-          },
-          {
-            "kind": "same",
-            "text": "CoTTA "
-          },
-          {
-            "kind": "del",
-            "text": "[17] uses stochastic restoration to mitigate catastrophic drift, "
-          },
-          {
-            "kind": "same",
-            "text": "RoTTA "
-          },
-          {
-            "kind": "del",
-            "text": "[18] combines robust memory sampling with teacher-student updates, "
-          },
-          {
-            "kind": "same",
-            "text": "and "
-          },
-          {
-            "kind": "del",
-            "text": "LAW [41] studies learning-rate-based mechanisms "
-          },
-          {
-            "kind": "same",
-            "text": "for "
-          },
-          {
-            "kind": "del",
-            "text": "sustained adaptation. These methods reduce long-term drift, but their stabilization rules are usually global or nearly uniform across the network, overlooking that different layers may respond to distribution shifts in substantially different ways [42]. Overall, existing TTA methods mainly stabilize "
-          },
-          {
-            "kind": "same",
-            "text": "online adaptation "
-          },
-          {
-            "kind": "del",
-            "text": "through sample filtering or global update control. In contrast, DCF attributes long-horizon instability to "
+            "text": "attributes long-horizon instability to "
           },
           {
             "kind": "same",
@@ -5571,7 +5554,11 @@ window.REVIEW_DATA={
           },
           {
             "kind": "same",
-            "text": "drive adaptation and how "
+            "text": "drive adaptation and how the "
+          },
+          {
+            "kind": "add",
+            "text": "resulting "
           },
           {
             "kind": "same",
@@ -5595,7 +5582,15 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "[9] use entropy filtering, while "
+            "text": "[9] use "
+          },
+          {
+            "kind": "same",
+            "text": "entropy-based "
+          },
+          {
+            "kind": "add",
+            "text": "filtering, while "
           },
           {
             "kind": "same",
@@ -5611,23 +5606,15 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "[16] incorporate shape- or gradient-sensitive cues. The four closely related TCSVT studies use distinct adaptation mechanisms: QED [31] performs question-conditioned VQA debiasing; MetaBN [29] meta-trains normalization for adverse-weather video restoration; CMDA [30] couples model updates with diffusion-based data adaptation; and MS-TTA [36] refines CLIP embeddings through training-free mean shift and a feature cache. DCF instead controls the coupled evolution of target evidence and model parameters in "
+            "text": "[16] incorporate shape- or gradient-sensitive cues. Related studies "
           },
           {
             "kind": "same",
-            "text": "temporally correlated "
+            "text": "further "
           },
           {
             "kind": "add",
-            "text": "recognition streams. PSR routes evidence "
-          },
-          {
-            "kind": "same",
-            "text": "by "
-          },
-          {
-            "kind": "add",
-            "text": "entropy "
+            "text": "explore question-conditioned debiasing [31], meta-trained normalization for adverse-weather adaptation [29], diffusion-based collaborative model–data adaptation [30], "
           },
           {
             "kind": "same",
@@ -5635,63 +5622,23 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "Fourier stress responsiveness; RGR converts routed-away "
+            "text": "training-free mean-shift refinement "
           },
           {
             "kind": "same",
-            "text": "samples "
+            "text": "of "
           },
           {
             "kind": "add",
-            "text": "into soft OT geometry constraints; CLR determines where "
+            "text": "test representations [36]. "
           },
           {
             "kind": "same",
-            "text": "the "
+            "text": "In contrast, DCF "
           },
           {
             "kind": "add",
-            "text": "resulting candidate update persists. "
-          },
-          {
-            "kind": "same",
-            "text": "CoTTA "
-          },
-          {
-            "kind": "add",
-            "text": "[12], "
-          },
-          {
-            "kind": "same",
-            "text": "RoTTA "
-          },
-          {
-            "kind": "add",
-            "text": "[13], LAW [37], "
-          },
-          {
-            "kind": "same",
-            "text": "and "
-          },
-          {
-            "kind": "add",
-            "text": "GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF evaluates candidate-update persistence separately "
-          },
-          {
-            "kind": "same",
-            "text": "for "
-          },
-          {
-            "kind": "add",
-            "text": "each layer group using current source–candidate curvature mismatch. DCF formulates "
-          },
-          {
-            "kind": "same",
-            "text": "online adaptation "
-          },
-          {
-            "kind": "add",
-            "text": "as a "
+            "text": "controls the coupled evolution of target evidence and model parameters in temporally correlated recognition streams. PSR routes evidence by entropy and Fourier stress responsiveness; RGR converts routed-away samples into soft OT geometry constraints; and CLR determines where the resulting candidate update persists. CoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF instead coordinates evidence routing, alternative supervision, and layer-dependent update persistence within one online adaptation loop. DCF formulates online adaptation as a "
           },
           {
             "kind": "same",
@@ -5754,17 +5701,17 @@ window.REVIEW_DATA={
             1.51
           ]
         ],
-        "aspect": 5.4655172413793105
+        "aspect": 5.552631578947368
       },
       "summary": "All three suggested structural-health-monitoring studies are cited as broader context for uncertainty under environmental change.",
       "before": "",
-      "after": "Beyond visual tasks, uncertainty-aware modeling has\n\nalso been explored to handle evolving environmental variations\n\nin non-stationary sensor streams [19–21].",
+      "after": "Beyond visual tasks, uncertainty-aware modeling has also been explored to handle evolving environmental variations in non-stationary sensor streams [19, 20, 21].",
       "diff": {
         "original": [],
         "revised": [
           {
             "kind": "add",
-            "text": "Beyond visual tasks, uncertainty-aware modeling has\n\nalso been explored to handle evolving environmental variations\n\nin non-stationary sensor streams [19–21]."
+            "text": "Beyond visual tasks, uncertainty-aware modeling has also been explored to handle evolving environmental variations in non-stationary sensor streams [19, 20, 21]."
           }
         ]
       },
@@ -5815,53 +5762,53 @@ window.REVIEW_DATA={
             1.51
           ],
           [
-            83.344,
+            65.824,
+            10.043,
+            26.564,
+            1.51
+          ],
+          [
+            50.813,
             11.552,
-            9.043,
-            1.511
+            41.573,
+            1.51
           ],
           [
             50.813,
             13.062,
-            41.349,
+            41.381,
             1.51
           ],
           [
             50.813,
             14.571,
             41.349,
-            1.511
+            1.51
           ],
           [
             50.813,
             16.081,
-            41.4,
+            41.349,
             1.51
           ],
           [
             50.813,
             17.59,
-            41.381,
-            1.511
-          ],
-          [
-            50.813,
-            19.1,
-            39.256,
+            31.072,
             1.51
           ]
         ],
-        "aspect": 1.5191387559808613
+        "aspect": 1.5689655172413792
       },
       "summary": "The 2026 continual-TTA survey and GOLD are added. The discussion distinguishes classifier-aligned subspace adaptation from candidate–source layer retention.",
       "before": "",
-      "after": "Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28].\n\nCoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF evaluates candidate-update persistence separately for each layer group using current source–candidate curvature mismatch.",
+      "after": "Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28].\n\nCoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF instead coordinates evidence routing, alternative supervision, and layer-dependent update persistence within one online adaptation loop. DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, and where candidate updates persist. This route–adapt–retain design interrupts the error-amplifying feedback that causes long-horizon collapse. Methodology Problem Setup Test-Time Adaptation (TTA) starts from a ⟪K⟫-class source model ⟪f_{\\theta_0}:\\mathcal{X}\\to\\Delta^{K-1}⟫ trained on ⟪\\mathcal{P}_0(X,Y)⟫, where ⟪f_\\theta=\\operatorname{softmax}\\circ c_\\theta\\circ h_\\theta,⟫ with ⟪h_\\theta⟫ and ⟪c_\\theta⟫ denoting the feature extractor and classifier, respectively. Given an unlabeled test stream ⟪\\{x_t\\}_{t=1}^T⟫, each ⟪x_t=\\{x_{t,i}\\}_{i=1}^{N_t}⟫ is a mini-batch sampled from ⟪\\mathcal{P}_t(X)⟫. The target distribution may evolve over time under temporally correlated covariate and class-prior shifts, where ⟪\\pi_t^Y(\\cdot)\\coloneqq\\mathcal{P}_t(Y=\\cdot)⟫. We write ⟪\\theta_t=\\{\\theta_t^l\\}_{l=1}^L⟫ for the trainable parameters at time step ⟪t⟫, partitioned into ⟪L⟫ layer groups. At each step, online TTA updates parameters ⟪\\theta_t⟫ using only the current unlabeled data ⟪x_t⟫: ⟪\\displaystyle \\theta_{t+1}^{l} \\coloneqq \\theta_t^{l} - \\eta \\nabla_{\\theta_t^{l}} \\mathcal{L}_{\\mathrm{TTA}}(x_t;\\theta_t),⟫ where ⟪\\mathcal{L}_{\\mathrm{TTA}}⟫ is typically self-supervised. However, when test streams exhibit strong temporal correlation, such homogeneous and unconstrained updates allow biased gradients to accumulate unchecked across network layers. Decoupled Control View of DCF We formulate DCF as a decoupled online control framework for temporally correlated streams. DCF follows the route–adapt–retain paradigm: 1) route instances into trusted and routed-away subsets; 2) adapt via subset-specific objectives, reusing routed-away instances for geometry repair; and 3) retain candidate updates according to layer-wise source compatibility. For ⟪x_t⟫ with ⟪\\mathcal{R}_t\\neq\\varnothing⟫, DCF first forms a sample-side candidate update ⟪\\theta_t^{+}⟫: ⟪\\displaystyle \\theta_t^{+} = \\theta_t - \\eta \\nabla_{\\theta_t} \\left( \\mathcal{L}_{\\mathrm{trust}}(\\mathcal{R}_t) + \\mathcal{L}_{\\mathrm{geo}}(\\mathcal{U}_t) \\right),⟫ where ⟪\\mathcal{R}_t⟫ and ⟪\\mathcal{U}_t⟫ are trusted and routed-away sets. ⟪\\mathcal{L}_{\\mathrm{trust}}⟫ enforces consistency on probe-selected evidence, while ⟪\\mathcal{L}_{\\mathrm{geo}}⟫ conducts Routed-away Geometry Repair (RGR). Rather than accepting ⟪\\theta_t^{+}⟫ globally, Curvature-aware Layer Retention (CLR) selectively filters updates via layer-wise retention: ⟪\\displaystyle \\theta_{t+1} = \\operatorname{Retain}_{\\mu_t,I_t,I_0}\\left(\\theta_t^{+}, \\theta_0\\right),⟫ which prevents updates from being indiscriminately retained in source-sensitive layers. Route: Probe-supported Sample Routing The first control decision is sample routing: partitioning the target batch before adaptation. Confidence alone is unreliable, as low-entropy predictions may still rely on shortcut-sensitive cues under shift (O1). We therefore pair entropy with a structured Fourier stress probe that perturbs frequency-direction patterns without spatially rearranging image content and exposes prediction responsiveness. Samples are trusted only when they are both confident and sufficiently stress-responsive, filtering out confident but stress-inert predictions. Fourier-basis stress probe. At step ⟪t⟫, we generate a stressed batch ⟪x_t^s=\\mathcal{A}^{s}(x_t)⟫ via an additive Fourier basis perturbation: ⟪\\displaystyle \\begin{aligned} \\Phi_{f,\\omega}(i,j) &= R\\sin\\!\\big(2\\pi f(i\\cos\\omega+j\\sin\\omega-\\pi/4)\\big), \\\\ [\\mathcal{A}^{s}(x_t)]_{i,j,c} &= \\operatorname{Clamp}_{[0,1]}\\!\\big([x_t]_{i,j,c} + \\sigma_c \\Phi_{f_c,\\omega_c}(i,j)\\big). \\end{aligned}⟫ Here, ⟪(i,j)\\in[0,1]^2⟫ are normalized coordinates, and ⟪R⟫ ensures ⟪\\lVert\\Phi_{f,\\omega}\\rVert_2^2/(HW)=1⟫. Per channel, independently draw ⟪f_c\\sim\\mathcal{U}[1,224]⟫ (nominal cycles/image), ⟪\\omega_c\\sim\\mathcal{U}[0,\\pi]⟫, and ⟪\\sigma_c\\sim\\mathrm{Exp}(1/\\lambda)⟫ with rate ⟪1/\\lambda⟫. Thus, ⟪\\lambda⟫ is the expected pre-clamp per-channel RMS amplitude. For sample ⟪x_{t,i}⟫, let ⟪\\hat{y}_t(x_{t,i}) = \\arg\\max_y p_{\\theta_t}(y\\mid x_{t,i})⟫. The Perturbation Consistency Score (PCS) is formulated as: ⟪\\displaystyle s_{\\theta_t}(x_{t,i}) = \\left[ p_{\\theta_t}(\\hat{y}_t(x_{t,i})\\mid x_{t,i}) - p_{\\theta_t}(\\hat{y}_t(x_{t,i})\\mid \\mathcal{A}^{s}(x_{t,i})) \\right]_+.⟫ Higher PCS indicates stronger responsiveness of the original prediction to the structured Fourier probe, whereas lower PCS indicates stress-inert behavior. Combined with predictive entropy, PCS therefore provides a complementary signal for distinguishing confident candidates according to how their predictive evidence responds to structured stress. Theoretical interpretation. Motivated by frequency-dependent model sensitivity and texture bias [39, 40], we characterize PCS through a local probability expansion. For a fixed input ⟪x⟫, let ⟪\\delta=\\mathcal{A}^{s}(x)-x⟫, ⟪Q_q(x)=\\mathbb{E}_q[\\delta\\delta^\\top]⟫, and ⟪g_x=\\nabla_x p_{\\theta_t}(\\hat{y}_t(x)\\mid x)⟫, holding the original predicted class fixed. For a locally smooth probability function and sufficiently small perturbations, retaining the positive-part operation in Eq. (5) gives ⟪\\mathbb{E}_q[s_{\\theta_t}(x)^2] =\\mathbb{E}_q[(-g_x^\\top\\delta)_+^2] +O(\\mathbb{E}_q\\lVert\\delta\\rVert_2^3).⟫ The leading term is bounded above by ⟪g_x^\\top Q_q(x)g_x⟫, where ⟪Q_q(x)⟫ is the perturbation second-moment matrix; no zero-mean or symmetry assumption is imposed after clamping. Thus, this relation establishes PCS as a structured directional-sensitivity measure whose response depends jointly on the prediction gradient and the directions excited by the Fourier probe. The controlled shortcut interventions in Section IV-C establish the empirical bridge to routing: among confidence-matched candidates, PCS separates task-relevant from shortcut-driven predictions and improves trusted-set purity beyond entropy alone, supporting PCS as a shortcut-sensitive routing signal. Sample routing. We quantify predictive uncertainty by the entropy ⟪E_{\\theta_t}(x_{t,i}) =-\\sum_{k=1}^{K} p_{\\theta_t}(k\\mid x_{t,i}) \\ln p_{\\theta_t}(k\\mid x_{t,i}).⟫ Using uncertainty and stress sensitivity, we partition ⟪x_t⟫ into two complementary subsets. The trusted set (Area 1 in Fig. 3) is defined as ⟪\\displaystyle \\mathcal{R}_{\\theta_t}(x_t) = \\left\\{ x_{t,i}\\in x_t \\mid E_{\\theta_t}(x_{t,i})<\\upsilon_{\\mathrm{Ent}}, \\, s_{\\theta_t}(x_{t,i})>\\upsilon_{\\mathrm{PCS}} \\right\\},⟫ where ⟪\\upsilon_{\\mathrm{Ent}}⟫ and ⟪\\upsilon_{\\mathrm{PCS}}⟫ are thresholds for confidence and stress response. The routed-away set (Areas 2–4 in Fig. 3) is ⟪\\displaystyle \\mathcal{U}_{\\theta_t}(x_t) = x_t\\setminus \\mathcal{R}_{\\theta_t}(x_t).⟫ As illustrated in Fig. 3 (left), the two thresholds bisect the ⟪(E, s)⟫ diagnostic space into four quadrants: Area 1 (⟪E<\\upsilon_{\\mathrm{Ent}},\\,s>\\upsilon_{\\mathrm{PCS}}⟫), Area 2 (⟪E\\ge\\upsilon_{\\mathrm{Ent}},\\,s>\\upsilon_{\\mathrm{PCS}}⟫), Area 3 (⟪E<\\upsilon_{\\mathrm{Ent}},\\,s\\le\\upsilon_{\\mathrm{PCS}}⟫), and Area 4 (⟪E\\ge\\upsilon_{\\mathrm{Ent}},\\,s\\le\\upsilon_{\\mathrm{PCS}}⟫). For brevity, we denote the trusted and routed-away sets as ⟪\\mathcal{R}_t⟫ and ⟪\\mathcal{U}_t⟫ in subsequent sections. Adapt: Decoupled Sample-side Adaptation After sample routing, ⟪\\mathcal{R}_t⟫ and ⟪\\mathcal{U}_t⟫ receive decoupled supervisory signals. Trusted instances drive label-like consistency, while routed-away instances are repurposed for geometry repair rather than discarded or hard pseudo-labeled. The resulting sample-side objective is ⟪\\mathcal{L}_{\\mathrm{trust}}+\\mathcal{L}_{\\mathrm{geo}}⟫, which produces the candidate update in (2). If ⟪|\\mathcal{U}_t|=0⟫, ⟪\\mathcal{L}_{\\mathrm{geo}}⟫ is bypassed; if ⟪|\\mathcal{R}_t|=0⟫, the entire adaptation step is bypassed and prediction uses the current model. Trusted-evidence consistency learning. For each ⟪x_{t,i}\\in\\mathcal{R}_t⟫, we construct a multi-view set ⟪\\mathcal{V}(x_{t,i})=\\{x_{t,i}, \\mathcal{A}^w(x_{t,i}), \\mathcal{A}^{s}(x_{t,i})\\}⟫, where ⟪\\mathcal{A}^w⟫ is weak augmentation [12] and ⟪\\mathcal{A}^{s}⟫ is the Fourier stress probe ((4)). We assign each trusted instance a normalized PCS weight: ⟪\\displaystyle w_t(x_{t,i}) = \\frac{|\\mathcal{R}_t| \\exp\\!\\big(\\frac{\\tau\\,[s_{\\theta_t}(x_{t,i})-s_{\\min}]}{s_{\\max}-s_{\\min}+\\varepsilon_w}\\big)}{\\sum_{x_{t,j}\\in\\mathcal{R}_t} \\exp\\!\\big(\\frac{\\tau\\,[s_{\\theta_t}(x_{t,j})-s_{\\min}]}{s_{\\max}-s_{\\min}+\\varepsilon_w}\\big)},⟫ where ⟪\\tau⟫ modulates sharpness, ⟪\\varepsilon_w=10^{-6}⟫, and ⟪s_{\\min}, s_{\\max}⟫ are the PCS extrema in ⟪\\mathcal{R}_t⟫. With cross-entropy ⟪\\mathrm{SoftEnt}_{\\theta_t}(u,v) \\coloneqq -\\sum_{k=1}^{K} p_{\\theta_t}(k\\mid u) \\log p_{\\theta_t}(k\\mid v)⟫, the consistency loss is computed as: ⟪\\displaystyle \\mathcal{L}_{\\mathrm{trust}} = \\frac{1}{|\\mathcal{R}_t|} \\sum_{x_{t,i}\\in\\mathcal{R}_t} \\frac{w_t(x_{t,i})}{|\\mathcal{V}(x_{t,i})|} \\sum_{\\tilde{x}\\in\\mathcal{V}(x_{t,i})} \\mathrm{SoftEnt}_{\\theta_t}(x_{t,i},\\tilde{x}),⟫ with ⟪\\mathcal{L}_{\\mathrm{trust}}=0⟫ if ⟪|\\mathcal{R}_t|=0⟫. Routed-away geometry repair. While trusted filtering limits unreliable pseudo-label supervision, discarding routed-away samples removes target structural context (O2) and may exacerbate representation bias. To exploit this context without hard pseudo-labels, DCF repurposes ⟪\\mathcal{U}_t⟫ through Routed-away Geometry Repair (RGR) as optimal transport (OT) alignment against source-initialized class centroids. The marginal constraints regulate aggregate class allocation, while source classifier weights provide initial semantic references without source data. Diagnostic & Prototypes: For a feature set ⟪\\mathbf{Z}=\\{\\mathbf{z}_i\\}_{i=1}^{B}⟫ with ⟪B=|\\mathbf{Z}|⟫, we assess prediction concentration via the centroid entropy deficit ⟪I(\\mathbf{Z})=\\ln K+\\sum_{k=1}^{K}\\bar{p}_k\\ln\\bar{p}_k⟫, where ⟪\\bar{\\mathbf{z}}=\\frac{1}{B}\\sum_{i=1}^{B}\\mathbf{z}_i⟫ and ⟪\\bar{\\mathbf{p}}=\\operatorname{softmax}(c_{\\theta_t}(\\bar{\\mathbf{z}}))⟫. A large deficit indicates severe prediction concentration, motivating geometric regularization. When ⟪n_t:=|\\mathcal{U}_t|=0⟫, we set ⟪\\mathcal{L}_{\\mathrm{geo}}=0⟫ and retain ⟪\\mathbf{M}_{t+1}=\\mathbf{M}_t⟫. Otherwise, for routed-away samples we construct two stochastic views ⟪u_{t,i}^{V}=\\mathcal{A}^{w_V}(u_{t,i})⟫ (⟪V\\in\\{A,B\\}⟫) and extract normalized features ⟪\\mathbf{z}_{t,i}^{V}=h_{\\theta_t}(u_{t,i}^{V})/\\|h_{\\theta_t}(u_{t,i}^{V})\\|_2⟫. Let ⟪W_c⟫ be the ⟪c⟫-th row of the frozen source classifier. Shared centroids start from ⟪\\mathbf{M}_1\\leftarrow\\mathbf{M}_0⟫, with ⟪\\mathbf{M}_{0,c}=W_c/\\lVert W_c\\rVert_2⟫, providing test-time anchors without accessing source training data. Dynamic-marginal OT: For each view, we solve an entropic OT assignment to the shared centroids under the cosine cost ⟪[\\mathbf{C}_t^V]_{ic}=1-\\cos(\\mathbf{z}_{t,i}^{V},\\mathbf{M}_{t,c})⟫ (⟪V\\in\\{A,B\\}⟫). With uniform sample marginals ⟪a_t=\\mathbf{1}_{n_t}/n_t\\in\\Delta^{n_t-1}⟫, we allow the centroid marginal to adapt conservatively to potential changes in target class prevalence. Specifically, we first estimate the batch-level target prior from stop-gradient predictions and maintain its exponential moving average: ⟪\\displaystyle \\begin{aligned} \\hat{\\pi}_{t} &= \\frac{1}{N_t} \\sum_{i=1}^{N_t} \\operatorname{sg}\\!\\left[ p_{\\theta_t}(\\cdot\\mid x_{t,i}) \\right],\\\\ \\bar{b}_t &= (1-\\rho)\\bar{b}_{t-1} + \\rho\\hat{\\pi}_{t}, \\qquad \\bar{b}_0=\\mathbf{1}_K/K, \\end{aligned}⟫ where ⟪\\rho=0.01⟫ and the uniform initialization and slow EMA suppress transient errors in ⟪\\hat{\\pi}_t⟫ during early adaptation. We then interpolate the estimated prior with the uniform marginal: ⟪\\displaystyle b_t = \\alpha_b\\bar{b}_t + (1-\\alpha_b)\\frac{\\mathbf{1}_K}{K},⟫ where ⟪\\alpha_b=0.01⟫ limits deviation from the uniform marginal. For ⟪u=\\mathbf{1}_K/K⟫, ⟪\\lVert b_t-u\\rVert_1\\le2\\alpha_b⟫ and ⟪b_{t,c}\\ge(1-\\alpha_b)/K⟫, enabling gradual adaptation without severe imbalance. The slow EMA mitigates early fluctuations, though persistent bias may affect the estimated prior. A tiny routed-away set limits target support, while an overly dominant one reduces trusted supervision. If ⟪\\mathcal{R}_t=\\varnothing⟫, the update is skipped and ⟪\\bar{b}_t=\\bar{b}_{t-1}⟫. The entropic OT plans are then obtained by solving: ⟪\\displaystyle \\gamma_{t,V}^{*} = \\arg\\min_{\\gamma\\in\\Pi(a_t,b_t)} \\langle\\gamma,\\mathbf{C}_t^V\\rangle_F + \\varepsilon_{\\mathrm{OT}} \\sum\\nolimits_{i,c} \\gamma_{ic}(\\log\\gamma_{ic}-1),⟫ where ⟪\\Pi(a_t,b_t)= \\{\\gamma\\in\\mathbb{R}_{+}^{n_t\\times K} \\mid \\gamma\\mathbf{1}_K=a_t,\\, \\gamma^\\top\\mathbf{1}_{n_t}=b_t\\}⟫ and ⟪\\varepsilon_{\\mathrm{OT}}>0⟫. In practice, ⟪\\gamma_{t,V}^{*}⟫ is efficiently computed via Sinkhorn–Knopp iterations and detached during backpropagation. Cross-view alignment & Centroid update: Instead of supervising each view independently with its assignment, we enforce cross-view structural consistency over soft transport distributions: ⟪\\displaystyle \\mathcal{L}_{\\mathrm{geo}} = \\big\\langle \\operatorname{sg}\\!\\left[\\gamma_{t,A}^{*}\\right], \\mathbf{C}_t^B \\big\\rangle_F + \\big\\langle \\operatorname{sg}\\!\\left[\\gamma_{t,B}^{*}\\right], \\mathbf{C}_t^A \\big\\rangle_F.⟫ This objective encourages cross-view agreement in soft sample-to-prototype alignment, providing a geometric regularizer that helps preserve target structure. Centroid Update & Drift Mitigation: Centroids are updated outside backpropagation using the accumulated OT-weighted feature statistics. Letting ⟪m_{t,c}=\\sum_{V\\in\\{A,B\\}}\\sum_{i=1}^{n_t}\\operatorname{sg}[\\gamma_{t,V}^{*}(i,c)]⟫, the prototype feature mean and momentum update are: ⟪\\displaystyle \\begin{aligned} \\bar{\\mathbf{z}}_{t,c} &= \\frac{1}{m_{t,c}} \\sum_{V\\in\\{A,B\\}}\\sum_{i=1}^{n_t} \\operatorname{sg}\\!\\left[\\gamma_{t,V}^{*}(i,c)\\right] \\mathbf{z}_{t,i}^{V}, \\\\ \\mathbf{M}_{t+1,c} &\\leftarrow \\operatorname{norm}\\!\\left(\\rho_{M}\\,\\mathbf{M}_{t,c} + (1 - \\rho_{M})\\,\\bar{\\mathbf{z}}_{t,c}\\right), \\end{aligned}⟫ where ⟪\\operatorname{norm}(v)=v/\\|v\\|_2⟫ and ⟪\\rho_{M}=0.99⟫. Under exact OT constraints, ⟪m_{t,c}=2b_{t,c}>0⟫. In the numerical implementation, we retain the previous centroid by setting ⟪\\bar{\\mathbf{z}}_{t,c}=\\mathbf{M}_{t,c}⟫ when the computed mass is negligible. Otherwise, the OT-weighted feature mean enters the momentum update in (16). Retain: Curvature-aware Layer Retention The decoupled sample-side adaptation step produces a candidate update ⟪\\theta_t^{+}⟫ retained selectively across layers. Under temporally correlated shifts, source sensitivity varies across depth (O3): some layers benefit from plasticity, whereas others are prone to representational drift. Accordingly, Curvature-aware Layer Retention (CLR) performs curvature-aware layer retention, preserving updates in source-compatible layers while anchoring high-mismatch layers to the source model. This yields a layer-wise proximal problem with a closed-form, proxy-weighted barycenter of the candidate and source parameters. Curvature-proximal formulation. For each layer ⟪l⟫, we choose ⟪\\theta_{t+1}^{l}⟫ by solving ⟪\\displaystyle \\min_{\\{\\theta_{t+1}^{l}\\}_{l=1}^{L}} \\sum_{l=1}^{L} \\Bigg( \\underbrace{ \\frac{\\mu_t^l}{2} \\|\\theta_{t+1}^{l}-\\theta_t^{+,l}\\|^2_{\\widetilde{I}_t^{l}} }_{\\text{preserve plasticity}} + \\underbrace{ \\frac{1-\\mu_t^l}{2} \\|\\theta_{t+1}^{l}-\\theta_0^{l}\\|^2_{\\widetilde{I}_0^{l}} }_{\\text{prevent forgetting}} \\Bigg),⟫ where ⟪\\|v\\|_I^2:=\\sum_j I_jv_j^2⟫. Here ⟪I_t^l,I_0^l\\in\\mathbb{R}_+^{d_l}⟫ denote non-negative diagonal curvature-aware proxy vectors for the candidate and source models, respectively, and ⟪\\displaystyle \\widetilde{I}_t^l := I_t^l + \\varepsilon_{\\mathrm{ret}}\\mathbf{1}, \\qquad \\widetilde{I}_0^l := I_0^l + \\varepsilon_{\\mathrm{ret}}\\mathbf{1},⟫ with ⟪\\varepsilon_{\\mathrm{ret}}=10^{-6}⟫. The layer-wise gate ⟪\\mu_t^l\\in(0,1]⟫ controls how much of the candidate update is retained. A larger ⟪\\mu_t^l⟫ keeps the layer closer to ⟪\\theta_t^{+,l}⟫, while a smaller ⟪\\mu_t^l⟫ pulls it closer to the source anchor ⟪\\theta_0^l⟫. Closed-form retention update. Since (17) is separable across layers and coordinates, the solution is ⟪\\displaystyle \\theta_{t+1}^{l} = \\frac{ \\mu_t^{l} \\widetilde{I}_t^{l}\\odot \\theta_t^{+,l} + (1-\\mu_t^{l}) \\widetilde{I}_0^{l}\\odot \\theta_0^{l} }{ \\mu_t^{l} \\widetilde{I}_t^{l} + (1-\\mu_t^{l}) \\widetilde{I}_0^{l} },⟫ where ⟪\\odot⟫ and division are applied element-wise. Curvature-aware proxy and retention gate. The default curvature-aware proxy for the candidate model is estimated from pseudo-label gradients on the current batch: ⟪\\displaystyle I_t^{l} = \\frac{1}{N_t} \\sum_{i=1}^{N_t} g_t^{l}(x_{t,i})\\odot g_t^{l}(x_{t,i}),⟫ where ⟪g_t^{l}(x_{t,i})=\\nabla_{\\theta_t^{+,l}}\\log p_{\\theta_t^{+}}(\\hat{y}_t^{+}(x_{t,i})\\mid x_{t,i})⟫ and ⟪\\hat{y}_t^{+}(x_{t,i})=\\arg\\max_y p_{\\theta_t^{+}}(y\\mid x_{t,i})⟫. Thus, ⟪I_t^l⟫ averages element-wise squared per-sample gradients. The source proxy ⟪I_0^l⟫ is computed analogously at ⟪\\theta_0⟫ on the same unlabeled batch ⟪x_t⟫ with the time index omitted for brevity. The layer-wise retention gate is ⟪\\displaystyle \\mu_t^{l} = \\mu_0 \\exp\\!\\left( - \\frac{ \\|\\widetilde{I}_t^{l}-\\widetilde{I}_0^{l}\\|_2^2 }{d_l} \\right),⟫ where ⟪d_l=\\dim(\\theta^l)⟫, and ⟪\\mu_0⟫ is the maximum retention gate. Similar curvature-aware proxy profiles yield a large ⟪\\mu_t^l⟫ and retain the candidate update, whereas mismatch lowers ⟪\\mu_t^l⟫ and anchors the layer toward the source model. Thus, CLR preserves safe plasticity while suppressing source-sensitive drift. Experiments Setup Benchmarks. We evaluate DCF on five widely used test-time robustness benchmarks covering both synthetic corruptions and natural distribution shifts. For synthetic shifts, we use ImageNet-C (IN-C) [41], ImageNet-3DCC (IN-3DCC) [42], and ImageNet-C-Bar (IN-C-Bar) [43], which provide diverse corruption patterns for controlled evaluation under covariate shifts. For natural shifts, we consider ImageNet-R (IN-R) [44] and ImageNet-Sketch (IN-Sketch) [45], which capture variations in rendering style, texture, and visual abstraction. To further assess cross-domain transfer, we follow MME [46] and use DomainNet-126, a 126-class subset of DomainNet [47] spanning four domains: Clipart, Painting, Real, and Sketch. Together, these benchmarks provide a comprehensive evaluation of TTA across diverse distribution shifts.",
       "diff": {
         "original": [],
         "revised": [
           {
             "kind": "add",
-            "text": "Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28].\n\nCoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF evaluates candidate-update persistence separately for each layer group using current source–candidate curvature mismatch."
+            "text": "Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28].\n\nCoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF instead coordinates evidence routing, alternative supervision, and layer-dependent update persistence within one online adaptation loop. DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, and where candidate updates persist. This route–adapt–retain design interrupts the error-amplifying feedback that causes long-horizon collapse. Methodology Problem Setup Test-Time Adaptation (TTA) starts from a ⟪K⟫-class source model ⟪f_{\\theta_0}:\\mathcal{X}\\to\\Delta^{K-1}⟫ trained on ⟪\\mathcal{P}_0(X,Y)⟫, where ⟪f_\\theta=\\operatorname{softmax}\\circ c_\\theta\\circ h_\\theta,⟫ with ⟪h_\\theta⟫ and ⟪c_\\theta⟫ denoting the feature extractor and classifier, respectively. Given an unlabeled test stream ⟪\\{x_t\\}_{t=1}^T⟫, each ⟪x_t=\\{x_{t,i}\\}_{i=1}^{N_t}⟫ is a mini-batch sampled from ⟪\\mathcal{P}_t(X)⟫. The target distribution may evolve over time under temporally correlated covariate and class-prior shifts, where ⟪\\pi_t^Y(\\cdot)\\coloneqq\\mathcal{P}_t(Y=\\cdot)⟫. We write ⟪\\theta_t=\\{\\theta_t^l\\}_{l=1}^L⟫ for the trainable parameters at time step ⟪t⟫, partitioned into ⟪L⟫ layer groups. At each step, online TTA updates parameters ⟪\\theta_t⟫ using only the current unlabeled data ⟪x_t⟫: ⟪\\displaystyle \\theta_{t+1}^{l} \\coloneqq \\theta_t^{l} - \\eta \\nabla_{\\theta_t^{l}} \\mathcal{L}_{\\mathrm{TTA}}(x_t;\\theta_t),⟫ where ⟪\\mathcal{L}_{\\mathrm{TTA}}⟫ is typically self-supervised. However, when test streams exhibit strong temporal correlation, such homogeneous and unconstrained updates allow biased gradients to accumulate unchecked across network layers. Decoupled Control View of DCF We formulate DCF as a decoupled online control framework for temporally correlated streams. DCF follows the route–adapt–retain paradigm: 1) route instances into trusted and routed-away subsets; 2) adapt via subset-specific objectives, reusing routed-away instances for geometry repair; and 3) retain candidate updates according to layer-wise source compatibility. For ⟪x_t⟫ with ⟪\\mathcal{R}_t\\neq\\varnothing⟫, DCF first forms a sample-side candidate update ⟪\\theta_t^{+}⟫: ⟪\\displaystyle \\theta_t^{+} = \\theta_t - \\eta \\nabla_{\\theta_t} \\left( \\mathcal{L}_{\\mathrm{trust}}(\\mathcal{R}_t) + \\mathcal{L}_{\\mathrm{geo}}(\\mathcal{U}_t) \\right),⟫ where ⟪\\mathcal{R}_t⟫ and ⟪\\mathcal{U}_t⟫ are trusted and routed-away sets. ⟪\\mathcal{L}_{\\mathrm{trust}}⟫ enforces consistency on probe-selected evidence, while ⟪\\mathcal{L}_{\\mathrm{geo}}⟫ conducts Routed-away Geometry Repair (RGR). Rather than accepting ⟪\\theta_t^{+}⟫ globally, Curvature-aware Layer Retention (CLR) selectively filters updates via layer-wise retention: ⟪\\displaystyle \\theta_{t+1} = \\operatorname{Retain}_{\\mu_t,I_t,I_0}\\left(\\theta_t^{+}, \\theta_0\\right),⟫ which prevents updates from being indiscriminately retained in source-sensitive layers. Route: Probe-supported Sample Routing The first control decision is sample routing: partitioning the target batch before adaptation. Confidence alone is unreliable, as low-entropy predictions may still rely on shortcut-sensitive cues under shift (O1). We therefore pair entropy with a structured Fourier stress probe that perturbs frequency-direction patterns without spatially rearranging image content and exposes prediction responsiveness. Samples are trusted only when they are both confident and sufficiently stress-responsive, filtering out confident but stress-inert predictions. Fourier-basis stress probe. At step ⟪t⟫, we generate a stressed batch ⟪x_t^s=\\mathcal{A}^{s}(x_t)⟫ via an additive Fourier basis perturbation: ⟪\\displaystyle \\begin{aligned} \\Phi_{f,\\omega}(i,j) &= R\\sin\\!\\big(2\\pi f(i\\cos\\omega+j\\sin\\omega-\\pi/4)\\big), \\\\ [\\mathcal{A}^{s}(x_t)]_{i,j,c} &= \\operatorname{Clamp}_{[0,1]}\\!\\big([x_t]_{i,j,c} + \\sigma_c \\Phi_{f_c,\\omega_c}(i,j)\\big). \\end{aligned}⟫ Here, ⟪(i,j)\\in[0,1]^2⟫ are normalized coordinates, and ⟪R⟫ ensures ⟪\\lVert\\Phi_{f,\\omega}\\rVert_2^2/(HW)=1⟫. Per channel, independently draw ⟪f_c\\sim\\mathcal{U}[1,224]⟫ (nominal cycles/image), ⟪\\omega_c\\sim\\mathcal{U}[0,\\pi]⟫, and ⟪\\sigma_c\\sim\\mathrm{Exp}(1/\\lambda)⟫ with rate ⟪1/\\lambda⟫. Thus, ⟪\\lambda⟫ is the expected pre-clamp per-channel RMS amplitude. For sample ⟪x_{t,i}⟫, let ⟪\\hat{y}_t(x_{t,i}) = \\arg\\max_y p_{\\theta_t}(y\\mid x_{t,i})⟫. The Perturbation Consistency Score (PCS) is formulated as: ⟪\\displaystyle s_{\\theta_t}(x_{t,i}) = \\left[ p_{\\theta_t}(\\hat{y}_t(x_{t,i})\\mid x_{t,i}) - p_{\\theta_t}(\\hat{y}_t(x_{t,i})\\mid \\mathcal{A}^{s}(x_{t,i})) \\right]_+.⟫ Higher PCS indicates stronger responsiveness of the original prediction to the structured Fourier probe, whereas lower PCS indicates stress-inert behavior. Combined with predictive entropy, PCS therefore provides a complementary signal for distinguishing confident candidates according to how their predictive evidence responds to structured stress. Theoretical interpretation. Motivated by frequency-dependent model sensitivity and texture bias [39, 40], we characterize PCS through a local probability expansion. For a fixed input ⟪x⟫, let ⟪\\delta=\\mathcal{A}^{s}(x)-x⟫, ⟪Q_q(x)=\\mathbb{E}_q[\\delta\\delta^\\top]⟫, and ⟪g_x=\\nabla_x p_{\\theta_t}(\\hat{y}_t(x)\\mid x)⟫, holding the original predicted class fixed. For a locally smooth probability function and sufficiently small perturbations, retaining the positive-part operation in Eq. (5) gives ⟪\\mathbb{E}_q[s_{\\theta_t}(x)^2] =\\mathbb{E}_q[(-g_x^\\top\\delta)_+^2] +O(\\mathbb{E}_q\\lVert\\delta\\rVert_2^3).⟫ The leading term is bounded above by ⟪g_x^\\top Q_q(x)g_x⟫, where ⟪Q_q(x)⟫ is the perturbation second-moment matrix; no zero-mean or symmetry assumption is imposed after clamping. Thus, this relation establishes PCS as a structured directional-sensitivity measure whose response depends jointly on the prediction gradient and the directions excited by the Fourier probe. The controlled shortcut interventions in Section IV-C establish the empirical bridge to routing: among confidence-matched candidates, PCS separates task-relevant from shortcut-driven predictions and improves trusted-set purity beyond entropy alone, supporting PCS as a shortcut-sensitive routing signal. Sample routing. We quantify predictive uncertainty by the entropy ⟪E_{\\theta_t}(x_{t,i}) =-\\sum_{k=1}^{K} p_{\\theta_t}(k\\mid x_{t,i}) \\ln p_{\\theta_t}(k\\mid x_{t,i}).⟫ Using uncertainty and stress sensitivity, we partition ⟪x_t⟫ into two complementary subsets. The trusted set (Area 1 in Fig. 3) is defined as ⟪\\displaystyle \\mathcal{R}_{\\theta_t}(x_t) = \\left\\{ x_{t,i}\\in x_t \\mid E_{\\theta_t}(x_{t,i})<\\upsilon_{\\mathrm{Ent}}, \\, s_{\\theta_t}(x_{t,i})>\\upsilon_{\\mathrm{PCS}} \\right\\},⟫ where ⟪\\upsilon_{\\mathrm{Ent}}⟫ and ⟪\\upsilon_{\\mathrm{PCS}}⟫ are thresholds for confidence and stress response. The routed-away set (Areas 2–4 in Fig. 3) is ⟪\\displaystyle \\mathcal{U}_{\\theta_t}(x_t) = x_t\\setminus \\mathcal{R}_{\\theta_t}(x_t).⟫ As illustrated in Fig. 3 (left), the two thresholds bisect the ⟪(E, s)⟫ diagnostic space into four quadrants: Area 1 (⟪E<\\upsilon_{\\mathrm{Ent}},\\,s>\\upsilon_{\\mathrm{PCS}}⟫), Area 2 (⟪E\\ge\\upsilon_{\\mathrm{Ent}},\\,s>\\upsilon_{\\mathrm{PCS}}⟫), Area 3 (⟪E<\\upsilon_{\\mathrm{Ent}},\\,s\\le\\upsilon_{\\mathrm{PCS}}⟫), and Area 4 (⟪E\\ge\\upsilon_{\\mathrm{Ent}},\\,s\\le\\upsilon_{\\mathrm{PCS}}⟫). For brevity, we denote the trusted and routed-away sets as ⟪\\mathcal{R}_t⟫ and ⟪\\mathcal{U}_t⟫ in subsequent sections. Adapt: Decoupled Sample-side Adaptation After sample routing, ⟪\\mathcal{R}_t⟫ and ⟪\\mathcal{U}_t⟫ receive decoupled supervisory signals. Trusted instances drive label-like consistency, while routed-away instances are repurposed for geometry repair rather than discarded or hard pseudo-labeled. The resulting sample-side objective is ⟪\\mathcal{L}_{\\mathrm{trust}}+\\mathcal{L}_{\\mathrm{geo}}⟫, which produces the candidate update in (2). If ⟪|\\mathcal{U}_t|=0⟫, ⟪\\mathcal{L}_{\\mathrm{geo}}⟫ is bypassed; if ⟪|\\mathcal{R}_t|=0⟫, the entire adaptation step is bypassed and prediction uses the current model. Trusted-evidence consistency learning. For each ⟪x_{t,i}\\in\\mathcal{R}_t⟫, we construct a multi-view set ⟪\\mathcal{V}(x_{t,i})=\\{x_{t,i}, \\mathcal{A}^w(x_{t,i}), \\mathcal{A}^{s}(x_{t,i})\\}⟫, where ⟪\\mathcal{A}^w⟫ is weak augmentation [12] and ⟪\\mathcal{A}^{s}⟫ is the Fourier stress probe ((4)). We assign each trusted instance a normalized PCS weight: ⟪\\displaystyle w_t(x_{t,i}) = \\frac{|\\mathcal{R}_t| \\exp\\!\\big(\\frac{\\tau\\,[s_{\\theta_t}(x_{t,i})-s_{\\min}]}{s_{\\max}-s_{\\min}+\\varepsilon_w}\\big)}{\\sum_{x_{t,j}\\in\\mathcal{R}_t} \\exp\\!\\big(\\frac{\\tau\\,[s_{\\theta_t}(x_{t,j})-s_{\\min}]}{s_{\\max}-s_{\\min}+\\varepsilon_w}\\big)},⟫ where ⟪\\tau⟫ modulates sharpness, ⟪\\varepsilon_w=10^{-6}⟫, and ⟪s_{\\min}, s_{\\max}⟫ are the PCS extrema in ⟪\\mathcal{R}_t⟫. With cross-entropy ⟪\\mathrm{SoftEnt}_{\\theta_t}(u,v) \\coloneqq -\\sum_{k=1}^{K} p_{\\theta_t}(k\\mid u) \\log p_{\\theta_t}(k\\mid v)⟫, the consistency loss is computed as: ⟪\\displaystyle \\mathcal{L}_{\\mathrm{trust}} = \\frac{1}{|\\mathcal{R}_t|} \\sum_{x_{t,i}\\in\\mathcal{R}_t} \\frac{w_t(x_{t,i})}{|\\mathcal{V}(x_{t,i})|} \\sum_{\\tilde{x}\\in\\mathcal{V}(x_{t,i})} \\mathrm{SoftEnt}_{\\theta_t}(x_{t,i},\\tilde{x}),⟫ with ⟪\\mathcal{L}_{\\mathrm{trust}}=0⟫ if ⟪|\\mathcal{R}_t|=0⟫. Routed-away geometry repair. While trusted filtering limits unreliable pseudo-label supervision, discarding routed-away samples removes target structural context (O2) and may exacerbate representation bias. To exploit this context without hard pseudo-labels, DCF repurposes ⟪\\mathcal{U}_t⟫ through Routed-away Geometry Repair (RGR) as optimal transport (OT) alignment against source-initialized class centroids. The marginal constraints regulate aggregate class allocation, while source classifier weights provide initial semantic references without source data. Diagnostic & Prototypes: For a feature set ⟪\\mathbf{Z}=\\{\\mathbf{z}_i\\}_{i=1}^{B}⟫ with ⟪B=|\\mathbf{Z}|⟫, we assess prediction concentration via the centroid entropy deficit ⟪I(\\mathbf{Z})=\\ln K+\\sum_{k=1}^{K}\\bar{p}_k\\ln\\bar{p}_k⟫, where ⟪\\bar{\\mathbf{z}}=\\frac{1}{B}\\sum_{i=1}^{B}\\mathbf{z}_i⟫ and ⟪\\bar{\\mathbf{p}}=\\operatorname{softmax}(c_{\\theta_t}(\\bar{\\mathbf{z}}))⟫. A large deficit indicates severe prediction concentration, motivating geometric regularization. When ⟪n_t:=|\\mathcal{U}_t|=0⟫, we set ⟪\\mathcal{L}_{\\mathrm{geo}}=0⟫ and retain ⟪\\mathbf{M}_{t+1}=\\mathbf{M}_t⟫. Otherwise, for routed-away samples we construct two stochastic views ⟪u_{t,i}^{V}=\\mathcal{A}^{w_V}(u_{t,i})⟫ (⟪V\\in\\{A,B\\}⟫) and extract normalized features ⟪\\mathbf{z}_{t,i}^{V}=h_{\\theta_t}(u_{t,i}^{V})/\\|h_{\\theta_t}(u_{t,i}^{V})\\|_2⟫. Let ⟪W_c⟫ be the ⟪c⟫-th row of the frozen source classifier. Shared centroids start from ⟪\\mathbf{M}_1\\leftarrow\\mathbf{M}_0⟫, with ⟪\\mathbf{M}_{0,c}=W_c/\\lVert W_c\\rVert_2⟫, providing test-time anchors without accessing source training data. Dynamic-marginal OT: For each view, we solve an entropic OT assignment to the shared centroids under the cosine cost ⟪[\\mathbf{C}_t^V]_{ic}=1-\\cos(\\mathbf{z}_{t,i}^{V},\\mathbf{M}_{t,c})⟫ (⟪V\\in\\{A,B\\}⟫). With uniform sample marginals ⟪a_t=\\mathbf{1}_{n_t}/n_t\\in\\Delta^{n_t-1}⟫, we allow the centroid marginal to adapt conservatively to potential changes in target class prevalence. Specifically, we first estimate the batch-level target prior from stop-gradient predictions and maintain its exponential moving average: ⟪\\displaystyle \\begin{aligned} \\hat{\\pi}_{t} &= \\frac{1}{N_t} \\sum_{i=1}^{N_t} \\operatorname{sg}\\!\\left[ p_{\\theta_t}(\\cdot\\mid x_{t,i}) \\right],\\\\ \\bar{b}_t &= (1-\\rho)\\bar{b}_{t-1} + \\rho\\hat{\\pi}_{t}, \\qquad \\bar{b}_0=\\mathbf{1}_K/K, \\end{aligned}⟫ where ⟪\\rho=0.01⟫ and the uniform initialization and slow EMA suppress transient errors in ⟪\\hat{\\pi}_t⟫ during early adaptation. We then interpolate the estimated prior with the uniform marginal: ⟪\\displaystyle b_t = \\alpha_b\\bar{b}_t + (1-\\alpha_b)\\frac{\\mathbf{1}_K}{K},⟫ where ⟪\\alpha_b=0.01⟫ limits deviation from the uniform marginal. For ⟪u=\\mathbf{1}_K/K⟫, ⟪\\lVert b_t-u\\rVert_1\\le2\\alpha_b⟫ and ⟪b_{t,c}\\ge(1-\\alpha_b)/K⟫, enabling gradual adaptation without severe imbalance. The slow EMA mitigates early fluctuations, though persistent bias may affect the estimated prior. A tiny routed-away set limits target support, while an overly dominant one reduces trusted supervision. If ⟪\\mathcal{R}_t=\\varnothing⟫, the update is skipped and ⟪\\bar{b}_t=\\bar{b}_{t-1}⟫. The entropic OT plans are then obtained by solving: ⟪\\displaystyle \\gamma_{t,V}^{*} = \\arg\\min_{\\gamma\\in\\Pi(a_t,b_t)} \\langle\\gamma,\\mathbf{C}_t^V\\rangle_F + \\varepsilon_{\\mathrm{OT}} \\sum\\nolimits_{i,c} \\gamma_{ic}(\\log\\gamma_{ic}-1),⟫ where ⟪\\Pi(a_t,b_t)= \\{\\gamma\\in\\mathbb{R}_{+}^{n_t\\times K} \\mid \\gamma\\mathbf{1}_K=a_t,\\, \\gamma^\\top\\mathbf{1}_{n_t}=b_t\\}⟫ and ⟪\\varepsilon_{\\mathrm{OT}}>0⟫. In practice, ⟪\\gamma_{t,V}^{*}⟫ is efficiently computed via Sinkhorn–Knopp iterations and detached during backpropagation. Cross-view alignment & Centroid update: Instead of supervising each view independently with its assignment, we enforce cross-view structural consistency over soft transport distributions: ⟪\\displaystyle \\mathcal{L}_{\\mathrm{geo}} = \\big\\langle \\operatorname{sg}\\!\\left[\\gamma_{t,A}^{*}\\right], \\mathbf{C}_t^B \\big\\rangle_F + \\big\\langle \\operatorname{sg}\\!\\left[\\gamma_{t,B}^{*}\\right], \\mathbf{C}_t^A \\big\\rangle_F.⟫ This objective encourages cross-view agreement in soft sample-to-prototype alignment, providing a geometric regularizer that helps preserve target structure. Centroid Update & Drift Mitigation: Centroids are updated outside backpropagation using the accumulated OT-weighted feature statistics. Letting ⟪m_{t,c}=\\sum_{V\\in\\{A,B\\}}\\sum_{i=1}^{n_t}\\operatorname{sg}[\\gamma_{t,V}^{*}(i,c)]⟫, the prototype feature mean and momentum update are: ⟪\\displaystyle \\begin{aligned} \\bar{\\mathbf{z}}_{t,c} &= \\frac{1}{m_{t,c}} \\sum_{V\\in\\{A,B\\}}\\sum_{i=1}^{n_t} \\operatorname{sg}\\!\\left[\\gamma_{t,V}^{*}(i,c)\\right] \\mathbf{z}_{t,i}^{V}, \\\\ \\mathbf{M}_{t+1,c} &\\leftarrow \\operatorname{norm}\\!\\left(\\rho_{M}\\,\\mathbf{M}_{t,c} + (1 - \\rho_{M})\\,\\bar{\\mathbf{z}}_{t,c}\\right), \\end{aligned}⟫ where ⟪\\operatorname{norm}(v)=v/\\|v\\|_2⟫ and ⟪\\rho_{M}=0.99⟫. Under exact OT constraints, ⟪m_{t,c}=2b_{t,c}>0⟫. In the numerical implementation, we retain the previous centroid by setting ⟪\\bar{\\mathbf{z}}_{t,c}=\\mathbf{M}_{t,c}⟫ when the computed mass is negligible. Otherwise, the OT-weighted feature mean enters the momentum update in (16). Retain: Curvature-aware Layer Retention The decoupled sample-side adaptation step produces a candidate update ⟪\\theta_t^{+}⟫ retained selectively across layers. Under temporally correlated shifts, source sensitivity varies across depth (O3): some layers benefit from plasticity, whereas others are prone to representational drift. Accordingly, Curvature-aware Layer Retention (CLR) performs curvature-aware layer retention, preserving updates in source-compatible layers while anchoring high-mismatch layers to the source model. This yields a layer-wise proximal problem with a closed-form, proxy-weighted barycenter of the candidate and source parameters. Curvature-proximal formulation. For each layer ⟪l⟫, we choose ⟪\\theta_{t+1}^{l}⟫ by solving ⟪\\displaystyle \\min_{\\{\\theta_{t+1}^{l}\\}_{l=1}^{L}} \\sum_{l=1}^{L} \\Bigg( \\underbrace{ \\frac{\\mu_t^l}{2} \\|\\theta_{t+1}^{l}-\\theta_t^{+,l}\\|^2_{\\widetilde{I}_t^{l}} }_{\\text{preserve plasticity}} + \\underbrace{ \\frac{1-\\mu_t^l}{2} \\|\\theta_{t+1}^{l}-\\theta_0^{l}\\|^2_{\\widetilde{I}_0^{l}} }_{\\text{prevent forgetting}} \\Bigg),⟫ where ⟪\\|v\\|_I^2:=\\sum_j I_jv_j^2⟫. Here ⟪I_t^l,I_0^l\\in\\mathbb{R}_+^{d_l}⟫ denote non-negative diagonal curvature-aware proxy vectors for the candidate and source models, respectively, and ⟪\\displaystyle \\widetilde{I}_t^l := I_t^l + \\varepsilon_{\\mathrm{ret}}\\mathbf{1}, \\qquad \\widetilde{I}_0^l := I_0^l + \\varepsilon_{\\mathrm{ret}}\\mathbf{1},⟫ with ⟪\\varepsilon_{\\mathrm{ret}}=10^{-6}⟫. The layer-wise gate ⟪\\mu_t^l\\in(0,1]⟫ controls how much of the candidate update is retained. A larger ⟪\\mu_t^l⟫ keeps the layer closer to ⟪\\theta_t^{+,l}⟫, while a smaller ⟪\\mu_t^l⟫ pulls it closer to the source anchor ⟪\\theta_0^l⟫. Closed-form retention update. Since (17) is separable across layers and coordinates, the solution is ⟪\\displaystyle \\theta_{t+1}^{l} = \\frac{ \\mu_t^{l} \\widetilde{I}_t^{l}\\odot \\theta_t^{+,l} + (1-\\mu_t^{l}) \\widetilde{I}_0^{l}\\odot \\theta_0^{l} }{ \\mu_t^{l} \\widetilde{I}_t^{l} + (1-\\mu_t^{l}) \\widetilde{I}_0^{l} },⟫ where ⟪\\odot⟫ and division are applied element-wise. Curvature-aware proxy and retention gate. The default curvature-aware proxy for the candidate model is estimated from pseudo-label gradients on the current batch: ⟪\\displaystyle I_t^{l} = \\frac{1}{N_t} \\sum_{i=1}^{N_t} g_t^{l}(x_{t,i})\\odot g_t^{l}(x_{t,i}),⟫ where ⟪g_t^{l}(x_{t,i})=\\nabla_{\\theta_t^{+,l}}\\log p_{\\theta_t^{+}}(\\hat{y}_t^{+}(x_{t,i})\\mid x_{t,i})⟫ and ⟪\\hat{y}_t^{+}(x_{t,i})=\\arg\\max_y p_{\\theta_t^{+}}(y\\mid x_{t,i})⟫. Thus, ⟪I_t^l⟫ averages element-wise squared per-sample gradients. The source proxy ⟪I_0^l⟫ is computed analogously at ⟪\\theta_0⟫ on the same unlabeled batch ⟪x_t⟫ with the time index omitted for brevity. The layer-wise retention gate is ⟪\\displaystyle \\mu_t^{l} = \\mu_0 \\exp\\!\\left( - \\frac{ \\|\\widetilde{I}_t^{l}-\\widetilde{I}_0^{l}\\|_2^2 }{d_l} \\right),⟫ where ⟪d_l=\\dim(\\theta^l)⟫, and ⟪\\mu_0⟫ is the maximum retention gate. Similar curvature-aware proxy profiles yield a large ⟪\\mu_t^l⟫ and retain the candidate update, whereas mismatch lowers ⟪\\mu_t^l⟫ and anchors the layer toward the source model. Thus, CLR preserves safe plasticity while suppressing source-sensitive drift. Experiments Setup Benchmarks. We evaluate DCF on five widely used test-time robustness benchmarks covering both synthetic corruptions and natural distribution shifts. For synthetic shifts, we use ImageNet-C (IN-C) [41], ImageNet-3DCC (IN-3DCC) [42], and ImageNet-C-Bar (IN-C-Bar) [43], which provide diverse corruption patterns for controlled evaluation under covariate shifts. For natural shifts, we consider ImageNet-R (IN-R) [44] and ImageNet-Sketch (IN-Sketch) [45], which capture variations in rendering style, texture, and visual abstraction. To further assess cross-domain transfer, we follow MME [46] and use DomainNet-126, a 126-class subset of DomainNet [47] spanning four domains: Clipart, Painting, Real, and Sketch. Together, these benchmarks provide a comprehensive evaluation of TTA across diverse distribution shifts."
           }
         ]
       },
@@ -6346,7 +6293,7 @@ window.REVIEW_DATA={
     },
     {
       "id": "f3",
-      "title": "Route–adapt–retain overview",
+      "title": "Route-adapt-retain overview",
       "original": {
         "page": 5,
         "label": "Fig. 3",
@@ -6874,7 +6821,7 @@ window.REVIEW_DATA={
     },
     {
       "id": "f7",
-      "title": "PCS–entropy diagnostic regions",
+      "title": "PCS-entropy diagnostic regions",
       "original": {
         "page": 11,
         "label": "Fig. 7",
@@ -9076,7 +9023,7 @@ window.REVIEW_DATA={
       "originalPage": 3,
       "revisedPage": 3,
       "before": "We relate DCF to existing adaptation methods without and with target data, and further discuss sample reliability estimation, target-geometry preservation, and parameter stabilization for online test-time adaptation. Adaptation without Target Data. Mitigating distribution shifts has been widely studied at training time, including domain generalization (DG) [22], robust representation learning [23], and data augmentation strategies [24]. These methods aim to improve out-of-distribution robustness by learning source models that generalize to unseen test environments. However, deployment shifts are difficult to enumerate in advance, and training-time strategies usually require additional source-side objectives, augmentations, or training costs. In contrast, test-time adaptation updates the model directly from unlabeled target samples during deployment, making it attractive for source-free robustness under evolving test streams. Adaptation with Target Data. Methods that exploit target data include offline unsupervised domain adaptation and online test-time adaptation. ⟪\\bullet⟫ Unsupervised domain adaptation (UDA). Conventional UDA assumes access to labeled source data and unlabeled target data during adaptation, and reduces domain discrepancy through feature or moment alignment [25, 26, 27, 28], adversarial learning [29, 30], pseudo-label/self-training strategies [31, 32, 33], or optimal transport [4]. Source-free UDA further removes source data during adaptation and often relies on information maximization [5], pseudo-label refinement [34], or classifier-discrepancy/self-training objectives [35, 32]. Although effective when the target domain is available in advance, these methods usually adapt offline over the whole target set and often require multiple training epochs. Therefore, they are less suitable for online test streams, where samples arrive sequentially and the target distribution may evolve over time. ⟪\\bullet⟫ Test-time adaptation (TTA). TTA adapts a pre-trained model during inference using only unlabeled test samples. Some methods modify source training by introducing auxiliary objectives, as in test-time training [10]. Fully test-time adaptation does not alter source training and can be directly applied to a pre-trained model. Representative methods update batch-normalization statistics [36], minimize prediction entropy [9, 13], enforce consistency regularization [17], or use memory and teacher models for online adaptation [17, 18]. Recent studies further show that online TTA can be unstable under realistic streams, especially with temporal correlation, small batches, mixed domains, or imbalanced label distributions. NOTE [37] highlights the effect of temporal correlation, while continual and practical TTA methods improve robustness through teacher models, memory banks, reset strategies, normalization correction, or prior correction [17, 18, 20, 15, 16, 38, 39]. These methods significantly improve online robustness, but most of them still stabilize adaptation through relatively homogeneous sample filtering or global update control. In this paper, we mainly focus on fully test-time adaptation and study its long-horizon instability from a coupled sample–layer perspective. Reliability- and Stability-aware TTA. A central challenge in online TTA is to decide which unlabeled samples should drive adaptation and how the induced parameter updates should be stabilized over time. Existing methods often address the sample side by estimating reliability from confidence or entropy, assuming that low-entropy predictions provide trustworthy pseudo-label supervision. For example, EATA [13] and SAR [14] filter redundant or unreliable samples through entropy-based criteria, DeYO [40] introduces shape-aware sample selection beyond entropy, and ETAGE [21] further incorporates gradient-norm information to detect unstable samples. However, confidence does not necessarily imply reliability under temporally correlated shifts: a confident prediction may still be supported by shortcut-sensitive cues, and repeatedly adapting to such samples can reinforce confirmation bias. Another line of work stabilizes TTA from the parameter side. CoTTA [17] uses stochastic restoration to mitigate catastrophic drift, RoTTA [18] combines robust memory sampling with teacher-student updates, and LAW [41] studies learning-rate-based mechanisms for sustained adaptation. These methods reduce long-term drift, but their stabilization rules are usually global or nearly uniform across the network, overlooking that different layers may respond to distribution shifts in substantially different ways [42]. Overall, existing TTA methods mainly stabilize online adaptation through sample filtering or global update control. In contrast, DCF attributes long-horizon instability to coupled sample–layer feedback, and decouples sample routing, routed-away geometry repair, and layer-wise update retention.",
-      "after": "We relate DCF to existing adaptation methods without and with target data, and further discuss sample reliability, target-geometry preservation, and parameter stabilization for TTA. Adaptation without Target Data. Mitigating distribution shifts has been widely studied at training time, including domain generalization (DG) [17] and robust representation learning [18]. Beyond visual tasks, uncertainty-aware modeling has also been explored to handle evolving environmental variations in non-stationary sensor streams [19, 20, 21]. Nonetheless, such source-side designs cannot exhaustively anticipate unpredictable test shifts. In contrast, TTA directly exploits unlabeled samples observed during deployment, enabling online adaptation to evolving distributions. Adaptation with Target Data. Target-data methods span offline unsupervised domain adaptation and online TTA. ⟪\\bullet⟫ Unsupervised domain adaptation (UDA). Conventional UDA accesses labeled source and unlabeled target data to reduce cross-domain discrepancies via moment alignment [22], adversarial learning [23], pseudo-label refinement [24], or optimal transport [3]. Source-free variants recover source structure or progressively refine target representations [25]. Recent studies such as VDM-DA [4], SFOCDA [5], and TAMAN [26] further explore virtual source construction, open compound adaptation, and video-oriented alignment. However, these methods assume offline or repeatedly accessible target data, whereas TTA must adapt and predict online as test samples arrive. ⟪\\bullet⟫ Test-Time adaptation (TTA). TTA adapts a pre-trained model during inference using only unlabeled test samples. Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28]. Test-time training [7] introduces auxiliary source-stage objectives. Recent studies extend TTA to diverse visual settings: MetaBN [29] leverages meta-trained normalization for adverse-weather video restoration, whereas CMDA [30] pairs model adaptation with diffusion-based data adaptation. In contrast, DCF requires neither meta-training nor generative translation, focusing on controlling self-training error accumulation in correlated streams. Other approaches explore sample bias [31], normalization or prior correction, and continual dynamics [32, 9, 15, 10, 11, 33, 34]. Despite these advances, self-training remains vulnerable to temporally correlated and label-imbalanced streams, where local adaptation errors can accumulate across successive updates. Reliability- and Stability-aware TTA. Online TTA must govern how samples drive adaptation and how updates persist. EATA [8] and SAR [9] use entropy filtering, while DeYO [35] and ETAGE [16] incorporate shape- or gradient-sensitive cues. The four closely related TCSVT studies use distinct adaptation mechanisms: QED [31] performs question-conditioned VQA debiasing; MetaBN [29] meta-trains normalization for adverse-weather video restoration; CMDA [30] couples model updates with diffusion-based data adaptation; and MS-TTA [36] refines CLIP embeddings through training-free mean shift and a feature cache. DCF instead controls the coupled evolution of target evidence and model parameters in temporally correlated recognition streams. PSR routes evidence by entropy and Fourier stress responsiveness; RGR converts routed-away samples into soft OT geometry constraints; CLR determines where the resulting candidate update persists. CoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF evaluates candidate-update persistence separately for each layer group using current source–candidate curvature mismatch. DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, and where candidate updates persist. This route–adapt–retain design interrupts the error-amplifying feedback that causes long-horizon collapse.",
+      "after": "We relate DCF to existing adaptation methods without and with target data, and further discuss sample reliability, target-geometry preservation, and parameter stabilization for TTA. Adaptation without Target Data. Mitigating distribution shifts has been widely studied at training time, including domain generalization (DG) [17] and robust representation learning [18]. Beyond visual tasks, uncertainty-aware modeling has also been explored to handle evolving environmental variations in non-stationary sensor streams [19, 20, 21]. Nonetheless, such source-side designs cannot exhaustively anticipate unpredictable test shifts. In contrast, TTA directly exploits unlabeled samples observed during deployment, enabling online adaptation to evolving distributions. Adaptation with Target Data. Target-data methods span offline unsupervised domain adaptation and online TTA. ⟪\\bullet⟫ Unsupervised domain adaptation (UDA). Conventional UDA accesses labeled source and unlabeled target data to reduce cross-domain discrepancies via moment alignment [22], adversarial learning [23], pseudo-label refinement [24], or optimal transport [3]. Source-free variants recover source structure or progressively refine target representations [25]. Recent studies such as VDM-DA [4], SFOCDA [5], and TAMAN [26] further explore virtual source construction, open compound adaptation, and video-oriented alignment. However, these methods assume offline or repeatedly accessible target data, whereas TTA must adapt and predict online as test samples arrive. ⟪\\bullet⟫ Test-Time adaptation (TTA). TTA adapts a pre-trained model during inference using only unlabeled test samples. Representative approaches update normalization statistics [27], minimize prediction entropy [6, 8], or exploit teacher models, memory mechanisms, and reset strategies for continual adaptation [12, 13, 28]. Test-time training [7] introduces auxiliary source-stage objectives. Recent studies extend TTA to diverse visual settings: MetaBN [29] leverages meta-trained normalization for adverse-weather video restoration, whereas CMDA [30] pairs model adaptation with diffusion-based data adaptation. In contrast, DCF requires neither meta-training nor generative translation, focusing on controlling self-training error accumulation in correlated streams. Other approaches explore sample bias [31], normalization or prior correction, and continual dynamics [32, 9, 15, 10, 11, 33, 34]. Despite these advances, self-training remains vulnerable to temporally correlated and label-imbalanced streams, where local adaptation errors can accumulate across successive updates. Reliability- and Stability-aware TTA. Online TTA must govern how samples drive adaptation and how the resulting updates persist. EATA [8] and SAR [9] use entropy-based filtering, while DeYO [35] and ETAGE [16] incorporate shape- or gradient-sensitive cues. Related studies further explore question-conditioned debiasing [31], meta-trained normalization for adverse-weather adaptation [29], diffusion-based collaborative model–data adaptation [30], and training-free mean-shift refinement of test representations [36]. In contrast, DCF controls the coupled evolution of target evidence and model parameters in temporally correlated recognition streams. PSR routes evidence by entropy and Fourier stress responsiveness; RGR converts routed-away samples into soft OT geometry constraints; and CLR determines where the resulting candidate update persists. CoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF instead coordinates evidence routing, alternative supervision, and layer-dependent update persistence within one online adaptation loop. DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, and where candidate updates persist. This route–adapt–retain design interrupts the error-amplifying feedback that causes long-horizon collapse.",
       "diff": {
         "original": [
           {
@@ -9441,11 +9388,11 @@ window.REVIEW_DATA={
           },
           {
             "kind": "same",
-            "text": "drive adaptation and how "
+            "text": "drive adaptation and how the "
           },
           {
             "kind": "del",
-            "text": "the induced parameter "
+            "text": "induced parameter "
           },
           {
             "kind": "same",
@@ -9469,7 +9416,15 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "[14] filter redundant or unreliable samples through entropy-based criteria, "
+            "text": "[14] filter redundant or unreliable samples through "
+          },
+          {
+            "kind": "same",
+            "text": "entropy-based "
+          },
+          {
+            "kind": "del",
+            "text": "criteria, "
           },
           {
             "kind": "same",
@@ -9485,23 +9440,15 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "[21] further incorporates gradient-norm information to detect unstable samples. However, confidence does not necessarily imply reliability under "
+            "text": "[21] "
           },
           {
             "kind": "same",
-            "text": "temporally correlated "
+            "text": "further "
           },
           {
             "kind": "del",
-            "text": "shifts: a confident prediction may still be supported "
-          },
-          {
-            "kind": "same",
-            "text": "by "
-          },
-          {
-            "kind": "del",
-            "text": "shortcut-sensitive cues, "
+            "text": "incorporates gradient-norm information to detect unstable samples. However, confidence does not necessarily imply reliability under temporally correlated shifts: a confident prediction may still be supported by shortcut-sensitive cues, "
           },
           {
             "kind": "same",
@@ -9509,63 +9456,23 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "repeatedly adapting to such "
+            "text": "repeatedly adapting to such samples can reinforce confirmation bias. Another line "
           },
           {
             "kind": "same",
-            "text": "samples "
+            "text": "of "
           },
           {
             "kind": "del",
-            "text": "can reinforce confirmation bias. Another line of work stabilizes TTA from "
+            "text": "work stabilizes TTA from the parameter side. CoTTA [17] uses stochastic restoration to mitigate catastrophic drift, RoTTA [18] combines robust memory sampling with teacher-student updates, and LAW [41] studies learning-rate-based mechanisms for sustained adaptation. These methods reduce long-term drift, but their stabilization rules are usually global or nearly uniform across the network, overlooking that different layers may respond to distribution shifts in substantially different ways [42]. Overall, existing TTA methods mainly stabilize online adaptation through sample filtering or global update control. "
           },
           {
             "kind": "same",
-            "text": "the "
+            "text": "In contrast, DCF "
           },
           {
             "kind": "del",
-            "text": "parameter side. "
-          },
-          {
-            "kind": "same",
-            "text": "CoTTA "
-          },
-          {
-            "kind": "del",
-            "text": "[17] uses stochastic restoration to mitigate catastrophic drift, "
-          },
-          {
-            "kind": "same",
-            "text": "RoTTA "
-          },
-          {
-            "kind": "del",
-            "text": "[18] combines robust memory sampling with teacher-student updates, "
-          },
-          {
-            "kind": "same",
-            "text": "and "
-          },
-          {
-            "kind": "del",
-            "text": "LAW [41] studies learning-rate-based mechanisms "
-          },
-          {
-            "kind": "same",
-            "text": "for "
-          },
-          {
-            "kind": "del",
-            "text": "sustained adaptation. These methods reduce long-term drift, but their stabilization rules are usually global or nearly uniform across the network, overlooking that different layers may respond to distribution shifts in substantially different ways [42]. Overall, existing TTA methods mainly stabilize "
-          },
-          {
-            "kind": "same",
-            "text": "online adaptation "
-          },
-          {
-            "kind": "del",
-            "text": "through sample filtering or global update control. In contrast, DCF attributes long-horizon instability to "
+            "text": "attributes long-horizon instability to "
           },
           {
             "kind": "same",
@@ -9931,7 +9838,11 @@ window.REVIEW_DATA={
           },
           {
             "kind": "same",
-            "text": "drive adaptation and how "
+            "text": "drive adaptation and how the "
+          },
+          {
+            "kind": "add",
+            "text": "resulting "
           },
           {
             "kind": "same",
@@ -9955,7 +9866,15 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "[9] use entropy filtering, while "
+            "text": "[9] use "
+          },
+          {
+            "kind": "same",
+            "text": "entropy-based "
+          },
+          {
+            "kind": "add",
+            "text": "filtering, while "
           },
           {
             "kind": "same",
@@ -9971,23 +9890,15 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "[16] incorporate shape- or gradient-sensitive cues. The four closely related TCSVT studies use distinct adaptation mechanisms: QED [31] performs question-conditioned VQA debiasing; MetaBN [29] meta-trains normalization for adverse-weather video restoration; CMDA [30] couples model updates with diffusion-based data adaptation; and MS-TTA [36] refines CLIP embeddings through training-free mean shift and a feature cache. DCF instead controls the coupled evolution of target evidence and model parameters in "
+            "text": "[16] incorporate shape- or gradient-sensitive cues. Related studies "
           },
           {
             "kind": "same",
-            "text": "temporally correlated "
+            "text": "further "
           },
           {
             "kind": "add",
-            "text": "recognition streams. PSR routes evidence "
-          },
-          {
-            "kind": "same",
-            "text": "by "
-          },
-          {
-            "kind": "add",
-            "text": "entropy "
+            "text": "explore question-conditioned debiasing [31], meta-trained normalization for adverse-weather adaptation [29], diffusion-based collaborative model–data adaptation [30], "
           },
           {
             "kind": "same",
@@ -9995,63 +9906,23 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "Fourier stress responsiveness; RGR converts routed-away "
+            "text": "training-free mean-shift refinement "
           },
           {
             "kind": "same",
-            "text": "samples "
+            "text": "of "
           },
           {
             "kind": "add",
-            "text": "into soft OT geometry constraints; CLR determines where "
+            "text": "test representations [36]. "
           },
           {
             "kind": "same",
-            "text": "the "
+            "text": "In contrast, DCF "
           },
           {
             "kind": "add",
-            "text": "resulting candidate update persists. "
-          },
-          {
-            "kind": "same",
-            "text": "CoTTA "
-          },
-          {
-            "kind": "add",
-            "text": "[12], "
-          },
-          {
-            "kind": "same",
-            "text": "RoTTA "
-          },
-          {
-            "kind": "add",
-            "text": "[13], LAW [37], "
-          },
-          {
-            "kind": "same",
-            "text": "and "
-          },
-          {
-            "kind": "add",
-            "text": "GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF evaluates candidate-update persistence separately "
-          },
-          {
-            "kind": "same",
-            "text": "for "
-          },
-          {
-            "kind": "add",
-            "text": "each layer group using current source–candidate curvature mismatch. DCF formulates "
-          },
-          {
-            "kind": "same",
-            "text": "online adaptation "
-          },
-          {
-            "kind": "add",
-            "text": "as a "
+            "text": "controls the coupled evolution of target evidence and model parameters in temporally correlated recognition streams. PSR routes evidence by entropy and Fourier stress responsiveness; RGR converts routed-away samples into soft OT geometry constraints; and CLR determines where the resulting candidate update persists. CoTTA [12], RoTTA [13], LAW [37], and GOLD [38] stabilize updates through weight restoration, teacher–student memory, layer-wise learning-rate modulation, or classifier-aligned subspaces. DCF instead coordinates evidence routing, alternative supervision, and layer-dependent update persistence within one online adaptation loop. DCF formulates online adaptation as a "
           },
           {
             "kind": "same",
@@ -10867,7 +10738,7 @@ window.REVIEW_DATA={
       "originalPage": 4,
       "revisedPage": 4,
       "before": "The first control decision is sample routing: how the current target batch should be partitioned before any adaptation objective is applied. Prediction confidence alone is insufficient for this decision. A low-entropy prediction may still be supported by shortcut-sensitive features and can therefore reinforce confirmation bias under repeated updates. We address this by combining entropy with a targeted Fourier stress probe. The probe creates a counterfactual stressed view that preserves the semantic layout while perturbing frequency-direction components. A sample is routed to the trusted set only when it is both confident and sufficiently responsive to this structured stress, indicating that its prediction is supported by adaptation-relevant evidence rather than stress-inert shortcuts. Fourier-basis stress probe. At test-time step ⟪t⟫, we apply a small additive Fourier-basis perturbation to the current batch ⟪x_t⟫ to obtain a stressed batch ⟪x_t^s=\\mathcal{A}^s(x_t)⟫: ⟪\\displaystyle \\begin{aligned} \\Phi_{f,\\omega}(i,j) &= R\\sin\\!\\Big( 2\\pi f(i\\cos\\omega+j\\sin\\omega-\\pi/4) \\Big), \\\\ \\big[\\mathcal{A}^{s}(x_t)\\big]_{i,j,c} &= \\operatorname{Clamp}_{[0,1]}\\!\\Big( \\big[x_t\\big]_{i,j,c} + \\sigma_c \\Phi_{f_c,\\omega_c}(i,j) \\Big), \\\\ & c\\in\\{1,2,3\\}. \\end{aligned}⟫ Here, ⟪R⟫ is chosen such that ⟪\\|\\Phi_{f,\\omega}\\|_2=1⟫. For each channel ⟪c⟫, we independently sample the frequency and direction as ⟪f_c\\sim\\mathcal{U}[1,224]⟫ and ⟪\\omega_c\\sim\\mathcal{U}[0,\\pi]⟫, and sample the perturbation strength as ⟪\\sigma_c\\sim\\mathrm{Exp}(1/\\lambda)⟫. Given a sample ⟪x_{t,i}\\in x_t⟫ and its stressed counterpart ⟪x_{t,i}^s=\\mathcal{A}^s(x_{t,i})⟫, we define the predicted class on the clean view and the Perturbation Consistency Score (PCS) as ⟪\\displaystyle \\begin{aligned} x_{t,i}^s &= \\mathcal{A}^s(x_{t,i}), \\qquad \\hat{y}_t(x_{t,i}) = \\arg\\max_y p_{\\theta_t}(y\\mid x_{t,i}), \\\\ s_{\\theta_t}(x_{t,i}) &= \\left[ p_{\\theta_t}(\\hat{y}_t(x_{t,i})\\mid x_{t,i}) - p_{\\theta_t}(\\hat{y}_t(x_{t,i})\\mid x_{t,i}^s) \\right]_+. \\end{aligned}⟫ Here ⟪[a]_+ \\coloneqq \\max(a,0)⟫. PCS measures how strongly the predicted-class confidence responds to controlled Fourier stress. A high PCS indicates that the prediction is stress-responsive and provides stronger evidence for adaptation, whereas a low PCS suggests that a confident prediction may be supported by stress-inert shortcuts. Sample routing. Let ⟪E_{\\theta_t}(x_{t,i})⟫ denote the predictive entropy of sample ⟪x_{t,i}⟫. We define the trusted set as ⟪\\displaystyle \\mathcal{R}_{\\theta_t}(x_t) = \\left\\{ \\begin{aligned} x_{t,i}\\in x_t \\ \\big| \\ & E_{\\theta_t}(x_{t,i})<\\upsilon_{\\mathrm{Ent}}, \\\\ & s_{\\theta_t}(x_{t,i})>\\upsilon_{\\mathrm{PCS}} \\end{aligned} \\right\\},⟫ where ⟪\\upsilon_{\\mathrm{Ent}}⟫ and ⟪\\upsilon_{\\mathrm{PCS}}⟫ are thresholds for confidence and stress response. The routed-away set is ⟪\\displaystyle \\mathcal{U}_{\\theta_t}(x_t) = x_t\\setminus \\mathcal{R}_{\\theta_t}(x_t).⟫ For brevity, we write ⟪\\mathcal{R}_t=\\mathcal{R}_{\\theta_t}(x_t)⟫ and ⟪\\mathcal{U}_t=\\mathcal{U}_{\\theta_t}(x_t)⟫ in the following sections. The next section specifies how these two routed subsets are used with different adaptation objectives.",
-      "after": "The first control decision is sample routing: partitioning the target batch before adaptation. Confidence alone is unreliable, as low-entropy predictions may still rely on shortcut-sensitive cues under shift (O1). We therefore pair entropy with a structured Fourier stress probe that perturbs frequency-direction patterns without spatially rearranging image content and exposes prediction responsiveness. Samples are trusted only when they are both confident and sufficiently stress-responsive, filtering out confident but stress-inert predictions. Fourier-basis stress probe. At step ⟪t⟫, we generate a stressed batch ⟪x_t^s=\\mathcal{A}^{s}(x_t)⟫ via an additive Fourier basis perturbation: ⟪\\displaystyle \\begin{aligned} \\Phi_{f,\\omega}(i,j) &= R\\sin\\!\\big(2\\pi f(i\\cos\\omega+j\\sin\\omega-\\pi/4)\\big), \\\\ [\\mathcal{A}^{s}(x_t)]_{i,j,c} &= \\operatorname{Clamp}_{[0,1]}\\!\\big([x_t]_{i,j,c} + \\sigma_c \\Phi_{f_c,\\omega_c}(i,j)\\big). \\end{aligned}⟫ Here, ⟪(i,j)\\in[0,1]^2⟫ are normalized coordinates, and ⟪R⟫ ensures ⟪\\lVert\\Phi_{f,\\omega}\\rVert_2^2/(HW)=1⟫. Per channel, independently draw ⟪f_c\\sim\\mathcal{U}[1,224]⟫ (nominal cycles/image), ⟪\\omega_c\\sim\\mathcal{U}[0,\\pi]⟫, and ⟪\\sigma_c\\sim\\mathrm{Exp}(1/\\lambda)⟫ with rate ⟪1/\\lambda⟫. Thus, ⟪\\lambda⟫ is the expected pre-clamp per-channel RMS amplitude. For sample ⟪x_{t,i}⟫, let ⟪\\hat{y}_t(x_{t,i}) = \\arg\\max_y p_{\\theta_t}(y\\mid x_{t,i})⟫. The Perturbation Consistency Score (PCS) is formulated as: ⟪\\displaystyle s_{\\theta_t}(x_{t,i}) = \\left[ p_{\\theta_t}(\\hat{y}_t(x_{t,i})\\mid x_{t,i}) - p_{\\theta_t}(\\hat{y}_t(x_{t,i})\\mid \\mathcal{A}^{s}(x_{t,i})) \\right]_+.⟫ Higher PCS indicates stronger responsiveness of the original prediction to the structured Fourier probe, whereas lower PCS indicates stress-inert behavior. Combined with predictive entropy, PCS therefore provides a complementary signal for distinguishing confident candidates according to how their predictive evidence responds to structured stress. Theoretical interpretation. Motivated by frequency-dependent model sensitivity and texture bias [39, 40], we characterize PCS through a local probability expansion. For a fixed input ⟪x⟫, let ⟪\\delta=\\mathcal{A}^{s}(x)-x⟫, ⟪Q_q(x)=\\mathbb{E}_q[\\delta\\delta^\\top]⟫, and ⟪g_x=\\nabla_x p_{\\theta_t}(\\hat{y}_t(x)\\mid x)⟫, holding the original predicted class fixed. For a locally smooth probability function and sufficiently small perturbations, retaining the positive-part operation in Eq. (5) gives ⟪\\mathbb{E}_q[s_{\\theta_t}(x)^2] =\\mathbb{E}_q[(-g_x^\\top\\delta)_+^2] +O(\\mathbb{E}_q\\lVert\\delta\\rVert_2^3).⟫ The leading term is bounded above by ⟪g_x^\\top Q_q(x)g_x⟫, where ⟪Q_q(x)⟫ is the perturbation second-moment matrix; no zero-mean or symmetry assumption is imposed after clamping. Thus, this relation establishes PCS as a structured directional-sensitivity measure whose response depends jointly on the prediction gradient and the directions excited by the Fourier probe. The controlled shortcut interventions in Section IV-C provide the empirical bridge to routing: among confidence-matched candidates in the evaluated settings, task-relevant predictions exhibit stronger PCS responses and are preferentially retained by the joint entropy–PCS criterion. Sample routing. We quantify predictive uncertainty by the entropy ⟪E_{\\theta_t}(x_{t,i}) =-\\sum_{k=1}^{K} p_{\\theta_t}(k\\mid x_{t,i}) \\ln p_{\\theta_t}(k\\mid x_{t,i}).⟫ Using uncertainty and stress sensitivity, we partition ⟪x_t⟫ into two complementary subsets. The trusted set (Area 1 in Fig. 3) is defined as ⟪\\displaystyle \\mathcal{R}_{\\theta_t}(x_t) = \\left\\{ x_{t,i}\\in x_t \\mid E_{\\theta_t}(x_{t,i})<\\upsilon_{\\mathrm{Ent}}, \\, s_{\\theta_t}(x_{t,i})>\\upsilon_{\\mathrm{PCS}} \\right\\},⟫ where ⟪\\upsilon_{\\mathrm{Ent}}⟫ and ⟪\\upsilon_{\\mathrm{PCS}}⟫ are thresholds for confidence and stress response. The routed-away set (Areas 2–4 in Fig. 3) is ⟪\\displaystyle \\mathcal{U}_{\\theta_t}(x_t) = x_t\\setminus \\mathcal{R}_{\\theta_t}(x_t).⟫ As illustrated in Fig. 3 (left), the two thresholds bisect the ⟪(E, s)⟫ diagnostic space into four quadrants: Area 1 (⟪E<\\upsilon_{\\mathrm{Ent}},\\,s>\\upsilon_{\\mathrm{PCS}}⟫), Area 2 (⟪E\\ge\\upsilon_{\\mathrm{Ent}},\\,s>\\upsilon_{\\mathrm{PCS}}⟫), Area 3 (⟪E<\\upsilon_{\\mathrm{Ent}},\\,s\\le\\upsilon_{\\mathrm{PCS}}⟫), and Area 4 (⟪E\\ge\\upsilon_{\\mathrm{Ent}},\\,s\\le\\upsilon_{\\mathrm{PCS}}⟫). For brevity, we denote the trusted and routed-away sets as ⟪\\mathcal{R}_t⟫ and ⟪\\mathcal{U}_t⟫ in subsequent sections.",
+      "after": "The first control decision is sample routing: partitioning the target batch before adaptation. Confidence alone is unreliable, as low-entropy predictions may still rely on shortcut-sensitive cues under shift (O1). We therefore pair entropy with a structured Fourier stress probe that perturbs frequency-direction patterns without spatially rearranging image content and exposes prediction responsiveness. Samples are trusted only when they are both confident and sufficiently stress-responsive, filtering out confident but stress-inert predictions. Fourier-basis stress probe. At step ⟪t⟫, we generate a stressed batch ⟪x_t^s=\\mathcal{A}^{s}(x_t)⟫ via an additive Fourier basis perturbation: ⟪\\displaystyle \\begin{aligned} \\Phi_{f,\\omega}(i,j) &= R\\sin\\!\\big(2\\pi f(i\\cos\\omega+j\\sin\\omega-\\pi/4)\\big), \\\\ [\\mathcal{A}^{s}(x_t)]_{i,j,c} &= \\operatorname{Clamp}_{[0,1]}\\!\\big([x_t]_{i,j,c} + \\sigma_c \\Phi_{f_c,\\omega_c}(i,j)\\big). \\end{aligned}⟫ Here, ⟪(i,j)\\in[0,1]^2⟫ are normalized coordinates, and ⟪R⟫ ensures ⟪\\lVert\\Phi_{f,\\omega}\\rVert_2^2/(HW)=1⟫. Per channel, independently draw ⟪f_c\\sim\\mathcal{U}[1,224]⟫ (nominal cycles/image), ⟪\\omega_c\\sim\\mathcal{U}[0,\\pi]⟫, and ⟪\\sigma_c\\sim\\mathrm{Exp}(1/\\lambda)⟫ with rate ⟪1/\\lambda⟫. Thus, ⟪\\lambda⟫ is the expected pre-clamp per-channel RMS amplitude. For sample ⟪x_{t,i}⟫, let ⟪\\hat{y}_t(x_{t,i}) = \\arg\\max_y p_{\\theta_t}(y\\mid x_{t,i})⟫. The Perturbation Consistency Score (PCS) is formulated as: ⟪\\displaystyle s_{\\theta_t}(x_{t,i}) = \\left[ p_{\\theta_t}(\\hat{y}_t(x_{t,i})\\mid x_{t,i}) - p_{\\theta_t}(\\hat{y}_t(x_{t,i})\\mid \\mathcal{A}^{s}(x_{t,i})) \\right]_+.⟫ Higher PCS indicates stronger responsiveness of the original prediction to the structured Fourier probe, whereas lower PCS indicates stress-inert behavior. Combined with predictive entropy, PCS therefore provides a complementary signal for distinguishing confident candidates according to how their predictive evidence responds to structured stress. Theoretical interpretation. Motivated by frequency-dependent model sensitivity and texture bias [39, 40], we characterize PCS through a local probability expansion. For a fixed input ⟪x⟫, let ⟪\\delta=\\mathcal{A}^{s}(x)-x⟫, ⟪Q_q(x)=\\mathbb{E}_q[\\delta\\delta^\\top]⟫, and ⟪g_x=\\nabla_x p_{\\theta_t}(\\hat{y}_t(x)\\mid x)⟫, holding the original predicted class fixed. For a locally smooth probability function and sufficiently small perturbations, retaining the positive-part operation in Eq. (5) gives ⟪\\mathbb{E}_q[s_{\\theta_t}(x)^2] =\\mathbb{E}_q[(-g_x^\\top\\delta)_+^2] +O(\\mathbb{E}_q\\lVert\\delta\\rVert_2^3).⟫ The leading term is bounded above by ⟪g_x^\\top Q_q(x)g_x⟫, where ⟪Q_q(x)⟫ is the perturbation second-moment matrix; no zero-mean or symmetry assumption is imposed after clamping. Thus, this relation establishes PCS as a structured directional-sensitivity measure whose response depends jointly on the prediction gradient and the directions excited by the Fourier probe. The controlled shortcut interventions in Section IV-C establish the empirical bridge to routing: among confidence-matched candidates, PCS separates task-relevant from shortcut-driven predictions and improves trusted-set purity beyond entropy alone, supporting PCS as a shortcut-sensitive routing signal. Sample routing. We quantify predictive uncertainty by the entropy ⟪E_{\\theta_t}(x_{t,i}) =-\\sum_{k=1}^{K} p_{\\theta_t}(k\\mid x_{t,i}) \\ln p_{\\theta_t}(k\\mid x_{t,i}).⟫ Using uncertainty and stress sensitivity, we partition ⟪x_t⟫ into two complementary subsets. The trusted set (Area 1 in Fig. 3) is defined as ⟪\\displaystyle \\mathcal{R}_{\\theta_t}(x_t) = \\left\\{ x_{t,i}\\in x_t \\mid E_{\\theta_t}(x_{t,i})<\\upsilon_{\\mathrm{Ent}}, \\, s_{\\theta_t}(x_{t,i})>\\upsilon_{\\mathrm{PCS}} \\right\\},⟫ where ⟪\\upsilon_{\\mathrm{Ent}}⟫ and ⟪\\upsilon_{\\mathrm{PCS}}⟫ are thresholds for confidence and stress response. The routed-away set (Areas 2–4 in Fig. 3) is ⟪\\displaystyle \\mathcal{U}_{\\theta_t}(x_t) = x_t\\setminus \\mathcal{R}_{\\theta_t}(x_t).⟫ As illustrated in Fig. 3 (left), the two thresholds bisect the ⟪(E, s)⟫ diagnostic space into four quadrants: Area 1 (⟪E<\\upsilon_{\\mathrm{Ent}},\\,s>\\upsilon_{\\mathrm{PCS}}⟫), Area 2 (⟪E\\ge\\upsilon_{\\mathrm{Ent}},\\,s>\\upsilon_{\\mathrm{PCS}}⟫), Area 3 (⟪E<\\upsilon_{\\mathrm{Ent}},\\,s\\le\\upsilon_{\\mathrm{PCS}}⟫), and Area 4 (⟪E\\ge\\upsilon_{\\mathrm{Ent}},\\,s\\le\\upsilon_{\\mathrm{PCS}}⟫). For brevity, we denote the trusted and routed-away sets as ⟪\\mathcal{R}_t⟫ and ⟪\\mathcal{U}_t⟫ in subsequent sections.",
       "diff": {
         "original": [
           {
@@ -11156,31 +11027,15 @@ window.REVIEW_DATA={
           },
           {
             "kind": "del",
-            "text": "provides "
+            "text": "provides stronger evidence for adaptation, whereas "
           },
           {
             "kind": "same",
-            "text": "stronger "
+            "text": "a "
           },
           {
             "kind": "del",
-            "text": "evidence for adaptation, whereas a low "
-          },
-          {
-            "kind": "same",
-            "text": "PCS "
-          },
-          {
-            "kind": "del",
-            "text": "suggests that a confident prediction may be supported "
-          },
-          {
-            "kind": "same",
-            "text": "by "
-          },
-          {
-            "kind": "del",
-            "text": "stress-inert shortcuts. "
+            "text": "low PCS suggests that a confident prediction may be supported by stress-inert shortcuts. "
           },
           {
             "kind": "same",
@@ -11522,27 +11377,15 @@ window.REVIEW_DATA={
           },
           {
             "kind": "add",
-            "text": "the directions excited by the Fourier probe. The controlled shortcut interventions in Section IV-C provide the empirical bridge to routing: among confidence-matched candidates in the evaluated settings, task-relevant predictions exhibit "
+            "text": "the directions excited by the Fourier probe. The controlled shortcut interventions in Section IV-C establish the empirical bridge to routing: among confidence-matched candidates, PCS separates task-relevant from shortcut-driven predictions and improves trusted-set purity beyond entropy alone, supporting PCS as "
           },
           {
             "kind": "same",
-            "text": "stronger "
-          },
-          {
-            "kind": "same",
-            "text": "PCS "
+            "text": "a "
           },
           {
             "kind": "add",
-            "text": "responses and are preferentially retained "
-          },
-          {
-            "kind": "same",
-            "text": "by "
-          },
-          {
-            "kind": "add",
-            "text": "the joint entropy–PCS criterion. "
+            "text": "shortcut-sensitive routing signal. "
           },
           {
             "kind": "same",
@@ -16685,16 +16528,16 @@ window.REVIEW_DATA={
       "originalPage": 12,
       "revisedPage": 12,
       "before": "This paper reveals that the instability of test-time adaptation under temporally correlated shifts stems from a homogeneous treatment of intrinsically heterogeneous target evidence and layer-wise drift. To address this, we propose DCF, which decouples sample routing, subset-specific sample-side adaptation, and layer-aware parameter stabilization. By separating the routing decision from the adaptation objective, constraining confident but shortcut-driven updates, and repairing target geometry via optimal transport, DCF mitigates the confirmation bias that typically drives model collapse. Extensive evaluations show that DCF effectively halts the compounding errors that plague existing TTA methods in long-horizon deployment streams.",
-      "after": "Our analysis suggests that the instability of test-time adaptation under temporally correlated shifts is linked to a coupled sample–layer feedback process involving heterogeneous target evidence and layer-wise drift. To address this, we propose DCF, which decouples sample routing, subset-specific sample-side adaptation, and curvature-aware layer retention. By screening shortcut-sensitive evidence, reusing routed-away samples for optimal-transport geometry repair, and selectively retaining candidate updates across layers, DCF mitigates the error-amplifying feedback loop. Extensive evaluations show that DCF consistently improves test-time robustness and avoids the late-stage collapse observed in existing TTA methods in long-horizon deployment streams.",
+      "after": "Our analysis characterizes the instability of test-time adaptation under temporally correlated shifts as a coupled sample–layer feedback process involving heterogeneous target evidence and layer-wise drift. To address this, we propose DCF, which decouples sample routing, subset-specific sample-side adaptation, and curvature-aware layer retention. By screening shortcut-sensitive evidence, reusing routed-away samples for optimal-transport geometry repair, and selectively retaining candidate updates across layers, DCF mitigates this error-amplifying feedback loop. Extensive evaluations demonstrate that DCF consistently improves test-time robustness and avoids the late-stage collapse observed in existing TTA methods in long-horizon deployment streams.",
       "diff": {
         "original": [
           {
             "kind": "del",
-            "text": "This paper reveals "
+            "text": "This paper reveals that "
           },
           {
             "kind": "same",
-            "text": "that the instability of test-time adaptation under temporally correlated shifts "
+            "text": "the instability of test-time adaptation under temporally correlated shifts "
           },
           {
             "kind": "del",
@@ -16734,15 +16577,23 @@ window.REVIEW_DATA={
           },
           {
             "kind": "same",
-            "text": "DCF mitigates the "
+            "text": "DCF mitigates "
           },
           {
             "kind": "del",
-            "text": "confirmation bias that typically drives model collapse. "
+            "text": "the confirmation bias that typically drives model collapse. "
           },
           {
             "kind": "same",
-            "text": "Extensive evaluations show that DCF "
+            "text": "Extensive evaluations "
+          },
+          {
+            "kind": "del",
+            "text": "show "
+          },
+          {
+            "kind": "same",
+            "text": "that DCF "
           },
           {
             "kind": "del",
@@ -16764,15 +16615,15 @@ window.REVIEW_DATA={
         "revised": [
           {
             "kind": "add",
-            "text": "Our analysis suggests "
+            "text": "Our analysis characterizes "
           },
           {
             "kind": "same",
-            "text": "that the instability of test-time adaptation under temporally correlated shifts "
+            "text": "the instability of test-time adaptation under temporally correlated shifts "
           },
           {
             "kind": "add",
-            "text": "is linked to "
+            "text": "as "
           },
           {
             "kind": "same",
@@ -16808,15 +16659,23 @@ window.REVIEW_DATA={
           },
           {
             "kind": "same",
-            "text": "DCF mitigates the "
+            "text": "DCF mitigates "
           },
           {
             "kind": "add",
-            "text": "error-amplifying feedback loop. "
+            "text": "this error-amplifying feedback loop. "
           },
           {
             "kind": "same",
-            "text": "Extensive evaluations show that DCF "
+            "text": "Extensive evaluations "
+          },
+          {
+            "kind": "add",
+            "text": "demonstrate "
+          },
+          {
+            "kind": "same",
+            "text": "that DCF "
           },
           {
             "kind": "add",
@@ -16841,13 +16700,13 @@ window.REVIEW_DATA={
   "overview": [
     {
       "kind": "paragraph",
-      "html": "Dear Dr. Shan Liu (Editor-in-Chief), Associate Editor, Senior Area Editor, and Reviewers,",
-      "text": "Dear Dr. Shan Liu (Editor-in-Chief), Associate Editor, Senior Area Editor, and Reviewers,"
+      "html": "Dear Editor-in-Chief, Senior Area Editor, Associate Editor, and Reviewers,",
+      "text": "Dear Editor-in-Chief, Senior Area Editor, Associate Editor, and Reviewers,"
     },
     {
       "kind": "paragraph",
-      "html": "Thank you for your careful evaluation and constructive suggestions. We appreciate the reviewers’ recognition of the motivation, technical design, and long-horizon evidence of the Decoupled Control Framework (DCF). Your comments helped us strengthen the analytical interpretation, experimental validation, computational cost assessment, and reproducibility of DCF.",
-      "text": "Thank you for your careful evaluation and constructive suggestions. We appreciate the reviewers’ recognition of the motivation, technical design, and long-horizon evidence of the Decoupled Control Framework (DCF). Your comments helped us strengthen the analytical interpretation, experimental validation, computational cost assessment, and reproducibility of DCF."
+      "html": "Thank you for your careful evaluation and constructive suggestions. We appreciate the positive assessment of the motivation, technical design, and long-horizon evidence of the Decoupled Control Framework (DCF). Your comments helped us substantially strengthen the analytical interpretation, experimental validation, computational cost assessment, positioning, and reproducibility of DCF.",
+      "text": "Thank you for your careful evaluation and constructive suggestions. We appreciate the positive assessment of the motivation, technical design, and long-horizon evidence of the Decoupled Control Framework (DCF). Your comments helped us substantially strengthen the analytical interpretation, experimental validation, computational cost assessment, positioning, and reproducibility of DCF."
     },
     {
       "kind": "paragraph",
@@ -16856,33 +16715,28 @@ window.REVIEW_DATA={
     },
     {
       "kind": "paragraph",
-      "html": "<strong>1. Probe interpretation and layer behavior.</strong> We strengthened the local directional-sensitivity interpretation of PCS and added controlled shape–texture and Colored-MNIST shortcut experiments, matched-coverage routing diagnostics, and frequency/strength sensitivity analysis. These controlled experiments establish the complementary value of probe responsiveness for reliable routing. We also added retention-gate heatmaps over time and corruption types, together with control-granularity and Expected Fisher/Hutchinson-based proxy comparisons.",
-      "text": "1. Probe interpretation and layer behavior. We strengthened the local directional-sensitivity interpretation of PCS and added controlled shape–texture and Colored-MNIST shortcut experiments, matched-coverage routing diagnostics, and frequency/strength sensitivity analysis. These controlled experiments establish the complementary value of probe responsiveness for reliable routing. We also added retention-gate heatmaps over time and corruption types, together with control-granularity and Expected Fisher/Hutchinson-based proxy comparisons."
+      "html": "<strong>1. Probe interpretation and layer behavior.</strong> We strengthened the local directional-sensitivity interpretation of PCS through analytical expansion and introduced controlled shape–texture and Colored-MNIST shortcut experiments, matched-coverage routing diagnostics, and frequency/strength sensitivity analyses (Tables IV–VI, Fig. 5). These additions establish PCS as a structured directional-sensitivity signal and demonstrate that probe responsiveness provides shortcut-sensitive routing information beyond predictive entropy alone. We also incorporated retention-gate heatmaps over time and corruption types, evaluated control granularity across network depth, and benchmarked our gradient-square proxy against Expected Fisher and a Hutchinson-based second-order approximation (Fig. 9, Table IX).",
+      "text": "1. Probe interpretation and layer behavior. We strengthened the local directional-sensitivity interpretation of PCS through analytical expansion and introduced controlled shape–texture and Colored-MNIST shortcut experiments, matched-coverage routing diagnostics, and frequency/strength sensitivity analyses (Tables IV–VI, Fig. 5). These additions establish PCS as a structured directional-sensitivity signal and demonstrate that probe responsiveness provides shortcut-sensitive routing information beyond predictive entropy alone. We also incorporated retention-gate heatmaps over time and corruption types, evaluated control granularity across network depth, and benchmarked our gradient-square proxy against Expected Fisher and a Hutchinson-based second-order approximation (Fig. 9, Table IX)."
     },
     {
       "kind": "paragraph",
-      "html": "<strong>2. Geometry repair and computational cost.</strong> We compared RGR with moment matching, prototype contrastive alignment, and uniform-prior OT, and characterized failure regimes through 10%–90% routing-ratio tests. We report FLOPs, peak memory, and latency alongside lightweight baselines. On the measured A100 setup, DCF-Lite reduces FLOPs by 61.8% and peak memory by 58.6%, achieving 42.06% accuracy versus 43.48% for full DCF. These results demonstrate substantial resource savings while preserving strong long-horizon accuracy, providing a practical path toward lower-cost online adaptation.",
-      "text": "2. Geometry repair and computational cost. We compared RGR with moment matching, prototype contrastive alignment, and uniform-prior OT, and characterized failure regimes through 10%–90% routing-ratio tests. We report FLOPs, peak memory, and latency alongside lightweight baselines. On the measured A100 setup, DCF-Lite reduces FLOPs by 61.8% and peak memory by 58.6%, achieving 42.06% accuracy versus 43.48% for full DCF. These results demonstrate substantial resource savings while preserving strong long-horizon accuracy, providing a practical path toward lower-cost online adaptation."
+      "html": "<strong>2. Geometry repair and computational cost.</strong> We compared RGR against moment matching, prototype contrastive alignment, and uniform-prior optimal transport, and characterized its behavior across routing ratios from 10% to 90%, demonstrating stability even when routed samples are sparse or dominant (Tables VII–VIII). Furthermore, we benchmarked FLOPs, peak memory, and latency alongside representative baselines. On an NVIDIA A100, the lightweight variant DCF-Lite reduces FLOPs by 61.8% and peak memory by 58.6% while achieving 42.06% accuracy (only 1.42 points below full DCF and 3.16 points above SAR), establishing a practical path toward lower-cost online adaptation (Table XI).",
+      "text": "2. Geometry repair and computational cost. We compared RGR against moment matching, prototype contrastive alignment, and uniform-prior optimal transport, and characterized its behavior across routing ratios from 10% to 90%, demonstrating stability even when routed samples are sparse or dominant (Tables VII–VIII). Furthermore, we benchmarked FLOPs, peak memory, and latency alongside representative baselines. On an NVIDIA A100, the lightweight variant DCF-Lite reduces FLOPs by 61.8% and peak memory by 58.6% while achieving 42.06% accuracy (only 1.42 points below full DCF and 3.16 points above SAR), establishing a practical path toward lower-cost online adaptation (Table XI)."
     },
     {
       "kind": "paragraph",
-      "html": "<strong>3. Statistical evidence, positioning, and reproducibility.</strong> Five matched runs and paired tests support significant aggregate cross-domain transfer improvements on ImageNet-C (<span data-response-math=\"p=1.39\\times10^{-4}\" data-display=\"false\">p=1.39\\times10^{-4}</span>) and DomainNet-126 (<span data-response-math=\"p=2.75\\times10^{-4}\" data-display=\"false\">p=2.75\\times10^{-4}</span>). We clarify the trainable parameters, CLR grouping, routing regions, threshold guidance, and OT settings. We also discuss four closely related TCSVT studies ([29], [30], [31], [36]), the suggested sensor-stream literature ([19]–[21]), and recent continual-TTA work ([28], [38]).",
-      "text": "3. Statistical evidence, positioning, and reproducibility. Five matched runs and paired tests support significant aggregate cross-domain transfer improvements on ImageNet-C (⟪p=1.39\\times10^{-4}⟫) and DomainNet-126 (⟪p=2.75\\times10^{-4}⟫). We clarify the trainable parameters, CLR grouping, routing regions, threshold guidance, and OT settings. We also discuss four closely related TCSVT studies ([29], [30], [31], [36]), the suggested sensor-stream literature ([19]–[21]), and recent continual-TTA work ([28], [38])."
+      "html": "<strong>3. Empirical rigor, positioning, and reproducibility.</strong> To rigorously evaluate generalizable representation preservation, we added DomainNet-126 as a distinct multi-domain benchmark alongside ImageNet-C. Across five matched runs, paired <span data-response-math=\"t\" data-display=\"false\">t</span>-tests confirm that DCF achieves statistically significant aggregate cross-domain transfer gains on both ImageNet-C (<span data-response-math=\"p=1.39\\times10^{-4}\" data-display=\"false\">p=1.39\\times10^{-4}</span>) and DomainNet-126 (<span data-response-math=\"p=2.75\\times10^{-4}\" data-display=\"false\">p=2.75\\times10^{-4}</span>) (Fig. 11). In direct response to editorial guidance, we explicitly discuss four closely related TCSVT studies ([29], [30], [31], [36]) and clarify the distinctive coupled sample–layer control formulation of DCF, while incorporating the suggested sensor-stream literature ([19]–[21]) and recent continual-TTA advances ([28], [38]). Finally, we provide full technical clarifications regarding trainable parameters, CLR block grouping, routing regions, threshold selection, and Sinkhorn OT settings.",
+      "text": "3. Empirical rigor, positioning, and reproducibility. To rigorously evaluate generalizable representation preservation, we added DomainNet-126 as a distinct multi-domain benchmark alongside ImageNet-C. Across five matched runs, paired ⟪t⟫-tests confirm that DCF achieves statistically significant aggregate cross-domain transfer gains on both ImageNet-C (⟪p=1.39\\times10^{-4}⟫) and DomainNet-126 (⟪p=2.75\\times10^{-4}⟫) (Fig. 11). In direct response to editorial guidance, we explicitly discuss four closely related TCSVT studies ([29], [30], [31], [36]) and clarify the distinctive coupled sample–layer control formulation of DCF, while incorporating the suggested sensor-stream literature ([19]–[21]) and recent continual-TTA advances ([28], [38]). Finally, we provide full technical clarifications regarding trainable parameters, CLR block grouping, routing regions, threshold selection, and Sinkhorn OT settings."
     },
     {
       "kind": "paragraph",
-      "html": "Below, we respond to each editorial request and every numbered reviewer comment. Original comments appear in shaded boxes, responses follow directly, and selected manuscript additions appear in blue boxes with specific locations. Accuracy differences are expressed in percentage points (pp).",
-      "text": "Below, we respond to each editorial request and every numbered reviewer comment. Original comments appear in shaded boxes, responses follow directly, and selected manuscript additions appear in blue boxes with specific locations. Accuracy differences are expressed in percentage points (pp)."
+      "html": "Below, we respond to each editorial request and every reviewer comment in detail. We hope that the revised manuscript and our detailed responses satisfactorily address all concerns, and we respectfully submit the revised manuscript for your further consideration.",
+      "text": "Below, we respond to each editorial request and every reviewer comment in detail. We hope that the revised manuscript and our detailed responses satisfactorily address all concerns, and we respectfully submit the revised manuscript for your further consideration."
     },
     {
       "kind": "paragraph",
-      "html": "<strong>Online revision review:</strong> <code>tcsvt-29693-2026.xhy.im</code>. Each response includes direct links to its online reply and the corresponding PDF comparison, with additional figures, tables, and mapped manuscript evidence.",
-      "text": "Online revision review: tcsvt-29693-2026.xhy.im. Each response includes direct links to its online reply and the corresponding PDF comparison, with additional figures, tables, and mapped manuscript evidence."
-    },
-    {
-      "kind": "paragraph",
-      "html": "Sincerely,<br>Zhengpeng Zhao and Yuanyuan Pu<br><em>Corresponding authors, on behalf of all authors</em>",
-      "text": "Sincerely,\nZhengpeng Zhao and Yuanyuan Pu\nCorresponding authors, on behalf of all authors"
+      "html": "Sincerely,<br>Yuanyuan Pu<br><em>Corresponding author, on behalf of all authors</em>",
+      "text": "Sincerely,\nYuanyuan Pu\nCorresponding author, on behalf of all authors"
     }
   ]
 };

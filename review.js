@@ -52,6 +52,7 @@ const body=m==='slider'?slider(c.original,c.revised):`<div class="comparison-gri
 return `<div class="evidence-header"><div><div class="eyebrow">${esc(c.type||'Figure')} evidence · ${esc(c.section||'Figure gallery')}</div><h2>${esc(c.title)}</h2></div>${badge(c.status)}</div>${scope==='modal'?'':`<p class="detail-summary">${mathText(c.summary)}</p>`}<div class="evidence-toolbar"><div class="segmented" role="group" aria-label="Comparison mode"><button data-mode="split" data-scope="${scope}" class="${m==='split'?'active':''}" aria-pressed="${m==='split'}">Side by side</button><button data-mode="slider" data-scope="${scope}" class="${m==='slider'?'active':''}" ${both?'':'disabled'} aria-pressed="${m==='slider'}">Before / after</button>${text?`<button data-mode="text" data-scope="${scope}" class="${m==='text'?'active':''}" aria-pressed="${m==='text'}">${c.textScope==='caption'?'Caption diff':'Text diff'}</button>`:''}</div><a class="button small pdf-cta" href="${pdfHref(c.id,scope==='evidence'?selected:matchesPdfScope(c)?pdfScope.comment:'all')}">Open PDF diff</a></div>${m==='text'?'<p class="diff-legend"><span class="del-key">Removed</span><span class="add-key">Added or rewritten</span></p>':''}${body}${scope==='modal'?linkedResponses(c):''}`}
 function responseFigure(b,c){return `<figure class="response-figure"><img src="${b.src}" alt="${esc(b.alt)}" loading="lazy">${b.caption?`<figcaption class="response-caption">${esc(b.caption)}${b.evidenceId?` · <a href="${pdfHref(b.evidenceId,c.id)}">Open PDF evidence</a>`:''}</figcaption>`:''}</figure>`;}
 function responseBlocks(c){return c.fullResponse.map((b,index)=>{
+if(b.kind==='list')return `<${b.ordered?'ol':'ul'} class="response-steps">${b.items.map(parts=>`<li>${responseBlocks({fullResponse:parts})}</li>`).join('')}</${b.ordered?'ol':'ul'}>`;
 if(b.kind==='table')return `<div class="response-table-wrap"><table class="response-table"><thead><tr>${b.rows[0].map(cell=>`<th>${mathHtml(cell.html)}</th>`).join('')}</tr></thead><tbody>${b.rows.slice(1).map(row=>`<tr>${row.map(cell=>`<td>${mathHtml(cell.html)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 if(b.kind==='image'){
  const previous=c.fullResponse[index-1],next=c.fullResponse[index+1];
@@ -60,6 +61,7 @@ if(b.kind==='image'){
  return responseFigure(b,c);
 }
 if(b.kind==='heading')return `<h3 class="response-subheading">${mathHtml(b.html)}</h3>`;
+if(b.kind==='caption')return `<p class="response-caption">${mathHtml(b.html)}${b.evidenceId?` · <a href="${pdfHref(b.evidenceId,c.id)}">Open PDF evidence</a>`:''}</p>`;
 if(/^(?:Selected revised text|Evidence from|Selected measurements|Measurements from|Additional evidence|Definitions added|Implementation settings|Aggregate results reported)/.test(b.text||''))return `<h4 class="response-evidence-heading">${mathHtml(b.html)}</h4>`;
 if(b.text?.startsWith('The Lite implementation uses four approximations')){
  const matches=[...b.html.matchAll(/\([1-4]\)/g)];
