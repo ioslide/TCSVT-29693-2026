@@ -46,7 +46,8 @@ for version, directory in [("original", "latex_old_version"), ("revised", "latex
         ref = item.get(version)
         if not ref or "box" not in ref:
             continue
-        pieces = [image(doc[ref["page"] - 1], box) for box in ref.get("boxes", [ref["box"]])]
+        regions = ref.get("regions", [{"page": ref["page"], "box": box} for box in ref.get("boxes", [ref["box"]])])
+        pieces = [image(doc[region["page"] - 1], region["box"]) for region in regions]
         width = max(p.width for p in pieces)
         gap = 12
         crop = Image.new("RGB", (width, sum(p.height for p in pieces) + gap * (len(pieces) - 1)), "white")

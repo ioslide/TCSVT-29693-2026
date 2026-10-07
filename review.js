@@ -2,7 +2,7 @@ const D=window.REVIEW_DATA,$=s=>document.querySelector(s),by=id=>D.changes.find(
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const names={added:'Added',modified:'Revised',moved:'Moved',context:'Reused / context',removed:'Replaced'},badge=s=>`<span class="badge ${s}">${names[s]||s}</span>`;
 const assetUrl=window.reviewAssetUrl=s=>{
- const path=String(s),version=/^assets\/pdf\/(original|revised|response)\.pdf$/.exec(path)?.[1]||/^assets\/pages\/(original|revised)-\d+\.webp$/.exec(path)?.[1]||/^assets\/crops\/.*-(original|revised)\.webp$/.exec(path)?.[1];
+ const path=String(s),version=/^assets\/response\//.test(path)?'response':/^assets\/pdf\/(original|revised|response)\.pdf$/.exec(path)?.[1]||/^assets\/pages\/(original|revised)-\d+\.webp$/.exec(path)?.[1]||/^assets\/crops\/.*-(original|revised)\.webp$/.exec(path)?.[1];
  const hash=version==='response'?D.meta.responsePdfSha256:D.meta.hashes[version]?.pdf;
  return hash&&location.protocol!=='file:'?`${path}?v=${hash.slice(0,12)}`:path;
 };
@@ -50,10 +50,10 @@ function evidence(c,m='split',scope='evidence'){
 const text=!!(c.before||c.after),both=!!(c.original&&c.revised);if(m==='slider'&&!both||m==='text'&&!text)m='split';
 const body=m==='slider'?slider(c.original,c.revised):`<div class="comparison-grid">${['original','revised'].map(v=>`<div class="compare-column">${head(v,c[v])}${!c[v]?'<div class="empty-version"><div><strong>Added in the revision</strong><br>No corresponding material in the original manuscript.</div></div>':m==='text'?`<div class="compare-text">${(v==='original'?c.before:c.after)?diff(c,v):'<span class="source-note">See the PDF excerpt for this version.</span>'}</div>`:`<div class="image-container">${img(c[v],v)}</div>`}</div>`).join('')}</div>`;
 return `<div class="evidence-header"><div><div class="eyebrow">${esc(c.type||'Figure')} evidence · ${esc(c.section||'Figure gallery')}</div><h2>${esc(c.title)}</h2></div>${badge(c.status)}</div>${scope==='modal'?'':`<p class="detail-summary">${mathText(c.summary)}</p>`}<div class="evidence-toolbar"><div class="segmented" role="group" aria-label="Comparison mode"><button data-mode="split" data-scope="${scope}" class="${m==='split'?'active':''}" aria-pressed="${m==='split'}">Side by side</button><button data-mode="slider" data-scope="${scope}" class="${m==='slider'?'active':''}" ${both?'':'disabled'} aria-pressed="${m==='slider'}">Before / after</button>${text?`<button data-mode="text" data-scope="${scope}" class="${m==='text'?'active':''}" aria-pressed="${m==='text'}">${c.textScope==='caption'?'Caption diff':'Text diff'}</button>`:''}</div><a class="button small pdf-cta" href="${pdfHref(c.id,scope==='evidence'?selected:matchesPdfScope(c)?pdfScope.comment:'all')}">Open PDF diff</a></div>${m==='text'?'<p class="diff-legend"><span class="del-key">Removed</span><span class="add-key">Added or rewritten</span></p>':''}${body}${scope==='modal'?linkedResponses(c):''}`}
-function responseFigure(b,c){return `<figure class="response-figure"><img src="${b.src}" alt="${esc(b.alt)}" loading="lazy">${b.caption?`<figcaption class="response-caption">${esc(b.caption)}${b.evidenceId?` · <a href="${pdfHref(b.evidenceId,c.id)}">Open PDF evidence</a>`:''}</figcaption>`:''}</figure>`;}
+function responseFigure(b,c){return `<figure class="response-figure"><img src="${assetUrl(b.src)}" alt="${esc(b.alt)}" loading="lazy">${b.caption?`<figcaption class="response-caption">${esc(b.caption)}${b.evidenceId?` · <a href="${pdfHref(b.evidenceId,c.id)}">Open PDF evidence</a>`:''}</figcaption>`:''}</figure>`;}
 function responseBlocks(c){return c.fullResponse.map((b,index)=>{
 if(b.kind==='list')return `<${b.ordered?'ol':'ul'} class="response-steps">${b.items.map(parts=>`<li>${responseBlocks({fullResponse:parts})}</li>`).join('')}</${b.ordered?'ol':'ul'}>`;
-if(b.kind==='table')return `<div class="response-table-wrap"><table class="response-table"><thead><tr>${b.rows[0].map(cell=>`<th>${mathHtml(cell.html)}</th>`).join('')}</tr></thead><tbody>${b.rows.slice(1).map(row=>`<tr>${row.map(cell=>`<td>${mathHtml(cell.html)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+if(b.kind==='table')return `<div class="response-table-wrap"><table class="response-table"><thead><tr>${b.rows[0].map(cell=>`<th${cell.colspan?` colspan="${cell.colspan}"`:''}>${mathHtml(cell.html)}</th>`).join('')}</tr></thead><tbody>${b.rows.slice(1).map(row=>`<tr>${row.map(cell=>`<td${cell.colspan?` colspan="${cell.colspan}"`:''}>${mathHtml(cell.html)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 if(b.kind==='image'){
  const previous=c.fullResponse[index-1],next=c.fullResponse[index+1];
  if(b.evidenceId==='sinkhorn'&&previous?.kind==='image'&&previous.evidenceId==='probe-sensitivity')return '';
@@ -154,9 +154,10 @@ function selectEvidence(id,{keepPosition=false}={}){
  $('#announcement').textContent=`Evidence ${c.changes.indexOf(id)+1} of ${c.changes.length}: ${by(id).title}`;
 }
 
+function boxesOnPage(ref,n){return ref?.regions?ref.regions.filter(r=>r.page===n).map(r=>r.box):ref?.page===n?(ref.boxes||[ref.box]).filter(Boolean):[];}
 function pageAnnotations(v,n){
  if(!pdf.highlights)return [];
- const rows=D.changes.filter(c=>c[v]?.page===n&&c[v].box&&c.comments?.length&&matchesPdfScope(c)).map(c=>({c,code:'M'+String(D.changes.indexOf(c)+1).padStart(2,'0'),figure:false}));
+ const rows=D.changes.filter(c=>boxesOnPage(c[v],n).length&&c.comments?.length&&matchesPdfScope(c)).map(c=>({c,code:'M'+String(D.changes.indexOf(c)+1).padStart(2,'0'),figure:false}));
  const selected=fig(pdf.id);if(selected?.[v]?.page===n&&selected[v].box&&!rows.some(r=>r.c[v].box.join()===selected[v].box.join()))rows.push({c:selected,code:'F'+String(D.figures.indexOf(selected)+1).padStart(2,'0'),figure:true});
  return rows;
 }
@@ -166,9 +167,9 @@ function annotationButton(row,tag=false){
  return `<button class="${tag?'pdf-page-tag':'pdf-region-marker'}" ${row.figure?'data-figure':'data-inspect'}="${row.c.id}" aria-label="Inspect ${esc(description)}" title="${esc(description)}"><strong>${esc(labels.join(' · ')||'Figure')}</strong>${tag?' <span>· '+esc(row.c.title)+'</span>':''}</button>`;
 }
 function annotationRegions(v,n){
- return pageAnnotations(v,n).map(row=>(row.c[v].boxes||[row.c[v].box]).map((box,i)=>{
+ return pageAnnotations(v,n).map(row=>boxesOnPage(row.c[v],n).map((box,i)=>{
  const labels=visibleEvidenceComments(row.c).map(c=>c.label),description=`${labels.join(' · ')||'Figure'} · ${row.c.title}`,fragment=box[3]<2.5;
- const area=box[2]*box[3],depth=pageAnnotations(v,n).flatMap(item=>item.c[v].boxes||[item.c[v].box]).filter(other=>other[2]*other[3]>area+1).length;
+ const area=box[2]*box[3],depth=pageAnnotations(v,n).flatMap(item=>boxesOnPage(item.c[v],n)).filter(other=>other[2]*other[3]>area+1).length;
  return `<button class="pdf-highlight annotated pdf-region ${fragment?'line-fragment':''} ${v==='revised'?'revised':''} ${pdf.id===row.c.id?'is-selected':''}" ${row.figure?'data-figure':'data-inspect'}="${row.c.id}" data-annotation="${row.code}" data-part="${i+1}" aria-label="Inspect ${esc(description)}" title="${esc(description)}" style="left:${box[0]}%;top:${box[1]}%;width:${box[2]}%;height:${box[3]}%;z-index:${4+depth*2+(pdf.id===row.c.id?1:0)}"><span class="pdf-region-marker" aria-hidden="true">${esc(labels.join(' · ')||'Figure')}</span></button>`;
  }).join('')).join('');
 }

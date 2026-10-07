@@ -49,6 +49,35 @@ try {
   if (fs.existsSync(replyOutput)) fs.unlinkSync(replyOutput);
   fs.rmdirSync(replyTemporary);
 }
+// Regenerate narrative/caption excerpts into a temporary file, without writing
+// data.js. A source hash alone cannot detect stale excerpt text or boundaries.
+const manuscriptTemporary = fs.mkdtempSync(path.join(os.tmpdir(), 'dcf-manuscript-check-'));
+const manuscriptOutput = path.join(manuscriptTemporary, 'source-manuscript.json');
+try {
+  const parsed = spawnSync(process.execPath, [path.join(root, 'website/tools/sync-review-v12.mjs')], {
+    env: { ...process.env, REVIEW_MANUSCRIPT_ONLY: '1', REVIEW_MANUSCRIPT_OUTPUT: manuscriptOutput,
+      REVIEW_PYTHON: process.env.REVIEW_PYTHON || 'C:/Users/Administrator/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' },
+    encoding: 'utf8',
+  });
+  assert.equal(parsed.status,0,'Manuscript source parsing failed: '+parsed.stderr);
+  const current = JSON.parse(fs.readFileSync(manuscriptOutput,'utf8'));
+  for(const section of data.sections) {
+    const source = current.sections.find(s=>s.title===section.title);
+    for(const field of ['before','after']) assert.equal(section[field],source[field],'Stale narrative: '+section.title+'/'+field);
+  }
+  for(const figure of data.figures) {
+    const source = current.figures.find(f=>f.id===figure.id);
+    for(const field of ['before','after']) assert.equal(figure[field],source[field],'Stale figure caption: '+figure.id+'/'+field);
+  }
+  for(const id of ['probe-definition','pcs-definition','probe-theory','prior-safeguards','implementation','regions','threshold-guidance','curvature-definition','tcsvt-literature','uncertainty-literature','recent-literature']) {
+    assert.equal(data.changes.find(c=>c.id===id).after,current.changes.find(c=>c.id===id).after,'Stale manuscript excerpt: '+id);
+  }
+  const recent=data.changes.find(c=>c.id==='recent-literature').after;
+  assert(recent.endsWith('within one online adaptation loop.') && recent.length<1500,'GOLD excerpt spills into subsequent manuscript sections');
+} finally {
+  if(fs.existsSync(manuscriptOutput))fs.unlinkSync(manuscriptOutput);
+  fs.rmdirSync(manuscriptTemporary);
+}
 assert.equal(data.meta.responsePdfSha256, sha('website/assets/pdf/response.pdf'));
 for (const [version, directory] of [['original', 'latex_old_version'], ['revised', 'latex_revise']]) {
   if(data.meta.hashes[version].pdf !== sha(directory + '/main.pdf')) {
@@ -73,7 +102,9 @@ for (const item of [...data.changes, ...data.figures, ...data.sections]) {
     if (!ref) continue;
     assert(ref.page >= 1 && ref.page <= data.meta.pages[version], item.id);
     read('website/' + ref.image);
-    for (const box of ref.boxes || (ref.box ? [ref.box] : [])) {
+    for (const region of ref.regions || (ref.boxes || (ref.box ? [ref.box] : [])).map(box => ({page:ref.page,box}))) {
+      const {box,page} = region;
+      assert(page >= 1 && page <= data.meta.pages[version], item.id);
       assert(box[0] >= 0 && box[1] >= 0 && box[0] + box[2] <= 100 && box[1] + box[3] <= 100, item.id);
     }
   }
@@ -101,24 +132,26 @@ for (const comment of data.comments) {
   for (const b of comment.fullResponse) if (b.kind === 'image') read('website/' + b.src);
   for (const b of comment.fullResponse) if (b.kind === 'table') {
     assert(b.rows.length > 1, 'Incomplete reply table: '+comment.id);
-    assert(b.rows.every(row=>row.length===b.rows[0].length), 'Split table rows: '+comment.id);
+    const columns = row => row.reduce((n,cell)=>n+(cell.colspan||1),0);
+    assert(b.rows.every(row=>columns(row)===columns(b.rows[0])), 'Split table rows: '+comment.id);
     assert(b.rows.every(row=>row.some(cell=>cell.text.trim())), 'Blank reply table row: '+comment.id);
   }
   const text = [...comment.response, ...comment.fullResponse.flatMap(b => b.items?b.items.flat().map(c=>c.text):b.text || '')].join(' ');
+  assert(!/\bp\.\s*\)/.test(text),'Unresolved response page reference: '+comment.id);
   assert(!/we do not claim|does not guarantee|do not establish|rather than|not only|without implying/i.test(text), `Defensive author text: ${comment.id}`);
 }
 const transferTable = data.comments.find(c => c.id === 'r1-6').fullResponse.find(b => b.kind === 'table');
 assert.equal(transferTable.rows.length, 3, 'Transfer summary must have one header and two complete data rows');
 assert(transferTable.rows[1][0].text.includes('ImageNet-C') && transferTable.rows[1][1].text.includes('30.30'), 'ImageNet-C transfer cells are misaligned');
-assert(transferTable.rows[2][0].text.includes('DomainNet-126') && transferTable.rows[2][1].text.includes('61.40') && transferTable.rows[2][2].text.includes('60.13'), 'DomainNet transfer cells are misaligned');
+assert(transferTable.rows[2][0].text.includes('DomainNet-126') && transferTable.rows[2][1].text.includes('6.69') && transferTable.rows[2][2].text.includes('5.42'), 'DomainNet transfer gain cells are misaligned');
 const resourceTable = data.comments.find(c => c.id === 'r1-3').fullResponse.find(b => b.kind === 'table');
 assert.equal(resourceTable.rows.length, 15, 'Table XI must include all 14 methods');
 const liteRow = resourceTable.rows.find(row => row[0].text === 'DCF-Lite');
 assert.deepEqual(Array.from(liteRow, cell => cell.text), ['DCF-Lite', '9.4', '6,080', '3.19', '42.06']);
 const liteReply = data.comments.find(c => c.id === 'r1-3').fullResponse.map(b => b.text || '').join(' ');
 const retentionReply = data.comments.find(c => c.id === 'r1-4').fullResponse.map(b => b.text || '').join(' ');
-assert(liteReply.includes('tensor snapshot') && liteReply.includes('before the first optimizer update') && liteReply.includes('reused'), 'Missing Lite anchor or fixed-reference lifecycle');
-assert(retentionReply.includes('For full DCF') && retentionReply.includes('DCF-Lite uses the fixed reference'), 'Full and Lite proxy evaluation must be distinguished');
+assert(liteReply.includes('snapshot') && liteReply.includes('before the first optimizer update') && liteReply.includes('reused'), 'Missing Lite anchor or fixed-reference lifecycle');
+assert(retentionReply.includes('In full DCF') && retentionReply.includes('DCF-Lite replaces'), 'Full and Lite proxy evaluation must be distinguished');
 assert(!/Q_\{\\mathrm\{ref\}\}|Q_t/.test(liteReply + retentionReply), 'Lite explanation must use prose without new proxy symbols');
 const probeFigures = data.comments.find(c => c.id === 'r1-1').fullResponse.filter(b => b.kind === 'image');
 const costFigures = data.comments.find(c => c.id === 'r1-3').fullResponse.filter(b => b.kind === 'image');

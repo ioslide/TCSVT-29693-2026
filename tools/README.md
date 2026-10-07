@@ -21,4 +21,8 @@ node tools/verify-review.mjs
 
 `align-evidence-v14.py` 使用 pdfplumber 测量本次新版 Related Work、传感器文献、survey/GOLD、PCS 理论与四区域定义的坐标。其段落边界针对当前 v14 排版；未来重排后须重新测量，不能直接复用。须检查所有裁剪图和框选后的页面，确保裁剪与 Text diff 范围对应。
 
+最新正文的 Hyperparameter Sensitivity 全段位于第 11 页，不再跨到第 12 页。Table IV 位于第 8 页右栏；Fig. 12(c)/(d) 只裁剪完整子图，文字模式使用回复稿的完整子图注。`sync-compiled-evidence.py` 同步八个 PDF 表格/面板摘录、两个子图注和证据标题。GOLD 摘录按句子边界结束，避免源码空行变化导致截取后续章节。
+
+完成同步后，运行 `verify-review.mjs` 对照全部回复、正文分节和图注，再用具备 PyMuPDF 的本地 Python 运行 `verify-evidence-content.py`，检查图表编号、子图、表格摘录与实际框选范围。`verify-browser.cjs`、`verify-pdf-context.cjs`、`verify-evidence-paging.cjs` 和 `verify-evidence-navigation.cjs` 检查桌面及手机端显示与导航；可通过 `REVIEW_URL` 设置静态服务地址。
+
 网页可直接打开 `website/index.html`。Native PDFs 可通过本地静态服务读取完整 PDF；文件协议下保留页面图片和源 PDF 链接作为备用。

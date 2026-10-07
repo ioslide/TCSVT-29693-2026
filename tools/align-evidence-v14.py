@@ -43,7 +43,7 @@ with pdfplumber.open(ROOT/'latex_revise/main.pdf') as pdf:
     ref['boxes'] = [rect(46,50,304,751), rect(309,50,567,225)]
     ref['box'] = ref['boxes'][0]
     ref = changes['uncertainty-literature']['revised']
-    ref['boxes'] = phrase_boxes(pdf.pages[2],1,'Beyond visual tasks,','streams [19–21].')
+    ref['boxes'] = phrase_boxes(pdf.pages[2],1,'Beyond visual tasks,','21].')
     ref['box'] = ref['boxes'][0]
     ref = changes['recent-literature']['revised']
     ref['boxes'] = (phrase_boxes(pdf.pages[2],1,'Representative approaches','adaptation [12, 13, 28].')
@@ -58,5 +58,47 @@ with pdfplumber.open(ROOT/'latex_revise/main.pdf') as pdf:
     ref['box'] = rect(309,516.5,567,593)
     ref.pop('boxes',None)
 
+    # All bounds below are measured against the author's 7 October PDF.
+    current = {
+        'shape-texture': (8, (309,484,567,665)),
+        'rgr-alternatives': (10, (46,266,304,380)),
+        'routing-ratio': (10, (46,397,304,547)),
+        'curvature-proxies': (10, (309,525,567,655)),
+        'retention-heatmap': (10, (309,266,567,506)),
+        'implementation': (6, (309,592,567,750)),
+        'efficiency': (12, (309,51,567,253)),
+        'transfer': (11, (309,182,567,583)),
+        'domainnet': (11, (309,350,567,494)),
+        'probe-sensitivity': (12, (46,178.6,175,305)),
+        'sinkhorn': (12, (175,178.6,304,305)),
+    }
+    for id,(page,bounds) in current.items():
+        ref = changes[id]['revised']
+        ref['page'],ref['box'] = page,rect(*bounds)
+        ref.pop('boxes',None)
+        ref.pop('regions',None)
+    ref = changes['threshold-guidance']['revised']
+    ref['page'] = 11
+    # Locate the complete current paragraph; its former p. 12 continuation
+    # disappeared in the author's latest reflow. Do not include the next plot.
+    paragraph = pdf.pages[10].crop((309,580,567,754))
+    first = paragraph.search('Hyperparameter Sensitivity.', regex=False)[0]
+    last = paragraph.search('minimal hyperparameter tuning.', regex=False)[0]
+    ref['box'] = rect(309,first['top']-2,567,last['bottom']+2)
+    ref['label'] = 'Hyperparameter Sensitivity (p. 11)'
+    ref.pop('regions',None)
+    ref.pop('boxes',None)
+    # Include the entire prior safeguard continuation before the OT objective.
+    ref = changes['prior-safeguards']['revised']
+    ref['boxes'] = [rect(46,491,304,752),rect(309,54,567,117)]
+    ref['box'] = ref['boxes'][0]
+
+    figures = {f['id']:f for f in data['figures']}
+    for change_id,figure_id in [('retention-heatmap','f9'),('transfer','f11'),('efficiency','f-runtime')]:
+        figures[figure_id]['revised']['page'] = changes[change_id]['revised']['page']
+        figures[figure_id]['revised']['box'] = changes[change_id]['revised']['box']
+    for id,bounds in [('f8',(309,89,567,252)),('f10',(46,140,304,299)),('f12',(46,54,304,417))]:
+        figures[id]['revised']['box'] = rect(*bounds)
+
 DATA.write_text('window.REVIEW_DATA='+json.dumps(data,ensure_ascii=False,indent=2)+';\n',encoding='utf-8')
-print('Measured Related Work, uncertainty/survey/GOLD excerpts, PCS analysis, and routing-region boxes against latex_revise/main.pdf.')
+print('Measured all changed passages, tables, figures, and the complete p. 11 hyperparameter paragraph against the 7 October manuscript PDF.')

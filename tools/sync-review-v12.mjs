@@ -18,6 +18,8 @@ const savedResponse = manuscriptOnly ? JSON.parse(JSON.stringify({
   source: data.meta.fullResponseSource, hash: data.meta.fullResponseSha256,
 })) : null;
 const source = read(responsePath).replace(/\r\n/g, '\n');
+const responseAuxPath=responsePath.replace(/\.tex$/,'.aux');
+const responsePages=new Map([...read(responseAuxPath).matchAll(/\\newlabel\{([^}]+)\}\{\{[^}]*\}\{(\d+)\}/g)].map(m=>[m[1],m[2]]));
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 // Website-only wording edits requested by the author. Keep claims, qualifications,
@@ -27,7 +29,7 @@ function directResponse(fragment) {
     ['Rather than treating unreliable target evidence and parameter drift as two independent failure sources, DCF addresses their interaction', 'DCF addresses the interaction between unreliable target evidence and parameter drift'],
     ['The contribution is therefore not merely an additional filtering criterion, but an explicit routing decision over heterogeneous target evidence.', 'PSR makes an explicit routing decision over heterogeneous target evidence, extending sample selection into coordinated evidence control.'],
     ['This suppresses error-amplifying drift in source-sensitive layers while preserving useful plasticity elsewhere, rather than applying a single global stabilization rule to the entire model.', 'This layer-dependent control suppresses error-amplifying drift in source-sensitive layers while preserving useful plasticity elsewhere.'],
-    ['\\textbf{Importantly, the distinction of DCF does not arise from any of these components in isolation.} It arises from coordinating', '\\textbf{The distinctive contribution of DCF is the coordinated control of the recurrent sample--layer feedback process.} DCF coordinates'],
+    ['\\textbf{Importantly, the unique advantage of DCF does not arise from any of these components in isolation.} It arises from coordinating', '\\textbf{The unique advantage of DCF is the coordinated control of the recurrent sample--layer feedback process.} DCF coordinates'],
     ['within the same recurrent adaptation loop. In this sense, DCF moves beyond homogeneous adaptation control: it controls not only whether the model adapts, but', 'within the same recurrent adaptation loop. DCF moves beyond homogeneous adaptation control by jointly determining whether the model adapts,'],
     ['as a coordinated sample--layer control framework rather than a collection of independent filtering, alignment, or regularization components.', 'as a coordinated sample--layer control framework that integrates evidence routing, geometry repair, and layer-dependent update persistence.'],
     ['Its role in DCF does not require identifying every possible shortcut in isolation; it is sufficient that the structured response provides complementary evidence for deciding which confident predictions should drive adaptation.', 'Within DCF, the structured response supplies complementary evidence for deciding which confident predictions should drive adaptation, directly supporting shortcut-sensitive routing.'],
@@ -40,8 +42,15 @@ function directResponse(fragment) {
 }
 
 function prepare(fragment) {
+  fragment=fragment.replace(/\\pageref\*?\{([^}]+)\}/g,(_,label)=>{
+    const page=responsePages.get(label);
+    if(!page)throw new Error('Missing compiled response page reference: '+label);
+    return page;
+  });
   // Expand the author's caption macro without losing nested emphasis or equations.
   fragment = fragment.replace(/\\manuscripttablecaption\{([^}]+)\}\{/g, '\\textit{\\textbf{Table~$1.} ');
+  // Pandoc's table reader needs a plain alignment in spanning cells.
+  fragment = fragment.replace(/(\\multicolumn\{\d+\})\{@\{\}([lcr])\}/g, '$1{$2}');
   // A minipage's internal line breaks must stay inside its table cell.
   fragment = fragment.replace(/\\begin\{minipage\}\[[bt]\]\{\\linewidth\}\\raggedright\s*([\s\S]*?)\\end\{minipage\}/g,
     (_, contents) => contents.replace(/\\\\/g, ' '));
@@ -61,7 +70,8 @@ function prepare(fragment) {
     .replace(/\\begin\{longtable\}[\s\S]*?(?=\\toprule)/g, (match, offset) => {
       const start = fragment.indexOf('\\toprule', offset);
       const end = fragment.indexOf('\\midrule', start);
-      const columns = (fragment.slice(start, end).match(/&/g) || []).length + 1;
+      const firstRow = fragment.slice(start, end).split('\\\\')[0];
+      const columns = (firstRow.match(/&/g) || []).length + 1;
       return '\\begin{longtable}{' + 'l'.repeat(columns) + '}\n';
     })
     .replace(/\\begin\{minipage\}\[[bt]\]\{\\linewidth\}\\raggedright/g, '')
@@ -70,7 +80,7 @@ function prepare(fragment) {
     .replace(/\\(?:vspace|hspace)\*?\{[^}]*\}/g, '')
     .replace(/\\(?:clearpage|noindent|centering|tightlist)/g, '')
     .replace(/\\(?:changeslabel|revisionlabel)\{/g, '\\textbf{')
-    .replace(/\\begin\{revisionquote\}|\\end\{revisionquote\}/g, '')
+    .replace(/\\begin\{(?:revisionquote|center)\}|\\end\{(?:revisionquote|center)\}/g, '')
     .replace(/\\begin\{figure\}(?:\[[^\]]*\])?|\\end\{figure\}/g, '')
     .replace(/\\caption\{/g, '\\textbf{')
     .replace(/\\makecell\{/g, '\\textbf{');
@@ -123,8 +133,10 @@ function blocks(fragment) {
       if (block.c.length === 5) rows = [block.c[3], ...block.c[4]].map(row => row.map(cell));
       else if (block.c.length === 6) {
         const decodeRow = row => row[1].map(entry => {
-          if (entry[2] !== 1 || entry[3] !== 1) throw new Error('Spanning response table cell needs explicit handling');
-          return cell(entry[4]);
+          if (entry[2] !== 1) throw new Error('Row-spanning response table cell needs explicit handling');
+          const decoded = cell(entry[4]);
+          if (entry[3] > 1) decoded.colspan = entry[3];
+          return decoded;
         });
         rows = [...block.c[3][1], ...block.c[4].flatMap(body => [...body[2], ...body[3]]), ...block.c[5][1]].map(decodeRow);
       } else throw new Error('Unsupported Pandoc table schema');
@@ -224,6 +236,7 @@ const macros = {
 };
 function manuscriptFragment(fragment, referenceMap = refs, citationMap = cites) {
   fragment = fragment.replace(/\\(?:Cref|cref|eqref)\{([^}]+)\}/g, (m, key) => {
+    if (key.includes(',')) return key.split(',').map(k => manuscriptFragment('\\Cref{' + k.trim() + '}', referenceMap, citationMap)).join(' and ');
     const ref = referenceMap.get(key);
     if (!ref) throw new Error('Missing manuscript reference: ' + key);
     return key.startsWith('eq:') ? '(' + ref.number + ')' : (key.startsWith('fig:') || key.startsWith('hyperparams:') ? 'Fig. ' : key.startsWith('tab:') ? 'Table ' : 'Section ') + ref.number;
@@ -331,7 +344,9 @@ changes.get('uncertainty-literature').after=narrativeText(cleanManuscript.slice(
 const surveyStart=cleanManuscript.indexOf('Representative approaches update');
 const surveyEnd=cleanManuscript.indexOf('Test-time training',surveyStart);
 const goldStart=cleanManuscript.indexOf('CoTTA~\\cite{CoTTA}',cleanManuscript.indexOf('\\textbf{Reliability- and Stability-aware TTA.}'));
-const goldEnd=cleanManuscript.indexOf('\n\n',goldStart);
+const goldLast='within one online adaptation loop.';
+const goldEnd=cleanManuscript.indexOf(goldLast,goldStart)+goldLast.length;
+if(goldStart<0||goldEnd<goldStart)throw new Error('Missing GOLD comparison boundary');
 changes.get('recent-literature').after=narrativeText(cleanManuscript.slice(surveyStart,surveyEnd),refs,cites)+'\n\n'+narrativeText(cleanManuscript.slice(goldStart,goldEnd),refs,cites);
 
 const figureLabels = {
@@ -388,7 +403,7 @@ data.figures.find(f => f.id === 'f6').changes = ['probe-definition', 'shape-text
 data.figures.find(f => f.id === 'f7').summary = 'The retained diagnostic plots visualize the four routing regions explicitly defined in revised Section III-C.';
 data.figures.find(f => f.id === 'f3').title='Route-adapt-retain overview';
 data.figures.find(f => f.id === 'f7').title='PCS-entropy diagnostic regions';
-data.meta.snapshot = '5 October 2026';
+data.meta.snapshot = '7 October 2026';
 data.meta.revisedManuscriptSource = 'latex_revise/main.tex';
 data.meta.fullResponseSource = responsePath;
 data.meta.fullResponseSha256 = hash(responsePath);
@@ -420,6 +435,10 @@ if (savedResponse) {
   data.overview = savedResponse.overview;
   data.meta.fullResponseSource = savedResponse.source;
   data.meta.fullResponseSha256 = savedResponse.hash;
+}
+if(process.env.REVIEW_MANUSCRIPT_OUTPUT){
+  fs.writeFileSync(process.env.REVIEW_MANUSCRIPT_OUTPUT,JSON.stringify(data,null,2));
+  process.exit(0);
 }
 fs.writeFileSync(path.join(root, 'website/data.js'), 'window.REVIEW_DATA=' + JSON.stringify(data, null, 2) + ';\n');
 console.log(manuscriptOnly
