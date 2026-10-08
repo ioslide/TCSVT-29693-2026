@@ -19,9 +19,9 @@ window.REVIEW_DATA={
       }
     },
     "fullResponseSource": "revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14.tex",
-    "fullResponseSha256": "c0205a64a1d10ce13e8bb1bb2fa7af9fedd9ca371b191d02680ecd88d359ee75",
-    "responsePages": 22,
-    "responsePdfSha256": "557a936e4a7a197b114b58913795a323adb26a673fb74228981e3cbdec907ce8",
+    "fullResponseSha256": "9611b76ca05c44687b9988aaff69f351a2052fdd19dbec22ed8f5631f9811b99",
+    "responsePages": 21,
+    "responsePdfSha256": "79ce178d7d0925e0108075e1604423b5c527948f8c572a5f34cb7c9a314c0759",
     "responseRevision": "v14",
     "revisedManuscriptSource": "latex_revise/main.tex"
   },
@@ -1803,8 +1803,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "As shown in Table IX, stage-level control outperforms normalization-layer control by 0.56 pp. Crucially, regarding the curvature estimator, more sophisticated proxies yield only marginal accuracy gains (+0.09 pp for Expected Fisher and +0.22 pp for Hutchinson) while incurring substantial latency overheads (+1.9 and +6.8 ms/image). This confirms our default per-sample gradient-square proxy as a highly effective, Pareto-optimal choice for real-time online adaptation.",
-          "text": "As shown in Table IX, stage-level control outperforms normalization-layer control by 0.56 pp. Crucially, regarding the curvature estimator, more sophisticated proxies yield only marginal accuracy gains (+0.09 pp for Expected Fisher and +0.22 pp for Hutchinson) while incurring substantial latency overheads (+1.9 and +6.8 ms/image). This confirms our default per-sample gradient-square proxy as a highly effective, Pareto-optimal choice for real-time online adaptation."
+          "html": "As shown in Table IX, stage-level control outperforms normalization-layer control by 0.56 pp. Crucially, regarding the curvature estimator, more sophisticated proxies yield only marginal accuracy gains (+0.09 pp for Expected Fisher and +0.22 pp for Hutchinson) while incurring substantial latency overheads (+1.9 and +6.8 ms/image). These results show that the default per-sample gradient-square proxy offers a favorable accuracy–cost trade-off among the evaluated proxies.",
+          "text": "As shown in Table IX, stage-level control outperforms normalization-layer control by 0.56 pp. Crucially, regarding the curvature estimator, more sophisticated proxies yield only marginal accuracy gains (+0.09 pp for Expected Fisher and +0.22 pp for Hutchinson) while incurring substantial latency overheads (+1.9 and +6.8 ms/image). These results show that the default per-sample gradient-square proxy offers a favorable accuracy–cost trade-off among the evaluated proxies."
         },
         {
           "kind": "heading",
@@ -1842,7 +1842,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section III-E, pp. 5–6, Eqs. (17)–(20); Section IV-A, \"Models and Implementation Details,\" p. 6; Section IV-C, \"Analysis of Curvature-aware Layer Retention,\" Fig. 9 and Table IX, p. 10."
         }
       ],
-      "responseWordCount": 606,
+      "responseWordCount": 607,
       "responseSourceSections": [
         "R1.4"
       ]
@@ -2075,8 +2075,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "We note that our cross-domain evaluations focus on closed-set visual recognition under covariate and style shifts; extending DCF to open-set adaptation or radically non-visual domain shifts (e.g., cross-modal medical imaging) remains a valuable avenue for future work.",
-          "text": "We note that our cross-domain evaluations focus on closed-set visual recognition under covariate and style shifts; extending DCF to open-set adaptation or radically non-visual domain shifts (e.g., cross-modal medical imaging) remains a valuable avenue for future work."
+          "html": "We note that our cross-domain evaluations focus on closed-set visual recognition under covariate and style shifts; extending DCF to open-set adaptation or other imaging modalities or application domains remains a valuable avenue for future work.",
+          "text": "We note that our cross-domain evaluations focus on closed-set visual recognition under covariate and style shifts; extending DCF to open-set adaptation or other imaging modalities or application domains remains a valuable avenue for future work."
         },
         {
           "kind": "location",
@@ -2084,7 +2084,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section IV-A, \"Benchmarks,\" p. 6; Section IV-C, \"Cross-Domain Transfer,\" and Fig. 11(a)–(b), p. 11."
         }
       ],
-      "responseWordCount": 721,
+      "responseWordCount": 719,
       "responseSourceSections": [
         "R1.6"
       ]
