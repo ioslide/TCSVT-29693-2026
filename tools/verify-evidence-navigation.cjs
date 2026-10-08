@@ -69,6 +69,15 @@ const { chromium } = require('playwright');
   assert.equal(await page.locator('.review-evidence-section').count(),1);
   await page.waitForFunction(()=>document.getElementById('evidence').getBoundingClientRect().top<innerHeight-150);
  }
+ // A long supporting response loads multiple images above the destination.
+ // Cold-cache deep links must stay aligned after every response figure loads.
+ const cold = await browser.newPage({viewport:{width:1440,height:1000}});
+ await cold.addInitScript(()=>localStorage.setItem('dcf-reading-guide-v1','done'));
+ await cold.goto(base+'#review/sae/shape-texture',{waitUntil:'networkidle'});
+ await cold.waitForFunction(()=>document.getElementById('evidence')?.getBoundingClientRect().top<innerHeight-150);
+ await cold.waitForFunction(()=>[...document.querySelectorAll('.response-figure img')].every(img=>img.complete&&img.naturalWidth>0));
+ assert((await cold.locator('#evidence').boundingBox()).y<850,'Response images moved the deep-link destination');
+ await cold.close();
  assert.deepEqual(errors,[]);await browser.close();
  console.log('Verified the compact evidence browser for all 17 replies, collapsed page navigation, all selections and PDF links, Previous/Next boundaries, remembered modes, sticky controls, mobile layout and deep links.');
 })().catch(error=>{console.error(error);process.exit(1)});

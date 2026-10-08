@@ -14,14 +14,14 @@ window.REVIEW_DATA={
         "tex": "1108279736019bcae2bd95c497c8d7f1830f8f65e2eeb3d607f431ad0f90efad"
       },
       "revised": {
-        "pdf": "0006c86deb0f2abdfa1350158220e86ef747a89712d4b347ac757882129a64b2",
+        "pdf": "cc48c2672de645cd894fd22c899f50de8afeabea36a6125a831e3815d12a77f2",
         "tex": "6b3f6c729f5daede0e052e606f5687c3b67779be49e9a755dca1dc494d651ea4"
       }
     },
     "fullResponseSource": "revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14.tex",
-    "fullResponseSha256": "57e8a1026471671bb342b055d532c90a06ae028199426e56619ded8568e0a168",
+    "fullResponseSha256": "f5469875f1436d44c36de462b8753a889ddeb02205fc7b01b62c93654f431f4e",
     "responsePages": 21,
-    "responsePdfSha256": "6aa811545d89f14a96c9b5a9cec210952d8ff7e56711649b766204c56e1f1d78",
+    "responsePdfSha256": "a8b01a1e3fcbf9f629d784e467b80ac04def660024adae1604381cec7ae8f3b3",
     "responseRevision": "v14",
     "revisedManuscriptSource": "latex_revise/main.tex"
   },
@@ -389,8 +389,7 @@ window.REVIEW_DATA={
         "probe-definition",
         "pcs-definition",
         "probe-sensitivity",
-        "purity-protocol",
-        "sinkhorn"
+        "purity-protocol"
       ],
       "metrics": [
         [
@@ -831,6 +830,8 @@ window.REVIEW_DATA={
           "kind": "image",
           "src": "assets/response/ab_margin_3d_lambda_u2.png",
           "alt": "Fig. 12(c). Hyperparameter sensitivity. Sensitivity to perturbation strength ⟪\\lambda⟫ and nominal frequency sampling range ⟪f_c⟫ (cycles/image).",
+          "width": 1108,
+          "height": 1082,
           "evidenceId": "probe-sensitivity"
         },
         {
@@ -1581,13 +1582,15 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "On the same A100 setup, Lite reduces FLOPs from 24.6 G to 9.4 G, peak memory from 14,690 MB to 6,080 MB, and latency from 5.20 to 3.19 ms/image, achieving 42.06% accuracy—1.42 pp below full DCF and 3.16 pp above SAR. Figure 12(d) supports low Sinkhorn iteration counts across the tested regularization range. Table IX reports accuracy gains of 0.09 and 0.21 pp for the Expected Fisher and Hutchinson proxies, respectively, with additional runtimes of 1.9 and 6.8 ms/image. The default proxy therefore offers a favorable accuracy–cost trade-off.",
-          "text": "On the same A100 setup, Lite reduces FLOPs from 24.6 G to 9.4 G, peak memory from 14,690 MB to 6,080 MB, and latency from 5.20 to 3.19 ms/image, achieving 42.06% accuracy—1.42 pp below full DCF and 3.16 pp above SAR. Figure 12(d) supports low Sinkhorn iteration counts across the tested regularization range. Table IX reports accuracy gains of 0.09 and 0.21 pp for the Expected Fisher and Hutchinson proxies, respectively, with additional runtimes of 1.9 and 6.8 ms/image. The default proxy therefore offers a favorable accuracy–cost trade-off."
+          "html": "On the same A100 setup, Lite reduces FLOPs from 24.6 G to 9.4 G, peak memory from 14,690 MB to 6,080 MB, and latency from 5.20 to 3.19 ms/image, achieving 42.06% accuracy—1.42 pp below full DCF and 3.16 pp above SAR. Figure 12(d) supports low Sinkhorn iteration counts across the tested regularization range. Table IX reports accuracy gains of 0.09 and 0.22 pp for the Expected Fisher and Hutchinson proxies, respectively, with additional runtimes of 1.9 and 6.8 ms/image. The default proxy therefore offers a favorable accuracy–cost trade-off.",
+          "text": "On the same A100 setup, Lite reduces FLOPs from 24.6 G to 9.4 G, peak memory from 14,690 MB to 6,080 MB, and latency from 5.20 to 3.19 ms/image, achieving 42.06% accuracy—1.42 pp below full DCF and 3.16 pp above SAR. Figure 12(d) supports low Sinkhorn iteration counts across the tested regularization range. Table IX reports accuracy gains of 0.09 and 0.22 pp for the Expected Fisher and Hutchinson proxies, respectively, with additional runtimes of 1.9 and 6.8 ms/image. The default proxy therefore offers a favorable accuracy–cost trade-off."
         },
         {
           "kind": "image",
           "src": "assets/response/ab_margin_3d_N_sk_varepsilon.png",
           "alt": "Fig. 12(d). Hyperparameter sensitivity. Stability across Sinkhorn iteration counts ⟪N_{\\mathrm{sk}}⟫ and entropic regularization values ⟪\\varepsilon_{\\mathrm{OT}}⟫, showing stable performance with few iterations.",
+          "width": 1109,
+          "height": 1058,
           "evidenceId": "sinkhorn"
         },
         {
@@ -1663,6 +1666,8 @@ window.REVIEW_DATA={
           "kind": "image",
           "src": "assets/response/retention-gates.png",
           "alt": "Fig. 9. Per-layer retention gates ⟪\\mu_t^l⟫ of CLR (ResNet-50). (a) Gates over the long-horizon stream (Domain index ⟪0\\!\\to\\!225⟫). (b) Gates per corruption type on T-CS.",
+          "width": 1800,
+          "height": 1350,
           "evidenceId": "retention-heatmap"
         },
         {
@@ -1796,8 +1801,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "As shown in Table IX, stage-level control outperforms normalization-layer control by 0.56 pp. Crucially, regarding the curvature estimator, more sophisticated proxies yield only marginal accuracy gains (+0.09 pp for Expected Fisher and +0.21 pp for Hutchinson) while incurring substantial latency overheads (+1.9 and +6.8 ms/image). This confirms our default per-sample gradient-square proxy as a highly effective, Pareto-optimal choice for real-time online adaptation.",
-          "text": "As shown in Table IX, stage-level control outperforms normalization-layer control by 0.56 pp. Crucially, regarding the curvature estimator, more sophisticated proxies yield only marginal accuracy gains (+0.09 pp for Expected Fisher and +0.21 pp for Hutchinson) while incurring substantial latency overheads (+1.9 and +6.8 ms/image). This confirms our default per-sample gradient-square proxy as a highly effective, Pareto-optimal choice for real-time online adaptation."
+          "html": "As shown in Table IX, stage-level control outperforms normalization-layer control by 0.56 pp. Crucially, regarding the curvature estimator, more sophisticated proxies yield only marginal accuracy gains (+0.09 pp for Expected Fisher and +0.22 pp for Hutchinson) while incurring substantial latency overheads (+1.9 and +6.8 ms/image). This confirms our default per-sample gradient-square proxy as a highly effective, Pareto-optimal choice for real-time online adaptation.",
+          "text": "As shown in Table IX, stage-level control outperforms normalization-layer control by 0.56 pp. Crucially, regarding the curvature estimator, more sophisticated proxies yield only marginal accuracy gains (+0.09 pp for Expected Fisher and +0.22 pp for Hutchinson) while incurring substantial latency overheads (+1.9 and +6.8 ms/image). This confirms our default per-sample gradient-square proxy as a highly effective, Pareto-optimal choice for real-time online adaptation."
         },
         {
           "kind": "heading",
@@ -1936,6 +1941,8 @@ window.REVIEW_DATA={
           "kind": "image",
           "src": "assets/response/imagenet_c_cross_heatmap_with_gain.png",
           "alt": "Fig. 11(a). Cross-domain transfer. ImageNet-C accuracy gains (in percentage points) over No Adapt, averaged across all unseen corruption domains. Results are reported as mean ⟪\\pm⟫ standard deviation over five runs.",
+          "width": 2684,
+          "height": 1514,
           "evidenceId": "transfer"
         },
         {
@@ -1948,6 +1955,8 @@ window.REVIEW_DATA={
           "kind": "image",
           "src": "assets/response/domainnet_heatmap_with_gain.png",
           "alt": "Fig. 11(b). Cross-domain transfer. DomainNet-126 accuracy gains over No Adapt for each cross-domain transfer pair (⟪\\text{Adaptation} \\to \\text{Evaluation}⟫, where C: Clipart, P: Painting, R: Real, and S: Sketch). Results are reported as mean ⟪\\pm⟫ standard deviation over five runs.",
+          "width": 2613,
+          "height": 1334,
           "evidenceId": "domainnet"
         },
         {
@@ -2014,8 +2023,8 @@ window.REVIEW_DATA={
                 "text": "DomainNet-126 gain over No Adapt"
               },
               {
-                "html": "<span data-response-math=\"6.69 \\pm 0.21\" data-display=\"false\">6.69 \\pm 0.21</span> pp",
-                "text": "⟪6.69 \\pm 0.21⟫ pp"
+                "html": "<span data-response-math=\"6.69 \\pm 0.22\" data-display=\"false\">6.69 \\pm 0.22</span> pp",
+                "text": "⟪6.69 \\pm 0.22⟫ pp"
               },
               {
                 "html": "DeYO / <span data-response-math=\"5.42 \\pm 0.27\" data-display=\"false\">5.42 \\pm 0.27</span> pp",
@@ -2059,8 +2068,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "For fair comparison and standardized evaluation, we directly adopt the unified source-domain ResNet-50 checkpoints provided by MME [46]. On DomainNet-126, models adapt on one domain and are evaluated on the remaining domains without further parameter updates; before adapting to each subsequent domain, the model is reset to the initial unified source checkpoint. DCF achieves positive gains over No Adapt across all 12 transfer pairs (+0.57 to +12.38 pp) and exceeds DeYO in every pair, with a significant aggregate accuracy advantage (61.40% versus 60.13%, <span data-response-math=\"p=2.75\\times10^{-4}\" data-display=\"false\">p=2.75\\times10^{-4}</span>). This second benchmark extends the transfer evaluation to a separate 126-class recognition task with substantial changes in visual style, strengthening the evidence that DCF maintains generalization across adaptation domains.",
-          "text": "For fair comparison and standardized evaluation, we directly adopt the unified source-domain ResNet-50 checkpoints provided by MME [46]. On DomainNet-126, models adapt on one domain and are evaluated on the remaining domains without further parameter updates; before adapting to each subsequent domain, the model is reset to the initial unified source checkpoint. DCF achieves positive gains over No Adapt across all 12 transfer pairs (+0.57 to +12.38 pp) and exceeds DeYO in every pair, with a significant aggregate accuracy advantage (61.40% versus 60.13%, ⟪p=2.75\\times10^{-4}⟫). This second benchmark extends the transfer evaluation to a separate 126-class recognition task with substantial changes in visual style, strengthening the evidence that DCF maintains generalization across adaptation domains."
+          "html": "For fair comparison and standardized evaluation, we directly adopt the unified source-domain ResNet-50 checkpoints provided by MME [46]. On DomainNet-126, models adapt on one domain and are evaluated on the remaining domains without further parameter updates. DCF achieves positive gains over No Adapt across all 12 transfer pairs (+0.57 to +12.38 pp) and exceeds DeYO in every pair, with a significant aggregate accuracy advantage (61.40% versus 60.13%, <span data-response-math=\"p=2.75\\times10^{-4}\" data-display=\"false\">p=2.75\\times10^{-4}</span>). This second benchmark extends the transfer evaluation to a separate 126-class recognition task with substantial changes in visual style, strengthening the evidence that DCF maintains generalization across adaptation domains.",
+          "text": "For fair comparison and standardized evaluation, we directly adopt the unified source-domain ResNet-50 checkpoints provided by MME [46]. On DomainNet-126, models adapt on one domain and are evaluated on the remaining domains without further parameter updates. DCF achieves positive gains over No Adapt across all 12 transfer pairs (+0.57 to +12.38 pp) and exceeds DeYO in every pair, with a significant aggregate accuracy advantage (61.40% versus 60.13%, ⟪p=2.75\\times10^{-4}⟫). This second benchmark extends the transfer evaluation to a separate 126-class recognition task with substantial changes in visual style, strengthening the evidence that DCF maintains generalization across adaptation domains."
         },
         {
           "kind": "paragraph",
@@ -2073,7 +2082,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section IV-A, \"Benchmarks,\" p. 6; Section IV-C, \"Cross-Domain Transfer,\" and Fig. 11(a)–(b), p. 11."
         }
       ],
-      "responseWordCount": 737,
+      "responseWordCount": 721,
       "responseSourceSections": [
         "R1.6"
       ]
@@ -2883,7 +2892,7 @@ window.REVIEW_DATA={
         ],
         "aspect": 1.082214765100671
       },
-      "summary": "The local squared-response analysis establishes PCS as a structured directional-sensitivity measure. Controlled shortcut interventions connect this response to routing and improved trusted-set purity beyond entropy alone.",
+      "summary": "The local squared-response analysis establishes PCS as a structured directional-sensitivity measure under the actual post-clamp probe distribution. Controlled shortcut interventions and matched-coverage diagnostics establish its shortcut-sensitive routing value and improved trusted-set purity beyond entropy alone.",
       "before": "",
       "after": "Theoretical interpretation. Motivated by frequency-dependent model sensitivity and texture bias [39, 40], we characterize PCS through a local probability expansion. For a fixed input ⟪x⟫, let ⟪\\delta=\\mathcal{A}^{s}(x)-x⟫, ⟪Q_q(x)=\\mathbb{E}_q[\\delta\\delta^\\top]⟫, and ⟪g_x=\\nabla_x p_{\\theta_t}(\\hat{y}_t(x)\\mid x)⟫, holding the original predicted class fixed. For a locally smooth probability function and sufficiently small perturbations, retaining the positive-part operation in Eq. (5) gives ⟪\\mathbb{E}_q[s_{\\theta_t}(x)^2]\n=\\mathbb{E}_q[(-g_x^\\top\\delta)_+^2]\n+O(\\mathbb{E}_q\\lVert\\delta\\rVert_2^3).⟫ The leading term is bounded above by ⟪g_x^\\top Q_q(x)g_x⟫, where ⟪Q_q(x)⟫ captures the actual post-clamp perturbation second moments, including the effects of clamping-induced asymmetry. Thus, this relation establishes PCS as a structured directional-sensitivity measure whose response depends jointly on the prediction gradient and the directions excited by the Fourier probe. The controlled shortcut interventions in Section IV-C establish the empirical bridge to routing: among confidence-matched candidates, PCS separates task-relevant from shortcut-driven predictions and improves trusted-set purity beyond entropy alone, supporting PCS as a shortcut-sensitive routing signal.",
       "diff": {
@@ -3087,10 +3096,10 @@ window.REVIEW_DATA={
             50.49,
             6.818,
             42.157,
-            7.955
+            6.243
           ]
         ],
-        "aspect": 0.7846715328467153
+        "aspect": 0.8185279187817259
       },
       "summary": "Uniform prior mixing bounds deviation from the uniform marginal; trusted-set EMA updates and conservative centroid smoothing stabilize geometry repair under changing routing ratios.",
       "before": "Dynamic-marginal optimal transport. For each view, we compute an entropic OT assignment from routed-away features to the shared centroids. The cosine cost is ⟪\\displaystyle [\\mathbf{C}_t^V]_{ic} = 1-\\cos(\\mathbf{z}_{t,i}^{V},\\mathbf{M}_{t,c}), \\qquad V\\in\\{A,B\\}.⟫ (12) Let ⟪a_t=\\mathbf{1}_{n_t}/n_t\\in\\Delta^{n_t-1}⟫ be the sample marginal. To make the centroid marginal compatible with possible label shift, we estimate the current target class prior from stop-gradient predictions: ⟪\\displaystyle \\hat{\\pi}_{t} = \\frac{1}{N_t} \\sum_{i=1}^{N_t} \\operatorname{sg}\\!\\left[p_{\\theta_t}(\\cdot\\mid x_{t,i})\\right],⟫ (13) where ⟪\\operatorname{sg}[\\cdot]⟫ denotes stop-gradient. We maintain an exponential moving average of this prior: ⟪\\displaystyle \\bar{b}_t = (1-\\rho)\\bar{b}_{t-1} + \\rho\\hat{\\pi}_{t}, \\qquad \\bar{b}_0=\\frac{\\mathbf{1}_K}{K}.⟫ (14) The final centroid marginal used in the OT constraints is ⟪\\displaystyle b_t = \\rho\\bar{b}_t + (1-\\rho)\\frac{\\mathbf{1}_K}{K}.⟫ (15) The uniform component serves as an anti-collapse floor, discouraging routed-away samples from being concentrated on only a few categories.",
@@ -4364,11 +4373,11 @@ window.REVIEW_DATA={
         "image": "assets/crops/domainnet-revised.webp",
         "box": [
           50.49,
-          44.192,
-          42.157,
-          18.182
+          43.813,
+          42.647,
+          18.561
         ],
-        "aspect": 1.7916666666666667
+        "aspect": 1.7744565217391304
       },
       "summary": "DomainNet-126 reports five-run accuracy gains over No Adapt for 12 transfer pairs and an average column. DCF exceeds DeYO on all pairs and achieves the highest mean gain on 10 of 12 pairs.",
       "before": "",
@@ -4895,7 +4904,6 @@ window.REVIEW_DATA={
         "ae3",
         "r1-3",
         "r2-3",
-        "r1-1",
         "sae"
       ],
       "textScope": "caption"

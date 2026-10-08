@@ -27,7 +27,7 @@ for id,comment_id in [('probe-sensitivity','r1-1'),('sinkhorn','r1-3')]:
     changes[id]['after']=caption['text']
     changes[id]['textScope']='caption'
 
-changes['probe-theory']['summary']='The local squared-response analysis establishes PCS as a structured directional-sensitivity measure. Controlled shortcut interventions connect this response to routing and improved trusted-set purity beyond entropy alone.'
+changes['probe-theory']['summary']='The local squared-response analysis establishes PCS as a structured directional-sensitivity measure under the actual post-clamp probe distribution. Controlled shortcut interventions and matched-coverage diagnostics establish its shortcut-sensitive routing value and improved trusted-set purity beyond entropy alone.'
 changes['prior-safeguards']['summary']='Uniform prior mixing bounds deviation from the uniform marginal; trusted-set EMA updates and conservative centroid smoothing stabilize geometry repair under changing routing ratios.'
 changes['threshold-guidance']['summary']='Broad high-accuracy plateaus support an out-of-the-box configuration for an unseen K-class dataset: υPCS = 0.2, υEnt = 0.6 ln K, and Fourier strength λ = 0.2. Dynamic CLR outperforms static baselines, and stable OT performance enables a minimal Sinkhorn budget with minimal hyperparameter tuning.'
 changes['transfer']['summary']='Five matched runs establish significant aggregate transfer gains over AEA on ImageNet-C and DeYO on DomainNet-126. Fig. 11 reports mean ± SD and adds the DomainNet-126 transfer matrix.'

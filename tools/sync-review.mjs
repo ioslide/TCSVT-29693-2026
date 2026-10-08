@@ -15,14 +15,17 @@ try{
  const context={window:{}};vm.runInNewContext(fs.readFileSync(path.join(site,'data.js'),'utf8'),context);const data=context.window.REVIEW_DATA;
  data.overview=parsed.overview;
  for(const comment of data.comments){const reply=replies.get(comment.id);if(!reply)throw new Error('Missing response '+comment.id);comment.title=reply.title;comment.comment=reply.comment;comment.fullResponse=reply.fullResponse;comment.responseWordCount=reply.responseWordCount;comment.response=reply.fullResponse.filter(b=>b.kind==='paragraph').slice(0,2).map(b=>b.text);comment.responseSourceSections=comment.id==='eic'?['EIC']:[comment.id==='sae'?'SAE':comment.label];}
- for(const id of ['probe-sensitivity','sinkhorn']){
+ for(const [id,commentIds] of [['probe-sensitivity',['r1-1','sae']],['sinkhorn',['sae']]]){
   const evidence=data.changes.find(c=>c.id===id);
-  for(const commentId of ['r1-1','sae']){
+  for(const commentId of commentIds){
    if(!evidence.comments.includes(commentId))evidence.comments.push(commentId);
    const comment=data.comments.find(c=>c.id===commentId);
    if(!comment.changes.includes(id))comment.changes.push(id);
   }
  }
+ // Fig. 12(d) belongs to the computational/OT responses; R1.1 discusses Fig. 12(c).
+ data.comments.find(c=>c.id==='r1-1').changes=data.comments.find(c=>c.id==='r1-1').changes.filter(id=>id!=='sinkhorn');
+ data.changes.find(c=>c.id==='sinkhorn').comments=data.changes.find(c=>c.id==='sinkhorn').comments.filter(id=>id!=='r1-1');
  const source='revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14.tex',sourcePath=path.join(root,source),pdfPath=sourcePath.replace(/\.tex$/,'.pdf');
  const hash=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
  data.meta.fullResponseSource=source;data.meta.fullResponseSha256=hash(sourcePath);data.meta.responsePdfSha256=hash(pdfPath);data.meta.responseRevision='v14';

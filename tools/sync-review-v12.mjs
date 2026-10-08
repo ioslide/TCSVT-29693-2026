@@ -205,6 +205,10 @@ for (const comment of data.comments) {
     'domainnet_heatmap_with_gain.png':'domainnet',
   };
   for (let i=0;i<reply.length;i++) if(reply[i].kind==='image') {
+    // Reserve each figure's intrinsic space before a deep-link scroll occurs.
+    const png=fs.readFileSync(path.join(root,'website',reply[i].src));
+    if(png.subarray(1,4).toString()!=='PNG')throw new Error('Expected PNG response figure: '+reply[i].src);
+    reply[i].width=png.readUInt32BE(16);reply[i].height=png.readUInt32BE(20);
     reply[i].evidenceId=imageEvidence[path.basename(reply[i].src)];
     if(reply[i+1]?.kind==='caption') {
       reply[i].alt=reply[i+1].text;

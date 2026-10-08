@@ -8,7 +8,7 @@ import fitz
 
 site = Path(__file__).resolve().parents[1]
 data = json.loads((site/'data.js').read_text(encoding='utf-8').split('=',1)[1].rsplit(';',1)[0])
-documents = {v:fitz.open(site.parent/d/'main.pdf') for v,d in
+documents = {v:fitz.open(stream=(site.parent/d/'main.pdf').read_bytes(),filetype='pdf') for v,d in
              [('original','latex_old_version'),('revised','latex_revise')]}
 changes = {c['id']:c for c in data['changes']}
 
@@ -60,6 +60,10 @@ assert threshold['page']==11 and not threshold.get('regions'),'Obsolete p. 12 co
 assert 'minimal hyperparameter tuning.' in excerpt(threshold,'revised'),'Incomplete threshold paragraph'
 assert 'Hyperparameter' not in excerpt(changes['probe-sensitivity']['revised'],'revised')
 assert data['figures'][next(i for i,c in enumerate(data['figures']) if c['id']=='f12')]['revised']['box'][1]<7,'Fig. 12 top is clipped'
+assert 'The entropic OT plans are then obtained by solving:' not in excerpt(changes['prior-safeguards']['revised'],'revised'),'Prior crop includes the next objective introduction'
+panel=changes['domainnet']['revised']['box']
+assert panel[1]*7.92<=348 and (panel[0]+panel[2])*6.12>=569,'DomainNet panel top edge or colorbar is clipped'
+assert 'sinkhorn' not in next(c for c in data['comments'] if c['id']=='r1-1')['changes'],'OT panel linked to the Fourier-probe reply'
 
 response_dir=(site.parent/data['meta']['fullResponseSource']).parent
 assert hashlib.sha256((site/'assets/response/retention-gates.png').read_bytes()).digest()==hashlib.sha256((response_dir/'assets/retention_gate_heatmap.png').read_bytes()).digest()

@@ -58,7 +58,7 @@ with pdfplumber.open(ROOT/'latex_revise/main.pdf') as pdf:
     ref['box'] = rect(309,516.5,567,593)
     ref.pop('boxes',None)
 
-    # All bounds below are measured against the author's 7 October PDF.
+    # Bounds are measured against the supplied current author PDF.
     current = {
         'shape-texture': (8, (309,484,567,665)),
         'rgr-alternatives': (10, (46,266,304,380)),
@@ -68,7 +68,8 @@ with pdfplumber.open(ROOT/'latex_revise/main.pdf') as pdf:
         'implementation': (6, (309,592,567,750)),
         'efficiency': (12, (309,51,567,253)),
         'transfer': (11, (309,182,567,583)),
-        'domainnet': (11, (309,350,567,494)),
+        # Include the complete top edge and colorbar tick labels of panel (b).
+        'domainnet': (11, (309,347,570,494)),
         'probe-sensitivity': (12, (46,178.6,175,305)),
         'sinkhorn': (12, (175,178.6,304,305)),
     }
@@ -90,7 +91,9 @@ with pdfplumber.open(ROOT/'latex_revise/main.pdf') as pdf:
     ref.pop('boxes',None)
     # Include the entire prior safeguard continuation before the OT objective.
     ref = changes['prior-safeguards']['revised']
-    ref['boxes'] = [rect(46,491,304,752),rect(309,54,567,117)]
+    continuation = pdf.pages[4].crop((309,54,567,120))
+    end = continuation.search('The entropic OT plans are then obtained by solving:', regex=False)[0]
+    ref['boxes'] = [rect(46,491,304,752),rect(309,54,567,end['top']-1)]
     ref['box'] = ref['boxes'][0]
 
     figures = {f['id']:f for f in data['figures']}
@@ -101,4 +104,4 @@ with pdfplumber.open(ROOT/'latex_revise/main.pdf') as pdf:
         figures[id]['revised']['box'] = rect(*bounds)
 
 DATA.write_text('window.REVIEW_DATA='+json.dumps(data,ensure_ascii=False,indent=2)+';\n',encoding='utf-8')
-print('Measured all changed passages, tables, figures, and the complete p. 11 hyperparameter paragraph against the 7 October manuscript PDF.')
+print('Measured current passages, tables, figures, the complete DomainNet panel, and exact prior/sensitivity paragraph boundaries against the supplied manuscript PDF.')
