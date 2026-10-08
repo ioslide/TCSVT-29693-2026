@@ -11,9 +11,11 @@ node tools/verify-review.mjs
 
 `sync-review.mjs` 更新 17 条完整作者回复、问题原文与标题、表格、证据图引用和回复 PDF，保留网页交互及论文摘录。`sync-review-v12.mjs` 文件名保留历史版本标记，当前解析来源为 v14，同时负责论文摘录同步；一般回复更新请使用前者。解析器支持新版 Comment 标题、有序/无序列表、引用、数学公式、图注与表格标题。
 
-`verify-review.mjs` 直接解析 v14，逐块核对开场信、问题原文、标题与 17 条完整回复，并检查三份 PDF、论文源码哈希、表格结构、数学表达和差异内容。网站回复遵循 v14 的观点、数据与论证力度；解析器 `directResponse` 仅把明确列出的防御式句型改为直接陈述。审稿意见、论文摘录与数学公式保持来源原文。
+`verify-review.mjs` 直接解析 v14，逐块核对开场信、问题原文、标题与 17 条完整回复，并检查三份 PDF、论文源码哈希、表格结构、数学表达和差异内容。网站回复逐块保留 v14 原文，不改写作者措辞；仅转换 LaTeX 排版并解析编译后的页码。审稿意见、论文摘录与数学公式保持来源原文。
 
 `sync-assets.py` 仅在论文 PDF、分页或摘录范围改变时使用，需要 PDFium、Pillow，并须重新核对证据框。它会重建论文页面及裁剪图。不带 `--version` 会同时渲染 v14 回复稿的五幅 PDF 证据图。
+
+仅刷新回复 PDF 和五幅回复图时，运行 `python tools/sync-assets.py --response-only`；不会重建论文页面或论文证据框。
 
 只更新修改后论文时，使用 `python tools/sync-assets.py --version revised`，保留原稿和回复 PDF。渲染器沿用 `data.js` 中已核对的框选坐标，不再覆盖成历史坐标。排版更新后，须检查各映射的页码和范围，并同步论文摘录与叙述差异。
 
@@ -26,3 +28,7 @@ node tools/verify-review.mjs
 完成同步后，运行 `verify-review.mjs` 对照全部回复、正文分节和图注，再用具备 PyMuPDF 的本地 Python 运行 `verify-evidence-content.py`，检查图表编号、子图、表格摘录与实际框选范围。`verify-browser.cjs`、`verify-pdf-context.cjs`、`verify-evidence-paging.cjs` 和 `verify-evidence-navigation.cjs` 检查桌面及手机端显示与导航；可通过 `REVIEW_URL` 设置静态服务地址。
 
 网页可直接打开 `website/index.html`。Native PDFs 可通过本地静态服务读取完整 PDF；文件协议下保留页面图片和源 PDF 链接作为备用。
+
+全量核验可补充运行 `verify-asset-rendering.py`（PDFium、Pillow）和 `verify-response-links.py`（pypdf、pdfplumber）。前者逐项对比页面、裁剪及回复图；后者核对回复 PDF 的 34 个网站链接、25 个内部导航链接、可见页码与命名目标坐标。诊断仅写入 `.deployment/alignment-20261008`。
+
+运行链接审计后，`verify-response-web-links.cjs` 会在桌面和手机端打开回复 PDF 的全部网站链接，并核对回复图表数量、回复区导航位置及 PDF 起始页；通过 `REVIEW_URL` 指定网站地址。

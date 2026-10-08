@@ -71,7 +71,7 @@ return `<p class="response-${b.kind}">${mathHtml(b.html)}</p>`;
 }).join('')}
 function fullResponse(c){
 const related={ae1:['r1-1'],ae2:['r1-2'],ae3:['r1-3'],ae4:['r1-4'],ae5:['r1-6'],sae:['r1-1','r1-2','r1-3','r1-4','r1-6']};
-return responseBlocks(c)+(related[c.id]||[]).map(id=>{const support=D.comments.find(x=>x.id===id);return `<h3 class="response-subheading">Detailed supporting response · ${esc(support.label)} · ${esc(support.title)}</h3>${responseBlocks(support)}`}).join('');
+return responseBlocks(c)+(related[c.id]?.length?`<nav class="overview-links" aria-label="Related detailed responses">${related[c.id].map(id=>{const support=D.comments.find(x=>x.id===id);return `<a href="#review/${id}/section-response">${esc(support.label)} · ${esc(support.title)}</a>`}).join('')}</nav>`:'');
 }
 function linkedResponses(c){
 const ids=new Set(c.comments||[]);for(const id of c.changes||[])for(const comment of by(id)?.comments||[])ids.add(comment);

@@ -22,25 +22,7 @@ const responseAuxPath=responsePath.replace(/\.tex$/,'.aux');
 const responsePages=new Map([...read(responseAuxPath).matchAll(/\\newlabel\{([^}]+)\}\{\{[^}]*\}\{(\d+)\}/g)].map(m=>[m[1],m[2]]));
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-// Website-only wording edits requested by the author. Keep claims, qualifications,
-// measurements and evidence intact; the read-only response source is never changed.
-function directResponse(fragment) {
-  const edits = [
-    ['Rather than treating unreliable target evidence and parameter drift as two independent failure sources, DCF addresses their interaction', 'DCF addresses the interaction between unreliable target evidence and parameter drift'],
-    ['The contribution is therefore not merely an additional filtering criterion, but an explicit routing decision over heterogeneous target evidence.', 'PSR makes an explicit routing decision over heterogeneous target evidence, extending sample selection into coordinated evidence control.'],
-    ['This suppresses error-amplifying drift in source-sensitive layers while preserving useful plasticity elsewhere, rather than applying a single global stabilization rule to the entire model.', 'This layer-dependent control suppresses error-amplifying drift in source-sensitive layers while preserving useful plasticity elsewhere.'],
-    ['\\textbf{Importantly, the unique advantage of DCF does not arise from any of these components in isolation.} It arises from coordinating', '\\textbf{The unique advantage of DCF is the coordinated control of the recurrent sample--layer feedback process.} DCF coordinates'],
-    ['within the same recurrent adaptation loop. In this sense, DCF moves beyond homogeneous adaptation control: it controls not only whether the model adapts, but', 'within the same recurrent adaptation loop. DCF moves beyond homogeneous adaptation control by jointly determining whether the model adapts,'],
-    ['as a coordinated sample--layer control framework rather than a collection of independent filtering, alignment, or regularization components.', 'as a coordinated sample--layer control framework that integrates evidence routing, geometry repair, and layer-dependent update persistence.'],
-    ['Its role in DCF does not require identifying every possible shortcut in isolation; it is sufficient that the structured response provides complementary evidence for deciding which confident predictions should drive adaptation.', 'Within DCF, the structured response supplies complementary evidence for deciding which confident predictions should drive adaptation, directly supporting shortcut-sensitive routing.'],
-    ['These results show that PCS is not merely a second threshold correlated with entropy: it captures', 'These results show that PCS captures'],
-    ['Statistical inference is intentionally conducted at this aggregate run level, which matches the reported cross-domain summary metric; the per-transfer cells are reported with mean $\\pm$ standard deviation to transparently characterize the distribution of gains rather than being overinterpreted as independently powered significance tests.', 'Statistical inference uses matched run-level aggregates, consistent with the reported cross-domain summary metric. The per-transfer cells report mean $\\pm$ standard deviation to characterize the distribution and variability of the gains.'],
-    ['This experiment therefore tests whether the representation-preservation behavior observed on ImageNet-C carries to a distinct dataset and a different family of domain shifts, rather than only to held-out corruptions within the same benchmark.', 'This experiment tests whether the representation-preservation behavior observed on ImageNet-C carries to a distinct dataset and a different family of domain shifts, extending the evaluation beyond held-out corruptions.'],
-  ];
-  for (const [before, after] of edits) fragment = fragment.replace(before, after);
-  return fragment;
-}
-
+// Preserve the author response verbatim; only convert LaTeX presentation.
 function prepare(fragment) {
   fragment=fragment.replace(/\\pageref\*?\{([^}]+)\}/g,(_,label)=>{
     const page=responsePages.get(label);
@@ -184,7 +166,7 @@ for (let i = 0; i < headings.length; i++) {
   const comment = /\\begin\{Comment\}\{([^}]+)\}([\s\S]*?)\\end\{Comment\}/.exec(fragment);
   const id = link?.[2];
   if (id && comment) {
-    parts.set(id, blocks(directResponse(fragment.slice(start + marker.length))));
+    parts.set(id, blocks(fragment.slice(start + marker.length)));
     const parsedComment = blocks(comment[2]);
     sourceComments.set(link[1], {title:comment[1].replace(/^(?:AE\d|R\d\.\d):\s*/,''),comment:parsedComment.map(b=>b.text||'').join(' ')});
   }
@@ -217,6 +199,10 @@ for (const comment of data.comments) {
   }
   comment.responseWordCount = reply.flatMap(b => b.rows ? b.rows.flat().map(c => c.text) : b.items ? b.items.flat().map(c=>c.text) : b.text || '').join(' ').split(/\s+/).filter(Boolean).length;
 }
+
+// Match the response document's EIC → SAE → AE → R1 → R2 reading order.
+const commentOrder = new Map([...sourceComments.keys()].map((id, index) => [id, index]));
+data.comments.sort((a, b) => commentOrder.get(a.id) - commentOrder.get(b.id));
 
 if (process.env.REVIEW_RESPONSES_ONLY === '1') {
   const start=source.indexOf('Dear Editor-in-Chief,');

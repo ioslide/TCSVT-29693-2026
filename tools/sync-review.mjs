@@ -8,11 +8,15 @@ import {fileURLToPath} from 'node:url';
 const directory=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(directory,'../..'),site=path.join(root,'website');
 const temporary=fs.mkdtempSync(path.join(os.tmpdir(),'dcf-response-sync-')),output=path.join(temporary,'replies.json');
 try{
+ const python=process.env.REVIEW_PYTHON||'C:/Users/Administrator/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe';
+ const assets=spawnSync(python,[path.join(directory,'sync-assets.py'),'--response-only'],{encoding:'utf8'});
+ if(assets.status!==0)throw new Error(assets.stderr||'Response figure synchronization failed');
  const result=spawnSync(process.execPath,[path.join(directory,'sync-review-v12.mjs')],{env:{...process.env,REVIEW_RESPONSES_ONLY:'1',REVIEW_RESPONSE_OUTPUT:output},encoding:'utf8'});
  if(result.status!==0)throw new Error(result.stderr||'Response parsing failed');
  const parsed=JSON.parse(fs.readFileSync(output,'utf8'));
  const replies=new Map(parsed.comments.map(c=>[c.id,c]));
  const context={window:{}};vm.runInNewContext(fs.readFileSync(path.join(site,'data.js'),'utf8'),context);const data=context.window.REVIEW_DATA;
+ data.comments=parsed.comments.map(reply=>data.comments.find(comment=>comment.id===reply.id));
  data.overview=parsed.overview;
  for(const comment of data.comments){const reply=replies.get(comment.id);if(!reply)throw new Error('Missing response '+comment.id);comment.title=reply.title;comment.comment=reply.comment;comment.fullResponse=reply.fullResponse;comment.responseWordCount=reply.responseWordCount;comment.response=reply.fullResponse.filter(b=>b.kind==='paragraph').slice(0,2).map(b=>b.text);comment.responseSourceSections=comment.id==='eic'?['EIC']:[comment.id==='sae'?'SAE':comment.label];}
  for(const [id,commentIds] of [['probe-sensitivity',['r1-1','sae']],['sinkhorn',['sae']]]){
@@ -29,7 +33,6 @@ try{
  const source='revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14.tex',sourcePath=path.join(root,source),pdfPath=sourcePath.replace(/\.tex$/,'.pdf');
  const hash=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
  data.meta.fullResponseSource=source;data.meta.fullResponseSha256=hash(sourcePath);data.meta.responsePdfSha256=hash(pdfPath);data.meta.responseRevision='v14';
- const python=process.env.REVIEW_PYTHON||'C:/Users/Administrator/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe';
  const pages=spawnSync(python,['-c','from pypdf import PdfReader; import sys; print(len(PdfReader(sys.argv[1]).pages))',pdfPath],{encoding:'utf8'});
  if(pages.status!==0)throw new Error(pages.stderr||'Response PDF page count failed');
  data.meta.responsePages=Number(pages.stdout.trim());

@@ -15,8 +15,12 @@ data = json.loads(path.read_text(encoding="utf-8").split("=", 1)[1].rsplit(";", 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--version", action="append", choices=["original", "revised"],
                     help="Refresh only the selected manuscript; omit to refresh both and the response assets.")
+parser.add_argument("--response-only", action="store_true",
+                    help="Refresh only the response PDF and its five figure assets.")
 args = parser.parse_args()
-versions = set(args.version or ["original", "revised"])
+if args.response_only and args.version:
+    parser.error("--response-only cannot be combined with --version")
+versions = set() if args.response_only else set(args.version or ["original", "revised"])
 
 
 def image(page, box=None):
@@ -71,4 +75,5 @@ if args.version is None:
         panel = pdfium.PdfDocument(response_source.parent / "assets" / filename)
         image(panel[0]).save(SITE / "assets/response" / filename.replace(".pdf", ".png"))
 path.write_text("window.REVIEW_DATA=" + json.dumps(data, ensure_ascii=False, indent=2) + ";\n", encoding="utf-8")
-print("Synchronized " + ", ".join(sorted(versions)) + " PDF(s), page previews, mapped crops, and figure data.")
+print("Synchronized response assets." if args.response_only else
+      "Synchronized " + ", ".join(sorted(versions)) + " PDF(s), page previews, mapped crops, and figure data.")

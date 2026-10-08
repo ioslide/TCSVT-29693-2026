@@ -38,6 +38,7 @@ try {
   assert.equal(parsed.status, 0, 'Response source parsing failed: ' + parsed.stderr);
   const sourceReplies = JSON.parse(fs.readFileSync(replyOutput, 'utf8'));
   const plain = value => JSON.parse(JSON.stringify(value));
+  assert.deepEqual(Array.from(data.comments, c=>c.id), sourceReplies.comments.map(c=>c.id), 'Reply navigation order differs from the response source');
   assert.deepEqual(plain(data.overview), sourceReplies.overview, 'Opening letter differs from the response source');
   for (const comment of data.comments) {
     const sourceReply = sourceReplies.comments.find(c => c.id === comment.id);
@@ -139,7 +140,6 @@ for (const comment of data.comments) {
   }
   const text = [...comment.response, ...comment.fullResponse.flatMap(b => b.items?b.items.flat().map(c=>c.text):b.text || '')].join(' ');
   assert(!/\bp\.\s*\)/.test(text),'Unresolved response page reference: '+comment.id);
-  assert(!/we do not claim|does not guarantee|do not establish|rather than|not only|without implying/i.test(text), `Defensive author text: ${comment.id}`);
 }
 const transferTable = data.comments.find(c => c.id === 'r1-6').fullResponse.find(b => b.kind === 'table');
 assert.equal(transferTable.rows.length, 3, 'Transfer summary must have one header and two complete data rows');
