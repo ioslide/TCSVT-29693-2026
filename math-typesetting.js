@@ -56,11 +56,21 @@
   }
   function formatHtml(html){
     const explicit=[];
-    html=String(html??'').replace(/<span data-response-math="([^"]*)" data-display="(true|false)">[\s\S]*?<\/span>/g,(_,encoded,display)=>{
-      const latex=encoded.replace(/&(amp|lt|gt|quot|#39);/g,(_,name)=>({amp:'&',lt:'<',gt:'>',quot:'"','#39':"'"})[name]);
+    const decode=s=>s.replace(/&(amp|lt|gt|quot|#39);/g,(_,name)=>({amp:'&',lt:'<',gt:'>',quot:'"','#39':"'"})[name]);
+    const formula=(latex,display)=>{
       const index=explicit.length;
-      try{explicit.push(render(latex,display==='true'))}catch{explicit.push(escape(latex))}
+      try{explicit.push(render(latex,display))}catch{explicit.push(`<span class="katex-error">${escape(latex)}</span>`)}
       return '\uE100'+index+'\uE101';
+    };
+    html=String(html??'').replace(/<span data-response-math="([^"]*)" data-display="(true|false)">[\s\S]*?<\/span>/g,(_,encoded,display)=>{
+      return formula(decode(encoded),display==='true');
+    });
+    // Plain-source fields (reviewer quotations, summaries, captions and diffs)
+    // use the same explicit notation as the LaTeX parser's text output.
+    // Protect it before the Unicode shorthand rules can tokenize its contents.
+    html=html.replace(/⟪(.*?)⟫/gs,(_,encoded)=>{
+      const latex=decode(encoded);
+      return formula(latex,latex.startsWith('\\displaystyle'));
     });
     const annotated=tokenize(String(html??''));
     return annotated.html.replace(/\uE000(\d+)\uE001/g,(_,i)=>{

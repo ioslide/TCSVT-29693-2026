@@ -25,11 +25,26 @@ const { chromium } = require('playwright');
       mathErrors: document.querySelectorAll('.katex-error').length,
       rawMath: document.querySelectorAll('[data-response-math]').length,
       brokenImages: [...document.images].filter(i => i.complete && !i.naturalWidth).map(i => i.src),
+      unrenderedText: (() => {
+        const issues=[],walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+        while(walker.nextNode()){
+          const node=walker.currentNode,parent=node.parentElement;
+          // KaTeX's hidden MathML annotations intentionally retain the source.
+          if(!parent || parent.closest('.katex,script,style,code,pre'))continue;
+          if(/⟪|⟫|\\[A-Za-z]+|&(?:amp|lt|gt|quot|#\d+|#x[\da-f]+);|[\uE000\uE001\uE100\uE101]/i.test(node.textContent)){
+            issues.push({text:node.textContent.slice(0,250),element:parent.className});
+          }
+        }
+        return issues;
+      })(),
+      nestedMath: document.querySelectorAll('.review-math .review-math').length,
     }));
     assert(!state.overflow, `${label}: page overflows`);
     assert.equal(state.mathErrors, 0, label);
     assert.equal(state.rawMath, 0, label);
     assert.deepEqual(state.brokenImages, [], label);
+    assert.deepEqual(state.unrenderedText, [], `${label}: raw formula or HTML escape displayed`);
+    assert.equal(state.nestedMath,0,`${label}: formula rendered twice`);
   }
   async function inspectDialog(item, label) {
     await page.waitForSelector('#dialog[open]');
@@ -52,11 +67,20 @@ const { chromium } = require('playwright');
   }
   for (const size of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }]) {
     await page.setViewportSize(size);
+    await route('#review/overview');
+    await layout(`${size.width}/overview`);
     for (const comment of data.comments) {
       await route('#review/' + comment.id);
       await page.waitForSelector('.response-copy');
       await layout(`${size.width}/${comment.id}`);
     }
+    // Regression checks for formulas in reviewer quotations, the route omitted
+    // by the earlier audit of response HTML and mathematical source validity.
+    await route('#review/r1-1');
+    assert.equal(await page.locator('#review-comment .review-math').evaluateAll(nodes=>nodes.filter(n=>n.dataset.latex==='\\lambda').length),1);
+    await page.locator('#review-comment').screenshot({path:path.join(screenshots,`dcf-comment-lambda-${size.width}.png`)});
+    await route('#review/r1-4');
+    assert.equal(await page.locator('#review-comment .review-math').evaluateAll(nodes=>nodes.filter(n=>n.dataset.latex==='\\mu_{t}^{l}').length),2);
     await route('#review/r1-1');
     await page.screenshot({ path: path.join(screenshots, `dcf-review-${size.width}.png`) });
     await route('#review/r1-6');
@@ -114,6 +138,6 @@ const { chromium } = require('playwright');
   }
   assert.deepEqual(errors, []);
   assert.deepEqual(failedRequests, []);
-  console.log('Verified 17 replies, every figure/addition/change-map dialog on desktop and mobile, all mapped PDF highlights and their dialogs, 12 narrative diffs, versioned assets/downloads, and seven nonblank native PDF views.');
+  console.log('Verified the opening letter, 17 replies and reviewer quotations, every figure/addition/change-map dialog on desktop and mobile, all mapped PDF highlights, 12 narrative diffs, assets/downloads, seven native PDF views, and no exposed formula markers, LaTeX commands, HTML escapes or duplicate math rendering.');
   await browser.close();
 })().catch(error => { console.error(error); process.exit(1); });
