@@ -79,6 +79,7 @@ try {
   fs.rmdirSync(manuscriptTemporary);
 }
 assert.equal(data.meta.responsePdfSha256, sha('website/assets/pdf/response.pdf'));
+assert.equal(data.meta.responsePdfSha256, sha(data.meta.fullResponseSource.replace(/\.tex$/, '.pdf')), 'Response PDF differs from the current author PDF');
 for (const [version, directory] of [['original', 'latex_old_version'], ['revised', 'latex_revise']]) {
   if(data.meta.hashes[version].pdf !== sha(directory + '/main.pdf')) {
     // Recompilation may change PDF metadata without changing the displayed pages.
@@ -149,9 +150,10 @@ assert.equal(resourceTable.rows.length, 15, 'Table XI must include all 14 method
 const liteRow = resourceTable.rows.find(row => row[0].text === 'DCF-Lite');
 assert.deepEqual(Array.from(liteRow, cell => cell.text), ['DCF-Lite', '9.4', '6,080', '3.19', '42.06']);
 const liteReply = data.comments.find(c => c.id === 'r1-3').fullResponse.map(b => b.text || '').join(' ');
-const retentionReply = data.comments.find(c => c.id === 'r1-4').fullResponse.map(b => b.text || '').join(' ');
+const retentionBlocks = data.comments.find(c => c.id === 'r1-4').fullResponse;
+const retentionReply = retentionBlocks.flatMap(b => b.items ? b.items.flat().map(item => item.text || '') : b.text || '').join(' ');
 assert(liteReply.includes('snapshot') && liteReply.includes('before the first optimizer update') && liteReply.includes('reused'), 'Missing Lite anchor or fixed-reference lifecycle');
-assert(retentionReply.includes('In full DCF') && retentionReply.includes('DCF-Lite replaces'), 'Full and Lite proxy evaluation must be distinguished');
+assert(retentionReply.includes('Expected Fisher proxy:') && retentionReply.includes('Hutchinson-based diagonal Hessian:') && retentionReply.includes('evaluated symmetrically') && retentionReply.includes('M=2'), 'Missing revised alternative-proxy definitions or source-reference evaluation');
 assert(!/Q_\{\\mathrm\{ref\}\}|Q_t/.test(liteReply + retentionReply), 'Lite explanation must use prose without new proxy symbols');
 const probeFigures = data.comments.find(c => c.id === 'r1-1').fullResponse.filter(b => b.kind === 'image');
 const costFigures = data.comments.find(c => c.id === 'r1-3').fullResponse.filter(b => b.kind === 'image');

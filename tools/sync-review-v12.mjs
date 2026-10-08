@@ -265,7 +265,7 @@ pcs.title = 'One-sided PCS probability-drop definition';
 pcs.summary = 'PCS retains the positive part of the original predicted-class probability drop. The revision clarifies its role as a complementary routing signal alongside entropy.';
 pcs.after = pcsText;
 theory.title = 'Local squared-response interpretation of PCS';
-theory.summary = 'The local PCS expansion retains the positive-part truncation. Its leading squared response is bounded above by the gradient quadratic form under the actual post-clamp perturbation second moment.';
+theory.summary = 'The local squared-response analysis establishes PCS as a one-sided directional-sensitivity measure under the actual post-clamp probe distribution. Controlled shortcut interventions and matched-coverage diagnostics demonstrate reliable routing information beyond predictive confidence alone.';
 theory.after = theoryText;
 for (const section of data.sections) {
   section.after = section.after.replace(oldPcs, pcsText).replace(oldTheory, theoryText).replace(/\s*IEEEexample:BSTcontrol\b/g, '').replace(/\s+itemize\b/g, '');
@@ -403,7 +403,7 @@ data.figures.find(f => f.id === 'f6').changes = ['probe-definition', 'shape-text
 data.figures.find(f => f.id === 'f7').summary = 'The retained diagnostic plots visualize the four routing regions explicitly defined in revised Section III-C.';
 data.figures.find(f => f.id === 'f3').title='Route-adapt-retain overview';
 data.figures.find(f => f.id === 'f7').title='PCS-entropy diagnostic regions';
-data.meta.snapshot = '7 October 2026';
+data.meta.snapshot = '8 October 2026';
 data.meta.revisedManuscriptSource = 'latex_revise/main.tex';
 data.meta.fullResponseSource = responsePath;
 data.meta.fullResponseSha256 = hash(responsePath);

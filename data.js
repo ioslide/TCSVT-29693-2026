@@ -3,25 +3,25 @@ window.REVIEW_DATA={
     "id": "TCSVT-29693-2026",
     "title": "Beyond Homogeneous Adaptation",
     "fullTitle": "Beyond Homogeneous Adaptation: Decoupled Control for Sample- and Layer-Aware Test-Time Robustness in Temporally Correlated Streams",
-    "snapshot": "7 October 2026",
+    "snapshot": "8 October 2026",
     "pages": {
       "original": 14,
       "revised": 14
     },
     "hashes": {
       "original": {
-        "pdf": "aa1616c6bacc5510d551d40a05f8bc11be88862b993d5394ed34dd33cda7b14c",
+        "pdf": "9634877d2f90cbbf28e9cedb688c85c4d26ca53b106219db8af5c1678462604c",
         "tex": "1108279736019bcae2bd95c497c8d7f1830f8f65e2eeb3d607f431ad0f90efad"
       },
       "revised": {
-        "pdf": "ad66ae08d16e35e4b0062b11c5744c80d36b4012742ca9c4c6482e73a8b9ae6d",
-        "tex": "d3217cea6f7faee98a0da6bf866300bcd97984102d71d6f1f10d32f110bc29b5"
+        "pdf": "0006c86deb0f2abdfa1350158220e86ef747a89712d4b347ac757882129a64b2",
+        "tex": "6b3f6c729f5daede0e052e606f5687c3b67779be49e9a755dca1dc494d651ea4"
       }
     },
     "fullResponseSource": "revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14.tex",
-    "fullResponseSha256": "7c88610ca14704f91e77d5fa182f6bc748c4650a85c75435ceb6ffe6f5a3d580",
-    "responsePages": 20,
-    "responsePdfSha256": "87984097fe58fa657d4c3ab189d0dbb524c97625708b0d3f64f1eb74bb3365c7",
+    "fullResponseSha256": "57e8a1026471671bb342b055d532c90a06ae028199426e56619ded8568e0a168",
+    "responsePages": 21,
+    "responsePdfSha256": "6aa811545d89f14a96c9b5a9cec210952d8ff7e56711649b766204c56e1f1d78",
     "responseRevision": "v14",
     "revisedManuscriptSource": "latex_revise/main.tex"
   },
@@ -1796,13 +1796,38 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "The group comparison favors stage-level control by 0.56 pp. Expected Fisher and the Hutchinson-based approximation achieve 43.57% and 43.70%, improving on the default proxy by 0.09 and 0.21 pp at additional runtimes of 1.9 and 6.8 ms/image. The default gradient-square proxy delivers closely comparable accuracy with lower computational cost, supporting its use for efficient online retention.",
-          "text": "The group comparison favors stage-level control by 0.56 pp. Expected Fisher and the Hutchinson-based approximation achieve 43.57% and 43.70%, improving on the default proxy by 0.09 and 0.21 pp at additional runtimes of 1.9 and 6.8 ms/image. The default gradient-square proxy delivers closely comparable accuracy with lower computational cost, supporting its use for efficient online retention."
+          "html": "As shown in Table IX, stage-level control outperforms normalization-layer control by 0.56 pp. Crucially, regarding the curvature estimator, more sophisticated proxies yield only marginal accuracy gains (+0.09 pp for Expected Fisher and +0.21 pp for Hutchinson) while incurring substantial latency overheads (+1.9 and +6.8 ms/image). This confirms our default per-sample gradient-square proxy as a highly effective, Pareto-optimal choice for real-time online adaptation.",
+          "text": "As shown in Table IX, stage-level control outperforms normalization-layer control by 0.56 pp. Crucially, regarding the curvature estimator, more sophisticated proxies yield only marginal accuracy gains (+0.09 pp for Expected Fisher and +0.21 pp for Hutchinson) while incurring substantial latency overheads (+1.9 and +6.8 ms/image). This confirms our default per-sample gradient-square proxy as a highly effective, Pareto-optimal choice for real-time online adaptation."
+        },
+        {
+          "kind": "heading",
+          "html": "Implementation details of alternative proxies.",
+          "text": "Implementation details of alternative proxies."
         },
         {
           "kind": "paragraph",
-          "html": "In full DCF, the candidate and source proxies are evaluated on the same current unlabeled batch at <span data-response-math=\"\\theta_t^{+}\" data-display=\"false\">\\theta_t^{+}</span> and <span data-response-math=\"\\theta_0\" data-display=\"false\">\\theta_0</span>, respectively. Equation (19) averages the element-wise squared per-sample gradients to form each diagonal proxy vector, and Eq. (20) divides the squared proxy mismatch by the number of trainable parameters in the group. The source reference <span data-response-math=\"I_0^l\" data-display=\"false\">I_0^l</span> is therefore recomputed for each batch at the fixed source parameters. DCF-Lite replaces this batch-dependent source evaluation with the fixed reference cached before the first optimizer update, as described in Response R1.3.",
-          "text": "In full DCF, the candidate and source proxies are evaluated on the same current unlabeled batch at ⟪\\theta_t^{+}⟫ and ⟪\\theta_0⟫, respectively. Equation (19) averages the element-wise squared per-sample gradients to form each diagonal proxy vector, and Eq. (20) divides the squared proxy mismatch by the number of trainable parameters in the group. The source reference ⟪I_0^l⟫ is therefore recomputed for each batch at the fixed source parameters. DCF-Lite replaces this batch-dependent source evaluation with the fixed reference cached before the first optimizer update, as described in Response R1.3."
+          "html": "To directly address the concern regarding potential gradient noise from hard pseudo-labels, we formulated and evaluated these two higher-fidelity alternatives as follows:",
+          "text": "To directly address the concern regarding potential gradient noise from hard pseudo-labels, we formulated and evaluated these two higher-fidelity alternatives as follows:"
+        },
+        {
+          "kind": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "kind": "paragraph",
+                "html": "<strong>Expected Fisher proxy:</strong> Instead of taking gradients at the hard pseudo-label <span data-response-math=\"\\arg\\max\" data-display=\"false\">\\arg\\max</span>, this proxy marginalizes over the model’s predictive posterior <span data-response-math=\"p_{\\theta_t^{+}}(k \\mid x_{t,i})\" data-display=\"false\">p_{\\theta_t^{+}}(k \\mid x_{t,i})</span> to dampen misclassification noise: <span data-response-math=\"I_{t,\\mathrm{EF}}^{l} = \\frac{1}{N_t} \\sum_{i=1}^{N_t} \\sum_{k=1}^K p_{\\theta_t^{+}}(k \\mid x_{t,i}) \\left[ \\nabla_{\\theta_t^{+,l}} \\log p_{\\theta_t^{+}}(k \\mid x_{t,i}) \\right]^{\\odot 2},\" data-display=\"true\">I_{t,\\mathrm{EF}}^{l} = \\frac{1}{N_t} \\sum_{i=1}^{N_t} \\sum_{k=1}^K p_{\\theta_t^{+}}(k \\mid x_{t,i}) \\left[ \\nabla_{\\theta_t^{+,l}} \\log p_{\\theta_t^{+}}(k \\mid x_{t,i}) \\right]^{\\odot 2},</span> with the source reference <span data-response-math=\"I_{0,\\mathrm{EF}}^{l}\" data-display=\"false\">I_{0,\\mathrm{EF}}^{l}</span> evaluated symmetrically at <span data-response-math=\"\\theta_0\" data-display=\"false\">\\theta_0</span> on the same batch.",
+                "text": "Expected Fisher proxy: Instead of taking gradients at the hard pseudo-label ⟪\\arg\\max⟫, this proxy marginalizes over the model’s predictive posterior ⟪p_{\\theta_t^{+}}(k \\mid x_{t,i})⟫ to dampen misclassification noise: ⟪\\displaystyle I_{t,\\mathrm{EF}}^{l} = \\frac{1}{N_t} \\sum_{i=1}^{N_t} \\sum_{k=1}^K p_{\\theta_t^{+}}(k \\mid x_{t,i}) \\left[ \\nabla_{\\theta_t^{+,l}} \\log p_{\\theta_t^{+}}(k \\mid x_{t,i}) \\right]^{\\odot 2},⟫ with the source reference ⟪I_{0,\\mathrm{EF}}^{l}⟫ evaluated symmetrically at ⟪\\theta_0⟫ on the same batch."
+              }
+            ],
+            [
+              {
+                "kind": "paragraph",
+                "html": "<strong>Hutchinson-based diagonal Hessian:</strong> Probing the diagonal of the true loss Hessian <span data-response-math=\"H_t^l = \\nabla_{\\theta^l}^2 \\mathcal{L}_{\\mathrm{TTA}}\" data-display=\"false\">H_t^l = \\nabla_{\\theta^l}^2 \\mathcal{L}_{\\mathrm{TTA}}</span> via randomized trace estimation: <span data-response-math=\"I_{t,\\mathrm{Hutch}}^{l} = \\left[ \\frac{1}{M} \\sum_{m=1}^M v_m \\odot \\left( H_t^l v_m \\right) \\right]_+,\" data-display=\"true\">I_{t,\\mathrm{Hutch}}^{l} = \\left[ \\frac{1}{M} \\sum_{m=1}^M v_m \\odot \\left( H_t^l v_m \\right) \\right]_+,</span> where <span data-response-math=\"v_m \\in \\{-1, +1\\}^{d_l}\" data-display=\"false\">v_m \\in \\{-1, +1\\}^{d_l}</span> are i.i.d. Rademacher vectors (<span data-response-math=\"M=2\" data-display=\"false\">M=2</span>), and <span data-response-math=\"[\\cdot]_+\" data-display=\"false\">[\\cdot]_+</span> enforces non-negativity for the proximal objective in Eq. (17). Each Hessian-vector product <span data-response-math=\"H_t^l v_m = \\nabla_{\\theta^l} \\langle \\nabla_{\\theta^l} \\mathcal{L}_{\\mathrm{TTA}}, v_m \\rangle\" data-display=\"false\">H_t^l v_m = \\nabla_{\\theta^l} \\langle \\nabla_{\\theta^l} \\mathcal{L}_{\\mathrm{TTA}}, v_m \\rangle</span> is computed matrix-free via Pearlmutter’s algorithm with one additional backward pass.",
+                "text": "Hutchinson-based diagonal Hessian: Probing the diagonal of the true loss Hessian ⟪H_t^l = \\nabla_{\\theta^l}^2 \\mathcal{L}_{\\mathrm{TTA}}⟫ via randomized trace estimation: ⟪\\displaystyle I_{t,\\mathrm{Hutch}}^{l} = \\left[ \\frac{1}{M} \\sum_{m=1}^M v_m \\odot \\left( H_t^l v_m \\right) \\right]_+,⟫ where ⟪v_m \\in \\{-1, +1\\}^{d_l}⟫ are i.i.d. Rademacher vectors (⟪M=2⟫), and ⟪[\\cdot]_+⟫ enforces non-negativity for the proximal objective in Eq. (17). Each Hessian-vector product ⟪H_t^l v_m = \\nabla_{\\theta^l} \\langle \\nabla_{\\theta^l} \\mathcal{L}_{\\mathrm{TTA}}, v_m \\rangle⟫ is computed matrix-free via Pearlmutter’s algorithm with one additional backward pass."
+              }
+            ]
+          ]
         },
         {
           "kind": "location",
@@ -1810,7 +1835,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section III-E, pp. 5–6, Eqs. (17)–(20); Section IV-A, \"Models and Implementation Details,\" p. 6; Section IV-C, \"Analysis of Curvature-aware Layer Retention,\" Fig. 9 and Table IX, p. 10."
         }
       ],
-      "responseWordCount": 521,
+      "responseWordCount": 599,
       "responseSourceSections": [
         "R1.4"
       ]
@@ -2034,8 +2059,13 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "On DomainNet-126, models adapt on one domain and are evaluated on the remaining domains without further updates. DCF achieves positive gains over No Adapt across all 12 transfer pairs (+0.57 to +12.38 pp) and exceeds DeYO in every pair, with a significant aggregate accuracy advantage (61.40% versus 60.13%, <span data-response-math=\"p=2.75\\times10^{-4}\" data-display=\"false\">p=2.75\\times10^{-4}</span>). This second benchmark extends the transfer evaluation to a separate 126-class recognition task with substantial changes in visual style, strengthening the evidence that DCF maintains generalization across adaptation domains.",
-          "text": "On DomainNet-126, models adapt on one domain and are evaluated on the remaining domains without further updates. DCF achieves positive gains over No Adapt across all 12 transfer pairs (+0.57 to +12.38 pp) and exceeds DeYO in every pair, with a significant aggregate accuracy advantage (61.40% versus 60.13%, ⟪p=2.75\\times10^{-4}⟫). This second benchmark extends the transfer evaluation to a separate 126-class recognition task with substantial changes in visual style, strengthening the evidence that DCF maintains generalization across adaptation domains."
+          "html": "For fair comparison and standardized evaluation, we directly adopt the unified source-domain ResNet-50 checkpoints provided by MME [46]. On DomainNet-126, models adapt on one domain and are evaluated on the remaining domains without further parameter updates; before adapting to each subsequent domain, the model is reset to the initial unified source checkpoint. DCF achieves positive gains over No Adapt across all 12 transfer pairs (+0.57 to +12.38 pp) and exceeds DeYO in every pair, with a significant aggregate accuracy advantage (61.40% versus 60.13%, <span data-response-math=\"p=2.75\\times10^{-4}\" data-display=\"false\">p=2.75\\times10^{-4}</span>). This second benchmark extends the transfer evaluation to a separate 126-class recognition task with substantial changes in visual style, strengthening the evidence that DCF maintains generalization across adaptation domains.",
+          "text": "For fair comparison and standardized evaluation, we directly adopt the unified source-domain ResNet-50 checkpoints provided by MME [46]. On DomainNet-126, models adapt on one domain and are evaluated on the remaining domains without further parameter updates; before adapting to each subsequent domain, the model is reset to the initial unified source checkpoint. DCF achieves positive gains over No Adapt across all 12 transfer pairs (+0.57 to +12.38 pp) and exceeds DeYO in every pair, with a significant aggregate accuracy advantage (61.40% versus 60.13%, ⟪p=2.75\\times10^{-4}⟫). This second benchmark extends the transfer evaluation to a separate 126-class recognition task with substantial changes in visual style, strengthening the evidence that DCF maintains generalization across adaptation domains."
+        },
+        {
+          "kind": "paragraph",
+          "html": "We note that our cross-domain evaluations focus on closed-set visual recognition under covariate and style shifts; extending DCF to open-set adaptation or radically non-visual domain shifts (e.g., cross-modal medical imaging) remains a valuable avenue for future work.",
+          "text": "We note that our cross-domain evaluations focus on closed-set visual recognition under covariate and style shifts; extending DCF to open-set adaptation or radically non-visual domain shifts (e.g., cross-modal medical imaging) remains a valuable avenue for future work."
         },
         {
           "kind": "location",
@@ -2043,7 +2073,7 @@ window.REVIEW_DATA={
           "text": "Changes in the manuscript: Section IV-A, \"Benchmarks,\" p. 6; Section IV-C, \"Cross-Domain Transfer,\" and Fig. 11(a)–(b), p. 11."
         }
       ],
-      "responseWordCount": 665,
+      "responseWordCount": 737,
       "responseSourceSections": [
         "R1.6"
       ]
