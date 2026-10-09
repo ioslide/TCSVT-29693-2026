@@ -3,7 +3,7 @@ window.REVIEW_DATA={
     "id": "TCSVT-29693-2026",
     "title": "Beyond Homogeneous Adaptation",
     "fullTitle": "Beyond Homogeneous Adaptation: Decoupled Control for Sample- and Layer-Aware Test-Time Robustness in Temporally Correlated Streams",
-    "snapshot": "8 October 2026",
+    "snapshot": "9 October 2026",
     "pages": {
       "original": 14,
       "revised": 14
@@ -14,14 +14,14 @@ window.REVIEW_DATA={
         "tex": "1108279736019bcae2bd95c497c8d7f1830f8f65e2eeb3d607f431ad0f90efad"
       },
       "revised": {
-        "pdf": "44ecb494c980e6383d5c8635c47fddf9ba4af2227b8f3463b82e21fd056e895d",
-        "tex": "befccbcf1890afb3d1212fc9a7ebec59754e1f6e82ea2e9abdeb1df15ead1f27"
+        "pdf": "c3db33f9987d2094946591d5ba27e91c058fb0c349c9032dcc70f56f910ea869",
+        "tex": "b539df602a180fb4713a8473aca6044ef81d345844ee4c577b2ba341993c60ff"
       }
     },
     "fullResponseSource": "revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14.tex",
-    "fullResponseSha256": "f5be1c856f686515472f014e697e3fc1b82485422a26b001531996c06da11ef1",
+    "fullResponseSha256": "d6f5e6ba42b9b1cabeb986c186b7363b250db521fafabbe4131c082ab93e53d6",
     "responsePages": 21,
-    "responsePdfSha256": "0bc5008568aba445536f5b9d110e2822a8faf4a2d4cf3c5de27951b886d8d21f",
+    "responsePdfSha256": "e97fe54c2a0cf94c5820a07a6f1b994d24bd8e9e69ea1ec150b2ee76a76c9fbc",
     "responseRevision": "v14",
     "revisedManuscriptSource": "latex_revise/main.tex"
   },
@@ -152,8 +152,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "<strong>Mechanism-level and long-horizon evidence.</strong> The controlled ablation in Table III directly tests the complementary role of sample-side and layer-side control: PSR+RGR yields 26.25% final accuracy at Round 15, whereas adding CLR increases that result to 43.84% (+17.59 pp). Leave-one-out variants further isolate the roles of PSR and RGR. Tables IV–VI support probe-based routing with shortcut and matched-coverage diagnostics; Tables VII–VIII compare geometry-repair alternatives and identify routing-ratio limits; and Fig. 9 and Table IX characterize the temporal and layer-wise behavior of the retention mechanism. Table II reports the strongest long-horizon average accuracy among the evaluated baselines under T-CS, T-CS-LS, and T-CS-MSL on the 225-domain stream, and Fig. 11 tests transfer beyond the principal benchmark. These findings support the claimed benefits of coordinated evidence assignment and update retention.",
-          "text": "Mechanism-level and long-horizon evidence. The controlled ablation in Table III directly tests the complementary role of sample-side and layer-side control: PSR+RGR yields 26.25% final accuracy at Round 15, whereas adding CLR increases that result to 43.84% (+17.59 pp). Leave-one-out variants further isolate the roles of PSR and RGR. Tables IV–VI support probe-based routing with shortcut and matched-coverage diagnostics; Tables VII–VIII compare geometry-repair alternatives and identify routing-ratio limits; and Fig. 9 and Table IX characterize the temporal and layer-wise behavior of the retention mechanism. Table II reports the strongest long-horizon average accuracy among the evaluated baselines under T-CS, T-CS-LS, and T-CS-MSL on the 225-domain stream, and Fig. 11 tests transfer beyond the principal benchmark. These findings support the claimed benefits of coordinated evidence assignment and update retention."
+          "html": "The controlled ablation in Table III directly tests the complementary role of sample-side and layer-side control: PSR+RGR yields 26.25% final accuracy at Round 15, whereas adding CLR increases that result to 43.84% (+17.59 pp). Leave-one-out variants further isolate the roles of PSR and RGR. Tables IV–VI support probe-based routing with shortcut and matched-coverage diagnostics; Tables VII–VIII compare geometry-repair alternatives and identify routing-ratio limits; and Fig. 9 and Table IX characterize the temporal and layer-wise behavior of the retention mechanism. Table II reports the strongest long-horizon average accuracy among the evaluated baselines under T-CS, T-CS-LS, and T-CS-MSL on the 225-domain stream, and Fig. 11 tests transfer beyond the principal benchmark. These findings support the claimed benefits of coordinated evidence assignment and update retention.",
+          "text": "The controlled ablation in Table III directly tests the complementary role of sample-side and layer-side control: PSR+RGR yields 26.25% final accuracy at Round 15, whereas adding CLR increases that result to 43.84% (+17.59 pp). Leave-one-out variants further isolate the roles of PSR and RGR. Tables IV–VI support probe-based routing with shortcut and matched-coverage diagnostics; Tables VII–VIII compare geometry-repair alternatives and identify routing-ratio limits; and Fig. 9 and Table IX characterize the temporal and layer-wise behavior of the retention mechanism. Table II reports the strongest long-horizon average accuracy among the evaluated baselines under T-CS, T-CS-LS, and T-CS-MSL on the 225-domain stream, and Fig. 11 tests transfer beyond the principal benchmark. These findings support the claimed benefits of coordinated evidence assignment and update retention."
         },
         {
           "kind": "location",
@@ -176,7 +176,7 @@ window.REVIEW_DATA={
           "text": "\"DCF formulates online adaptation as a coupled sample–layer feedback process, jointly controlling which evidence drives direct supervision, how routed-away samples constrain target geometry, and where candidate updates persist. This route–adapt–retain design interrupts the error-amplifying feedback that causes long-horizon collapse.\""
         }
       ],
-      "responseWordCount": 1432,
+      "responseWordCount": 1428,
       "responseSourceSections": [
         "EIC"
       ]
@@ -2418,8 +2418,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "paragraph",
-          "html": "Section III-D further specifies the shared centroids, two-view transport plans, cross-view geometry objective, empty-subset safeguards, and negligible-class-mass handling. Figure 12(d) jointly studies Sinkhorn iterations and entropic regularization. The stable adaptation accuracy in Fig. 12(d) supports using a small, fixed number of Sinkhorn iterations for online geometry repair. See Response R1.3 (p. 13) for Fig. 12(d).",
-          "text": "Section III-D further specifies the shared centroids, two-view transport plans, cross-view geometry objective, empty-subset safeguards, and negligible-class-mass handling. Figure 12(d) jointly studies Sinkhorn iterations and entropic regularization. The stable adaptation accuracy in Fig. 12(d) supports using a small, fixed number of Sinkhorn iterations for online geometry repair. See Response R1.3 (p. 13) for Fig. 12(d)."
+          "html": "Section III-D further specifies the shared centroids, two-view transport plans, cross-view geometry objective, empty-subset safeguards, and negligible-class-mass handling. Figure 12(d) jointly studies Sinkhorn iterations and entropic regularization. The stable adaptation accuracy in Fig. 12(d) supports using a small, fixed number of Sinkhorn iterations for online geometry repair. See Fig. 12(d) in Response R1.3 (p. 14).",
+          "text": "Section III-D further specifies the shared centroids, two-view transport plans, cross-view geometry objective, empty-subset safeguards, and negligible-class-mass handling. Figure 12(d) jointly studies Sinkhorn iterations and entropic regularization. The stable adaptation accuracy in Fig. 12(d) supports using a small, fixed number of Sinkhorn iterations for online geometry repair. See Fig. 12(d) in Response R1.3 (p. 14)."
         },
         {
           "kind": "location",
@@ -2475,8 +2475,8 @@ window.REVIEW_DATA={
         },
         {
           "kind": "location",
-          "html": "<strong>Changes in the manuscript:</strong> Section II, \"Test-Time adaptation\" and \"Reliability- and Stability-aware TTA,\" p. 3; references [28] and [38], p. 13.",
-          "text": "Changes in the manuscript: Section II, \"Test-Time adaptation\" and \"Reliability- and Stability-aware TTA,\" p. 3; references [28] and [38], p. 13."
+          "html": "<strong>Changes in the manuscript:</strong> Section II, \"Test-Time Adaptation\" and \"Reliability- and Stability-aware TTA,\" p. 3; references [28] and [38], p. 13.",
+          "text": "Changes in the manuscript: Section II, \"Test-Time Adaptation\" and \"Reliability- and Stability-aware TTA,\" p. 3; references [28] and [38], p. 13."
         }
       ],
       "responseWordCount": 138,

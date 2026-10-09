@@ -10,6 +10,7 @@ site = Path(__file__).resolve().parents[1]
 data = json.loads((site / 'data.js').read_text(encoding='utf-8').split('=', 1)[1].rsplit(';', 1)[0])
 source = site.parent / data['meta']['fullResponseSource']
 tex = source.read_text(encoding='utf-8')
+active_tex = re.sub(r'(?<!\\)%[^\n]*', '', tex)
 aux = source.with_suffix('.aux').read_text(encoding='utf-8')
 reader = PdfReader(source.with_suffix('.pdf'))
 labels = {m[1]: (int(m[2]), m[3]) for m in re.finditer(
@@ -17,17 +18,20 @@ labels = {m[1]: (int(m[2]), m[3]) for m in re.finditer(
 destinations = reader.named_destinations
 comments = {c['id']: c for c in data['comments']}
 changes = {c['id']: c for c in data['changes']}
-reviewlinks = re.findall(r'\\reviewlinks\{([^}]+)\}\{([^}]+)\}\{([^}]+)\}', tex)
+reviewlinks = re.findall(r'\\reviewlinks\{([^}]+)\}\{([^}]+)\}\{([^}]+)\}', active_tex)
+website = re.search(r'\\newcommand\{\\reviewwebsite\}\{([^}]+)\}', active_tex)[1]
+link_templates = re.findall(r'\\href\{(\\reviewwebsite[^}]+)\}', active_tex)
 expected_urls = set()
 for cid, label, evidence in reviewlinks:
     assert comments[cid]['label'] == label, (cid, label)
     assert evidence in comments[cid]['changes'], (cid, evidence)
     assert cid in changes[evidence]['comments'], (cid, evidence)
-    expected_urls.update([f'https://tcsvt-29693-2026.xhy.im/#review/{cid}/{evidence}',
-                          f'https://tcsvt-29693-2026.xhy.im/#pdf/{evidence}/{cid}'])
+    for template in link_templates:
+        expected_urls.add(template.replace(r'\reviewwebsite', website).replace(r'\#', '#')
+                          .replace('#1', cid).replace('#2', label).replace('#3', evidence))
 
 external, internal, destination_report = [], [], []
-expected_internal = [labels[label][1] for label in re.findall(r'\\hyperref\[([^\]]+)\]', tex)]
+expected_internal = [labels[label][1] for label in re.findall(r'\\hyperref\[([^\]]+)\]', active_tex)]
 with pdfplumber.open(source.with_suffix('.pdf')) as pdf:
     for label, (page_number, name) in labels.items():
         assert name in destinations, ('Missing destination', label, name)
@@ -40,7 +44,10 @@ with pdfplumber.open(source.with_suffix('.pdf')) as pdf:
         lines = [line for line in page.extract_text_lines() if line['top'] >= top - 2]
         assert lines, ('Destination below all content', label)
         delta = lines[0]['top'] - top
-        assert -2 <= delta < 45, ('Vertical destination offset', label, delta)
+        # A figure anchor precedes the graphic; its first extractable text can
+        # be farther below it than a section/comment heading.
+        max_gap = 250 if label.startswith('response-fig-') else 45
+        assert -2 <= delta < max_gap, ('Vertical destination offset', label, delta)
         destination_report.append({'label': label, 'destination': name, 'page': page_number,
                                    'top_pt': round(top, 2), 'first_text_gap_pt': round(delta, 2),
                                    'first_text': lines[0]['text']})
@@ -69,9 +76,9 @@ with pdfplumber.open(source.with_suffix('.pdf')) as pdf:
                 internal.append({'from_page': page_number, 'target_page': target_page,
                                  'destination': target, 'text': text})
 assert {link['url'] for link in external} == expected_urls
-assert len(external) == 2 * len(reviewlinks) == 34
+assert len(external) == len(expected_urls), 'PDF website links differ from enabled source links'
 assert [link['destination'] for link in internal] == expected_internal, 'PDF internal targets differ from source navigation'
-for label in re.findall(r'\\(?:hyperref\[([^\]]+)\]|pageref\*?\{([^}]+)\})', tex):
+for label in re.findall(r'\\(?:hyperref\[([^\]]+)\]|pageref\*?\{([^}]+)\})', active_tex):
     assert (label[0] or label[1]) in labels, ('Unresolved TeX navigation reference', label)
 report = {'response_pages': len(reader.pages), 'external_links': external,
           'internal_links': internal, 'destinations': destination_report, 'failures': []}

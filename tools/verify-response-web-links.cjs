@@ -58,5 +58,5 @@ const {chromium} = require('playwright');
   assert.deepEqual(errors, []);
   await browser.close();
   fs.writeFileSync(path.join(output, 'response-web-links.json'), JSON.stringify(results, null, 2));
-  console.log('Verified all 34 response-PDF website routes on desktop and mobile, exact reply table/figure counts, response-section positions and PDF starting pages.');
+  console.log(`Verified all ${audit.external_links.length} response-PDF website routes on desktop and mobile, exact reply table/figure counts, response-section positions and PDF starting pages.`);
 })().catch(error => {console.error(error); process.exit(1)});
