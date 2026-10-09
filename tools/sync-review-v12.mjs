@@ -91,7 +91,10 @@ function inline(items, html = true) {
         const tag = { Strong: 'strong', Emph: 'em', Superscript: 'sup', Underline: 'u' }[item.t];
         return html ? `<${tag}>${inline(c)}</${tag}>` : inline(c, false);
       }
-      case 'Span': case 'Link': return inline(c[1], html);
+      case 'Span': return inline(c[1], html);
+      case 'Link': return html && /^https?:\/\//.test(c[2][0])
+        ? `<a href="${esc(c[2][0])}" target="_blank" rel="noopener">${inline(c[1])}</a>`
+        : inline(c[1], html);
       case 'Quoted': return (c[0].t === 'DoubleQuote' ? '"' : "'") + inline(c[1], html) + (c[0].t === 'DoubleQuote' ? '"' : "'");
       case 'Image': return html ? `<img src="assets/response/${esc(path.basename(c[2][0]))}" alt="${esc(inline(c[1], false))}">` : inline(c[1], false);
       case 'RawInline': throw new Error('Unconverted LaTeX: ' + JSON.stringify(c));
@@ -393,7 +396,9 @@ data.figures.find(f => f.id === 'f6').changes = ['probe-definition', 'shape-text
 data.figures.find(f => f.id === 'f7').summary = 'The retained diagnostic plots visualize the four routing regions explicitly defined in revised Section III-C.';
 data.figures.find(f => f.id === 'f3').title='Route-adapt-retain overview';
 data.figures.find(f => f.id === 'f7').title='PCS-entropy diagnostic regions';
-data.meta.snapshot = '8 October 2026';
+data.meta.snapshot = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Singapore',
+}).format(new Date());
 data.meta.revisedManuscriptSource = 'latex_revise/main.tex';
 data.meta.fullResponseSource = responsePath;
 data.meta.fullResponseSha256 = hash(responsePath);

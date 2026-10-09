@@ -20,7 +20,12 @@ const {chromium} = require('playwright');
       const cid = parts[0] === 'review' ? parts[1] : parts[2];
       const evidence = parts[0] === 'review' ? parts[2] : parts[1];
       await page.goto(base + hash, {waitUntil: 'networkidle'});
-      if (parts[0] === 'review') {
+      if (!hash) {
+        await page.waitForSelector('#workspace h1');
+        assert.equal(new URL(url).origin, 'https://tcsvt-29693-2026.xhy.im');
+        const count = await page.evaluate(() => window.REVIEW_DATA.comments.length);
+        assert.equal(count, 17, 'Companion webpage is not the review application');
+      } else if (parts[0] === 'review') {
         await page.waitForFunction(id => document.querySelector('#review-evidence-select')?.value === id, evidence);
         await page.waitForFunction(() => {
           const rect = document.getElementById('evidence')?.getBoundingClientRect();

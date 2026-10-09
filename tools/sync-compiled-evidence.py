@@ -10,7 +10,7 @@ import fitz
 site=Path(__file__).resolve().parents[1]
 target=site/'data.js'
 data=json.loads(target.read_text(encoding='utf-8').split('=',1)[1].rsplit(';',1)[0])
-doc=fitz.open(site.parent/'latex_revise/main.pdf')
+doc=fitz.open(stream=(site/'assets/pdf/revised.pdf').read_bytes(),filetype='pdf')
 changes={c['id']:c for c in data['changes']}
 for id in ['shape-texture','colored-mnist','rgr-alternatives','routing-ratio',
            'curvature-proxies','efficiency','purity-protocol','domainnet']:

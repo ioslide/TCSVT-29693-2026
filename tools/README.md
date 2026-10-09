@@ -29,6 +29,6 @@ node tools/verify-review.mjs
 
 网页可直接打开 `website/index.html`。Native PDFs 可通过本地静态服务读取完整 PDF；文件协议下保留页面图片和源 PDF 链接作为备用。
 
-全量核验可补充运行 `verify-asset-rendering.py`（PDFium、Pillow）和 `verify-response-links.py`（pypdf、pdfplumber）。前者逐项对比页面、裁剪及回复图；后者按回复源文件中实际启用的链接核对 PDF 外链、可见页码与命名目标坐标。目前为 17 个 PDF diff 外链，页码导航使用 `\pageref*` 普通文本，内部点击跳转保持关闭。诊断仅写入 `.deployment/alignment-20261008`。
+全量核验可补充运行 `verify-asset-rendering.py`（PDFium、Pillow）和 `verify-response-links.py`（pypdf、pdfplumber）。前者逐项对比页面、裁剪及回复图；后者按回复源文件中实际启用的链接核对 PDF 外链、可见页码与命名目标坐标。目前为首页网站入口加 17 个 PDF diff 外链，共 18 个外链；页码导航使用 `\pageref*` 普通文本，内部点击跳转保持关闭。诊断仅写入 `.deployment/alignment-20261008`。
 
 运行链接审计后，`verify-response-web-links.cjs` 会在桌面和手机端打开回复 PDF 的全部网站链接，并核对回复图表数量、回复区导航位置及 PDF 起始页；通过 `REVIEW_URL` 指定网站地址。

@@ -14,14 +14,14 @@ window.REVIEW_DATA={
         "tex": "1108279736019bcae2bd95c497c8d7f1830f8f65e2eeb3d607f431ad0f90efad"
       },
       "revised": {
-        "pdf": "c3db33f9987d2094946591d5ba27e91c058fb0c349c9032dcc70f56f910ea869",
-        "tex": "b539df602a180fb4713a8473aca6044ef81d345844ee4c577b2ba341993c60ff"
+        "pdf": "8a1f0856c5a13f9106207980912807e283952faee12424569a34ef24b4ab9611",
+        "tex": "deb95c23c7b31c98f4455889b9cc88e728f9e8ada8246dc4ff8abf0054a34627"
       }
     },
     "fullResponseSource": "revise/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14/Response_to_Editors_and_Reviewers_TCSVT_GPT5-6_v14.tex",
-    "fullResponseSha256": "d6f5e6ba42b9b1cabeb986c186b7363b250db521fafabbe4131c082ab93e53d6",
+    "fullResponseSha256": "d68b6da4e6e71f4d66d69b899806d14783fb0a561801514a7647fef59cfa79f2",
     "responsePages": 21,
-    "responsePdfSha256": "e97fe54c2a0cf94c5820a07a6f1b994d24bd8e9e69ea1ec150b2ee76a76c9fbc",
+    "responsePdfSha256": "d69437bebc2b06ea34751de065ae87ecb024d6fc109e668af198e61330ef379c",
     "responseRevision": "v14",
     "revisedManuscriptSource": "latex_revise/main.tex"
   },
@@ -1667,15 +1667,15 @@ window.REVIEW_DATA={
         {
           "kind": "image",
           "src": "assets/response/retention-gates.png",
-          "alt": "Fig. 9. Per-layer retention gates ⟪\\mu_t^l⟫ of CLR (ResNet-50). (a) Gates over the long-horizon stream (Domain index ⟪0\\!\\to\\!225⟫). (b) Gates per corruption type on T-CS.",
+          "alt": "Fig. 9. Per-layer retention gates ⟪\\mu_t^l⟫ of CLR on ImageNet-C (ResNet-50). (a) Gates over the long-horizon T-CS stream. (b) Gates per corruption type under T-CS.",
           "width": 1800,
           "height": 1350,
           "evidenceId": "retention-heatmap"
         },
         {
           "kind": "caption",
-          "html": "<em><strong>Fig. 9.</strong> <strong>Per-layer retention gates <span data-response-math=\"\\mu_t^l\" data-display=\"false\">\\mu_t^l</span> of CLR (ResNet-50).</strong> (a) Gates over the long-horizon stream (Domain index <span data-response-math=\"0\\!\\to\\!225\" data-display=\"false\">0\\!\\to\\!225</span>). (b) Gates per corruption type on T-CS.</em>",
-          "text": "Fig. 9. Per-layer retention gates ⟪\\mu_t^l⟫ of CLR (ResNet-50). (a) Gates over the long-horizon stream (Domain index ⟪0\\!\\to\\!225⟫). (b) Gates per corruption type on T-CS.",
+          "html": "<em><strong>Fig. 9.</strong> <strong>Per-layer retention gates <span data-response-math=\"\\mu_t^l\" data-display=\"false\">\\mu_t^l</span> of CLR on ImageNet-C (ResNet-50).</strong> (a) Gates over the long-horizon T-CS stream. (b) Gates per corruption type under T-CS.</em>",
+          "text": "Fig. 9. Per-layer retention gates ⟪\\mu_t^l⟫ of CLR on ImageNet-C (ResNet-50). (a) Gates over the long-horizon T-CS stream. (b) Gates per corruption type under T-CS.",
           "evidenceId": "retention-heatmap"
         },
         {
@@ -3803,13 +3803,13 @@ window.REVIEW_DATA={
       },
       "summary": "A new heatmap directly shows the retention gate for initial_bn and layer1–layer4 across the 225-domain stream and across corruption types.",
       "before": "",
-      "after": "Fig. 9: Per-layer retention gates ⟪\\mu_t^l⟫ of CLR (ResNet-50). (a) Gates over the long-horizon stream (Domain index ⟪0\\!\\to\\!225⟫). (b) Gates per corruption type on T-CS.",
+      "after": "Fig. 9: Per-layer retention gates ⟪\\mu_t^l⟫ of CLR on ImageNet-C (ResNet-50). (a) Gates over the long-horizon T-CS stream. (b) Gates per corruption type under T-CS.",
       "diff": {
         "original": [],
         "revised": [
           {
             "kind": "add",
-            "text": "Fig. 9: Per-layer retention gates ⟪\\mu_t^l⟫ of CLR (ResNet-50). (a) Gates over the long-horizon stream (Domain index ⟪0\\!\\to\\!225⟫). (b) Gates per corruption type on T-CS."
+            "text": "Fig. 9: Per-layer retention gates ⟪\\mu_t^l⟫ of CLR on ImageNet-C (ResNet-50). (a) Gates over the long-horizon T-CS stream. (b) Gates per corruption type under T-CS."
           }
         ]
       },
@@ -7314,13 +7314,13 @@ window.REVIEW_DATA={
         "retention-heatmap"
       ],
       "before": "",
-      "after": "Fig. 9: Per-layer retention gates ⟪\\mu_t^l⟫ of CLR (ResNet-50). (a) Gates over the long-horizon stream (Domain index ⟪0\\!\\to\\!225⟫). (b) Gates per corruption type on T-CS.",
+      "after": "Fig. 9: Per-layer retention gates ⟪\\mu_t^l⟫ of CLR on ImageNet-C (ResNet-50). (a) Gates over the long-horizon T-CS stream. (b) Gates per corruption type under T-CS.",
       "diff": {
         "original": [],
         "revised": [
           {
             "kind": "add",
-            "text": "Fig. 9: Per-layer retention gates ⟪\\mu_t^l⟫ of CLR (ResNet-50). (a) Gates over the long-horizon stream (Domain index ⟪0\\!\\to\\!225⟫). (b) Gates per corruption type on T-CS."
+            "text": "Fig. 9: Per-layer retention gates ⟪\\mu_t^l⟫ of CLR on ImageNet-C (ResNet-50). (a) Gates over the long-horizon T-CS stream. (b) Gates per corruption type under T-CS."
           }
         ]
       },
@@ -17126,13 +17126,18 @@ window.REVIEW_DATA={
     },
     {
       "kind": "paragraph",
-      "html": "<strong>2. Geometry repair and computational cost.</strong> We compared Routed-away Geometry Repair (RGR) with moment matching, prototype contrastive alignment, and uniform-prior optimal transport, and examined routed-away proportions from 10% to 90%. These tests identify a stable operating regime and a failure regime when too little trusted evidence remains (Tables VII–VIII). We also benchmarked FLOPs, peak memory, and latency alongside representative baselines. On an NVIDIA A100, DCF-Lite achieves 42.06% long-horizon average accuracy with 61.8% fewer FLOPs and 58.6% lower peak memory than full DCF (Table XI).",
-      "text": "2. Geometry repair and computational cost. We compared Routed-away Geometry Repair (RGR) with moment matching, prototype contrastive alignment, and uniform-prior optimal transport, and examined routed-away proportions from 10% to 90%. These tests identify a stable operating regime and a failure regime when too little trusted evidence remains (Tables VII–VIII). We also benchmarked FLOPs, peak memory, and latency alongside representative baselines. On an NVIDIA A100, DCF-Lite achieves 42.06% long-horizon average accuracy with 61.8% fewer FLOPs and 58.6% lower peak memory than full DCF (Table XI)."
+      "html": "<strong>2. Geometry repair and computational cost.</strong> We compared Routed-away Geometry Repair (RGR) with moment matching, prototype contrastive alignment, and uniform-prior optimal transport, and examined routed-away proportions from 10% to 90%. These tests identify a stable operating regime and a failure regime when too little trusted evidence remains (Tables VII–VIII). We also benchmarked FLOPs, peak memory, and latency alongside representative baselines. On an NVIDIA A100, DCF-Lite achieves the second-highest long-horizon average accuracy, while reducing FLOPs and peak memory by 61.8% and 58.6%, respectively, relative to full DCF (Table XI).",
+      "text": "2. Geometry repair and computational cost. We compared Routed-away Geometry Repair (RGR) with moment matching, prototype contrastive alignment, and uniform-prior optimal transport, and examined routed-away proportions from 10% to 90%. These tests identify a stable operating regime and a failure regime when too little trusted evidence remains (Tables VII–VIII). We also benchmarked FLOPs, peak memory, and latency alongside representative baselines. On an NVIDIA A100, DCF-Lite achieves the second-highest long-horizon average accuracy, while reducing FLOPs and peak memory by 61.8% and 58.6%, respectively, relative to full DCF (Table XI)."
     },
     {
       "kind": "paragraph",
       "html": "<strong>3. Empirical rigor and reproducibility.</strong> We added DomainNet-126 as a distinct multi-domain transfer benchmark. Across five matched runs, paired <span data-response-math=\"t\" data-display=\"false\">t</span>-tests establish significant aggregate transfer improvements over the strongest aggregate baseline on each benchmark (Fig. 11). We also incorporated the suggested sensor-stream literature ([19]–[21]) and recent continual-TTA studies ([28], [38]), and clarified trainable parameters, CLR block grouping, routing regions, threshold selection, and Sinkhorn OT settings.",
       "text": "3. Empirical rigor and reproducibility. We added DomainNet-126 as a distinct multi-domain transfer benchmark. Across five matched runs, paired ⟪t⟫-tests establish significant aggregate transfer improvements over the strongest aggregate baseline on each benchmark (Fig. 11). We also incorporated the suggested sensor-stream literature ([19]–[21]) and recent continual-TTA studies ([28], [38]), and clarified trainable parameters, CLR block grouping, routing regions, threshold selection, and Sinkhorn OT settings."
+    },
+    {
+      "kind": "paragraph",
+      "html": "<em>For convenient cross-referencing, we created an interactive companion webpage at</em> <a href=\"https://tcsvt-29693-2026.xhy.im\" target=\"_blank\" rel=\"noopener\">https://tcsvt-29693-2026.xhy.im</a>.",
+      "text": "For convenient cross-referencing, we created an interactive companion webpage at https://tcsvt-29693-2026.xhy.im."
     },
     {
       "kind": "paragraph",

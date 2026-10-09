@@ -4,6 +4,7 @@ Only website data and QA artifacts are written. All manuscript/response inputs
 are read-only. Unchanged pages retain their previously reviewed coordinates.
 """
 from pathlib import Path
+from io import BytesIO
 import json
 import pdfplumber
 
@@ -37,7 +38,7 @@ def phrase_boxes(page, column, first, last):
                           max(c['bottom'] for c in chars)+1))
     return boxes
 
-with pdfplumber.open(ROOT/'latex_revise/main.pdf') as pdf:
+with pdfplumber.open(BytesIO((ROOT/'latex_revise/main.pdf').read_bytes())) as pdf:
     # Full Related Work ends above III. Methodology in the right column.
     ref = changes['tcsvt-literature']['revised']
     ref['boxes'] = [rect(46,50,304,751), rect(309,50,567,225)]

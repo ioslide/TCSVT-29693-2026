@@ -40,10 +40,15 @@ for version, directory in [("original", "latex_old_version"), ("revised", "latex
     if version not in versions:
         continue
     source = ROOT / directory / "main.pdf"
-    doc = pdfium.PdfDocument(source)
+    # Render the exact bytes copied below, even if a local editor recompiles
+    # the source PDF while page previews are being generated.
+    pdf_bytes = source.read_bytes()
+    if not pdf_bytes.rstrip().endswith(b'%%EOF'):
+        raise RuntimeError(f'Source PDF is still being written: {source}')
+    doc = pdfium.PdfDocument(pdf_bytes)
     data["meta"]["pages"][version] = len(doc)
-    data["meta"]["hashes"][version]["pdf"] = hashlib.sha256(source.read_bytes()).hexdigest()
-    shutil.copyfile(source, SITE / "assets" / "pdf" / f"{version}.pdf")
+    data["meta"]["hashes"][version]["pdf"] = hashlib.sha256(pdf_bytes).hexdigest()
+    (SITE / "assets" / "pdf" / f"{version}.pdf").write_bytes(pdf_bytes)
     for i, page in enumerate(doc, 1):
         image(page).save(SITE / "assets" / "pages" / f"{version}-{i}.webp", quality=90)
     for item in [*data["changes"], *data["figures"]]:
@@ -66,9 +71,12 @@ for version, directory in [("original", "latex_old_version"), ("revised", "latex
 if args.version is None:
     response_source = ROOT / data["meta"]["fullResponseSource"]
     response_pdf = response_source.with_suffix(".pdf")
-    data["meta"]["responsePages"] = len(pdfium.PdfDocument(response_pdf))
-    data["meta"]["responsePdfSha256"] = hashlib.sha256(response_pdf.read_bytes()).hexdigest()
-    shutil.copyfile(response_pdf, SITE / "assets/pdf/response.pdf")
+    response_bytes = response_pdf.read_bytes()
+    if not response_bytes.rstrip().endswith(b'%%EOF'):
+        raise RuntimeError(f'Source PDF is still being written: {response_pdf}')
+    data["meta"]["responsePages"] = len(pdfium.PdfDocument(response_bytes))
+    data["meta"]["responsePdfSha256"] = hashlib.sha256(response_bytes).hexdigest()
+    (SITE / "assets/pdf/response.pdf").write_bytes(response_bytes)
     shutil.copyfile(response_source.parent / "assets/retention_gate_heatmap.png", SITE / "assets/response/retention-gates.png")
     for filename in ["ab_margin_3d_lambda_u2.pdf", "ab_margin_3d_N_sk_varepsilon.pdf",
                      "imagenet_c_cross_heatmap_with_gain.pdf", "domainnet_heatmap_with_gain.pdf"]:

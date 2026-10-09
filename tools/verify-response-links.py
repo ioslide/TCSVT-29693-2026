@@ -21,7 +21,7 @@ changes = {c['id']: c for c in data['changes']}
 reviewlinks = re.findall(r'\\reviewlinks\{([^}]+)\}\{([^}]+)\}\{([^}]+)\}', active_tex)
 website = re.search(r'\\newcommand\{\\reviewwebsite\}\{([^}]+)\}', active_tex)[1]
 link_templates = re.findall(r'\\href\{(\\reviewwebsite[^}]+)\}', active_tex)
-expected_urls = set()
+expected_urls = set(re.findall(r'\\url\{(https?://[^}]+)\}', active_tex))
 for cid, label, evidence in reviewlinks:
     assert comments[cid]['label'] == label, (cid, label)
     assert evidence in comments[cid]['changes'], (cid, evidence)
